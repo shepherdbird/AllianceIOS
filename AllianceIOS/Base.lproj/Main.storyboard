@@ -232,6 +232,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="login.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="h8i-Bm-ElF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksx-Ep-KNW" userLabel="username">
                                 <rect key="frame" x="149" y="194" width="320" height="42"/>
                                 <subviews>
@@ -240,7 +243,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-Lt-0EX">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-Lt-0EX">
                                         <rect key="frame" x="295" y="12" width="19" height="22"/>
                                         <state key="normal" image="login_textfield_more.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -248,6 +251,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oN7-Lt-0EX" secondAttribute="trailing" id="ATo-QU-NHp"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-bd-jHl" userLabel="pwd">
                                 <rect key="frame" x="149" y="236" width="320" height="42"/>
@@ -255,13 +261,13 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ufJ-yT-lIE">
                                         <rect key="frame" x="28" y="6" width="264" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeF-He-fHR">
-                                <rect key="frame" x="154" y="331" width="293" height="41"/>
+                                <rect key="frame" x="171" y="331" width="258" height="41"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="登录">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -275,12 +281,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ksx-Ep-KNW" firstAttribute="leading" secondItem="Z5J-i4-d4v" secondAttribute="leading" id="8kx-Qb-mrt"/>
+                            <constraint firstAttribute="trailing" secondItem="h8i-Bm-ElF" secondAttribute="trailing" id="92p-kv-t2H"/>
+                            <constraint firstItem="h8i-Bm-ElF" firstAttribute="top" secondItem="alo-zC-nXg" secondAttribute="bottom" id="CwF-bf-NZO"/>
                             <constraint firstItem="GP7-bd-jHl" firstAttribute="leading" secondItem="Z5J-i4-d4v" secondAttribute="leading" id="DMr-MS-Mmh"/>
                             <constraint firstItem="GP7-bd-jHl" firstAttribute="top" secondItem="ksx-Ep-KNW" secondAttribute="bottom" id="KU8-Jn-aqM"/>
                             <constraint firstItem="KeF-He-fHR" firstAttribute="top" secondItem="GP7-bd-jHl" secondAttribute="bottom" constant="51" id="MkG-Qu-28U"/>
+                            <constraint firstItem="h8i-Bm-ElF" firstAttribute="leading" secondItem="Z5J-i4-d4v" secondAttribute="leading" id="Rcf-j6-yPP"/>
                             <constraint firstItem="KeF-He-fHR" firstAttribute="centerX" secondItem="Z5J-i4-d4v" secondAttribute="centerX" id="ZkJ-bM-tRC"/>
                             <constraint firstAttribute="trailing" secondItem="ksx-Ep-KNW" secondAttribute="trailing" id="d8G-1S-XyP"/>
                             <constraint firstAttribute="trailing" secondItem="GP7-bd-jHl" secondAttribute="trailing" id="g0N-9f-Fm2"/>
+                            <constraint firstItem="Vxz-1f-d4F" firstAttribute="top" secondItem="h8i-Bm-ElF" secondAttribute="bottom" id="iGM-8j-cV2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -292,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvm-6D-Jk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4186" y="-156"/>
+            <point key="canvasLocation" x="-4106" y="-156"/>
         </scene>
         <!--消息-->
         <scene sceneID="BB3-Ot-TsK">
@@ -332,6 +342,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="login.jpg" width="640" height="960"/>
         <image name="login_textfield_more.png" width="19" height="13"/>
         <image name="second" width="30" height="30"/>
     </resources>
