@@ -269,7 +269,6 @@
                                 </state>
                                 <connections>
                                     <action selector="LoginBtn:" destination="mrU-5N-8H0" eventType="touchUpInside" id="xuT-VB-JjQ"/>
-                                    <segue destination="5jw-sq-cTW" kind="modal" identifier="login" id="mDj-vn-e7X"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -288,6 +287,7 @@
                         <outlet property="BtnLogin" destination="KeF-He-fHR" id="cJV-SX-QIe"/>
                         <outlet property="pwd" destination="ufJ-yT-lIE" id="YtA-Vd-jNp"/>
                         <outlet property="username" destination="Wbv-rT-ffM" id="hMx-Uk-JhI"/>
+                        <segue destination="5jw-sq-cTW" kind="modal" identifier="login" id="rK7-Cf-vtV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvm-6D-Jk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
