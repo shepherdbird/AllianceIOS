@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     //Background.frame=CGRectMake(0,0,600,600
     //@IBOutlet weak var btnLogin: UIButton!
     
+    @IBOutlet weak var fail: UILabel!
     @IBOutlet weak var BtnLogin: UIButton!
     
     @IBOutlet weak var username: UITextField!
@@ -23,12 +24,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         BtnLogin.layer.cornerRadius=4.0
         BtnLogin.layer.masksToBounds=true
+        fail.text=""
     }
     @IBAction func LoginBtn(Sender:AnyObject){
         if username.text=="dawei" && pwd.text=="123456"{
             self.performSegueWithIdentifier("login", sender:self)
         }else{
             print("login failed")
+            fail.text="Login Fail.try dawei and 123456"
         }
     }
     

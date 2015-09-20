@@ -19,7 +19,6 @@
 		D97CC1481BAAFA5800303FC2 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = D97CC1471BAAFA5800303FC2 /* pinyin.c */; settings = {ASSET_TAGS = (); }; };
 		D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B190191BACE2050077EA76 /* login_bg.jpg */; settings = {ASSET_TAGS = (); }; };
 		D9B1901C1BACE2740077EA76 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1901B1BACE2740077EA76 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D9B191011BACE6250077EA76 /* login_textfield_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B191001BACE6250077EA76 /* login_textfield_more@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D9B191041BACE8B60077EA76 /* loadscreen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191021BACE8B60077EA76 /* loadscreen.jpeg */; settings = {ASSET_TAGS = (); }; };
 		D9B191051BACE8B60077EA76 /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191031BACE8B60077EA76 /* login.jpg */; settings = {ASSET_TAGS = (); }; };
 		D9B1910A1BAE3AEC0077EA76 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B191081BAE3AEC0077EA76 /* password.png */; settings = {ASSET_TAGS = (); }; };
@@ -35,6 +34,8 @@
 		D9B196361BAE71A50077EA76 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196351BAE71A50077EA76 /* libiconv.tbd */; };
 		D9B196381BAE71B10077EA76 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196371BAE71B10077EA76 /* libresolv.tbd */; };
 		D9B1963A1BAE71B90077EA76 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196391BAE71B90077EA76 /* libxml2.tbd */; };
+		D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1963B1BAE8D920077EA76 /* MessageController.swift */; settings = {ASSET_TAGS = (); }; };
+		D9B196421BAED6D10077EA76 /* liugang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B196411BAED6D10077EA76 /* liugang.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,6 @@
 		D97CC1471BAAFA5800303FC2 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		D9B190191BACE2050077EA76 /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		D9B1901B1BACE2740077EA76 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D9B191001BACE6250077EA76 /* login_textfield_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_textfield_more@2x.png"; sourceTree = "<group>"; };
 		D9B191021BACE8B60077EA76 /* loadscreen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loadscreen.jpeg; sourceTree = "<group>"; };
 		D9B191031BACE8B60077EA76 /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login.jpg; sourceTree = "<group>"; };
 		D9B191081BAE3AEC0077EA76 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
@@ -154,6 +154,8 @@
 		D9B196351BAE71A50077EA76 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		D9B196371BAE71B10077EA76 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		D9B196391BAE71B90077EA76 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		D9B1963B1BAE8D920077EA76 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		D9B196411BAED6D10077EA76 /* liugang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liugang.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,8 @@
 		D97A8C081BAADF9F002645F9 = {
 			isa = PBXGroup;
 			children = (
+				D97A8C131BAADF9F002645F9 /* AllianceIOS */,
+				D97A8C121BAADF9F002645F9 /* Products */,
 				D9B196391BAE71B90077EA76 /* libxml2.tbd */,
 				D9B196371BAE71B10077EA76 /* libresolv.tbd */,
 				D9B196351BAE71A50077EA76 /* libiconv.tbd */,
@@ -188,8 +192,6 @@
 				D9B1962F1BAE717E0077EA76 /* libsqlite3.tbd */,
 				D9B1962D1BAE71600077EA76 /* CFNetwork.framework */,
 				D9B1962B1BAE71580077EA76 /* MobileCoreServices.framework */,
-				D97A8C131BAADF9F002645F9 /* AllianceIOS */,
-				D97A8C121BAADF9F002645F9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +219,7 @@
 				D97CC1451BAAFA3400303FC2 /* pinyin.h */,
 				D97CC1471BAAFA5800303FC2 /* pinyin.c */,
 				D97CC1461BAAFA5700303FC2 /* AllianceIOS-Bridging-Header.h */,
+				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
 				D9B190171BACE15F0077EA76 /* Supporting Files */,
 				D97A8C261BAAE5A9002645F9 /* README.md */,
 			);
@@ -236,11 +239,11 @@
 		D9B190181BACE15F0077EA76 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D9B196411BAED6D10077EA76 /* liugang.png */,
 				D9B191081BAE3AEC0077EA76 /* password.png */,
 				D9B191091BAE3AEC0077EA76 /* username.png */,
 				D9B191021BACE8B60077EA76 /* loadscreen.jpeg */,
 				D9B191031BACE8B60077EA76 /* login.jpg */,
-				D9B191001BACE6250077EA76 /* login_textfield_more@2x.png */,
 				D9B190191BACE2050077EA76 /* login_bg.jpg */,
 			);
 			path = Resource;
@@ -574,10 +577,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B191011BACE6250077EA76 /* login_textfield_more@2x.png in Resources */,
 				D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */,
 				D9B1910A1BAE3AEC0077EA76 /* password.png in Resources */,
 				D97A8C1F1BAADFA0002645F9 /* LaunchScreen.storyboard in Resources */,
+				D9B196421BAED6D10077EA76 /* liugang.png in Resources */,
 				D9B1962A1BAE711C0077EA76 /* EaseMob.bundle in Resources */,
 				D97A8C1C1BAADFA0002645F9 /* Assets.xcassets in Resources */,
 				D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */,
@@ -601,6 +604,7 @@
 				D9B1901C1BACE2740077EA76 /* LoginViewController.swift in Sources */,
 				D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */,
 				D97CC1441BAAF9ED00303FC2 /* UserModel.swift in Sources */,
+				D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */,
 				D97CC1421BAAF9A100303FC2 /* FriendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
