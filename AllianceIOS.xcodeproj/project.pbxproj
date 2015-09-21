@@ -220,19 +220,19 @@
 				D97CC1471BAAFA5800303FC2 /* pinyin.c */,
 				D97CC1461BAAFA5700303FC2 /* AllianceIOS-Bridging-Header.h */,
 				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
-				D9B190171BACE15F0077EA76 /* Supporting Files */,
+				D9B190171BACE15F0077EA76 /* SupportingFiles */,
 				D97A8C261BAAE5A9002645F9 /* README.md */,
 			);
 			path = AllianceIOS;
 			sourceTree = "<group>";
 		};
-		D9B190171BACE15F0077EA76 /* Supporting Files */ = {
+		D9B190171BACE15F0077EA76 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				D9B195BA1BAE711C0077EA76 /* EaseMobSDK */,
 				D9B190181BACE15F0077EA76 /* Resource */,
 			);
-			name = "Supporting Files";
+			name = SupportingFiles;
 			path = "../Supporting Files";
 			sourceTree = "<group>";
 		};
