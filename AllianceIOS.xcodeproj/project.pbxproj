@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D97652361BB038E00031C21D /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97652341BB038E00031C21D /* libEaseMobClientSDK.a */; settings = {ASSET_TAGS = (); }; };
-		D97652371BB038E00031C21D /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97652351BB038E00031C21D /* libEaseMobClientSDKLite.a */; settings = {ASSET_TAGS = (); }; };
+		D976523B1BB039950031C21D /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97652391BB039950031C21D /* libEaseMobClientSDK.a */; settings = {ASSET_TAGS = (); }; };
+		D976523C1BB039950031C21D /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D976523A1BB039950031C21D /* libEaseMobClientSDKLite.a */; settings = {ASSET_TAGS = (); }; };
 		D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C141BAADFA0002645F9 /* AppDelegate.swift */; };
 		D97A8C171BAADFA0002645F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C161BAADFA0002645F9 /* ViewController.swift */; };
 		D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C181BAADFA0002645F9 /* Main.storyboard */; };
@@ -36,11 +36,12 @@
 		D9B1963A1BAE71B90077EA76 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196391BAE71B90077EA76 /* libxml2.tbd */; };
 		D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1963B1BAE8D920077EA76 /* MessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		D9B196421BAED6D10077EA76 /* liugang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B196411BAED6D10077EA76 /* liugang.png */; settings = {ASSET_TAGS = (); }; };
+		D9FC22B81BB050480057A854 /* ResourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FC22B71BB050480057A854 /* ResourceController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D97652341BB038E00031C21D /* libEaseMobClientSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDK.a; sourceTree = "<group>"; };
-		D97652351BB038E00031C21D /* libEaseMobClientSDKLite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDKLite.a; sourceTree = "<group>"; };
+		D97652391BB039950031C21D /* libEaseMobClientSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDK.a; sourceTree = "<group>"; };
+		D976523A1BB039950031C21D /* libEaseMobClientSDKLite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDKLite.a; sourceTree = "<group>"; };
 		D97A8C111BAADF9F002645F9 /* AllianceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllianceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97A8C141BAADFA0002645F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D97A8C161BAADFA0002645F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		D9B196391BAE71B90077EA76 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		D9B1963B1BAE8D920077EA76 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		D9B196411BAED6D10077EA76 /* liugang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liugang.png; sourceTree = "<group>"; };
+		D9FC22B71BB050480057A854 /* ResourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,11 +165,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D97652361BB038E00031C21D /* libEaseMobClientSDK.a in Frameworks */,
+				D976523B1BB039950031C21D /* libEaseMobClientSDK.a in Frameworks */,
 				D9B1963A1BAE71B90077EA76 /* libxml2.tbd in Frameworks */,
 				D9B196381BAE71B10077EA76 /* libresolv.tbd in Frameworks */,
 				D9B196361BAE71A50077EA76 /* libiconv.tbd in Frameworks */,
-				D97652371BB038E00031C21D /* libEaseMobClientSDKLite.a in Frameworks */,
+				D976523C1BB039950031C21D /* libEaseMobClientSDKLite.a in Frameworks */,
 				D9B196341BAE719D0077EA76 /* libz.tbd in Frameworks */,
 				D9B196321BAE71900077EA76 /* libstdc++.6.0.9.tbd in Frameworks */,
 				D9B196301BAE717E0077EA76 /* libsqlite3.tbd in Frameworks */,
@@ -179,15 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D97652331BB038E00031C21D /* lib */ = {
+		D97652381BB039940031C21D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				D97652341BB038E00031C21D /* libEaseMobClientSDK.a */,
-				D97652351BB038E00031C21D /* libEaseMobClientSDKLite.a */,
+				D97652391BB039950031C21D /* libEaseMobClientSDK.a */,
+				D976523A1BB039950031C21D /* libEaseMobClientSDKLite.a */,
 			);
-			name = lib;
-			path = SupportingFiles/EaseMobSDK/lib;
-			sourceTree = SOURCE_ROOT;
+			path = lib;
+			sourceTree = "<group>";
 		};
 		D97A8C081BAADF9F002645F9 = {
 			isa = PBXGroup;
@@ -232,6 +233,7 @@
 				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
 				D9B190171BACE15F0077EA76 /* Supporting Files */,
 				D97A8C261BAAE5A9002645F9 /* README.md */,
+				D9FC22B71BB050480057A854 /* ResourceController.swift */,
 			);
 			path = AllianceIOS;
 			sourceTree = "<group>";
@@ -262,7 +264,7 @@
 		D9B195BA1BAE711C0077EA76 /* EaseMobSDK */ = {
 			isa = PBXGroup;
 			children = (
-				D97652331BB038E00031C21D /* lib */,
+				D97652381BB039940031C21D /* lib */,
 				D9B195BB1BAE711C0077EA76 /* include */,
 				D9B196261BAE711C0077EA76 /* resources */,
 			);
@@ -601,6 +603,7 @@
 				D97CC1481BAAFA5800303FC2 /* pinyin.c in Sources */,
 				D97A8C271BAAE5A9002645F9 /* README.md in Sources */,
 				D97A8C291BAAEC83002645F9 /* FriendController.swift in Sources */,
+				D9FC22B81BB050480057A854 /* ResourceController.swift in Sources */,
 				D97A8C171BAADFA0002645F9 /* ViewController.swift in Sources */,
 				D9B1901C1BACE2740077EA76 /* LoginViewController.swift in Sources */,
 				D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */,
@@ -724,9 +727,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks -ObjC \"$(SRCROOT)/Supporting Files/EaseMobSDK/lib/libEaseMobClientSDKLite.a\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Supporting",
-					Files/EaseMobSDK/lib,
-					"$(PROJECT_DIR)/SupportingFiles/EaseMobSDK/lib",
+					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ourself.AllianceIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,9 +747,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks -ObjC \"$(SRCROOT)/Supporting Files/EaseMobSDK/lib/libEaseMobClientSDKLite.a\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Supporting",
-					Files/EaseMobSDK/lib,
-					"$(PROJECT_DIR)/SupportingFiles/EaseMobSDK/lib",
+					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ourself.AllianceIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
