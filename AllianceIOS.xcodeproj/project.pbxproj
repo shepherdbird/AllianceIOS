@@ -37,6 +37,15 @@
 		D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1963B1BAE8D920077EA76 /* MessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		D9B196421BAED6D10077EA76 /* liugang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B196411BAED6D10077EA76 /* liugang.png */; settings = {ASSET_TAGS = (); }; };
 		D9FC22B81BB050480057A854 /* ResourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FC22B71BB050480057A854 /* ResourceController.swift */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E71BB16D1700FFA187 /* near.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E91BB16D1700FFA187 /* yiyuan.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6EE1BB16FFD00FFA187 /* qiang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6ED1BB16FFD00FFA187 /* qiang.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6F01BB1749F00FFA187 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6EF1BB1749F00FFA187 /* settings.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6F41BB175C200FFA187 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F11BB175C200FFA187 /* collect.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6F51BB175C200FFA187 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F21BB175C200FFA187 /* money.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6F61BB175C200FFA187 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F31BB175C200FFA187 /* phone.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6F81BB1765400FFA187 /* envite.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F71BB1765400FFA187 /* envite.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6FA1BB1771200FFA187 /* erwei.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F91BB1771200FFA187 /* erwei.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +167,15 @@
 		D9B1963B1BAE8D920077EA76 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		D9B196411BAED6D10077EA76 /* liugang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liugang.png; sourceTree = "<group>"; };
 		D9FC22B71BB050480057A854 /* ResourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceController.swift; sourceTree = "<group>"; };
+		D9FFE6E71BB16D1700FFA187 /* near.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = near.png; sourceTree = "<group>"; };
+		D9FFE6E91BB16D1700FFA187 /* yiyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiyuan.png; sourceTree = "<group>"; };
+		D9FFE6ED1BB16FFD00FFA187 /* qiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qiang.png; sourceTree = "<group>"; };
+		D9FFE6EF1BB1749F00FFA187 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		D9FFE6F11BB175C200FFA187 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
+		D9FFE6F21BB175C200FFA187 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
+		D9FFE6F31BB175C200FFA187 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		D9FFE6F71BB1765400FFA187 /* envite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envite.png; sourceTree = "<group>"; };
+		D9FFE6F91BB1771200FFA187 /* erwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erwei.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,10 +248,10 @@
 				D97CC1451BAAFA3400303FC2 /* pinyin.h */,
 				D97CC1471BAAFA5800303FC2 /* pinyin.c */,
 				D97CC1461BAAFA5700303FC2 /* AllianceIOS-Bridging-Header.h */,
+				D9FC22B71BB050480057A854 /* ResourceController.swift */,
 				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
 				D9B190171BACE15F0077EA76 /* Supporting Files */,
 				D97A8C261BAAE5A9002645F9 /* README.md */,
-				D9FC22B71BB050480057A854 /* ResourceController.swift */,
 			);
 			path = AllianceIOS;
 			sourceTree = "<group>";
@@ -251,6 +269,15 @@
 		D9B190181BACE15F0077EA76 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D9FFE6F91BB1771200FFA187 /* erwei.png */,
+				D9FFE6F71BB1765400FFA187 /* envite.png */,
+				D9FFE6F11BB175C200FFA187 /* collect.png */,
+				D9FFE6F21BB175C200FFA187 /* money.png */,
+				D9FFE6F31BB175C200FFA187 /* phone.png */,
+				D9FFE6EF1BB1749F00FFA187 /* settings.png */,
+				D9FFE6ED1BB16FFD00FFA187 /* qiang.png */,
+				D9FFE6E71BB16D1700FFA187 /* near.png */,
+				D9FFE6E91BB16D1700FFA187 /* yiyuan.png */,
 				D9B196411BAED6D10077EA76 /* liugang.png */,
 				D9B191081BAE3AEC0077EA76 /* password.png */,
 				D9B191091BAE3AEC0077EA76 /* username.png */,
@@ -581,14 +608,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */,
+				D9FFE6F61BB175C200FFA187 /* phone.png in Resources */,
 				D9B1910A1BAE3AEC0077EA76 /* password.png in Resources */,
 				D97A8C1F1BAADFA0002645F9 /* LaunchScreen.storyboard in Resources */,
+				D9FFE6FA1BB1771200FFA187 /* erwei.png in Resources */,
 				D9B196421BAED6D10077EA76 /* liugang.png in Resources */,
+				D9FFE6F51BB175C200FFA187 /* money.png in Resources */,
+				D9FFE6F81BB1765400FFA187 /* envite.png in Resources */,
 				D9B1962A1BAE711C0077EA76 /* EaseMob.bundle in Resources */,
+				D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */,
 				D97A8C1C1BAADFA0002645F9 /* Assets.xcassets in Resources */,
+				D9FFE6F41BB175C200FFA187 /* collect.png in Resources */,
 				D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */,
+				D9FFE6F01BB1749F00FFA187 /* settings.png in Resources */,
 				D9B1910B1BAE3AEC0077EA76 /* username.png in Resources */,
 				D9B191041BACE8B60077EA76 /* loadscreen.jpeg in Resources */,
+				D9FFE6EE1BB16FFD00FFA187 /* qiang.png in Resources */,
+				D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */,
 				D9B191051BACE8B60077EA76 /* login.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
