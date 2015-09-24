@@ -77,6 +77,17 @@ class MessageController: UITableViewController {
         }
         return cell
     }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        self.performSegueWithIdentifier(<#T##identifier: String##String#>, sender: <#T##AnyObject?#>)
+//        
+//    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let chat=segue.destinationViewController as! ChatController
+        let cell=sender as! UITableViewCell
+        let nameLabel = cell.viewWithTag(2) as? UILabel
+        chat.title=nameLabel!.text
+    }
 
     /*
     // Override to support conditional editing of the table view.

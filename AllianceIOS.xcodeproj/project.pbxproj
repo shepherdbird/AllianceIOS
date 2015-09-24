@@ -10,7 +10,6 @@
 		D976523B1BB039950031C21D /* libEaseMobClientSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97652391BB039950031C21D /* libEaseMobClientSDK.a */; settings = {ASSET_TAGS = (); }; };
 		D976523C1BB039950031C21D /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D976523A1BB039950031C21D /* libEaseMobClientSDKLite.a */; settings = {ASSET_TAGS = (); }; };
 		D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C141BAADFA0002645F9 /* AppDelegate.swift */; };
-		D97A8C171BAADFA0002645F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C161BAADFA0002645F9 /* ViewController.swift */; };
 		D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C181BAADFA0002645F9 /* Main.storyboard */; };
 		D97A8C1C1BAADFA0002645F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C1B1BAADFA0002645F9 /* Assets.xcassets */; };
 		D97A8C1F1BAADFA0002645F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C1D1BAADFA0002645F9 /* LaunchScreen.storyboard */; };
@@ -36,6 +35,8 @@
 		D9B1963A1BAE71B90077EA76 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196391BAE71B90077EA76 /* libxml2.tbd */; };
 		D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1963B1BAE8D920077EA76 /* MessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		D9B196421BAED6D10077EA76 /* liugang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B196411BAED6D10077EA76 /* liugang.png */; settings = {ASSET_TAGS = (); }; };
+		D9F66F951BB2DD01000C2D44 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F66F941BB2DD01000C2D44 /* ChatCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D9F66F971BB2DE0A000C2D44 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F66F961BB2DE0A000C2D44 /* MessageItem.swift */; settings = {ASSET_TAGS = (); }; };
 		D9FC22B81BB050480057A854 /* ResourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FC22B71BB050480057A854 /* ResourceController.swift */; settings = {ASSET_TAGS = (); }; };
 		D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E71BB16D1700FFA187 /* near.png */; settings = {ASSET_TAGS = (); }; };
 		D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E91BB16D1700FFA187 /* yiyuan.png */; settings = {ASSET_TAGS = (); }; };
@@ -46,6 +47,7 @@
 		D9FFE6F61BB175C200FFA187 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F31BB175C200FFA187 /* phone.png */; settings = {ASSET_TAGS = (); }; };
 		D9FFE6F81BB1765400FFA187 /* envite.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F71BB1765400FFA187 /* envite.png */; settings = {ASSET_TAGS = (); }; };
 		D9FFE6FA1BB1771200FFA187 /* erwei.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6F91BB1771200FFA187 /* erwei.png */; settings = {ASSET_TAGS = (); }; };
+		D9FFE6FC1BB1940A00FFA187 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFE6FB1BB1940A00FFA187 /* ChatController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +55,6 @@
 		D976523A1BB039950031C21D /* libEaseMobClientSDKLite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEaseMobClientSDKLite.a; sourceTree = "<group>"; };
 		D97A8C111BAADF9F002645F9 /* AllianceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllianceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97A8C141BAADFA0002645F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D97A8C161BAADFA0002645F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D97A8C191BAADFA0002645F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D97A8C1B1BAADFA0002645F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D97A8C1E1BAADFA0002645F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -166,6 +167,8 @@
 		D9B196391BAE71B90077EA76 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		D9B1963B1BAE8D920077EA76 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		D9B196411BAED6D10077EA76 /* liugang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liugang.png; sourceTree = "<group>"; };
+		D9F66F941BB2DD01000C2D44 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		D9F66F961BB2DE0A000C2D44 /* MessageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		D9FC22B71BB050480057A854 /* ResourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceController.swift; sourceTree = "<group>"; };
 		D9FFE6E71BB16D1700FFA187 /* near.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = near.png; sourceTree = "<group>"; };
 		D9FFE6E91BB16D1700FFA187 /* yiyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiyuan.png; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		D9FFE6F31BB175C200FFA187 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		D9FFE6F71BB1765400FFA187 /* envite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envite.png; sourceTree = "<group>"; };
 		D9FFE6F91BB1771200FFA187 /* erwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erwei.png; sourceTree = "<group>"; };
+		D9FFE6FB1BB1940A00FFA187 /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,21 +239,14 @@
 		D97A8C131BAADF9F002645F9 /* AllianceIOS */ = {
 			isa = PBXGroup;
 			children = (
+				D9F66F931BB2DAF6000C2D44 /* controllers */,
+				D9F66F921BB2DAE0000C2D44 /* models */,
 				D97A8C141BAADFA0002645F9 /* AppDelegate.swift */,
-				D97A8C161BAADFA0002645F9 /* ViewController.swift */,
 				D97A8C181BAADFA0002645F9 /* Main.storyboard */,
 				D97A8C1B1BAADFA0002645F9 /* Assets.xcassets */,
 				D97A8C1D1BAADFA0002645F9 /* LaunchScreen.storyboard */,
 				D97A8C201BAADFA0002645F9 /* Info.plist */,
-				D97A8C281BAAEC83002645F9 /* FriendController.swift */,
-				D97CC1411BAAF9A100303FC2 /* FriendCell.swift */,
-				D97CC1431BAAF9ED00303FC2 /* UserModel.swift */,
-				D9B1901B1BACE2740077EA76 /* LoginViewController.swift */,
-				D97CC1451BAAFA3400303FC2 /* pinyin.h */,
-				D97CC1471BAAFA5800303FC2 /* pinyin.c */,
 				D97CC1461BAAFA5700303FC2 /* AllianceIOS-Bridging-Header.h */,
-				D9FC22B71BB050480057A854 /* ResourceController.swift */,
-				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
 				D9B190171BACE15F0077EA76 /* Supporting Files */,
 				D97A8C261BAAE5A9002645F9 /* README.md */,
 			);
@@ -549,6 +546,31 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		D9F66F921BB2DAE0000C2D44 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D97CC1411BAAF9A100303FC2 /* FriendCell.swift */,
+				D97CC1431BAAF9ED00303FC2 /* UserModel.swift */,
+				D97CC1451BAAFA3400303FC2 /* pinyin.h */,
+				D97CC1471BAAFA5800303FC2 /* pinyin.c */,
+				D9F66F941BB2DD01000C2D44 /* ChatCell.swift */,
+				D9F66F961BB2DE0A000C2D44 /* MessageItem.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		D9F66F931BB2DAF6000C2D44 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9B1901B1BACE2740077EA76 /* LoginViewController.swift */,
+				D9B1963B1BAE8D920077EA76 /* MessageController.swift */,
+				D9FFE6FB1BB1940A00FFA187 /* ChatController.swift */,
+				D97A8C281BAAEC83002645F9 /* FriendController.swift */,
+				D9FC22B71BB050480057A854 /* ResourceController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,13 +658,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FFE6FC1BB1940A00FFA187 /* ChatController.swift in Sources */,
 				D97CC1481BAAFA5800303FC2 /* pinyin.c in Sources */,
+				D9F66F951BB2DD01000C2D44 /* ChatCell.swift in Sources */,
 				D97A8C271BAAE5A9002645F9 /* README.md in Sources */,
 				D97A8C291BAAEC83002645F9 /* FriendController.swift in Sources */,
 				D9FC22B81BB050480057A854 /* ResourceController.swift in Sources */,
-				D97A8C171BAADFA0002645F9 /* ViewController.swift in Sources */,
 				D9B1901C1BACE2740077EA76 /* LoginViewController.swift in Sources */,
 				D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */,
+				D9F66F971BB2DE0A000C2D44 /* MessageItem.swift in Sources */,
 				D97CC1441BAAF9ED00303FC2 /* UserModel.swift in Sources */,
 				D9B1963C1BAE8D920077EA76 /* MessageController.swift in Sources */,
 				D97CC1421BAAF9A100303FC2 /* FriendCell.swift in Sources */,
