@@ -71,6 +71,8 @@ class MessageController: UITableViewController {
         }
         if let ratingImageView = cell.viewWithTag(1) as? UIImageView {
             ratingImageView.image = UIImage(named: message.avatar)
+            ratingImageView.clipsToBounds=true
+            ratingImageView.layer.cornerRadius=ratingImageView.bounds.width*0.5
         }
         if let time_=cell.viewWithTag(4) as? UILabel{
             time_.text=message.time

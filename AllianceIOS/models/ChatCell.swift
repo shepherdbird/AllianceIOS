@@ -48,11 +48,13 @@ class ChatCell: UITableViewCell {
         let avatarY =  self.frame.minY
         //set the frame correctly
         self.avatarImage.frame = CGRectMake(avatarX, avatarY, 40, 40)
+        self.avatarImage.clipsToBounds=true
+        self.avatarImage.layer.cornerRadius=self.avatarImage.bounds.width*0.5
         self.addSubview(self.avatarImage)
         self.customView=UILabel()
         self.customView.text=self.msgItem.content
         self.customView.frame=CGRectMake(54, self.frame.minY, self.frame.width-110, 40)
-        self.customView.backgroundColor=UIColor.clearColor()
+        self.customView.backgroundColor=UIColor.greenColor()
         self.addSubview(self.customView)
         
     }
