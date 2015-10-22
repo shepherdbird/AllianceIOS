@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Controller-->
         <scene sceneID="1xA-ca-VVJ">
             <objects>
-                <tabBarController id="5jw-sq-cTW" sceneMemberID="viewController">
+                <tabBarController id="5jw-sq-cTW" customClass="MainController" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bbN-b5-fuh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -293,7 +293,7 @@
         <scene sceneID="ayL-7X-fcc">
             <objects>
                 <navigationController id="PBH-5h-QU2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" image="second" id="5r4-yk-Ny1"/>
+                    <tabBarItem key="tabBarItem" title="我" image="我tab默认.png" selectedImage="我tab选中.png" id="5r4-yk-Ny1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bEy-4F-GSZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -356,7 +356,7 @@
         <scene sceneID="2yp-xv-znj">
             <objects>
                 <navigationController id="ADp-hU-BOh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="资源" image="first" id="D9F-69-2Eo"/>
+                    <tabBarItem key="tabBarItem" title="资源" image="资源tba默认.png" selectedImage="资源tba选中.png" id="D9F-69-2Eo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zYN-EN-0CF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -478,7 +478,7 @@
         <!--抢红包-->
         <scene sceneID="Ohj-zE-55Z">
             <objects>
-                <viewController storyboardIdentifier="GrabRed" id="mo2-xk-8Tg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrabRed" id="mo2-xk-8Tg" customClass="GrabEnvelopeController" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hEl-BX-POG"/>
                         <viewControllerLayoutGuide type="bottom" id="uB5-0p-MYf"/>
@@ -519,7 +519,7 @@
         <scene sceneID="LOu-5G-wyn">
             <objects>
                 <navigationController id="vqE-tP-i4d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="好友" image="second" id="WXz-zi-49t"/>
+                    <tabBarItem key="tabBarItem" title="好友" image="好友tab默认.png" selectedImage="好友tab选中.png" id="WXz-zi-49t"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wEp-KG-Yrc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -801,7 +801,7 @@
         <scene sceneID="BB3-Ot-TsK">
             <objects>
                 <navigationController id="vRM-ea-l8I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="first" id="Ic5-5d-3sv"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="消息tab默认.png" selectedImage="消息tab选中.png" id="Ic5-5d-3sv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y29-xK-mLN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -820,13 +820,19 @@
         <image name="collect.png" width="52" height="50"/>
         <image name="envite.png" width="44" height="56"/>
         <image name="erwei.png" width="52" height="50"/>
-        <image name="first" width="30" height="30"/>
         <image name="mango" width="114" height="114"/>
         <image name="money.png" width="46" height="48"/>
         <image name="password.png" width="48" height="50"/>
         <image name="phone.png" width="44" height="54"/>
-        <image name="second" width="30" height="30"/>
         <image name="settings.png" width="74" height="64"/>
         <image name="username.png" width="52" height="56"/>
+        <image name="好友tab选中.png" width="29" height="25"/>
+        <image name="好友tab默认.png" width="29" height="25"/>
+        <image name="我tab选中.png" width="23" height="25"/>
+        <image name="我tab默认.png" width="23" height="25"/>
+        <image name="消息tab选中.png" width="23" height="25"/>
+        <image name="消息tab默认.png" width="23" height="25"/>
+        <image name="资源tba选中.png" width="18" height="25"/>
+        <image name="资源tba默认.png" width="18" height="25"/>
     </resources>
 </document>

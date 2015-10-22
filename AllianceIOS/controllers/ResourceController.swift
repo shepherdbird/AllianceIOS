@@ -21,9 +21,8 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        
-        sv.frame=CGRectMake(0, 60, self.view.frame.width, 210)
-        pg.frame=CGRectMake((self.view.frame.width-40)/2, 250, 40, 5)
+        sv.frame=CGRectMake(0, 60, self.view.frame.width, self.view.frame.width/5*2)
+        pg.frame=CGRectMake((self.view.frame.width-40)/2, 40+self.view.frame.width/5*2, 40, 5)
         var image = UIImage(named: "login_bg.jpg")!
         for i in 1...3{
             if i==2 {
@@ -46,13 +45,12 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
         pg.currentPageIndicatorTintColor = UIColor.redColor()
         pg.pageIndicatorTintColor = UIColor.whiteColor()
         addTimer()
-        print(sv.frame.height)
+        //print(sv.frame.height)
+        
+        //一元夺宝按钮
         let yiyuan=UIButton(frame:CGRectMake(-2, sv.frame.height+57, self.view.frame.width/3+2, self.view.frame.width/3+4))
-        let qiang=UIButton(frame:CGRectMake(self.view.frame.width/3, sv.frame.height+63, self.view.frame.width/3, self.view.frame.width/3))
-        let near=UIButton(frame:CGRectMake(self.view.frame.width/3*2, sv.frame.height+63, self.view.frame.width/3, self.view.frame.width/3))
-        let liaoba=UIButton(frame:CGRectMake(0, sv.frame.height+63+self.view.frame.width/3, self.view.frame.width/3, self.view.frame.width/3))
         let yiyuanico=UIImageView(frame: CGRectMake(self.view.frame.width/8, sv.frame.height+63+self.view.frame.width/12, self.view.frame.width/12, self.view.frame.width/12))
-        yiyuan.layer.borderWidth=CGFloat(2.0)
+        yiyuan.layer.borderWidth=CGFloat(1.0)
         yiyuan.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
         yiyuanico.image=UIImage(named: "一元夺宝图标.png")
         yiyuanico.contentMode=UIViewContentMode.ScaleAspectFill
@@ -60,24 +58,65 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
         yiyuanlabel.text="一元夺宝"
         yiyuanlabel.adjustsFontSizeToFitWidth=true
         yiyuanlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
-        //yiyuan.setBackgroundImage(UIImage(named: "一元夺宝图标.png"), forState: UIControlState.Normal)
-        qiang.setBackgroundImage(UIImage(named: "qiang.png"), forState: UIControlState.Normal)
-        near.setBackgroundImage(UIImage(named: "near.png"), forState: UIControlState.Normal)
-        liaoba.setBackgroundImage(UIImage(named: "liaoba.png"), forState: UIControlState.Normal)
-        
-        yiyuan.addTarget(self, action:Selector("OneCharge"), forControlEvents: UIControlEvents.TouchUpInside)
-        qiang.addTarget(self, action:Selector("GrabRed"), forControlEvents: UIControlEvents.TouchUpInside)
-        near.addTarget(self, action: Selector("Near"), forControlEvents: UIControlEvents.TouchUpInside)
-        //qiang.backgroundColor=UIColor.brownColor()
-        //qiang.setTitle("抢红包", forState:UIControlState.Normal)
-        //near.backgroundColor=UIColor.darkGrayColor()
-        //near.setTitle("附近", forState:UIControlState.Normal)
+        yiyuan.tag=1
+        yiyuan.addTarget(self, action:Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yiyuan)
-        self.view.addSubview(qiang)
-        self.view.addSubview(near)
-        self.view.addSubview(liaoba)
         self.view.addSubview(yiyuanico)
         self.view.addSubview(yiyuanlabel)
+        //抢红包
+        let qiang=UIButton(frame:CGRectMake(self.view.frame.width/3-1, sv.frame.height+57, self.view.frame.width/3+1, self.view.frame.width/3+4))
+        let qiangico=UIImageView(frame: CGRectMake(self.view.frame.width/24*11, sv.frame.height+63+self.view.frame.width/12, self.view.frame.width/12, self.view.frame.width/12))
+        qiang.layer.borderWidth=CGFloat(1.0)
+        qiang.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
+        qiangico.image=UIImage(named: "抢红包图标.png")
+        qiangico.contentMode=UIViewContentMode.ScaleAspectFill
+        let qianglabel=UILabel(frame: CGRectMake(self.view.frame.width/9*4, sv.frame.height+63+self.view.frame.width/24*5, self.view.frame.width/9, self.view.frame.width/24))
+        qianglabel.text="抢红包"
+        qianglabel.adjustsFontSizeToFitWidth=true
+        qianglabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
+        qiang.tag=2
+        qiang.addTarget(self, action:Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(qiang)
+        self.view.addSubview(qiangico)
+        self.view.addSubview(qianglabel)
+        //附近
+        let near=UIButton(frame:CGRectMake(self.view.frame.width/3*2-1, sv.frame.height+57, self.view.frame.width/3+1, self.view.frame.width/3+4))
+        let nearico=UIImageView(frame: CGRectMake(self.view.frame.width/24*19, sv.frame.height+63+self.view.frame.width/12, self.view.frame.width/12, self.view.frame.width/12))
+        near.layer.borderWidth=CGFloat(1.0)
+        near.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
+        nearico.image=UIImage(named: "附近图标.png")
+        nearico.contentMode=UIViewContentMode.ScaleAspectFill
+        let nearlabel=UILabel(frame: CGRectMake(self.view.frame.width/24*19, sv.frame.height+63+self.view.frame.width/24*5, self.view.frame.width/12, self.view.frame.width/24))
+        nearlabel.text="附近"
+        nearlabel.adjustsFontSizeToFitWidth=true
+        nearlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
+        near.tag=3
+        near.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(near)
+        self.view.addSubview(nearico)
+        self.view.addSubview(nearlabel)
+
+        //寻人
+        let xunren=UIButton(frame:CGRectMake(-2, sv.frame.height+60+self.view.frame.width/3, self.view.frame.width/3+2, self.view.frame.width/3))
+        let xunrenico=UIImageView(frame: CGRectMake(self.view.frame.width/8, sv.frame.height+63+self.view.frame.width/12*5, self.view.frame.width/12, self.view.frame.width/12))
+        xunren.layer.borderWidth=CGFloat(1.0)
+        xunren.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
+        xunrenico.image=UIImage(named: "聊吧图标.png")
+        xunrenico.contentMode=UIViewContentMode.ScaleAspectFill
+        let xunrenlabel=UILabel(frame: CGRectMake(self.view.frame.width/15*2, sv.frame.height+63+self.view.frame.width/48*25, self.view.frame.width/12, self.view.frame.width/24))
+        xunrenlabel.text="寻人"
+        xunrenlabel.adjustsFontSizeToFitWidth=true
+        xunrenlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
+        let zhushilabel=UILabel(frame: CGRectMake(self.view.frame.width/30, sv.frame.height+63+self.view.frame.width/36*21, self.view.frame.width/15*4, self.view.frame.width/24))
+        zhushilabel.text="寻找曾经的小伙伴"
+        zhushilabel.adjustsFontSizeToFitWidth=true
+        zhushilabel.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73)
+        //yiyuan.addTarget(self, action:Selector("OneCharge"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(xunren)
+        self.view.addSubview(xunrenico)
+        self.view.addSubview(xunrenlabel)
+        self.view.addSubview(zhushilabel)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         self.view.addSubview(sv)
@@ -85,21 +124,40 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    func OneCharge(){
+    func ButtonAction(sender:UIButton){
+        let num=sender.tag
         let myStoryBoard = self.storyboard
-        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("OneCharge");
-        self.navigationController?.pushViewController(anotherView, animated: true)
+        switch num {
+        case 1:
+            let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("OneCharge");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        case 2:
+            let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("GrabRed");
+            //self.hidesBottomBarWhenPushed=true
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        case 3:
+            let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("Near");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        default:
+            break
+        }
     }
-    func GrabRed(){
-        let myStoryBoard = self.storyboard
-        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("GrabRed");
-        self.navigationController?.pushViewController(anotherView, animated: true)
-    }
-    func Near(){
-        let myStoryBoard = self.storyboard
-        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("Near");
-        self.navigationController?.pushViewController(anotherView, animated: true)
-    }
+//    func OneCharge(){
+//        let myStoryBoard = self.storyboard
+//        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("OneCharge");
+//        self.navigationController?.pushViewController(anotherView, animated: true)
+//    }
+//    func GrabRed(){
+//        let myStoryBoard = self.storyboard
+//        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("GrabRed");
+//        //self.hidesBottomBarWhenPushed=true
+//        self.navigationController?.pushViewController(anotherView, animated: true)
+//    }
+//    func Near(){
+//        let myStoryBoard = self.storyboard
+//        let anotherView:UIViewController=myStoryBoard!.instantiateViewControllerWithIdentifier("Near");
+//        self.navigationController?.pushViewController(anotherView, animated: true)
+//    }
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let width = self.view.frame.width
         let offsetX = scrollView.contentOffset.x
