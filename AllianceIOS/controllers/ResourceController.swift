@@ -21,6 +21,9 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        //self.navigationController?.navigationBar.barTintColor=UIColor.blackColor()
+        //self.navigationController?.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        //self.navigationController?.navigationBar.backgroundColor=UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         sv.frame=CGRectMake(0, 60, self.view.frame.width, self.view.frame.width/5*2)
         pg.frame=CGRectMake((self.view.frame.width-40)/2, 40+self.view.frame.width/5*2, 40, 5)
         var image = UIImage(named: "login_bg.jpg")!
