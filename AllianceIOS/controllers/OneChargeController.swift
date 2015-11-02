@@ -10,9 +10,7 @@ import UIKit
 
 class OneChargeController: UITableViewController{
     
-    @IBOutlet weak var firstcell: UIView!
-    @IBOutlet weak var tenchargecell: UIView!
-    @IBOutlet weak var newestcell: UIView!
+    @IBOutlet var OneChargeController: UITableView!
     
     @IBOutlet weak var onecharge: UITableViewCell!
     @IBOutlet weak var onechargecell: UIView!
@@ -21,116 +19,220 @@ class OneChargeController: UITableViewController{
     var NewestSv=UIScrollView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tencharge=UIButton(frame:CGRectMake(0, 0, self.view.frame.width/4, 100))
-        let onecharge=UIButton(frame:CGRectMake(self.view.frame.width/4, 0, self.view.frame.width/4, 100))
-        let chargerecord=UIButton(frame:CGRectMake(self.view.frame.width/4*2, 0, self.view.frame.width/4, 100))
-        let problem=UIButton(frame:CGRectMake(self.view.frame.width/4*3, 0, self.view.frame.width/4, 100))
-        //yiyuan.backgroundColor=UIColor.blueColor()
-        //yiyuan.setTitle("一元夺宝", forState:UIControlState.Normal)
-        tencharge.setBackgroundImage(UIImage(named: "tencharge.png"), forState: UIControlState.Normal)
-        onecharge.setBackgroundImage(UIImage(named: "onecharge.png"), forState: UIControlState.Normal)
-        chargerecord.setBackgroundImage(UIImage(named: "chargerecord.png"), forState: UIControlState.Normal)
-        problem.setBackgroundImage(UIImage(named: "problem.png"), forState: UIControlState.Normal)
-        firstcell.addSubview(tencharge)
-        firstcell.addSubview(onecharge)
-        firstcell.addSubview(chargerecord)
-        firstcell.addSubview(problem)
-        initTenCharge()
-        initNewest()
-        initOnecharge()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    func initTenCharge(){
-        tenchargeSv.frame=CGRectMake(tenchargecell.frame.minX, tenchargecell.frame.minY,self.view.frame.width, 120)
-        tenchargeSv.contentSize=CGSizeMake(600, 120)
-        tenchargeSv.pagingEnabled=true
-        tenchargeSv.showsHorizontalScrollIndicator=false
-        tenchargeSv.scrollEnabled=true
-        tenchargeSv.delegate=self
-        tenchargecell.addSubview(tenchargeSv)
-        for i in 0...5{
-            let cellview=UIView(frame: CGRectMake(CGFloat(Float(i*100)), tenchargecell.frame.minY, 100, 120))
-            let pic=UIImageView(frame: CGRectMake(22.5,tenchargecell.frame.minY+10, 55, 55))
-            pic.image=UIImage(named: "tenchargepic.png")
-            let money=UILabel(frame: CGRectMake(25, tenchargecell.frame.minY+65, 50, 20))
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 4
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
+        
+    }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section{
+        case 0:
+            return 0
+        case 3:
+            return 20
+        default:
+            return 10
+        }
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section{
+        case 0:
+            return 100
+        case 3:
+            return self.OneChargeController.frame.width*1.5
+        default:
+            return 120
+        }
+    }
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section{
+        case 1:
+            return "10夺金"
+        case 2:
+            return "最新揭晓"
+        case 3:
+            return "一元夺宝"
+        default:
+            return ""
+        }
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch indexPath.section{
+        case 0:
+            return firstcell()
+        case 1:
+            return TenChargeCell()
+        case 2:
+            return NewestCell()
+        default:
+            return OnechargeCell()
+        }
+    }
+    func firstcell() ->UITableViewCell{
+        let cell=UITableViewCell()
+        //10夺金
+        let tencharge=UIButton(frame:CGRectMake(0, 0, self.view.frame.width/4, 100))
+        let tenchargeIcon=UIImageView(frame: CGRectMake(20,15,60,60))
+        tenchargeIcon.image=UIImage(named: "十元夺金.png")
+        let tenchargelabel=UILabel(frame: CGRectMake(25,80,50,20))
+        tenchargelabel.text="10夺金"
+        tenchargelabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        tenchargelabel.font=UIFont.systemFontOfSize(13)
+        cell.addSubview(tencharge)
+        cell.addSubview(tenchargeIcon)
+        cell.addSubview(tenchargelabel)
+        //一元夺宝
+        let onecharge=UIButton(frame:CGRectMake(self.view.frame.width/4, 0, self.view.frame.width/4, 100))
+        let onechargeIcon=UIImageView(frame: CGRectMake(self.view.frame.width/4+20,15,60,60))
+        onechargeIcon.image=UIImage(named: "一元夺宝.png")
+        let onechargelabel=UILabel(frame: CGRectMake(self.view.frame.width/4+20,80,60,20))
+        onechargelabel.text="一元夺宝"
+        onechargelabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        onechargelabel.font=UIFont.systemFontOfSize(13)
+        cell.addSubview(onecharge)
+        cell.addSubview(onechargeIcon)
+        cell.addSubview(onechargelabel)
+        //夺宝记录
+        let chargerecord=UIButton(frame:CGRectMake(self.view.frame.width/4*2, 0, self.view.frame.width/4, 100))
+        let chargerecordIcon=UIImageView(frame: CGRectMake(self.view.frame.width/2+20,15,60,60))
+        chargerecordIcon.image=UIImage(named: "夺宝记录.png")
+        let chargerecordlabel=UILabel(frame: CGRectMake(self.view.frame.width/4*2+20,80,60,20))
+        chargerecordlabel.text="夺宝记录"
+        chargerecordlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        chargerecordlabel.font=UIFont.systemFontOfSize(13)
+        cell.addSubview(chargerecord)
+        cell.addSubview(chargerecordIcon)
+        cell.addSubview(chargerecordlabel)
+        //常见问题
+        let problem=UIButton(frame:CGRectMake(self.view.frame.width/4*3, 0, self.view.frame.width/4, 100))
+        let problemIcon=UIImageView(frame: CGRectMake(self.view.frame.width/4*3+20,15,60,60))
+        problemIcon.image=UIImage(named: "常见问题.png")
+        let problemlabel=UILabel(frame: CGRectMake(self.view.frame.width/4*3+20,80,60,20))
+        problemlabel.text="常见问题"
+        problemlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        problemlabel.font=UIFont.systemFontOfSize(13)
+        cell.addSubview(problem)
+        cell.addSubview(problemIcon)
+        cell.addSubview(problemlabel)
+        return cell
+
+    }
+    func TenChargeCell() -> UITableViewCell{
+        let cell=UITableViewCell()
+//        tenchargeSv.frame=CGRectMake(tenchargecell.frame.minX, tenchargecell.frame.minY,self.view.frame.width, 120)
+//        tenchargeSv.contentSize=CGSizeMake(600, 120)
+//        tenchargeSv.pagingEnabled=true
+//        tenchargeSv.showsHorizontalScrollIndicator=false
+//        tenchargeSv.scrollEnabled=true
+//        tenchargeSv.delegate=self
+//        tenchargecell.addSubview(tenchargeSv)
+        for i in 0...2{
+            let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
+            let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/15,0, self.view.frame.width/5, self.view.frame.width/5))
+            pic.backgroundColor=UIColor.blackColor()
+            pic.image=UIImage(named: "coin.png")
+            let money=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/9, self.view.frame.width/9+30, self.view.frame.width/9+20, 20))
             money.text=String(i*100)+"金币"
-            money.adjustsFontSizeToFitWidth=true
-            let process=UILabel(frame: CGRectMake(15, tenchargecell.frame.minY+85, 70, 15))
+            money.font=UIFont.systemFontOfSize(12)
+            //money.adjustsFontSizeToFitWidth=true
+            let process=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15, self.view.frame.width/9+50, self.view.frame.width/3-15, 10))
             
-            process.adjustsFontSizeToFitWidth=true
-            let progress=UIProgressView(frame: CGRectMake(15, 105, 70, 10))
+            //process.adjustsFontSizeToFitWidth=true
+            process.font=UIFont.systemFontOfSize(10)
+            let progress=UIProgressView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15,self.view.frame.width/9+65 , self.view.frame.width/3-30, 15))
             progress.progress=Float(Int(arc4random())%101)/100.0
-            progress.progressTintColor=UIColor(red: 0.0/255, green: 200/255, blue: 240/255, alpha: 1.0)
+            progress.progressTintColor=UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1.0)
+            progress.trackTintColor=UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+            progress.clipsToBounds=true
+            progress.layer.cornerRadius=2
             progress.transform=CGAffineTransformMakeScale(1.0, 3.0)
             
-            process.text="开奖进度 "+String(Int(progress.progress*100))+"%"
-            tenchargeSv.addSubview(cellview)
-            cellview.addSubview(pic)
-            cellview.addSubview(money)
-            cellview.addSubview(process)
-            cellview.addSubview(progress)
+            process.text="开奖进度    "+String(Int(progress.progress*100))+"%"
+            //tenchargeSv.addSubview(cellview)
+            cell.addSubview(btn)
+            cell.addSubview(pic)
+            cell.addSubview(money)
+            cell.addSubview(process)
+            cell.addSubview(progress)
             
         }
+        return cell
     }
-    func initNewest(){
-        NewestSv.frame=CGRectMake(newestcell.frame.minX, newestcell.frame.minY,self.view.frame.width, 120)
-        NewestSv.contentSize=CGSizeMake(600, 120)
-        NewestSv.pagingEnabled=true
-        NewestSv.showsHorizontalScrollIndicator=false
-        NewestSv.scrollEnabled=true
-        NewestSv.delegate=self
-        newestcell.addSubview(NewestSv)
-        for i in 0...5{
-            let cellview=UIView(frame: CGRectMake(CGFloat(Float(i*100)), newestcell.frame.minY, 100, 120))
-            let pic=UIImageView(frame: CGRectMake(20,newestcell.frame.minY+20, 60, 60))
-            pic.image=UIImage(named: "tenchargepic.png")
-            let time=UILabel(frame: CGRectMake(15, newestcell.frame.minY+85, 70, 30))
-            time.text="倒计时02:04:60"
-            time.adjustsFontSizeToFitWidth=true
-            NewestSv.addSubview(cellview)
-            cellview.addSubview(pic)
-            cellview.addSubview(time)
-
-            
+    func NewestCell() ->UITableViewCell{
+//        NewestSv.frame=CGRectMake(newestcell.frame.minX, newestcell.frame.minY,self.view.frame.width, 120)
+//        NewestSv.contentSize=CGSizeMake(600, 120)
+//        NewestSv.pagingEnabled=true
+//        NewestSv.showsHorizontalScrollIndicator=false
+//        NewestSv.scrollEnabled=true
+//        NewestSv.delegate=self
+//        newestcell.addSubview(NewestSv)
+        let cell=UITableViewCell()
+        for i in 0...2{
+            let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
+            let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24,0, self.view.frame.width/4, self.view.frame.width/4))
+            pic.image=UIImage(named: "newestFood.jpg")
+            let come=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24, 90, self.view.frame.width/8, 30))
+            come.text="倒计时"
+            come.font=UIFont.systemFontOfSize(12)
+            come.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+            let time=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/240*35, 90, self.view.frame.width/240*35, 30))
+            time.text="02:04.60"
+            time.font=UIFont.systemFontOfSize(12)
+            time.textColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
+            cell.addSubview(btn)
+            cell.addSubview(pic)
+            cell.addSubview(come)
+            cell.addSubview(time)
         }
-
+        return cell
     }
-    func initOnecharge(){
+    func OnechargeCell()->UITableViewCell{
+        let cell=UITableViewCell()
         let halfwidth=Float(self.view.frame.width)/2
         for i in 0...5{
-            let cellview=UIView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth)))
-            let pic=UIImageView(frame: CGRectMake(CGFloat(halfwidth/3),20, CGFloat(halfwidth/3), CGFloat(halfwidth/3)))
-            pic.image=UIImage(named: "tenchargepic.png")
-            let name=UILabel(frame: CGRectMake(15, CGFloat(halfwidth/3)+20, CGFloat(halfwidth)-30, 30))
-            name.text="(第44期)永久折叠单车"
-            name.adjustsFontSizeToFitWidth=true
-            let total=UILabel(frame: CGRectMake(15, CGFloat(halfwidth/3)+50, CGFloat(halfwidth)-30, 20))
-            total.text="总需：60人次         "
-            total.adjustsFontSizeToFitWidth=true
-            let progress=UIProgressView(frame: CGRectMake(15, CGFloat(halfwidth/3)+75, CGFloat(halfwidth)-30, 10))
+            let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth)))
+            let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
+            pic.image=UIImage(named: "newestFood.jpg")
+            let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
+            name.text="不锈钢保温密封盒"
+            name.font=UIFont.systemFontOfSize(15)
+            let progress=UIProgressView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+60, CGFloat(halfwidth)-15, 10))
             progress.progress=Float(Int(arc4random())%101)/100.0
-            progress.progressTintColor=UIColor(red: 0.0/255, green: 200/255, blue: 240/255, alpha: 1.0)
+            progress.progressTintColor=UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1.0)
             progress.transform=CGAffineTransformMakeScale(1.0, 3.0)
-            let process=UILabel(frame: CGRectMake(15, CGFloat(halfwidth/3)+90, CGFloat(halfwidth)-30, 20))
-            process.adjustsFontSizeToFitWidth=true
-            process.text="开奖进度 "+String(Int(progress.progress*100))+"%       "
-            onechargecell.addSubview(cellview)
-            cellview.addSubview(pic)
-            cellview.addSubview(name)
-            cellview.addSubview(total)
-            cellview.addSubview(progress)
-            cellview.addSubview(process)
-            
+            progress.trackTintColor=UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+            progress.clipsToBounds=true
+            progress.layer.cornerRadius=2
+            let process=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+40, CGFloat(halfwidth)-15, 20))
+            process.font=UIFont.systemFontOfSize(11)
+            process.text="开奖进度       "+String(Int(progress.progress*100))+"%"
+            process.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+            let total=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+65, CGFloat(halfwidth)-15, 20))
+            total.text="总需：60人次         "
+            total.font=UIFont.systemFontOfSize(11)
+            total.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+            cell.addSubview(btn)
+            cell.addSubview(pic)
+            cell.addSubview(name)
+            cell.addSubview(total)
+            cell.addSubview(progress)
+            cell.addSubview(process)
         }
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.OneChargeController.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     // MARK: - Table view data source
