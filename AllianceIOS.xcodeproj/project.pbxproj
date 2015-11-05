@@ -188,6 +188,10 @@
 		D97A8C1C1BAADFA0002645F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C1B1BAADFA0002645F9 /* Assets.xcassets */; };
 		D97A8C1F1BAADFA0002645F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C1D1BAADFA0002645F9 /* LaunchScreen.storyboard */; };
 		D97A8C271BAAE5A9002645F9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C261BAAE5A9002645F9 /* README.md */; };
+		D9864C731BE8276A0001F178 /* 电饭煲.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9864C721BE8276A0001F178 /* 电饭煲.jpg */; };
+		D9864C761BE82C4E0001F178 /* OneChargeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9864C751BE82C4E0001F178 /* OneChargeListController.swift */; };
+		D9864C781BE82C710001F178 /* TenChargeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9864C771BE82C710001F178 /* TenChargeListController.swift */; };
+		D98BB58F1BE97917006FDE2F /* TenChargeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BB58E1BE97917006FDE2F /* TenChargeDetailController.swift */; };
 		D995065A1BB3817300CA9B2E /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99506551BB3817300CA9B2E /* ChatController.swift */; };
 		D995065B1BB3817300CA9B2E /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99506561BB3817300CA9B2E /* FriendController.swift */; };
 		D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99506571BB3817300CA9B2E /* LoginViewController.swift */; };
@@ -213,6 +217,8 @@
 		D9B196381BAE71B10077EA76 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196371BAE71B10077EA76 /* libresolv.tbd */; };
 		D9B1963A1BAE71B90077EA76 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B196391BAE71B90077EA76 /* libxml2.tbd */; };
 		D9B196421BAED6D10077EA76 /* liugang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B196411BAED6D10077EA76 /* liugang.png */; };
+		D9CB8FCE1BEAD27500242CC6 /* OneChargeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CB8FCD1BEAD27500242CC6 /* OneChargeDetailController.swift */; };
+		D9CB8FD01BEAD6EF00242CC6 /* watch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9CB8FCF1BEAD6EF00242CC6 /* watch.jpg */; };
 		D9D988C01BD7C8C200F53C74 /* 红包弹出窗.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D988B61BD7C8C200F53C74 /* 红包弹出窗.png */; };
 		D9D988C11BD7C8C200F53C74 /* 红包弹出窗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D988B71BD7C8C200F53C74 /* 红包弹出窗@2x.png */; };
 		D9D988C21BD7C8C200F53C74 /* 红包关闭按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D988B81BD7C8C200F53C74 /* 红包关闭按钮.png */; };
@@ -225,6 +231,7 @@
 		D9D988C91BD7C8C200F53C74 /* 形状-55@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D988BF1BD7C8C200F53C74 /* 形状-55@2x.png */; };
 		D9D988CB1BD7C94800F53C74 /* GrabEnvelopeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D988CA1BD7C94800F53C74 /* GrabEnvelopeController.swift */; };
 		D9D988CD1BD7CCB300F53C74 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D988CC1BD7CCB300F53C74 /* MainController.swift */; };
+		D9EAD8D11BE90F8F0062B202 /* NewestListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */; };
 		D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E71BB16D1700FFA187 /* near.png */; };
 		D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E91BB16D1700FFA187 /* yiyuan.png */; };
 		D9FFE6EE1BB16FFD00FFA187 /* qiang.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6ED1BB16FFD00FFA187 /* qiang.png */; };
@@ -421,6 +428,10 @@
 		D97A8C201BAADFA0002645F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97A8C261BAAE5A9002645F9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D97CC1461BAAFA5700303FC2 /* AllianceIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AllianceIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		D9864C721BE8276A0001F178 /* 电饭煲.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "电饭煲.jpg"; sourceTree = "<group>"; };
+		D9864C751BE82C4E0001F178 /* OneChargeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneChargeListController.swift; path = Resources/OneCharge/OneChargeListController.swift; sourceTree = "<group>"; };
+		D9864C771BE82C710001F178 /* TenChargeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TenChargeListController.swift; path = Resources/OneCharge/TenChargeListController.swift; sourceTree = "<group>"; };
+		D98BB58E1BE97917006FDE2F /* TenChargeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TenChargeDetailController.swift; path = Resources/OneCharge/TenChargeDetailController.swift; sourceTree = "<group>"; };
 		D99506551BB3817300CA9B2E /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		D99506561BB3817300CA9B2E /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
 		D99506571BB3817300CA9B2E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -531,6 +542,8 @@
 		D9B196371BAE71B10077EA76 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		D9B196391BAE71B90077EA76 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		D9B196411BAED6D10077EA76 /* liugang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liugang.png; sourceTree = "<group>"; };
+		D9CB8FCD1BEAD27500242CC6 /* OneChargeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneChargeDetailController.swift; path = Resources/OneCharge/OneChargeDetailController.swift; sourceTree = "<group>"; };
+		D9CB8FCF1BEAD6EF00242CC6 /* watch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watch.jpg; sourceTree = "<group>"; };
 		D9D988B61BD7C8C200F53C74 /* 红包弹出窗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "红包弹出窗.png"; sourceTree = "<group>"; };
 		D9D988B71BD7C8C200F53C74 /* 红包弹出窗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "红包弹出窗@2x.png"; sourceTree = "<group>"; };
 		D9D988B81BD7C8C200F53C74 /* 红包关闭按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "红包关闭按钮.png"; sourceTree = "<group>"; };
@@ -543,6 +556,7 @@
 		D9D988BF1BD7C8C200F53C74 /* 形状-55@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状-55@2x.png"; sourceTree = "<group>"; };
 		D9D988CA1BD7C94800F53C74 /* GrabEnvelopeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrabEnvelopeController.swift; path = Resources/GrabEnvelopeController.swift; sourceTree = "<group>"; };
 		D9D988CC1BD7CCB300F53C74 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestListController.swift; path = Resources/OneCharge/NewestListController.swift; sourceTree = "<group>"; };
 		D9FFE6E71BB16D1700FFA187 /* near.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = near.png; sourceTree = "<group>"; };
 		D9FFE6E91BB16D1700FFA187 /* yiyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiyuan.png; sourceTree = "<group>"; };
 		D9FFE6ED1BB16FFD00FFA187 /* qiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qiang.png; sourceTree = "<group>"; };
@@ -765,6 +779,7 @@
 		D937575B1BD53BA10081D32E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D9864C741BE82C2E0001F178 /* OneCharge */,
 				D920322D1BDCA63100FAB511 /* Near */,
 				D94713721BD27BEB00108A8E /* OneChargeController.swift */,
 				D937575C1BD53C310081D32E /* NearController.swift */,
@@ -824,6 +839,18 @@
 			path = AllianceIOS;
 			sourceTree = "<group>";
 		};
+		D9864C741BE82C2E0001F178 /* OneCharge */ = {
+			isa = PBXGroup;
+			children = (
+				D9864C751BE82C4E0001F178 /* OneChargeListController.swift */,
+				D9864C771BE82C710001F178 /* TenChargeListController.swift */,
+				D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */,
+				D98BB58E1BE97917006FDE2F /* TenChargeDetailController.swift */,
+				D9CB8FCD1BEAD27500242CC6 /* OneChargeDetailController.swift */,
+			);
+			name = OneCharge;
+			sourceTree = "<group>";
+		};
 		D99506541BB3817300CA9B2E /* controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,7 +900,9 @@
 				D9D988B51BD7C87200F53C74 /* GrabEnvelope */,
 				D93757421BD51CFB0081D32E /* TabAndResource */,
 				D943B1601BE4B37B0058BA1C /* avator.jpg */,
+				D9CB8FCF1BEAD6EF00242CC6 /* watch.jpg */,
 				D915CBC51BE6DD65004EBE26 /* newestFood.jpg */,
+				D9864C721BE8276A0001F178 /* 电饭煲.jpg */,
 				D915CBC31BE66E47004EBE26 /* coin.png */,
 				D94713741BD2859400108A8E /* chargerecord.png */,
 				D94713751BD2859400108A8E /* onecharge.png */,
@@ -1269,6 +1298,7 @@
 				D915CB981BE65D17004EBE26 /* 确认支付按钮@2x.png in Resources */,
 				D9D988C61BD7C8C200F53C74 /* 小喇叭图标.png in Resources */,
 				D96473F21BD67E2E008DA5B8 /* 附近图标.png in Resources */,
+				D9864C731BE8276A0001F178 /* 电饭煲.jpg in Resources */,
 				D915CB9A1BE65D17004EBE26 /* 人次选择按钮大@2x.png in Resources */,
 				D96473FC1BD67E2E008DA5B8 /* 聊吧图标.png in Resources */,
 				D90544141BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png in Resources */,
@@ -1299,6 +1329,7 @@
 				D915CBC21BE65D17004EBE26 /* 直接兑换按钮@2x.png in Resources */,
 				D943B1431BE4618F0058BA1C /* 标签女@2x.png in Resources */,
 				D915CBA91BE65D17004EBE26 /* 商品获奖展示.png in Resources */,
+				D9CB8FD01BEAD6EF00242CC6 /* watch.jpg in Resources */,
 				D915CBAB1BE65D17004EBE26 /* 商品列表圆角底框.png in Resources */,
 				D94713791BD2859400108A8E /* onecharge.png in Resources */,
 				D915CB9C1BE65D17004EBE26 /* 人次选择按钮大切片右@2x.png in Resources */,
@@ -1433,12 +1464,14 @@
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
 				D97A8C271BAAE5A9002645F9 /* README.md in Sources */,
 				D99506691BB3817D00CA9B2E /* pinyin.c in Sources */,
+				D98BB58F1BE97917006FDE2F /* TenChargeDetailController.swift in Sources */,
 				D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */,
 				D99506661BB3817D00CA9B2E /* ChatCell.swift in Sources */,
 				D995065E1BB3817300CA9B2E /* ResourceController.swift in Sources */,
 				D90544101BE5CC0D00A1660F /* SpecialityReqController.swift in Sources */,
 				D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */,
 				D90544121BE5CC2A00A1660F /* SpecialityMyController.swift in Sources */,
+				D9864C761BE82C4E0001F178 /* OneChargeListController.swift in Sources */,
 				D995065D1BB3817300CA9B2E /* MessageController.swift in Sources */,
 				D905440E1BE5B74100A1660F /* SpecialityDetailController.swift in Sources */,
 				D99506671BB3817D00CA9B2E /* FriendCell.swift in Sources */,
@@ -1450,18 +1483,21 @@
 				D90544081BE5AE6C00A1660F /* SpecialityTitleCell.swift in Sources */,
 				D905441C1BE5F40E00A1660F /* HobbyCell.swift in Sources */,
 				D915CA661BE5FC7C004EBE26 /* HobbyReqController.swift in Sources */,
+				D9CB8FCE1BEAD27500242CC6 /* OneChargeDetailController.swift in Sources */,
 				D9D988CB1BD7C94800F53C74 /* GrabEnvelopeController.swift in Sources */,
 				D905441A1BE5F14500A1660F /* HobbyController.swift in Sources */,
 				D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */,
 				D92032311BDCA6D100FAB511 /* JobInfoController.swift in Sources */,
 				D943B15F1BE4A5670058BA1C /* JobInfoDetailController.swift in Sources */,
 				D937575D1BD53C310081D32E /* NearController.swift in Sources */,
+				D9864C781BE82C710001F178 /* TenChargeListController.swift in Sources */,
 				D995066A1BB3817D00CA9B2E /* UserModel.swift in Sources */,
 				D995065A1BB3817300CA9B2E /* ChatController.swift in Sources */,
 				D943B15D1BE476BC0058BA1C /* JobInfoContentCell.swift in Sources */,
 				D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */,
 				D915CA641BE5FC62004EBE26 /* HobbyDetailController.swift in Sources */,
 				D943B15B1BE462250058BA1C /* JobInfoTitleCell.swift in Sources */,
+				D9EAD8D11BE90F8F0062B202 /* NewestListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
