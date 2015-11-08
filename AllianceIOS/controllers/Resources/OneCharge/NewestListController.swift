@@ -15,6 +15,7 @@ class NewestListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,10 +50,11 @@ class NewestListController: UITableViewController {
         let halfwidth=Float(self.view.frame.width)/2
         for i in 0...1{
             let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth*1.5)))
+            btn.addTarget(self, action: Selector("detail_going"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
-            pic.image=UIImage(named: "电饭煲.jpg")
+            pic.image=UIImage(named: "iphone6s.png")
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
-            name.text="不锈钢保温密封盒"
+            name.text="第44期 Apple iphone6s 64G版"
             name.font=UIFont.systemFontOfSize(15)
             let timeIcon=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(halfwidth/2)+40, 20, 20))
             timeIcon.image=UIImage(named: "即将揭晓图标.png")
@@ -60,9 +62,9 @@ class NewestListController: UITableViewController {
             jijiang.text="即将揭晓"
             jijiang.font=UIFont.systemFontOfSize(11)
             jijiang.textColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
-            let remain=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+20, CGFloat(halfwidth/2)+55,CGFloat(halfwidth/2), 50))
+            let remain=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+20, CGFloat(halfwidth/2)+50,CGFloat(halfwidth/2), 55))
             remain.text="04:46:56"
-            remain.font=UIFont.systemFontOfSize(18)
+            remain.font=UIFont.systemFontOfSize(20)
             remain.textColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
             cell.addSubview(btn)
             cell.addSubview(pic)
@@ -73,6 +75,7 @@ class NewestListController: UITableViewController {
         }
         for i in 2...3{
             let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth*1.5)))
+            btn.addTarget(self, action: Selector("detail_gone"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
             pic.image=UIImage(named: "电饭煲.jpg")
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
@@ -99,6 +102,14 @@ class NewestListController: UITableViewController {
             cell.addSubview(time)
         }
         return cell
+    }
+    func detail_going(){
+        let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestDetail");
+        self.navigationController?.pushViewController(anotherView, animated: true)
+    }
+    func detail_gone(){
+        let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestGoneDetail");
+        self.navigationController?.pushViewController(anotherView, animated: true)
     }
 
     /*

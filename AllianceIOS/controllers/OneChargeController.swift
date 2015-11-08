@@ -163,6 +163,8 @@ class OneChargeController: UITableViewController{
         more.setTitleColor(UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.77), forState: UIControlState.Normal)
         for i in 0...2{
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
+            btn.tag=1000+i
+            btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/15,10, self.view.frame.width/5, self.view.frame.width/5))
             pic.backgroundColor=UIColor.blackColor()
             pic.image=UIImage(named: "coin.png")
@@ -208,6 +210,8 @@ class OneChargeController: UITableViewController{
         let cell=UITableViewCell()
         for i in 0...2{
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
+            btn.tag=1003+i
+            btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24,10, self.view.frame.width/4, self.view.frame.width/4))
             pic.image=UIImage(named: "newestFood.jpg")
             let come=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24, 90, self.view.frame.width/8, 30))
@@ -242,6 +246,8 @@ class OneChargeController: UITableViewController{
         
         for i in 0...5{
             let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth)))
+            btn.tag=1006+i
+            btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
             pic.image=UIImage(named: "电饭煲.jpg")
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
@@ -288,6 +294,18 @@ class OneChargeController: UITableViewController{
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeList");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }
+    }
+    func detail(sender:UIButton){
+        if(sender.tag<=1002){
+            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeDetail");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }else if(sender.tag>=1006){
+            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeDetail");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }else{
+            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestDetail");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }
     }
