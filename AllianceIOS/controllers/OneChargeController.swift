@@ -136,7 +136,7 @@ class OneChargeController: UITableViewController{
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeList");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 2:
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeList");
+            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("ChargeRecord");
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeList");

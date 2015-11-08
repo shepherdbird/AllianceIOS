@@ -286,6 +286,11 @@
 		D9987CE41BEED7ED005480C7 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D9987CE31BEED7ED005480C7 /* delete.png */; };
 		D9987CE61BEEDBB0005480C7 /* MyQRcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CE51BEEDBB0005480C7 /* MyQRcode.swift */; };
 		D9987CE81BEEE05C005480C7 /* ChangeGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CE71BEEE05C005480C7 /* ChangeGender.swift */; };
+		D9987CEA1BEEEF72005480C7 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CE91BEEEF72005480C7 /* Certification.swift */; };
+		D9987CEC1BEEF6E9005480C7 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CEB1BEEF6E9005480C7 /* ShippingAddress.swift */; };
+		D9987CEE1BEEFB03005480C7 /* ShippingAddressAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */; };
+		D9987CF01BEEFCC7005480C7 /* ShippingAddressDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */; };
+		D9987CF21BEF2BBA005480C7 /* ChargeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */; };
 		D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B190191BACE2050077EA76 /* login_bg.jpg */; };
 		D9B191041BACE8B60077EA76 /* loadscreen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191021BACE8B60077EA76 /* loadscreen.jpeg */; };
 		D9B191051BACE8B60077EA76 /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191031BACE8B60077EA76 /* login.jpg */; };
@@ -614,6 +619,11 @@
 		D9987CE31BEED7ED005480C7 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		D9987CE51BEEDBB0005480C7 /* MyQRcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyQRcode.swift; path = Me/MyQRcode.swift; sourceTree = "<group>"; };
 		D9987CE71BEEE05C005480C7 /* ChangeGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeGender.swift; path = Me/ChangeGender.swift; sourceTree = "<group>"; };
+		D9987CE91BEEEF72005480C7 /* Certification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Certification.swift; path = Me/Certification.swift; sourceTree = "<group>"; };
+		D9987CEB1BEEF6E9005480C7 /* ShippingAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippingAddress.swift; path = Me/ShippingAddress.swift; sourceTree = "<group>"; };
+		D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippingAddressAdd.swift; path = Me/ShippingAddressAdd.swift; sourceTree = "<group>"; };
+		D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippingAddressDetail.swift; path = Me/ShippingAddressDetail.swift; sourceTree = "<group>"; };
+		D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChargeRecord.swift; path = Resources/OneCharge/ChargeRecord.swift; sourceTree = "<group>"; };
 		D9B190191BACE2050077EA76 /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		D9B191021BACE8B60077EA76 /* loadscreen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loadscreen.jpeg; sourceTree = "<group>"; };
 		D9B191031BACE8B60077EA76 /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login.jpg; sourceTree = "<group>"; };
@@ -1024,6 +1034,7 @@
 				D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */,
 				D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */,
 				D977BD901BEB8350002CB613 /* AgeJieXiao.swift */,
+				D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */,
 			);
 			name = OneCharge;
 			sourceTree = "<group>";
@@ -1040,6 +1051,10 @@
 				D9987CE11BEED621005480C7 /* ChangeName.swift */,
 				D9987CE51BEEDBB0005480C7 /* MyQRcode.swift */,
 				D9987CE71BEEE05C005480C7 /* ChangeGender.swift */,
+				D9987CE91BEEEF72005480C7 /* Certification.swift */,
+				D9987CEB1BEEF6E9005480C7 /* ShippingAddress.swift */,
+				D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */,
+				D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -1816,14 +1831,19 @@
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
 				D9987CE21BEED621005480C7 /* ChangeName.swift in Sources */,
 				D97A8C271BAAE5A9002645F9 /* README.md in Sources */,
+				D9987CF21BEF2BBA005480C7 /* ChargeRecord.swift in Sources */,
 				D99506691BB3817D00CA9B2E /* pinyin.c in Sources */,
 				D98BB58F1BE97917006FDE2F /* TenChargeDetailController.swift in Sources */,
 				D99413461BEC1D9D00FC1B00 /* Me.swift in Sources */,
 				D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */,
 				D99506661BB3817D00CA9B2E /* ChatCell.swift in Sources */,
 				D9FCBC5C1BED778D00D50D1D /* Settings.swift in Sources */,
+				D9987CEA1BEEEF72005480C7 /* Certification.swift in Sources */,
+				D9987CEE1BEEFB03005480C7 /* ShippingAddressAdd.swift in Sources */,
 				D995065E1BB3817300CA9B2E /* ResourceController.swift in Sources */,
+				D9987CEC1BEEF6E9005480C7 /* ShippingAddress.swift in Sources */,
 				D90544101BE5CC0D00A1660F /* SpecialityReqController.swift in Sources */,
+				D9987CF01BEEFCC7005480C7 /* ShippingAddressDetail.swift in Sources */,
 				D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */,
 				D9987CE61BEEDBB0005480C7 /* MyQRcode.swift in Sources */,
 				D90544121BE5CC2A00A1660F /* SpecialityMyController.swift in Sources */,

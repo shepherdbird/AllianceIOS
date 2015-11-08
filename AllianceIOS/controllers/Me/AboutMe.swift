@@ -170,6 +170,14 @@ class AboutMe: UITableViewController {
                 let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("ChangeGender");
                 self.navigationController?.pushViewController(anotherView, animated: true)
             }
+        case 2:
+            if(indexPath.row==0){
+                let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("Certification");
+                self.navigationController?.pushViewController(anotherView, animated: true)
+            }else{
+                let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("ShippingAddress");
+                self.navigationController?.pushViewController(anotherView, animated: true)
+            }
         default:
             break
         }

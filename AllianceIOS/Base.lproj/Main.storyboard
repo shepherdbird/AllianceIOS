@@ -296,6 +296,146 @@
             </objects>
             <point key="canvasLocation" x="-488" y="3366"/>
         </scene>
+        <!--实名认证-->
+        <scene sceneID="iWB-NM-E7u">
+            <objects>
+                <tableViewController storyboardIdentifier="Certification" title="实名认证" id="qUK-8s-J4X" customClass="Certification" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wMu-yO-3jC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="g96-n2-gPY">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g96-n2-gPY" id="4Xn-7G-kW4">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qUK-8s-J4X" id="wwE-ac-BUv"/>
+                            <outlet property="delegate" destination="qUK-8s-J4X" id="jJZ-y2-Nzf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="实名认证" id="nKs-Vx-5Lh"/>
+                    <connections>
+                        <outlet property="C" destination="wMu-yO-3jC" id="RuI-Ep-cuF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUC-v1-Tfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="3366"/>
+        </scene>
+        <!--收货地址-->
+        <scene sceneID="AwX-L5-1ML">
+            <objects>
+                <tableViewController storyboardIdentifier="ShippingAddress" title="收货地址" id="1Bk-x8-8yl" customClass="ShippingAddress" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MHb-1K-fND">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nBd-SX-jtk">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBd-SX-jtk" id="gxJ-79-g4m">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Bk-x8-8yl" id="Qno-NP-CcY"/>
+                            <outlet property="delegate" destination="1Bk-x8-8yl" id="evE-no-3NA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="收货地址" id="oaj-Z0-qff"/>
+                    <connections>
+                        <outlet property="SA" destination="MHb-1K-fND" id="SBh-ve-XQ7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZX-Co-vTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="3366"/>
+        </scene>
+        <!--添加收货地址-->
+        <scene sceneID="ceT-tb-jEM">
+            <objects>
+                <tableViewController storyboardIdentifier="ShippingAddressAdd" title="添加收货地址" id="7aW-Jh-bIB" customClass="ShippingAddressAdd" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="QYp-kY-kTk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hI8-Ag-IXj">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hI8-Ag-IXj" id="Ala-mL-BDB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7aW-Jh-bIB" id="18D-wU-C8v"/>
+                            <outlet property="delegate" destination="7aW-Jh-bIB" id="j4Q-aM-JEG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="添加收货地址" id="MN8-Sq-uDc"/>
+                    <connections>
+                        <outlet property="SAA" destination="QYp-kY-kTk" id="mV6-Xh-CcN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ye-ae-ElW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="3366"/>
+        </scene>
+        <!--收货地址详情-->
+        <scene sceneID="HoT-Rp-Abn">
+            <objects>
+                <tableViewController storyboardIdentifier="ShippingAddressDetail" title="收货地址详情" id="pSN-Li-cYC" customClass="ShippingAddressDetail" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="b8a-s2-EPp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="B6D-Cq-SrS">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B6D-Cq-SrS" id="4QT-zC-Vba">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pSN-Li-cYC" id="a7x-aY-lHv"/>
+                            <outlet property="delegate" destination="pSN-Li-cYC" id="eoz-Z1-TRa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="收货地址详情" id="MnZ-Z2-tNG"/>
+                    <connections>
+                        <outlet property="SAD" destination="b8a-s2-EPp" id="g7r-aK-YAT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HWS-ZN-fMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="3366"/>
+        </scene>
         <!--设置-->
         <scene sceneID="dRn-JH-URb">
             <objects>
@@ -572,6 +712,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrn-S9-dgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136" y="-2536"/>
+        </scene>
+        <!--夺宝记录-->
+        <scene sceneID="FOX-rb-76I">
+            <objects>
+                <tableViewController storyboardIdentifier="ChargeRecord" title="夺宝记录" id="hdD-TA-Zbb" customClass="ChargeRecord" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jVo-c2-cx5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o6l-RL-4eK">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6l-RL-4eK" id="egM-4M-0GR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hdD-TA-Zbb" id="fDA-PD-1GJ"/>
+                            <outlet property="delegate" destination="hdD-TA-Zbb" id="qbn-6n-pCN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="夺宝记录" id="S3N-H2-WqR"/>
+                    <connections>
+                        <outlet property="CR" destination="jVo-c2-cx5" id="3rc-NT-nD4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gW9-cO-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="-2536"/>
         </scene>
         <!--一元夺宝列表-->
         <scene sceneID="9tM-HT-gIm">
