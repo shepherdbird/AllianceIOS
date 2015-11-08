@@ -11,7 +11,7 @@ import UIKit
 class Me: UITableViewController {
     
     @IBOutlet var I: UITableView!
-
+    let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
@@ -207,25 +207,26 @@ class Me: UITableViewController {
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.I.deselectRowAtIndexPath(indexPath, animated: true)
+        //self.I.deselectRowAtIndexPath(indexPath, animated: true)
+        
         if(indexPath.section==1){
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("InviteFriend");
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("InviteFriend");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else if(indexPath.section==3){
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("Settings");
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Settings");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }
     }
     func ButtonAction(sender:UIButton){
         switch sender.tag{
         case 1:
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("AboutMe");
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AboutMe");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 100:
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("DirectAlliance");
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("DirectAlliance");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 102:
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("AllianceGive");
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AllianceGive");
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             break
