@@ -38,7 +38,7 @@
                                                object:nil];
     
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0) {
-        [[UINavigationBar appearance] setBarTintColor:RGBACOLOR(0, 0, 0, 0)];
+        [[UINavigationBar appearance] setBarTintColor:RGBACOLOR(60, 60, 60, 1)];
         [[UINavigationBar appearance] setTitleTextAttributes:
          [NSDictionary dictionaryWithObjectsAndKeys:RGBACOLOR(255, 255, 255, 1), NSForegroundColorAttributeName, [UIFont fontWithName:@ "HelveticaNeue-CondensedBlack" size:18.0], NSFontAttributeName, nil]];
     }
@@ -77,7 +77,7 @@
 -(void)loginStateChange:(NSNotification *)notification
 {
     UINavigationController *nav = nil;
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     BOOL isAutoLogin = [[[EaseMob sharedInstance] chatManager] isAutoLoginEnabled];
     BOOL loginSuccess = [notification.object boolValue];
     
@@ -112,6 +112,8 @@
         
         [nav.navigationBar.layer setMasksToBounds:YES];
     }
+    
+    nav.navigationBar.translucent  =NO;
     
     self.window.rootViewController = nav;
     

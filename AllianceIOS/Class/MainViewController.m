@@ -148,8 +148,8 @@ static NSString *kGroupName = @"GroupName";
 
 - (void)setupSubviews
 {
-    self.tabBar.backgroundImage = [[UIImage imageNamed:@"tabbarBackground"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
-    self.tabBar.selectionIndicatorImage = [[UIImage imageNamed:@"tabbarSelectBg"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
+    self.tabBar.backgroundImage = [[UIImage imageNamed:@""] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
+    self.tabBar.selectionIndicatorImage = [[UIImage imageNamed:@""] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
     
     _chatListVC = [[ChatListViewController alloc] init];
     [_chatListVC networkChanged:_connectionState];
