@@ -15,6 +15,8 @@ class JobInfoTitleCell: UITableViewCell {
     var kind:UILabel!
     var job:UILabel!
     var time:UILabel!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +28,7 @@ class JobInfoTitleCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //头像
