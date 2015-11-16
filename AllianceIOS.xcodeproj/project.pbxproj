@@ -579,6 +579,10 @@
 		D96E76A11BF9B5870062BAD0 /* 评论2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D96E766D1BF9B5870062BAD0 /* 评论2@2x.png */; };
 		D96E76A21BF9B5870062BAD0 /* 评论3.png in Resources */ = {isa = PBXBuildFile; fileRef = D96E766E1BF9B5870062BAD0 /* 评论3.png */; };
 		D96E76A31BF9B5870062BAD0 /* 评论3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D96E766F1BF9B5870062BAD0 /* 评论3@2x.png */; };
+		D96E76A51BF9B7E00062BAD0 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E76A41BF9B7E00062BAD0 /* Focus.swift */; };
+		D96E76A71BF9B8200062BAD0 /* MyTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E76A61BF9B8200062BAD0 /* MyTopicList.swift */; };
+		D96E76A91BF9B8320062BAD0 /* MyZan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E76A81BF9B8320062BAD0 /* MyZan.swift */; };
+		D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E76AA1BF9FAC50062BAD0 /* TopicDetail.swift */; };
 		D977BD8B1BEB4E19002CB613 /* iphone6s.png in Resources */ = {isa = PBXBuildFile; fileRef = D977BD8A1BEB4E19002CB613 /* iphone6s.png */; };
 		D977BD8D1BEB4F2B002CB613 /* NewestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */; };
 		D977BD8F1BEB63FE002CB613 /* NewestGoneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */; };
@@ -1450,6 +1454,10 @@
 		D96E766D1BF9B5870062BAD0 /* 评论2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论2@2x.png"; sourceTree = "<group>"; };
 		D96E766E1BF9B5870062BAD0 /* 评论3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论3.png"; sourceTree = "<group>"; };
 		D96E766F1BF9B5870062BAD0 /* 评论3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论3@2x.png"; sourceTree = "<group>"; };
+		D96E76A41BF9B7E00062BAD0 /* Focus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
+		D96E76A61BF9B8200062BAD0 /* MyTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTopicList.swift; sourceTree = "<group>"; };
+		D96E76A81BF9B8320062BAD0 /* MyZan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyZan.swift; sourceTree = "<group>"; };
+		D96E76AA1BF9FAC50062BAD0 /* TopicDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetail.swift; sourceTree = "<group>"; };
 		D977BD8A1BEB4E19002CB613 /* iphone6s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6s.png; sourceTree = "<group>"; };
 		D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestDetailController.swift; path = Resources/OneCharge/NewestDetailController.swift; sourceTree = "<group>"; };
 		D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestGoneDetail.swift; path = Resources/OneCharge/NewestGoneDetail.swift; sourceTree = "<group>"; };
@@ -2927,6 +2935,10 @@
 			children = (
 				D96E76371BF9B5160062BAD0 /* MyTopicCenter.swift */,
 				D96E76381BF9B5160062BAD0 /* SendTopic.swift */,
+				D96E76A41BF9B7E00062BAD0 /* Focus.swift */,
+				D96E76A61BF9B8200062BAD0 /* MyTopicList.swift */,
+				D96E76A81BF9B8320062BAD0 /* MyZan.swift */,
+				D96E76AA1BF9FAC50062BAD0 /* TopicDetail.swift */,
 			);
 			name = Chat;
 			path = Resources/Chat;
@@ -4186,6 +4198,7 @@
 				03651A3B1BEF3B1A0019CDBA /* MWPhoto.m in Sources */,
 				03651B231BEF3B400019CDBA /* ContactView.m in Sources */,
 				D905440A1BE5AE8700A1660F /* SpecialityContentCell.swift in Sources */,
+				D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */,
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
 				03651B091BEF3B400019CDBA /* ChatListCell.m in Sources */,
 				03651B121BEF3B400019CDBA /* FacialView.m in Sources */,
@@ -4266,6 +4279,7 @@
 				D99506671BB3817D00CA9B2E /* FriendCell.swift in Sources */,
 				03651A3E1BEF3B1A0019CDBA /* MWTapDetectingView.m in Sources */,
 				D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */,
+				D96E76A91BF9B8320062BAD0 /* MyZan.swift in Sources */,
 				03651B0A1BEF3B400019CDBA /* ChatListViewController.m in Sources */,
 				D995065B1BB3817300CA9B2E /* FriendController.swift in Sources */,
 				03651A3A1BEF3B1A0019CDBA /* MWGridViewController.m in Sources */,
@@ -4313,6 +4327,7 @@
 				03651A321BEF3B1A0019CDBA /* EMCDDeviceManagerBase.m in Sources */,
 				03651B061BEF3B400019CDBA /* AppDelegateoc+UMeng.m in Sources */,
 				D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */,
+				D96E76A51BF9B7E00062BAD0 /* Focus.swift in Sources */,
 				03651A521BEF3B1A0019CDBA /* PSTCollectionView.m in Sources */,
 				03651B031BEF3B400019CDBA /* AppDelegate+EaseMobDebug.m in Sources */,
 				03651A801BEF3B320019CDBA /* UIResponder+Router.m in Sources */,
@@ -4332,6 +4347,7 @@
 				03651B241BEF3B400019CDBA /* CreateGroupViewController.m in Sources */,
 				03651A551BEF3B1A0019CDBA /* PSTCollectionViewData.m in Sources */,
 				D9864C781BE82C710001F178 /* TenChargeListController.swift in Sources */,
+				D96E76A71BF9B8200062BAD0 /* MyTopicList.swift in Sources */,
 				D9DBDFC31BECF77B0098FFAA /* DirectAlliance.swift in Sources */,
 				D996A38D1BED6D7600B84E22 /* InviteFriend.swift in Sources */,
 				D995066A1BB3817D00CA9B2E /* UserModel.swift in Sources */,

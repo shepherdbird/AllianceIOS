@@ -1,104 +1,108 @@
 //
-//  SpecialityController.swift
+//  MyTopicList.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/11/1.
+//  Created by dawei on 15/11/16.
 //
 //
 
 import UIKit
 
-class SpecialityController: UITableViewController {
-    
-    @IBOutlet weak var Search: UISearchBar!
+class MyTopicList: UITableViewController {
 
-    @IBOutlet var SpecialityController: UITableView!
-
-    
-    var alert:UIAlertController!
+    @IBOutlet var MTL: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(image: UIImage(named: "发帖按钮.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("mine"))
-        //self.navigationItem.rightBarButtonItem?.tintColor=UIColor.redColor()
-        self.SpecialityController.dataSource=self
-        self.SpecialityController.delegate=self
-        self.SpecialityController.registerClass(SpecialityTitleCell.self, forCellReuseIdentifier: "SpecialityTitleCell")
-        self.SpecialityController.registerClass(SpecialityContentCell.self, forCellReuseIdentifier: "SpecialityContentCell")
-        self.SpecialityController.allowsSelection=true
-        self.SpecialityController.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
-        self.SpecialityController.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 0.77)
-        
-        let SendAction=UIAlertAction(title: "发布帖子", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("SpecialityReq");
-            self.navigationController?.pushViewController(anotherView, animated: true)
-            //print("我要求职")
-        }
-        let MySendAction=UIAlertAction(title: "我的帖子", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("SpecialityMy");
-            self.navigationController?.pushViewController(anotherView, animated: true)
-            //print("我要求职")
-        }
-        alert=UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(SendAction)
-        alert.addAction(MySendAction)
-        //self.navigationItem.
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 2
-        
-    }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath.row==0){
-            return 50
-        }
-        return 150
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if(indexPath.row==0){
-            let cell = tableView.dequeueReusableCellWithIdentifier("SpecialityTitleCell", forIndexPath: indexPath) as! SpecialityTitleCell
-            return cell
-        }
-        let cell = tableView.dequeueReusableCellWithIdentifier("SpecialityContentCell", forIndexPath: indexPath) as! SpecialityContentCell
-        return cell
-        
-        
-    }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.SpecialityController.deselectRowAtIndexPath(indexPath, animated: true)
-        //self.performSegueWithIdentifier("detail", sender: nil)
-        let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("SpecialityDetail");
-        self.navigationController?.pushViewController(anotherView, animated: true)
-    }
-    
-    func mine(){
-        print("特色推荐右上角按钮被点击")
-        self.presentViewController(alert, animated: true, completion: nil)
+        return 5
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
+    }
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
+    }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            let cell=UITableViewCell()
+            let avator=UIImageView(frame: CGRectMake(5, 5, 30, 30))
+            avator.clipsToBounds=true
+            avator.layer.cornerRadius=15
+            avator.image=UIImage(named: "avator.jpg")
+            cell.addSubview(avator)
+            let name=UILabel(frame: CGRectMake(40,10,60,15))
+            name.text="王思琪"
+            name.font=UIFont.systemFontOfSize(15)
+            name.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+            cell.addSubview(name)
+            let time=UILabel(frame: CGRectMake(90,10,60,15))
+            time.text="3分钟前"
+            time.font=UIFont.systemFontOfSize(13)
+            time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+            cell.addSubview(time)
+            let title=UILabel(frame: CGRectMake(5,40,self.view.frame.width-40,25))
+            title.text="周末又过去啦～～"
+            title.font=UIFont.systemFontOfSize(17)
+            //title.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+            cell.addSubview(title)
+            let content=UILabel(frame: CGRectMake(5,65,self.view.frame.width-10,30))
+            content.text="一想到明天要上班了就好不开心啊～～～你们呢"
+            content.font=UIFont.systemFontOfSize(15)
+            content.numberOfLines=0
+            content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+            cell.addSubview(content)
+            let focus=UIButton(frame: CGRectMake(10,100,60,15))
+            focus.setTitleColor(UIColor(red: 205/255, green: 49/255, blue: 37/255, alpha: 0.77), forState: UIControlState.Normal)
+            focus.setTitle("编辑", forState: UIControlState.Normal)
+            focus.titleLabel?.font=UIFont.systemFontOfSize(13)
+            cell.addSubview(focus)
+            let like=UIImageView(frame: CGRectMake(self.view.frame.width/3*2, 100, 15, 15))
+            like.image=UIImage(named: "喜欢1.png")
+            cell.addSubview(like)
+            let likeCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+15,100,50,15))
+            likeCount.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+            likeCount.text="589"
+            likeCount.font=UIFont.systemFontOfSize(12)
+            cell.addSubview(likeCount)
+            
+            let comment=UIImageView(frame: CGRectMake(self.view.frame.width/3*2+60, 100, 15, 15))
+            comment.image=UIImage(named: "评论3.png")
+            cell.addSubview(comment)
+            let commentCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+80,100,50,15))
+            commentCount.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+            commentCount.text="233"
+            commentCount.font=UIFont.systemFontOfSize(12)
+            cell.addSubview(commentCount)
+            return cell
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        MTL.deselectRowAtIndexPath(indexPath, animated: true)
+        let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TopicDetail");
+        self.navigationController?.pushViewController(anotherView, animated: true)
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

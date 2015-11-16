@@ -123,6 +123,21 @@ class MyTopicCenter: UITableViewController {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         MTC.deselectRowAtIndexPath(indexPath, animated: true)
+        if(indexPath.section==1){
+            switch indexPath.row{
+            case 0:
+                let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("Focus");
+                self.navigationController?.pushViewController(anotherView, animated: true)
+            case 1:
+                let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("MyTopicList");
+                self.navigationController?.pushViewController(anotherView, animated: true)
+            case 2:
+                let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("MyZan");
+                self.navigationController?.pushViewController(anotherView, animated: true)
+            default:
+                break
+            }
+        }
     }
 
     /*
