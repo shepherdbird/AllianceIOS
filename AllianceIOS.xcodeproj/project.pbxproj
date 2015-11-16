@@ -349,6 +349,7 @@
 		03651D111BEF46150019CDBA /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D011BEF46150019CDBA /* tabbarBackground@2x.png */; settings = {ASSET_TAGS = (); }; };
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; settings = {ASSET_TAGS = (); }; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		7A1910C05CEE8E35310F5184 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */; };
 		D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */; };
 		D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544031BE5A8E000A1660F /* JobInfoMyController.swift */; };
 		D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544051BE5AD5F00A1660F /* SpecialityController.swift */; };
@@ -1162,6 +1163,9 @@
 		03651D011BEF46150019CDBA /* tabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarBackground@2x.png"; sourceTree = "<group>"; };
 		03651D021BEF46150019CDBA /* tabbarSelectBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarSelectBg.png; sourceTree = "<group>"; };
 		03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSelectBg@2x.png"; sourceTree = "<group>"; };
+		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.release.xcconfig"; sourceTree = "<group>"; };
+		B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllianceIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoReqController.swift; path = Resources/Near/JobInfoReqController.swift; sourceTree = "<group>"; };
 		D90544031BE5A8E000A1660F /* JobInfoMyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoMyController.swift; path = Resources/Near/JobInfoMyController.swift; sourceTree = "<group>"; };
 		D90544051BE5AD5F00A1660F /* SpecialityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpecialityController.swift; path = Resources/Near/SpecialityController.swift; sourceTree = "<group>"; };
@@ -1612,6 +1616,7 @@
 				D9B196301BAE717E0077EA76 /* libsqlite3.tbd in Frameworks */,
 				D9B1962E1BAE71600077EA76 /* CFNetwork.framework in Frameworks */,
 				03651A6C1BEF3B1A0019CDBA /* libopencore-amrwb.a in Frameworks */,
+				7A1910C05CEE8E35310F5184 /* Pods_AllianceIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2589,6 +2594,23 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
+		29E33117E52AA18CD79CCE90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */,
+				757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E84639E6A9131028A21DEB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D915CA691BE65CC5004EBE26 /* OneCharge */ = {
 			isa = PBXGroup;
 			children = (
@@ -2826,6 +2848,8 @@
 				D9B1962F1BAE717E0077EA76 /* libsqlite3.tbd */,
 				D9B1962D1BAE71600077EA76 /* CFNetwork.framework */,
 				D9B1962B1BAE71580077EA76 /* MobileCoreServices.framework */,
+				29E33117E52AA18CD79CCE90 /* Pods */,
+				3E84639E6A9131028A21DEB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3353,9 +3377,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D97A8C231BAADFA0002645F9 /* Build configuration list for PBXNativeTarget "AllianceIOS" */;
 			buildPhases = (
+				5994A30064DC9DDF89C9ED84 /* Check Pods Manifest.lock */,
 				D97A8C0D1BAADF9F002645F9 /* Sources */,
 				D97A8C0E1BAADF9F002645F9 /* Frameworks */,
 				D97A8C0F1BAADF9F002645F9 /* Resources */,
+				7034378FFCBAE07380E13044 /* Embed Pods Frameworks */,
+				45416C9EE67165CA55539924 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3377,6 +3404,7 @@
 				TargetAttributes = {
 					D97A8C101BAADF9F002645F9 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = VVCZ437E8V;
 					};
 				};
 			};
@@ -3864,6 +3892,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45416C9EE67165CA55539924 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5994A30064DC9DDF89C9ED84 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7034378FFCBAE07380E13044 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D97A8C0D1BAADF9F002645F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -4143,6 +4219,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4187,6 +4264,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4206,10 +4284,12 @@
 		};
 		D97A8C241BAADFA0002645F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
@@ -4227,23 +4307,27 @@
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/UMeng",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/Supporting",
-					Files/EaseMobSDK/lib,
 				);
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = ourself.AllianceIOS;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ourself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D97A8C251BAADFA0002645F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
@@ -4261,13 +4345,15 @@
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/UMeng",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/Supporting",
-					Files/EaseMobSDK/lib,
 				);
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = ourself.AllianceIOS;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ourself;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -28,7 +28,7 @@ class JobInfoContentCell: UITableViewCell {
         //内容
         self.content=UILabel(frame: CGRectMake(10,35,self.frame.width-10,110))
         self.content.numberOfLines=0
-        self.content.text="学历：本科\n参加工作时间：2013-07\n目前状况：我目前处于离职状态，可立即上岗\n留言：本人有两年销售经验，现在离职在家，想换一个新的环境，本人有两年销售经验，现在离职在家，想换一个新的环境"
+       self.content.text="学历：本科\n参加工作时间：2013-07\n目前状况：我目前处于离职状态，可立即上岗\n留言：本人有两年销售经验，现在离职在家，想换一个新的环境，本人有两年销售经验，现在离职在家，想换一个新的环境"
         self.content.font=UIFont.systemFontOfSize(13)
         self.content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
         self.content.sizeToFit()
