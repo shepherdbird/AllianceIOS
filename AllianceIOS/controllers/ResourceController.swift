@@ -99,15 +99,17 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
         self.view.addSubview(nearico)
         self.view.addSubview(nearlabel)
 
-        //寻人
+        //聊吧
         let xunren=UIButton(frame:CGRectMake(-2, sv.frame.height+self.view.frame.width/3, self.view.frame.width/3+2, self.view.frame.width/3))
+        xunren.tag=4
+        xunren.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         let xunrenico=UIImageView(frame: CGRectMake(self.view.frame.width/8, sv.frame.height+3+self.view.frame.width/12*5, self.view.frame.width/12, self.view.frame.width/12))
         xunren.layer.borderWidth=CGFloat(1.0)
         xunren.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
         xunrenico.image=UIImage(named: "聊吧图标.png")
         xunrenico.contentMode=UIViewContentMode.ScaleAspectFill
         let xunrenlabel=UILabel(frame: CGRectMake(self.view.frame.width/15*2, sv.frame.height+3+self.view.frame.width/48*25, self.view.frame.width/12, self.view.frame.width/24))
-        xunrenlabel.text="寻人"
+        xunrenlabel.text="聊吧"
         xunrenlabel.adjustsFontSizeToFitWidth=true
         xunrenlabel.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
         let zhushilabel=UILabel(frame: CGRectMake(self.view.frame.width/30, sv.frame.height+3+self.view.frame.width/36*21, self.view.frame.width/15*4, self.view.frame.width/24))
@@ -140,6 +142,9 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 3:
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Near");
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        case 4:
+            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Chat");
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             break
