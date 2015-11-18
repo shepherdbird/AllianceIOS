@@ -725,6 +725,10 @@
 		D9DBDFC31BECF77B0098FFAA /* DirectAlliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DBDFC21BECF77B0098FFAA /* DirectAlliance.swift */; };
 		D9DBDFC51BED00450098FFAA /* AllianceGive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DBDFC41BED00450098FFAA /* AllianceGive.swift */; };
 		D9EAD8D11BE90F8F0062B202 /* NewestListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */; };
+		D9ECD0061BFB03BA00B41F8A /* grabcorns_getthree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */; };
+		D9ECD0081BFB387300B41F8A /* GrabcornsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */; };
+		D9ECD00A1BFB8B1200B41F8A /* GrabcornsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */; };
+		D9ECD00C1BFCB24000B41F8A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD00B1BFCB24000B41F8A /* Global.swift */; };
 		D9FCBC5C1BED778D00D50D1D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCBC5B1BED778D00D50D1D /* Settings.swift */; };
 		D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E71BB16D1700FFA187 /* near.png */; };
 		D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E91BB16D1700FFA187 /* yiyuan.png */; };
@@ -1690,6 +1694,10 @@
 		D9DBDFC21BECF77B0098FFAA /* DirectAlliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectAlliance.swift; path = Me/DirectAlliance.swift; sourceTree = "<group>"; };
 		D9DBDFC41BED00450098FFAA /* AllianceGive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllianceGive.swift; path = Me/AllianceGive.swift; sourceTree = "<group>"; };
 		D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestListController.swift; path = Resources/OneCharge/NewestListController.swift; sourceTree = "<group>"; };
+		D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = grabcorns_getthree.swift; path = request/grabcorns_getthree.swift; sourceTree = "<group>"; };
+		D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrabcornsList.swift; path = request/GrabcornsList.swift; sourceTree = "<group>"; };
+		D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrabcornsView.swift; path = request/GrabcornsView.swift; sourceTree = "<group>"; };
+		D9ECD00B1BFCB24000B41F8A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		D9FCBC5B1BED778D00D50D1D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Me/Settings.swift; sourceTree = "<group>"; };
 		D9FFE6E71BB16D1700FFA187 /* near.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = near.png; sourceTree = "<group>"; };
 		D9FFE6E91BB16D1700FFA187 /* yiyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiyuan.png; sourceTree = "<group>"; };
@@ -3221,7 +3229,8 @@
 		D995065F1BB3817D00CA9B2E /* models */ = {
 			isa = PBXGroup;
 			children = (
-				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
+                037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
+				D9ECD0041BFB035D00B41F8A /* request */,
 				D99506601BB3817D00CA9B2E /* ChatCell.swift */,
 				D99506611BB3817D00CA9B2E /* FriendCell.swift */,
 				D99506621BB3817D00CA9B2E /* MessageItem.swift */,
@@ -3233,6 +3242,7 @@
 				D90544071BE5AE6C00A1660F /* SpecialityTitleCell.swift */,
 				D90544091BE5AE8700A1660F /* SpecialityContentCell.swift */,
 				D905441B1BE5F40E00A1660F /* HobbyCell.swift */,
+				D9ECD00B1BFCB24000B41F8A /* Global.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -3569,6 +3579,16 @@
 				D9D988BF1BD7C8C200F53C74 /* 形状-55@2x.png */,
 			);
 			name = GrabEnvelope;
+			sourceTree = "<group>";
+		};
+		D9ECD0041BFB035D00B41F8A /* request */ = {
+			isa = PBXGroup;
+			children = (
+				D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */,
+				D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */,
+				D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */,
+			);
+			name = request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4213,6 +4233,7 @@
 				D97A8C271BAAE5A9002645F9 /* README.md in Sources */,
 				03651A481BEF3B1A0019CDBA /* MKAnnotationView+EMWebCache.m in Sources */,
 				D9987CF21BEF2BBA005480C7 /* ChargeRecord.swift in Sources */,
+				D9ECD0061BFB03BA00B41F8A /* grabcorns_getthree.swift in Sources */,
 				03651B271BEF3B400019CDBA /* GroupSettingViewController.m in Sources */,
 				03651A2C1BEF3B1A0019CDBA /* EMAudioPlayerUtil.m in Sources */,
 				D99506691BB3817D00CA9B2E /* pinyin.c in Sources */,
@@ -4238,7 +4259,9 @@
 				03651B351BEF3B400019CDBA /* LoginViewController.m in Sources */,
 				03651B1D1BEF3B400019CDBA /* EMChatViewCell.m in Sources */,
 				03651A691BEF3B1A0019CDBA /* wav.mm in Sources */,
+				D9ECD0081BFB387300B41F8A /* GrabcornsList.swift in Sources */,
 				03651B371BEF3B400019CDBA /* UserProfileViewController.m in Sources */,
+				D9ECD00C1BFCB24000B41F8A /* Global.swift in Sources */,
 				03651A471BEF3B1A0019CDBA /* EMSDWebImagePrefetcher.m in Sources */,
 				D9987CEA1BEEEF72005480C7 /* Certification.swift in Sources */,
 				D9987CEE1BEEFB03005480C7 /* ShippingAddressAdd.swift in Sources */,
@@ -4368,6 +4391,7 @@
 				03651A361BEF3B1A0019CDBA /* MBProgressHUD+Add.m in Sources */,
 				03651B2B1BEF3B400019CDBA /* ChineseToPinyin.m in Sources */,
 				03651A591BEF3B1A0019CDBA /* PSTCollectionViewUpdateItem.m in Sources */,
+				D9ECD00A1BFB8B1200B41F8A /* GrabcornsView.swift in Sources */,
 				03651B171BEF3B400019CDBA /* EMChatImageBubbleView.m in Sources */,
 				D96E76391BF9B5160062BAD0 /* MyTopicCenter.swift in Sources */,
 				03651A421BEF3B1A0019CDBA /* EMSDWebImageCompat.m in Sources */,

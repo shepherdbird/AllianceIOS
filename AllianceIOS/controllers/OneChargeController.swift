@@ -7,18 +7,66 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class OneChargeController: UITableViewController{
     
     @IBOutlet var OneChargeController: UITableView!
-
+    var activityIndicatorView: UIActivityIndicatorView!
+    var TenCharge:Grabcorns_getthree?
+        {
+        didSet{
+            activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.hidden=true
+            self.tableView.backgroundView=nil
+            self.tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
+        view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+        
+        activityIndicatorView.frame = CGRectMake(self.tableView.frame.size.width/2-100, -30, 200, 200)
+        
+        activityIndicatorView.hidesWhenStopped = true
+        
+        activityIndicatorView.color = UIColor.blackColor()
+        view1.addSubview(activityIndicatorView)
+        self.tableView.backgroundView=view1
+        activityIndicatorView.startAnimating()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
+    }
+    func connect(){
+        print("ccccc")
+        do {
+            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/grabcorns/getthree")
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.TenCharge = Grabcorns_getthree(JSONDecoder(response.data))
+            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+        
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        if((TenCharge) != nil){
+            return 4
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,14 +75,10 @@ class OneChargeController: UITableViewController{
         
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section{
-        case 0:
-            return 0
-        case 3:
-            return 20
-        default:
-            return 10
-        }
+           return 10
+    }
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section{
@@ -46,18 +90,6 @@ class OneChargeController: UITableViewController{
             return 120
         }
     }
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section{
-//        case 1:
-//            return "10夺金"
-//        case 2:
-//            return "最新揭晓"
-//        case 3:
-//            return "一元夺宝"
-//        default:
-//            return ""
-//        }
-//    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section{
         case 0:
@@ -145,13 +177,6 @@ class OneChargeController: UITableViewController{
     }
     func TenChargeCell() -> UITableViewCell{
         let cell=UITableViewCell()
-//        tenchargeSv.frame=CGRectMake(tenchargecell.frame.minX, tenchargecell.frame.minY,self.view.frame.width, 120)
-//        tenchargeSv.contentSize=CGSizeMake(600, 120)
-//        tenchargeSv.pagingEnabled=true
-//        tenchargeSv.showsHorizontalScrollIndicator=false
-//        tenchargeSv.scrollEnabled=true
-//        tenchargeSv.delegate=self
-//        tenchargecell.addSubview(tenchargeSv)
         let title=UILabel(frame: CGRectMake(10,0,50,30))
         title.text="10夺金"
         title.font=UIFont.systemFontOfSize(14)
@@ -165,11 +190,13 @@ class OneChargeController: UITableViewController{
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
             btn.tag=1000+i
             btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
-            let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/15,10, self.view.frame.width/5, self.view.frame.width/5))
-            pic.backgroundColor=UIColor.blackColor()
-            pic.image=UIImage(named: "coin.png")
-            let money=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/9, self.view.frame.width/9+30, self.view.frame.width/9+20, 20))
-            money.text=String(i*100)+"金币"
+            let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/12,15, self.view.frame.width/6, self.view.frame.width/6))
+            //pic.backgroundColor=UIColor.blackColor()
+            //print(TenCharge!.items[i].picture)
+            //pic.image=UIImage(named: TenCharge!.items[i].picture)
+            pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!)!)
+            let money=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/10, self.view.frame.width/9+30, self.view.frame.width/9+30, 20))
+            money.text=TenCharge?.items[i].title
             money.font=UIFont.systemFontOfSize(12)
             //money.adjustsFontSizeToFitWidth=true
             let process=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15, self.view.frame.width/9+50, self.view.frame.width/3-15, 10))
@@ -177,7 +204,8 @@ class OneChargeController: UITableViewController{
             //process.adjustsFontSizeToFitWidth=true
             process.font=UIFont.systemFontOfSize(10)
             let progress=UIProgressView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15,self.view.frame.width/9+65 , self.view.frame.width/3-30, 15))
-            progress.progress=Float(Int(arc4random())%101)/100.0
+            //progress.progress=Float(Int(arc4random())%101)/100.0
+            progress.progress=1-Float(TenCharge!.items[i].remain)/Float(TenCharge!.items[i].needed)
             progress.progressTintColor=UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1.0)
             progress.trackTintColor=UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
             progress.clipsToBounds=true
@@ -299,7 +327,9 @@ class OneChargeController: UITableViewController{
     }
     func detail(sender:UIButton){
         if(sender.tag<=1002){
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeDetail");
+            let anotherView=TenChargeDetailController()
+            anotherView.GrabcornId=(TenCharge?.items[sender.tag-1000].id)!
+            //let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeDetail");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else if(sender.tag>=1006){
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeDetail");

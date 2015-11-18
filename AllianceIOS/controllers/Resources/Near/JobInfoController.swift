@@ -186,7 +186,6 @@ class JobInfoController: UITableViewController {
        
     }
     func connect(){
-        
         print("ccccc")
         do {
             let opt=try HTTP.GET("http://183.129.190.82:50001/v1/applyjobs/search")
