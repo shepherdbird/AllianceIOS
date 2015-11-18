@@ -7,6 +7,7 @@
 //
 
 #ifdef SD_WEBP
+
 #import "UIImage+EMWebP.h"
 #import "webp/decode.h"
 

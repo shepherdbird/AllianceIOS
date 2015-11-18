@@ -9,6 +9,7 @@
 import UIKit
 import SwiftHTTP
 import JSONJoy
+import SDWebImage
 
 class JobInfoController: UITableViewController {
     
@@ -27,33 +28,33 @@ class JobInfoController: UITableViewController {
     }
     
     struct Item : JSONJoy {
-        var objID: Int?
-        var userID: Int?
-        var jobproperty: Int?
+        var objID: String?
+        var userID: String?
+        var jobproperty: String?
         var title:String?
-        var degree: Int?
-        var work_at: Int?
+        var degree: String?
+        var work_at: String?
         var status: String?
-        var hidephone: Int?
+        var hidephone: String?
         var content: String?
-        var professionid: Int?
-        var created_at: Int?
+        var professionid: String?
+        var created_at: String?
         var phone: String?
         var nickname: String?
         var thumb: String?
         var profession: String?
         init(_ decoder: JSONDecoder) {
-            objID = decoder["id"].integer
-            userID=decoder["userid"].integer
-            jobproperty=decoder["jobproperty"].integer
+            objID = decoder["id"].string
+            userID=decoder["userid"].string
+            jobproperty=decoder["jobproperty"].string
             title=decoder["title"].string
-            degree=decoder["degree"].integer
-            work_at=decoder["work_at"].integer
+            degree=decoder["degree"].string
+            work_at=decoder["work_at"].string
             status=decoder["status"].string
-            hidephone=decoder["hidephone"].integer
+            hidephone=decoder["hidephone"].string
             content=decoder["content"].string
-            professionid=decoder["professionid"].integer
-            created_at=decoder["created_at"].integer
+            professionid=decoder["professionid"].string
+            created_at=decoder["created_at"].string
             phone=decoder["phone"].string
             nickname=decoder["nickname"].string
             thumb=decoder["thumb"].string
@@ -222,14 +223,29 @@ class JobInfoController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(indexPath.row==0){
             let cell = tableView.dequeueReusableCellWithIdentifier("JobInfoTitleCell", forIndexPath: indexPath) as! JobInfoTitleCell
-            //cell.username.text=self.info?.items[0].content
-//            print("sss")
-//            print(self.info?.items[0].content)
+            cell.username.text=self.info?.items[indexPath.section].nickname
+            if((self.info?.items[indexPath.section].jobproperty)=="1"){
+                cell.kind.text="全职"
+            }else{
+                cell.kind.text="兼职"
+            }
+            cell.job.text=self.info?.items[indexPath.section].profession
+        
+            let dateOfRecord=NSDate(timeIntervalSince1970:(self.info!.items[indexPath.section].created_at! as NSString).doubleValue)
+            cell.time.text=String(dateOfRecord)
+            cell.avator.sd_setImageWithURL(NSURL(string: (self.info?.items[indexPath.section].thumb)!), placeholderImage: UIImage(named: "avator.jpg"))
             return cell
         }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("JobInfoContentCell", forIndexPath: indexPath) as! JobInfoContentCell
-        cell.title.text=self.info?.items[0].title
-        cell.content.text=self.info?.items[0].content
+        cell.title.text=self.info?.items[indexPath.section].title
+        
+        
+        let deg:String="学历："+"本科\n"
+        let work:String="参加工作时间："+"2013-07\n"
+        let sts:String="目前状况："+(self.info?.items[indexPath.section].status)!
+        let cont:String="\n留言："+(self.info?.items[indexPath.section].content)!
+        cell.content.text=deg+work+sts+cont
         return cell
 
         
@@ -238,6 +254,7 @@ class JobInfoController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         //self.performSegueWithIdentifier("detail", sender: nil)
         let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoDetail");
+      
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
 

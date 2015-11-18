@@ -3,6 +3,7 @@
 //
 
 #include "pinyin.h"
+//#import "libwebp/decode.h"
 #import "ChatListViewController.h"
 #import "ContactsViewController.h"
 #import "MainViewController.h"
@@ -15,7 +16,7 @@
 //#import "ChatDemo-UI2.0-Prefix.pch"
 //#import "ChatListCell.h"
 
-
+#import "UIImageView+EMWebCache.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
