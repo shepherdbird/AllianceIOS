@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-AllianceIOS/JSONJoy.framework"
   install_framework "Pods-AllianceIOS/SwiftHTTP.framework"
+  install_framework "Pods-AllianceIOS/WEPopover.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-AllianceIOS/JSONJoy.framework"
   install_framework "Pods-AllianceIOS/SwiftHTTP.framework"
+  install_framework "Pods-AllianceIOS/WEPopover.framework"
 fi

@@ -1,13 +1,16 @@
 PODS:
   - JSONJoy-Swift (1.0.0)
   - SwiftHTTP (1.0.2)
+  - WEPopover (1.0.0)
 
 DEPENDENCIES:
   - JSONJoy-Swift (~> 1.0.0)
   - SwiftHTTP (~> 1.0.0)
+  - WEPopover
 
 SPEC CHECKSUMS:
   JSONJoy-Swift: 3e8129c282470614da69759208e9c923732f6cb4
   SwiftHTTP: 6d8ca031a9ce613a01e8f18b497503887b0b50c0
+  WEPopover: 615c27637d1763731cf7c51a9385ff1f25ff4816
 
 COCOAPODS: 0.39.0

@@ -6,15 +6,33 @@
 //
 //
 
-import UIKit
+//import UIKit
 import SwiftHTTP
 import JSONJoy
 import SDWebImage
+import WEPopover
+import UIKit
 
 class JobInfoController: UITableViewController {
     
     var activityIndicatorView: UIActivityIndicatorView!
     //@IBOutlet var JobInfoController: UITableView!
+    
+    private var texts = ["Edit", "Delete", "Report"]
+    var popover: WEPopoverController!
+//    public var popoverOptions: [PopoverOption] = [
+//        .Type(.Down),
+//        .BlackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
+//        .CornerRadius(0)
+//    ]
+    
+    var flag:Int?{
+        didSet
+        {
+            self.goto()
+        }
+    }
+    
     var info:Info?
         {
     //我们需要在age属性发生变化后，更新一下nickName这个属性
@@ -172,6 +190,7 @@ class JobInfoController: UITableViewController {
         print("ccccc")
         do {
             let opt=try HTTP.GET("http://183.129.190.82:50001/v1/applyjobs/search")
+            
             opt.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -254,15 +273,57 @@ class JobInfoController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         //self.performSegueWithIdentifier("detail", sender: nil)
-        let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoDetail");
-      
+        
+//        let anotherView:JobInfoDetailController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoDetail");
+        let anotherView:JobInfoDetailController=JobInfoDetailController()
+        anotherView.Username=(self.info?.items[indexPath.section].nickname)!
+        anotherView.thumb=(self.info?.items[indexPath.section].thumb)!
+        
+        var jobp=String()
+        if((self.info?.items[indexPath.section].jobproperty)=="1"){
+           jobp="全职,"
+        }else{
+            jobp="兼职,"
+        }
+        
+        let deg:String="本科,"
+        let work:String="2013-07,"
+        let sts:String=(self.info?.items[indexPath.section].status)!
+        let phone:String=","+(self.info?.items[indexPath.section].phone)!
+        let cont:String=","+(self.info?.items[indexPath.section].content)!
+        let content:String=jobp+deg+work+sts+phone+cont
+        
+        print(content.componentsSeparatedByString(",").description)
+        anotherView.Value=content.componentsSeparatedByString(",")
+        
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
 
     func mine(){
         print("hello")
-        self.presentViewController(alert, animated: true, completion: nil)
+        //self.presentViewController(alert, animated: true, completion: nil)
+        let my:JobMenuViewController=JobMenuViewController()
+        
+        let pop=WEPopoverController(contentViewController: my)
+        self.popover=pop
+        my.popover=self.popover
+        my.Job=self
+        self.popover.popoverContentSize=CGSizeMake(100,85)
+        self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
     }
+    
+    func goto(){
+        if(flag==0){
+            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoReq");
+            anotherView.title="发表求职"
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }else{
+            let anotherView:JobInfoMyController=JobInfoMyController()
+            anotherView.title="我的帖子"
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -309,3 +370,5 @@ class JobInfoController: UITableViewController {
     */
 
 }
+
+

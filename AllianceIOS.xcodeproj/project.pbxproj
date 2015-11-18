@@ -349,6 +349,8 @@
 		03651D111BEF46150019CDBA /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D011BEF46150019CDBA /* tabbarBackground@2x.png */; };
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; };
+		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		037BB4711BFC216900A76832 /* Popover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037BB4701BFC216900A76832 /* Popover.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7A1910C05CEE8E35310F5184 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */; };
 		D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */; };
 		D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544031BE5A8E000A1660F /* JobInfoMyController.swift */; };
@@ -1222,6 +1224,8 @@
 		03651D011BEF46150019CDBA /* tabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarBackground@2x.png"; sourceTree = "<group>"; };
 		03651D021BEF46150019CDBA /* tabbarSelectBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarSelectBg.png; sourceTree = "<group>"; };
 		03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSelectBg@2x.png"; sourceTree = "<group>"; };
+		037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMenuViewController.swift; sourceTree = "<group>"; };
+		037BB4701BFC216900A76832 /* Popover.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Popover.framework; path = "Pods/../build/Debug-iphoneos/Popover.framework"; sourceTree = "<group>"; };
 		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.release.xcconfig"; sourceTree = "<group>"; };
 		B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllianceIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1703,6 +1707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037BB4711BFC216900A76832 /* Popover.framework in Frameworks */,
 				03651B8D1BEF41500019CDBA /* UIKit.framework in Frameworks */,
 				03651B8B1BEF41420019CDBA /* CoreGraphics.framework in Frameworks */,
 				03651B891BEF41360019CDBA /* Foundation.framework in Frameworks */,
@@ -2724,6 +2729,7 @@
 		3E84639E6A9131028A21DEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				037BB4701BFC216900A76832 /* Popover.framework */,
 				B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */,
 			);
 			name = Frameworks;
@@ -3015,7 +3021,6 @@
 			isa = PBXGroup;
 			children = (
 				D97A8C131BAADF9F002645F9 /* AllianceIOS */,
-
 				D97A8C121BAADF9F002645F9 /* Products */,
 				D9B196391BAE71B90077EA76 /* libxml2.tbd */,
 				D9B196371BAE71B10077EA76 /* libresolv.tbd */,
@@ -3025,7 +3030,6 @@
 				03651B841BEF40FE0019CDBA /* libstdc++.tbd */,
 				03651B6E1BEF40000019CDBA /* libc++.tbd */,
 				D9B1962F1BAE717E0077EA76 /* libsqlite3.tbd */,
-
 				03651B8C1BEF41500019CDBA /* UIKit.framework */,
 				03651B8A1BEF41420019CDBA /* CoreGraphics.framework */,
 				03651B881BEF41360019CDBA /* Foundation.framework */,
@@ -3041,7 +3045,6 @@
 				03651B721BEF40400019CDBA /* CoreData.framework */,
 				03651B701BEF40190019CDBA /* AVFoundation.framework */,
 				03651B6C1BEF3FE00019CDBA /* Accounts.framework */,
-
 				D9B1962D1BAE71600077EA76 /* CFNetwork.framework */,
 				D9B1962B1BAE71580077EA76 /* MobileCoreServices.framework */,
 				29E33117E52AA18CD79CCE90 /* Pods */,
@@ -3218,6 +3221,7 @@
 		D995065F1BB3817D00CA9B2E /* models */ = {
 			isa = PBXGroup;
 			children = (
+				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
 				D99506601BB3817D00CA9B2E /* ChatCell.swift */,
 				D99506611BB3817D00CA9B2E /* FriendCell.swift */,
 				D99506621BB3817D00CA9B2E /* MessageItem.swift */,
@@ -4367,6 +4371,7 @@
 				03651B171BEF3B400019CDBA /* EMChatImageBubbleView.m in Sources */,
 				D96E76391BF9B5160062BAD0 /* MyTopicCenter.swift in Sources */,
 				03651A421BEF3B1A0019CDBA /* EMSDWebImageCompat.m in Sources */,
+				037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */,
 				03651B541BEF3B4B0019CDBA /* EMSearchDisplayController.m in Sources */,
 				D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */,
 				03651A811BEF3B320019CDBA /* UIViewController+DismissKeyboard.m in Sources */,
@@ -4550,6 +4555,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
 					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4588,6 +4594,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
 					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

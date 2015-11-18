@@ -10,6 +10,7 @@ use_frameworks!
 
 pod 'SwiftHTTP', '~> 1.0.0'
 pod 'JSONJoy-Swift', '~> 1.0.0'
+pod 'WEPopover'
 #pod 'SDWebImage/WebP', '~>3.7'
 end
 

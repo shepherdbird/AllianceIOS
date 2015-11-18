@@ -13,11 +13,13 @@ class JobInfoDetailController: UITableViewController {
     
     @IBOutlet var detail: UITableView!
     
+    var Username:String="用户昵称"
+    var thumb:String="用户头像"
     var Key=["工作性质","学历","参加工作时间","目前状况","联系电话","留言"]
-    let Value=["全职","本科","2015-08","单身","18268028693","本人性格热情开朗,待人友好,为人诚实谦虚。工作勤奋,认真负责,能吃苦耐劳,尽职尽责。"]
+    var Value=["全职","本科","2015-08","单身","18268028693","本人性格热情开朗,待人友好,为人诚实谦虚。工作勤奋,认真负责,能吃苦耐劳,尽职尽责。"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        detail.rowHeight=UITableViewAutomaticDimension
+        self.tableView.rowHeight=UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -60,11 +62,12 @@ class JobInfoDetailController: UITableViewController {
         switch indexPath.row{
         case 0:
             avator=UIImageView(frame: CGRectMake(15, 15, 50, 50))
-            avator.image=UIImage(named: "avator.jpg")
+            //avator.image=UIImage(named: "avator.jpg")
+            avator.sd_setImageWithURL(NSURL(string: (self.thumb)), placeholderImage: UIImage(named: "avator.jpg"))
             avator.clipsToBounds=true
             avator.layer.cornerRadius=avator.bounds.width*0.5
             username=UILabel(frame: CGRectMake(80,35,40,30))
-            username.text="用户昵称"
+            username.text=self.Username
             username.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
             username.font=UIFont.systemFontOfSize(18)
             username.sizeToFit()
