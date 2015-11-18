@@ -9,7 +9,7 @@
 import UIKit
 import SwiftHTTP
 import JSONJoy
-import SDWebImage
+//import SDWebImage
 
 class JobInfoMyController: UITableViewController {
     
