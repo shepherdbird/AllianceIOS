@@ -7,18 +7,72 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class MyTopicCenter: UITableViewController {
 
     @IBOutlet var MTC: UITableView!
+    var activityIndicatorView: UIActivityIndicatorView!
+    var view1=UIView()
+    var LiaoBaFansInstance:LiaobaFans?
+    var LiaoBaUserInstance:LiaoBaUser?
+        {
+        didSet{
+            activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.hidden=true
+            self.tableView.backgroundView=nil
+            self.tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
+        view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+        
+        activityIndicatorView.frame = CGRectMake(self.tableView.frame.size.width/2-100, -30, 200, 200)
+        
+        activityIndicatorView.hidesWhenStopped = true
+        
+        activityIndicatorView.color = UIColor.blackColor()
+        view1.addSubview(activityIndicatorView)
+        self.tableView.backgroundView=view1
+        activityIndicatorView.startAnimating()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
+    }
+    func connect(){
+        print("聊吧主界面")
+        do {
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"herphone":"1"]
+            let new=try HTTP.POST(URL+"/tbusers/view", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.LiaoBaUserInstance = LiaoBaUser(JSONDecoder(response.data))
+            }
+            let param:Dictionary<String,AnyObject>=["phone":"1"]
+            let fans=try HTTP.POST(URL+"/tbusers/myfans", parameters: param)
+            fans.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.LiaoBaFansInstance = LiaobaFans(JSONDecoder(response.data))
+            }
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +84,10 @@ class MyTopicCenter: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        if((LiaoBaUserInstance) != nil){
+            return 2
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,28 +131,30 @@ class MyTopicCenter: UITableViewController {
         back.image=UIImage(named: "我的背景.png")
         cell.addSubview(back)
         let avator=UIImageView(frame: CGRectMake(self.view.frame.width/16*7,self.view.frame.width/8,self.view.frame.width/8 , self.view.frame.width/8))
-        avator.image=UIImage(named: "avator.jpg")
+        if let Ndata=NSData(contentsOfURL: NSURL(string: LiaoBaUserInstance!.thumb)!){
+            avator.image=UIImage(data: Ndata)
+        }
         avator.clipsToBounds=true
         avator.layer.cornerRadius=self.view.frame.width/16
         cell.addSubview(avator)
         let name=UILabel(frame: CGRectMake(self.view.frame.width/16*7-20,self.view.frame.width/4+10,200,20))
         name.textColor=UIColor.whiteColor()
-        name.text="飞翔DE鸟"
+        name.text=LiaoBaUserInstance!.nickname
         name.font=UIFont.systemFontOfSize(18)
         cell.addSubview(name)
         let friend=UILabel(frame: CGRectMake(self.view.frame.width/4,self.view.frame.width/4+40,200,20))
         friend.textColor=UIColor.whiteColor()
-        friend.text="人脉好友  776"
+        friend.text="人脉好友  "+LiaoBaUserInstance!.friendcount
         friend.font=UIFont.systemFontOfSize(14)
         cell.addSubview(friend)
         let fans=UILabel(frame: CGRectMake(self.view.frame.width/2,self.view.frame.width/4+40,200,20))
         fans.textColor=UIColor.whiteColor()
-        fans.text="聊吧粉丝  34万+"
+        fans.text="聊吧粉丝  "+LiaoBaUserInstance!.concerncount
         fans.font=UIFont.systemFontOfSize(14)
         cell.addSubview(fans)
         let signature=UILabel(frame: CGRectMake(self.view.frame.width/4+20,self.view.frame.width/4+60,self.view.frame.width/2,15))
         signature.textColor=UIColor.whiteColor()
-        signature.text="我就是我颜色不一样的烟火"
+        signature.text="个性签名："+LiaoBaUserInstance!.signature
         signature.font=UIFont.systemFontOfSize(12)
         cell.addSubview(signature)
         
@@ -104,12 +163,16 @@ class MyTopicCenter: UITableViewController {
     func SecondCell()->UITableViewCell{
         let cell=UITableViewCell()
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
-        for i in 0...3 {
-            let avator=UIImageView(frame: CGRectMake(20+60*CGFloat(i), 5, 40, 40))
-            avator.image=UIImage(named: "avator.jpg")
-            avator.clipsToBounds=true
-            avator.layer.cornerRadius=20
-            cell.addSubview(avator)
+        if(LiaoBaFansInstance!.items.count>0){
+            for i in 0...((LiaoBaFansInstance!.items.count-1)%4) {
+                let avator=UIImageView(frame: CGRectMake(20+60*CGFloat(i), 5, 40, 40))
+                if let Ndata=NSData(contentsOfURL: NSURL(string: LiaoBaFansInstance!.items[i].thumb)!){
+                    avator.image=UIImage(data: Ndata)
+                }
+                avator.clipsToBounds=true
+                avator.layer.cornerRadius=20
+                cell.addSubview(avator)
+            }
         }
         let like=UIImageView(frame: CGRectMake(self.view.frame.width-100, 15, 15, 15))
         like.image=UIImage(named: "喜欢1.png")

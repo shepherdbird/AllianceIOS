@@ -46,9 +46,9 @@ class TenChargeListController: UITableViewController {
         }
     }
     func connect(){
-        print("ccccc")
+        print("获取十夺金列表")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/grabcorns/search")
+            let opt=try HTTP.GET(URL+"/grabcorns/search")
             opt.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -100,7 +100,9 @@ class TenChargeListController: UITableViewController {
             btn.tag=i
             btn.addTarget(self, action: Selector("Detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
-            pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!)!)
+            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
+                pic.image=UIImage(data: Ndata)
+            }
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
             name.text=TenCharge?.items[i].title
             name.font=UIFont.systemFontOfSize(15)

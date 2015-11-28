@@ -19,9 +19,24 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>WEPopover.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>20C3459E6F74AA73AB0ABFCD45ACCD23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>48536075C0C19217FBD361132D0C890A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6E061CE0D4698842F8DA91A71360F5F5</key>
 		<dict>
 			<key>primary</key>
@@ -33,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>8B7C635F4017F3FA5842FD7FE62431A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A9FAB85C08D869C631ECBE6F1587896</key>
 		<dict>
 			<key>primary</key>
 			<true/>
