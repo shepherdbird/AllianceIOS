@@ -50,7 +50,7 @@ class JobMenuViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.backgroundColor=UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
+        cell.backgroundColor=UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.2)
         cell.textLabel?.text = self.texts[indexPath.row]
         return cell
     }

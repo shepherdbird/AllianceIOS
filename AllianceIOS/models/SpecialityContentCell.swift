@@ -12,6 +12,8 @@ class SpecialityContentCell: UITableViewCell {
 
     var title:UILabel!
     var content:UILabel!
+    var imageurls:String?
+    var imagecount:Int?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,11 +35,32 @@ class SpecialityContentCell: UITableViewCell {
         self.content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
         self.content.sizeToFit()
         self.addSubview(self.content)
-        for i in 0...2 {
-            let detail=UIImageView(frame: CGRectMake(CGFloat(10+90*i), 60, 80, 80))
-            detail.image=UIImage(named: "food.jpg")
-            self.addSubview(detail)
+        
+        
+    }
+    
+    func addpic(){
+        let images:Array<String>=(self.imageurls?.componentsSeparatedByString(" "))!
+        self.imagecount=images.count
+        
+        for i in 0...self.imagecount!-1{
+            if (i<4){
+                let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*i), 60, 80, 80))
+                
+                detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                self.addSubview(detail)
+            }
+//            else if(i>=4&&i<8){
+//                let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%4)), 60+84, 80, 80))
+//                detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+//                self.addSubview(detail)
+//            }else{
+//                let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%8)), 60+84*2, 80, 80))
+//                detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+//                self.addSubview(detail)
+//            }
         }
+
     }
     
     required init?(coder aDecoder: NSCoder) {

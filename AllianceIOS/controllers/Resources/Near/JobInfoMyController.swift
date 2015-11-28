@@ -16,18 +16,44 @@ class JobInfoMyController: UITableViewController {
     @IBOutlet var JobInfoMy: UITableView!
 
     var activityIndicatorView: UIActivityIndicatorView!
+    var myrefresh=UIRefreshControl()
     
     var info:JobInfoController.Info?
         {
         //我们需要在age属性发生变化后，更新一下nickName这个属性
         didSet
         {
-            activityIndicatorView.stopAnimating()
+            dispatch_async(dispatch_get_main_queue()){
+            self.activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
             self.tableView.reloadData()
+            self.tableView.refreshFooter.endRefresh()
+            self.tableView.refreshHeader.endRefresh()
+                if(self.pulltimes==0){
+                    self.addinfo=self.info
+                    self.pulltimes=1
+                }
+            }
+            
         }
     }
+    
+    var addinfo:JobInfoController.Info?
+        {
+        //我们需要在age属性发生变化后，更新一下nickName这个属性
+        didSet
+        {
+             dispatch_async(dispatch_get_main_queue()){
+                for(var i=0;i<self.addinfo?.items.count;i++)
+                {
+                self.info?.items.append((self.addinfo?.items[i])!)
+                }
+            }
+            
+        }
+    }
+    var pulltimes:Int=0
 
     
     override func viewDidLoad() {
@@ -39,7 +65,7 @@ class JobInfoMyController: UITableViewController {
         self.tableView.delegate=self
         self.tableView.registerClass(JobInfoTitleCell.self, forCellReuseIdentifier: "JobInfoTitleCell")
         self.tableView.registerClass(JobInfoContentCell.self, forCellReuseIdentifier: "JobInfoContentCell")
-        self.tableView.allowsSelection=true
+        self.tableView.allowsSelection=false
         self.tableView.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
         self.tableView.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 0.77)
         // Uncomment the following line to preserve selection between presentations
@@ -47,6 +73,14 @@ class JobInfoMyController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        var footrect=CGRect()
+//        footrect.size.height=1
+//        let footview=UIView.init(frame: footrect)
+//        self.tableView.tableFooterView=footview
+//        self.tableView.tableFooterView?.hidden=true
+        //self.tableView.tableHeaderView=footview
+        self.tableView.sectionFooterHeight=1
         
         let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -72,9 +106,53 @@ class JobInfoMyController: UITableViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
         }
-
+       //self.automaticallyAdjustsScrollViewInsets=false
+        addRefreshView()
+    }
+    
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.refreshData()
+        }
+        
+        self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
+            self.loadMoredata()
+        }
+    }
+    
+    func loadMoredata(){
+        if(self.addinfo?._meta.currentPage==self.addinfo?._meta.pageCount){
+            self.tableView.refreshFooter.loadMoreEnabled=false
+            return
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                do {
+                    let opt=try HTTP.GET((self.addinfo?._links.next?.href)!,parameters: ["phone":"1"])
+                    
+                    opt.start { response in
+                        if let err = response.error {
+                            print("error: \(err.localizedDescription)")
+                            return //also notify app of failure as needed
+                        }
+                        print("opt finished: \(response.description)")
+                        //print("data is: \(response.data)") access the response of the data with response.data
+                        self.addinfo = JobInfoController.Info(JSONDecoder(response.data))
+                        print("content is: \(self.addinfo!._links)")
+                        
+                    }
+                } catch let error {
+                    print("got an error creating the request: \(error)")
+                }
+            }
     }
 
+    func refreshData() {
+        self.pulltimes=0
+        self.tableView.refreshFooter.loadMoreEnabled=true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
+    }
     
     func connect(){
         
@@ -90,7 +168,7 @@ class JobInfoMyController: UITableViewController {
                 print("opt finished: \(response.description)")
                 //print("data is: \(response.data)") access the response of the data with response.data
                 self.info = JobInfoController.Info(JSONDecoder(response.data))
-                print("content is: \(self.info!.items[0].content)")
+                print("content is: \(self.info!._links)")
                 
             }
         } catch let error {
@@ -121,7 +199,7 @@ class JobInfoMyController: UITableViewController {
         return 2
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 7
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.row==0){
@@ -163,7 +241,8 @@ class JobInfoMyController: UITableViewController {
     func deletePost(){
         print("delete my posts")
     }
-
+    
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

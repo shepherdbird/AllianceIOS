@@ -12,8 +12,14 @@ class SpecialityDetailController: UITableViewController {
 
     @IBOutlet var detail: UITableView!
     
-    var Key=["类型","地点","商家电话","推荐理由"]
-    let Value=["外卖","浦东新区xx路","022-2245679","他们家还可以送外卖哟，大家快来看看"]
+    let Key=["类型","地点","商家电话","推荐理由"]
+    var Value=["外卖","浦东新区xx路","022-2245679","他们家还可以送外卖哟，大家快来看看"]
+    var imageurls:String?
+    var imagecount:Int?
+    var nickname:String?
+    var thumb:String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         detail.rowHeight=UITableViewAutomaticDimension
@@ -67,7 +73,7 @@ class SpecialityDetailController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell=UITableViewCell()
-        let avator:UIImageView!
+        
         let username:UILabel!
         let IComment:UILabel!
         let key:UILabel!
@@ -75,12 +81,13 @@ class SpecialityDetailController: UITableViewController {
         if(indexPath.section==0){
         switch indexPath.row{
         case 0:
+            var avator:UIImageView!
             avator=UIImageView(frame: CGRectMake(15, 15, 50, 50))
-            avator.image=UIImage(named: "avator.jpg")
+            avator.sd_setImageWithURL(NSURL(string: (self.thumb)!), placeholderImage: UIImage(named: "avator.jpg"))
             avator.clipsToBounds=true
             avator.layer.cornerRadius=avator.bounds.width*0.5
             username=UILabel(frame: CGRectMake(80,35,40,30))
-            username.text="用户昵称"
+            username.text=nickname
             username.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
             username.font=UIFont.systemFontOfSize(18)
             username.sizeToFit()
@@ -88,11 +95,28 @@ class SpecialityDetailController: UITableViewController {
             cell.addSubview(username)
             cell.userInteractionEnabled=false
         case 5:
-            for i in 0...2 {
-                let detail=UIImageView(frame: CGRectMake(CGFloat(10+90*i), 10, 80, 80))
-                detail.image=UIImage(named: "food.jpg")
-                cell.addSubview(detail)
+            
+            let images:Array<String>=(self.imageurls?.componentsSeparatedByString(" "))!
+            self.imagecount=images.count
+            
+            for i in 0...self.imagecount!-1{
+                if (i<4){
+                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*i), 10, 80, 80))
+                    
+                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    cell.addSubview(detail)
+                }else if(i>=4&&i<8){
+                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%4)), 10+84, 80, 80))
+                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    cell.addSubview(detail)
+                }else{
+                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%8)), 10+84*2, 80, 80))
+                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    cell.addSubview(detail)
+                }
             }
+
+            
         default:
             key=UILabel(frame: CGRectMake(15,15,80,20))
             key.text=Key[indexPath.row-1]
@@ -161,10 +185,16 @@ class SpecialityDetailController: UITableViewController {
             }
         }
         
-        // Configure the cell...
+       
         
         return cell
     }
+    
+    func addpic(){
+        
+    }
+
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.detail.deselectRowAtIndexPath(indexPath, animated: true)
     }

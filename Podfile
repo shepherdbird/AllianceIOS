@@ -10,7 +10,9 @@ use_frameworks!
 
 pod 'SwiftHTTP', '~> 1.0.0'
 pod 'JSONJoy-Swift', '~> 1.0.0'
-pod 'WEPopover'
+pod 'WEPopover','~> 2.1.0'
+pod 'DKImagePickerController'
+pod 'Qiniu', '~> 7.0'
 #pod 'SDWebImage/WebP', '~>3.7'
 end
 

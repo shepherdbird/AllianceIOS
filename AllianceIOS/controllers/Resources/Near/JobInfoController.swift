@@ -12,21 +12,24 @@ import JSONJoy
 //import SDWebImage
 import WEPopover
 import UIKit
+import Foundation
 
 class JobInfoController: UITableViewController {
     
     var activityIndicatorView: UIActivityIndicatorView!
     //@IBOutlet var JobInfoController: UITableView!
+    var deg = ["初中及初中以下", "高中", "大专", "本科", "硕士", "博士"]
     
-    private var texts = ["Edit", "Delete", "Report"]
-    var popover: WEPopoverController!
-//    public var popoverOptions: [PopoverOption] = [
-//        .Type(.Down),
-//        .BlackOverlayColor(UIColor(white: 0.0, alpha: 0.6)),
-//        .CornerRadius(0)
-//    ]
+    var popover: WEPopover.WEPopoverController!
     
     var flag:Int?{
+        didSet
+        {
+            self.goto()
+        }
+    }
+    
+    var Iscreate:JobInfoReqController.res?{
         didSet
         {
             self.goto()
@@ -38,10 +41,20 @@ class JobInfoController: UITableViewController {
     //我们需要在age属性发生变化后，更新一下nickName这个属性
         didSet
         {
-            activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()){
+                
+                self.tableView.reloadData()
+                 self.tableView.refreshFooter.endRefresh()
+                 self.tableView.refreshHeader.endRefresh()
+                if(self.pulltimes==0){
+                    self.addinfo=self.info
+                    //self.pulltimes=1
+                }
+
+            }
         }
     }
     
@@ -80,10 +93,19 @@ class JobInfoController: UITableViewController {
         }
     }
     
-    struct Link : JSONJoy {
+    struct Url : JSONJoy {
         var href:String?
         init(_ decoder: JSONDecoder) {
             href = decoder["href"].string
+        }
+    }
+    
+    struct Link : JSONJoy {
+        var prev:Url?
+        var next:Url?
+        init(_ decoder: JSONDecoder) {
+            prev = Url(decoder["prev"])
+            next = Url(decoder["next"])
         }
     }
     
@@ -119,6 +141,28 @@ class JobInfoController: UITableViewController {
         }
     }
     
+    var addinfo:Info?
+        {
+        //我们需要在age属性发生变化后，更新一下nickName这个属性
+        didSet
+        {
+            dispatch_async(dispatch_get_main_queue()){
+                if (self.pulltimes == 0){
+                    self.pulltimes=1
+                }else{
+                    for(var i=0;i<self.addinfo?.items.count;i++)
+                    {
+                        self.info?.items.append((self.addinfo?.items[i])!)
+                    }
+                }
+            }
+            
+        }
+    }
+    var pulltimes:Int=0
+    var allflag:Int=0
+    var prop:Int?
+    var zhi:Int?
    
     var alert:UIAlertController!
     override func viewDidLoad() {
@@ -126,14 +170,7 @@ class JobInfoController: UITableViewController {
         
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(image: UIImage(named: "发帖按钮.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("mine"))
-        //self.navigationItem.rightBarButtonItem?.tintColor=UIColor.redColor()
-//        self.JobInfoController.dataSource=self
-//        self.JobInfoController.delegate=self
-//        self.JobInfoController.registerClass(JobInfoTitleCell.self, forCellReuseIdentifier: "JobInfoTitleCell")
-//        self.JobInfoController.registerClass(JobInfoContentCell.self, forCellReuseIdentifier: "JobInfoContentCell")
-//        self.JobInfoController.allowsSelection=true
-//        self.JobInfoController.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
-//        self.JobInfoController.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+
     
         self.tableView.dataSource=self
         self.tableView.delegate=self
@@ -143,48 +180,111 @@ class JobInfoController: UITableViewController {
         self.tableView.allowsSelection=true
         self.tableView.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
         self.tableView.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        self.tableView.sectionFooterHeight=1
+        addtitle()
+        //求职信息
         
-        let reqAction=UIAlertAction(title: "我要求职", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoReq");
-            self.navigationController?.pushViewController(anotherView, animated: true)
-            //print("我要求职")
-        }
-        let myreqAction=UIAlertAction(title: "我的帖子", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoMy");
-            self.navigationController?.pushViewController(anotherView, animated: true)
-            //print("我要求职")
-        }
-        alert=UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(reqAction)
-        alert.addAction(myreqAction)
-        
-        
-        let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
-        view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        self.automaticallyAdjustsScrollViewInsets=false
+        addactivity()
+       addRefreshView()
+    }
+    
+    func addtitle(){
+        let jobInfo=UIButton(frame: CGRectMake(0, 0, 80, 50))
+        jobInfo.tag=1
+        jobInfo.addTarget(self, action:Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        let jobInfoIco=UIImageView(frame: CGRectMake(72, 22, 11, 6))
+        jobInfoIco.image=UIImage(named: "xiala.png")
+        let jobInfoLabel=UILabel(frame: CGRectMake(0, 0, 70,50))
+        jobInfoLabel.text="求职信息"
+        jobInfoLabel.textColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        jobInfoLabel.adjustsFontSizeToFitWidth=true
+        //        self.view.addSubview(jobInfo)
+        //        self.view.addSubview(jobInfoIco)
+        // self.navigationController?.navigationBar.center.x addSubview(jobInfo)
+        jobInfo.addSubview(jobInfoLabel)
+        jobInfo.addSubview(jobInfoIco)
+        self.navigationItem.titleView=jobInfo
 
+    }
+    
+    func addactivity(){  //第一步缓存
+        let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
+        view1.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        
         
         activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-       
-            activityIndicatorView.frame = CGRectMake(self.tableView.frame.size.width/2-100, -30, 200, 200)
-      
-            activityIndicatorView.hidesWhenStopped = true
-      
-            activityIndicatorView.color = UIColor.blackColor()
+        
+        activityIndicatorView.frame = CGRectMake(self.tableView.frame.size.width/2-100, -30, 200, 200)
+        
+        activityIndicatorView.hidesWhenStopped = true
+        
+        activityIndicatorView.color = UIColor.blackColor()
         view1.addSubview(activityIndicatorView)
         self.tableView.backgroundView=view1
-       activityIndicatorView.startAnimating()
-        //self.navigationItem.
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        activityIndicatorView.startAnimating()
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            self.connect()
+        if(allflag==0){
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                self.connect()
+            }
+        }else{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                self.connect1()
+            }
         }
-       
+
     }
+    
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.refreshData()
+        }
+        
+        self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
+            self.loadMoredata()
+        }
+    }
+    
+    func loadMoredata(){
+        if(self.addinfo?._meta.currentPage==self.addinfo?._meta.pageCount){
+            self.tableView.refreshFooter.loadMoreEnabled=false
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let opt=try HTTP.GET((self.addinfo?._links.next?.href)!)
+                
+                opt.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    //print("data is: \(response.data)") access the response of the data with response.data
+                    self.addinfo = JobInfoController.Info(JSONDecoder(response.data))
+                    print("content is: \(self.addinfo!._links)")
+                    
+                }
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
+    }
+    
+    func refreshData() {
+        self.pulltimes=0
+        self.tableView.refreshFooter.loadMoreEnabled=true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            if(self.allflag==0){
+            self.connect()
+            }else{
+                self.connect1()
+            }
+        }
+    }
+
+    
     func connect(){
         print("ccccc")
         do {
@@ -205,6 +305,54 @@ class JobInfoController: UITableViewController {
             print("got an error creating the request: \(error)")
         }
 
+    }
+    
+    func connect1(){
+        print("返回来了")
+        print(allflag)
+        do {
+            //let params:Dictionary<String,AnyObject?>=["jobproperty":self.prop,"professionid":self.zhi]
+            var jobproper:String
+            if (self.prop==nil){
+                jobproper=""
+            }else{
+                jobproper=String(self.prop)
+            }
+            var profession:String
+            if (self.zhi==nil){
+                profession=""
+            }else{
+                profession=String(self.zhi)
+            }
+            print("jobproperty")
+            print(jobproper)
+            print("profession")
+            print(profession)
+            let opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search",parameters: ["jobproperty":jobproper,"professionid":profession])
+            
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                //print("data is: \(response.data)") access the response of the data with response.data
+                self.info = Info(JSONDecoder(response.data))
+              //  print("content is: \(self.info!.items[0].content)")
+                
+            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+        
+    }
+
+    
+    override func viewWillAppear(animated: Bool){
+        self.info=nil
+        self.addinfo=nil
+        addactivity()
+        print("appesr")
     }
 
     override func didReceiveMemoryWarning() {
@@ -230,7 +378,7 @@ class JobInfoController: UITableViewController {
         
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 7
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.row==0){
@@ -259,10 +407,10 @@ class JobInfoController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("JobInfoContentCell", forIndexPath: indexPath) as! JobInfoContentCell
         cell.title.text=self.info?.items[indexPath.section].title
         
-        
-        let deg:String="学历："+"本科\n"
-        let work:String="参加工作时间："+"2013-07\n"
-        let sts:String="目前状况："+(self.info?.items[indexPath.section].status)!
+        let degnum=Int((self.info?.items[indexPath.section].degree)!)
+        let deg:String="学历："+self.deg[degnum!]+"\n"
+        let work:String="参加工作时间："+(self.info?.items[indexPath.section].work_at)!
+        let sts:String="\n目前状况："+(self.info?.items[indexPath.section].status)!
         let cont:String="\n留言："+(self.info?.items[indexPath.section].content)!
         cell.content.text=deg+work+sts+cont
         return cell
@@ -285,8 +433,9 @@ class JobInfoController: UITableViewController {
             jobp="兼职,"
         }
         
-        let deg:String="本科,"
-        let work:String="2013-07,"
+        let degnum=Int((self.info?.items[indexPath.section].degree)!)
+        let deg:String=self.deg[degnum!]+","
+        let work:String=(self.info?.items[indexPath.section].work_at)!+","
         let sts:String=(self.info?.items[indexPath.section].status)!
         let phone:String=","+(self.info?.items[indexPath.section].phone)!
         let cont:String=","+(self.info?.items[indexPath.section].content)!
@@ -297,27 +446,46 @@ class JobInfoController: UITableViewController {
         
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
+    
+    func ButtonAction(sender:UIButton){
+        switch sender.tag {
+        case 1:
+            let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let anotherView=myStoryBoard.instantiateViewControllerWithIdentifier("JobInfoSearch") as! JobsearchViewController
+            
+            //anotherView.title="发表求职"
+           // self.navigationController?.modalPresentationStyle=UIModalPresentationStyle.FormSheet
+            anotherView.Jobinfo=self
+            self.navigationController?.pushViewController(anotherView, animated: true)
+            
+               default:
+            break
+        }
+    }
+
 
     func mine(){
         print("hello")
         //self.presentViewController(alert, animated: true, completion: nil)
-        let my:JobMenuViewController=JobMenuViewController()
-        
-        let pop=WEPopoverController(contentViewController: my)
+        let my=JobMenuViewController()
+        let pop=WEPopoverController.init(contentViewController: my)
         self.popover=pop
         my.popover=self.popover
         my.Job=self
-        self.popover.popoverContentSize=CGSizeMake(100,85)
+        //self.popover.popoverContentSize=CGSizeMake(100,85)
+        my.preferredContentSize=CGSizeMake(100,85)
         self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
+        //self.popover.presentPopoverFromRect(CGRectMake(0, 0, 30, 20), inView: nil, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
     }
     
     func goto(){
         if(flag==0){
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoReq");
+            let anotherView=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoReq") as! JobInfoReqController
             anotherView.title="发表求职"
+            anotherView.Jobinfo=self
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else{
-            let anotherView:JobInfoMyController=JobInfoMyController()
+            let anotherView=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoMy")
             anotherView.title="我的帖子"
             self.navigationController?.pushViewController(anotherView, animated: true)
         }
@@ -358,15 +526,19 @@ class JobInfoController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if(segue.identifier=="JobInfoSearch"){
+            print("转场")
+        }
     }
-    */
+
 
 }
 

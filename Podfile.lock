@@ -1,16 +1,50 @@
 PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - DKImagePickerController (2.4.1):
+    - DKImagePickerController/Camera (= 2.4.1)
+  - DKImagePickerController/Camera (2.4.1)
+  - HappyDNS (0.2.3)
   - JSONJoy-Swift (1.0.0)
+  - Qiniu (7.0.16):
+    - AFNetworking (~> 2.0)
+    - HappyDNS (~> 0.2)
   - SwiftHTTP (1.0.2)
-  - WEPopover (1.0.0)
+  - WEPopover (2.1.3)
 
 DEPENDENCIES:
+  - DKImagePickerController
   - JSONJoy-Swift (~> 1.0.0)
+  - Qiniu (~> 7.0)
   - SwiftHTTP (~> 1.0.0)
-  - WEPopover
+  - WEPopover (~> 2.1.0)
 
 SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  DKImagePickerController: f14f320fd164ca45ff95aecc943c75bc5323d518
+  HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   JSONJoy-Swift: 3e8129c282470614da69759208e9c923732f6cb4
+  Qiniu: 51a8702cddc02b50867e10cef99291b9a8a006b1
   SwiftHTTP: 6d8ca031a9ce613a01e8f18b497503887b0b50c0
-  WEPopover: 615c27637d1763731cf7c51a9385ff1f25ff4816
+  WEPopover: 6ae837be6becaf3408f4c0f228c2f7e17ff08306
 
 COCOAPODS: 0.39.0
