@@ -1,14 +1,14 @@
 //
-//  grabcorns_getthree.swift
+//  grabcommodity_getthree.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/11/17.
+//  Created by dawei on 15/11/19.
 //
 //
 
 import Foundation
 import JSONJoy
-class Grabcorns_getthree_one {
+class GrabCommodity_getthree_one {
     var id:Int!
     var picture:String!
     var title:String!
@@ -47,14 +47,31 @@ class Grabcorns_getthree_one {
     }
     
 }
-class Grabcorns_getthree {
-    var items:Array<Grabcorns_getthree_one>!
+class GrabCommodity_getthree {
+    var items:Array<GrabCommodity_getthree_one>!
     init(_ decoder:JSONDecoder){
         if let it=decoder.array{
-            items=Array<Grabcorns_getthree_one>()
+            items=Array<GrabCommodity_getthree_one>()
             for itemDecoder in it{
-                items.append(Grabcorns_getthree_one(itemDecoder))
+                items.append(GrabCommodity_getthree_one(itemDecoder))
             }
         }
+    }
+}
+class GrabCommodityList {
+    var items: Array<GrabCommodity_getthree_one>!
+    var _links : Link!
+    var _meta : Meta!
+    init(_ decoder: JSONDecoder) {
+        //we check if the array is valid then alloc our array and loop through it, creating the new address objects.
+        if let it = decoder["items"].array {
+            items = Array<GrabCommodity_getthree_one>()
+            for itemDecoder in it {
+                items.append(GrabCommodity_getthree_one(itemDecoder))
+            }
+        }
+        
+        _links = Link(decoder["_links"])
+        _meta = Meta(decoder["_meta"])
     }
 }

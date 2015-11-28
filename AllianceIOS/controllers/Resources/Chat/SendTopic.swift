@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
-class SendTopic: UITableViewController {
+class SendTopic: UITableViewController ,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     @IBOutlet var ST: UITableView!
     override func viewDidLoad() {
@@ -24,10 +26,34 @@ class SendTopic: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     func CompletePost(){
-        //let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("Speciality");
-        //self.navigationController?.pushViewController(anotherView, animated: true)
+        print("聊吧-发表话题")
+        do {
+            let title=self.view.viewWithTag(1) as! UITextField
+            let content=self.view.viewWithTag(2) as! UITextField
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"title":title.text!,"content":content.text!,"pictures":""]
+            let new=try HTTP.POST(URL+"/tbmessages/send", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                let flag = Flag(JSONDecoder(response.data))
+                print(flag.flag,flag.msg)
+                if (flag.flag==1){
+                    print("OK")
+                    
+                }else{
+                    print("Error")
+                }
+            }
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
         self.navigationController?.popViewControllerAnimated(true)
-        print("发表话题成功")
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,11 +101,13 @@ class SendTopic: UITableViewController {
         let cell=UITableViewCell()
         if(indexPath.section==0){
             let title=UITextField(frame: CGRectMake(0,10,self.view.frame.width,25))
-            title.text="输入话题标题"
+            title.placeholder="请输入标题"
+            title.tag=1
             title.font=UIFont.systemFontOfSize(18)
             cell.addSubview(title)
         }else if(indexPath.section==1){
             let content=UITextField(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width/3))
+            content.tag=2
             cell.addSubview(content)
         }else{
             let upload=UIButton(frame: CGRectMake(10,40,100,30))
@@ -88,11 +116,40 @@ class SendTopic: UITableViewController {
             upload.clipsToBounds=true
             upload.layer.cornerRadius=3
             upload.setTitle("上传相片", forState: UIControlState.Normal)
+            upload.addTarget(self, action: Selector("UploadImage"), forControlEvents: UIControlEvents.TouchUpInside)
             upload.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
             upload.titleLabel?.font=UIFont.systemFontOfSize(18)
             cell.addSubview(upload)
         }
         return cell
+    }
+    func UploadImage(){
+        let pickerImage = UIImagePickerController()
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            pickerImage.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            pickerImage.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(pickerImage.sourceType)!
+        }
+        pickerImage.delegate = self
+        pickerImage.allowsEditing = true
+        self.presentViewController(pickerImage, animated: true, completion: nil)
+    }
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]){
+//        print("choose--------->>")
+//        print(info)
+//        let img = info[UIImagePickerControllerEditedImage] as! UIImage
+//        //imgView.image = img
+//        picker.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("choose--------->>")
+        print(info)
+        let img = info[UIImagePickerControllerEditedImage] as! UIImage
+        //imgView.image = img
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController){
+        print("cancel--------->>")
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*

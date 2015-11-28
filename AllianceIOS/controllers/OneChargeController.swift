@@ -14,6 +14,7 @@ class OneChargeController: UITableViewController{
     
     @IBOutlet var OneChargeController: UITableView!
     var activityIndicatorView: UIActivityIndicatorView!
+    var OneCharge:GrabCommodity_getthree?
     var TenCharge:Grabcorns_getthree?
         {
         didSet{
@@ -45,10 +46,19 @@ class OneChargeController: UITableViewController{
         }
     }
     func connect(){
-        print("ccccc")
+        print("一元夺宝主界面")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/grabcorns/getthree")
-            opt.start { response in
+            let grabcommodity=try HTTP.GET(URL+"/grabcommodities/getthree")
+            grabcommodity.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.OneCharge = GrabCommodity_getthree(JSONDecoder(response.data))
+            }
+            let grabcorns=try HTTP.GET(URL+"/grabcorns/getthree")
+            grabcorns.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
                     return //also notify app of failure as needed
@@ -56,6 +66,7 @@ class OneChargeController: UITableViewController{
                 print("opt finished: \(response.description)")
                 self.TenCharge = Grabcorns_getthree(JSONDecoder(response.data))
             }
+            
         } catch let error {
             print("got an error creating the request: \(error)")
         }
@@ -85,7 +96,7 @@ class OneChargeController: UITableViewController{
         case 0:
             return 100
         case 3:
-            return self.OneChargeController.frame.width*1.5
+            return 120
         default:
             return 120
         }
@@ -194,7 +205,10 @@ class OneChargeController: UITableViewController{
             //pic.backgroundColor=UIColor.blackColor()
             //print(TenCharge!.items[i].picture)
             //pic.image=UIImage(named: TenCharge!.items[i].picture)
-            pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!)!)
+            //pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!)!)
+            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
+                pic.image=UIImage(data: Ndata)
+            }
             let money=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/10, self.view.frame.width/9+30, self.view.frame.width/9+30, 20))
             money.text=TenCharge?.items[i].title
             money.font=UIFont.systemFontOfSize(12)
@@ -261,7 +275,6 @@ class OneChargeController: UITableViewController{
     }
     func OnechargeCell()->UITableViewCell{
         let cell=UITableViewCell()
-        let halfwidth=Float(self.view.frame.width)/2
         let title=UILabel(frame: CGRectMake(10,0,70,30))
         title.text="一元夺宝"
         title.font=UIFont.systemFontOfSize(14)
@@ -272,41 +285,44 @@ class OneChargeController: UITableViewController{
         more.titleLabel?.font=UIFont.systemFontOfSize(12)
         more.setTitleColor(UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.77), forState: UIControlState.Normal)
         
-        for i in 0...5{
-            let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth)))
+        for i in 0...2{
+            let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
             btn.tag=1006+i
             btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
-            let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
-            pic.image=UIImage(named: "电饭煲.jpg")
-            let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
-            name.text="不锈钢保温密封盒"
-            name.font=UIFont.systemFontOfSize(15)
-            let progress=UIProgressView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+60, CGFloat(halfwidth)-15, 10))
-            progress.progress=Float(Int(arc4random())%101)/100.0
+            let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/12,15, self.view.frame.width/6, self.view.frame.width/6))
+            //pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!)!)
+            if let Ndata=NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!){
+                pic.image=UIImage(data: Ndata)
+            }
+            let name=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/10, self.view.frame.width/9+30, self.view.frame.width/9+30, 20))
+            name.text=OneCharge?.items[i].title
+            name.font=UIFont.systemFontOfSize(12)
+            let progress=UIProgressView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15,self.view.frame.width/9+65 , self.view.frame.width/3-30, 15))
+            progress.progress=1-Float(OneCharge!.items[i].remain)/Float(OneCharge!.items[i].needed)
             progress.progressTintColor=UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1.0)
             progress.transform=CGAffineTransformMakeScale(1.0, 3.0)
             progress.trackTintColor=UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
             progress.clipsToBounds=true
             progress.layer.cornerRadius=2
-            let process=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+40, CGFloat(halfwidth)-15, 20))
-            process.font=UIFont.systemFontOfSize(11)
+            let process=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+15, self.view.frame.width/9+50, self.view.frame.width/3-15, 10))
+            process.font=UIFont.systemFontOfSize(10)
             process.text="开奖进度       "+String(Int(progress.progress*100))+"%"
             process.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
-            let total=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+65, CGFloat(halfwidth)-30, 20))
-            total.text="总需：60人次         "
-            total.font=UIFont.systemFontOfSize(11)
-            total.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
-            let remain=UILabel(frame: CGRectMake(CGFloat(Float(i%2+1)*halfwidth)-40, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+65, 40, 20))
-            remain.text="剩余"+String(arc4random()%100)
-            remain.font=UIFont.systemFontOfSize(11)
-            remain.textColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
+//            let total=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+65, CGFloat(halfwidth)-30, 20))
+//            total.text="总需：60人次         "
+//            total.font=UIFont.systemFontOfSize(11)
+//            total.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+//            let remain=UILabel(frame: CGRectMake(CGFloat(Float(i%2+1)*halfwidth)-40, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+65, 40, 20))
+//            remain.text="剩余"+String(arc4random()%100)
+//            remain.font=UIFont.systemFontOfSize(11)
+            //remain.textColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
             cell.addSubview(btn)
             cell.addSubview(pic)
             cell.addSubview(name)
-            cell.addSubview(total)
+            //cell.addSubview(total)
             cell.addSubview(progress)
             cell.addSubview(process)
-            cell.addSubview(remain)
+            //cell.addSubview(remain)
         }
         cell.addSubview(title)
         cell.addSubview(more)
@@ -332,7 +348,8 @@ class OneChargeController: UITableViewController{
             //let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeDetail");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else if(sender.tag>=1006){
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeDetail");
+            let anotherView=OneChargeDetailController()
+            anotherView.GrabCommodityId=(OneCharge?.items[sender.tag-1006].id)!
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else{
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestDetail");

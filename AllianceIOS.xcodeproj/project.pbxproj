@@ -353,6 +353,7 @@
 		03651D111BEF46150019CDBA /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D011BEF46150019CDBA /* tabbarBackground@2x.png */; };
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; };
+		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; };
 		037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -377,6 +378,7 @@
 		D90544141BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png in Resources */ = {isa = PBXBuildFile; fileRef = D90544131BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png */; };
 		D905441A1BE5F14500A1660F /* HobbyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544191BE5F14500A1660F /* HobbyController.swift */; };
 		D905441C1BE5F40E00A1660F /* HobbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905441B1BE5F40E00A1660F /* HobbyCell.swift */; };
+		D90720801C04938500B85EE7 /* PictureAndWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907207F1C04938500B85EE7 /* PictureAndWord.swift */; };
 		D915CA641BE5FC62004EBE26 /* HobbyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA631BE5FC62004EBE26 /* HobbyDetailController.swift */; };
 		D915CA661BE5FC7C004EBE26 /* HobbyReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA651BE5FC7C004EBE26 /* HobbyReqController.swift */; };
 		D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA671BE5FC94004EBE26 /* HobbyMyController.swift */; };
@@ -706,6 +708,9 @@
 		D9987CEE1BEEFB03005480C7 /* ShippingAddressAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */; };
 		D9987CF01BEEFCC7005480C7 /* ShippingAddressDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */; };
 		D9987CF21BEF2BBA005480C7 /* ChargeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */; };
+		D99C92111BFD7F5700B5F5A6 /* grabcommodity_getthree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C92101BFD7F5700B5F5A6 /* grabcommodity_getthree.swift */; };
+		D99C92131BFDCED200B5F5A6 /* LiaoBa.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C92121BFDCED200B5F5A6 /* LiaoBa.swift */; };
+		D99C92151BFEBB3600B5F5A6 /* LiaoBaUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C92141BFEBB3600B5F5A6 /* LiaoBaUser.swift */; };
 		D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B190191BACE2050077EA76 /* login_bg.jpg */; };
 		D9B191041BACE8B60077EA76 /* loadscreen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191021BACE8B60077EA76 /* loadscreen.jpeg */; };
 		D9B191051BACE8B60077EA76 /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B191031BACE8B60077EA76 /* login.jpg */; };
@@ -1261,7 +1266,6 @@
 		03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LDRefresh.m"; sourceTree = "<group>"; };
 		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.release.xcconfig"; sourceTree = "<group>"; };
-		B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllianceIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoReqController.swift; path = Resources/Near/JobInfoReqController.swift; sourceTree = "<group>"; };
 		D90544031BE5A8E000A1660F /* JobInfoMyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoMyController.swift; path = Resources/Near/JobInfoMyController.swift; sourceTree = "<group>"; };
 		D90544051BE5AD5F00A1660F /* SpecialityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpecialityController.swift; path = Resources/Near/SpecialityController.swift; sourceTree = "<group>"; };
@@ -1274,6 +1278,7 @@
 		D90544131BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2015-11-01 下午12.39.05.png"; sourceTree = "<group>"; };
 		D90544191BE5F14500A1660F /* HobbyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyController.swift; path = Resources/Near/HobbyController.swift; sourceTree = "<group>"; };
 		D905441B1BE5F40E00A1660F /* HobbyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyCell.swift; sourceTree = "<group>"; };
+		D907207F1C04938500B85EE7 /* PictureAndWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureAndWord.swift; path = Resources/OneCharge/PictureAndWord.swift; sourceTree = "<group>"; };
 		D915CA631BE5FC62004EBE26 /* HobbyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyDetailController.swift; path = Resources/Near/HobbyDetailController.swift; sourceTree = "<group>"; };
 		D915CA651BE5FC7C004EBE26 /* HobbyReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyReqController.swift; path = Resources/Near/HobbyReqController.swift; sourceTree = "<group>"; };
 		D915CA671BE5FC94004EBE26 /* HobbyMyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyMyController.swift; path = Resources/Near/HobbyMyController.swift; sourceTree = "<group>"; };
@@ -1607,6 +1612,9 @@
 		D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippingAddressAdd.swift; path = Me/ShippingAddressAdd.swift; sourceTree = "<group>"; };
 		D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippingAddressDetail.swift; path = Me/ShippingAddressDetail.swift; sourceTree = "<group>"; };
 		D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChargeRecord.swift; path = Resources/OneCharge/ChargeRecord.swift; sourceTree = "<group>"; };
+		D99C92101BFD7F5700B5F5A6 /* grabcommodity_getthree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = grabcommodity_getthree.swift; path = request/grabcommodity_getthree.swift; sourceTree = "<group>"; };
+		D99C92121BFDCED200B5F5A6 /* LiaoBa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiaoBa.swift; path = request/LiaoBa.swift; sourceTree = "<group>"; };
+		D99C92141BFEBB3600B5F5A6 /* LiaoBaUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiaoBaUser.swift; path = request/LiaoBaUser.swift; sourceTree = "<group>"; };
 		D9B190191BACE2050077EA76 /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		D9B191021BACE8B60077EA76 /* loadscreen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loadscreen.jpeg; sourceTree = "<group>"; };
 		D9B191031BACE8B60077EA76 /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login.jpg; sourceTree = "<group>"; };
@@ -1775,7 +1783,6 @@
 				D9B196301BAE717E0077EA76 /* libsqlite3.tbd in Frameworks */,
 				D9B1962E1BAE71600077EA76 /* CFNetwork.framework in Frameworks */,
 				03651A6C1BEF3B1A0019CDBA /* libopencore-amrwb.a in Frameworks */,
-				7A1910C05CEE8E35310F5184 /* Pods_AllianceIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3174,6 +3181,7 @@
 				D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */,
 				D977BD901BEB8350002CB613 /* AgeJieXiao.swift */,
 				D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */,
+				D907207F1C04938500B85EE7 /* PictureAndWord.swift */,
 			);
 			name = OneCharge;
 			sourceTree = "<group>";
@@ -3297,6 +3305,8 @@
 			isa = PBXGroup;
 			children = (
 				03A013641C093EC400AE99FD /* LDRefresh */,
+				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
+				03CAF1CF1BFF235E00C7A03F /* LDRefresh */,
 				D9ECD0041BFB035D00B41F8A /* request */,
 				D99506601BB3817D00CA9B2E /* ChatCell.swift */,
 				D99506611BB3817D00CA9B2E /* FriendCell.swift */,
@@ -3655,6 +3665,9 @@
 				D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */,
 				D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */,
 				D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */,
+				D99C92101BFD7F5700B5F5A6 /* grabcommodity_getthree.swift */,
+				D99C92121BFDCED200B5F5A6 /* LiaoBa.swift */,
+				D99C92141BFEBB3600B5F5A6 /* LiaoBaUser.swift */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -4358,6 +4371,7 @@
 				03651B141BEF3B400019CDBA /* DXRecordView.m in Sources */,
 				D90544101BE5CC0D00A1660F /* SpecialityReqController.swift in Sources */,
 				D9987CF01BEEFCC7005480C7 /* ShippingAddressDetail.swift in Sources */,
+				D90720801C04938500B85EE7 /* PictureAndWord.swift in Sources */,
 				D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */,
 				03651A341BEF3B1A0019CDBA /* Emoji.m in Sources */,
 				03651A391BEF3B1A0019CDBA /* MWGridCell.m in Sources */,
@@ -4369,6 +4383,7 @@
 				03651A411BEF3B1A0019CDBA /* EMSDImageCache.m in Sources */,
 				03651A3D1BEF3B1A0019CDBA /* MWTapDetectingImageView.m in Sources */,
 				D9864C761BE82C4E0001F178 /* OneChargeListController.swift in Sources */,
+				D99C92151BFEBB3600B5F5A6 /* LiaoBaUser.swift in Sources */,
 				03651A331BEF3B1A0019CDBA /* EMAlertView.m in Sources */,
 				03651B051BEF3B400019CDBA /* AppDelegateoc+Parse.m in Sources */,
 				03651B4F1BEF3B4B0019CDBA /* EMTextView.m in Sources */,
@@ -4390,6 +4405,7 @@
 				03651A3E1BEF3B1A0019CDBA /* MWTapDetectingView.m in Sources */,
 				D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */,
 				D96E76A91BF9B8320062BAD0 /* MyZan.swift in Sources */,
+				D99C92111BFD7F5700B5F5A6 /* grabcommodity_getthree.swift in Sources */,
 				03651B0A1BEF3B400019CDBA /* ChatListViewController.m in Sources */,
 				D995065B1BB3817300CA9B2E /* FriendController.swift in Sources */,
 				03651A3A1BEF3B1A0019CDBA /* MWGridViewController.m in Sources */,
@@ -4466,6 +4482,7 @@
 				03651B2D1BEF3B400019CDBA /* AddFriendCell.m in Sources */,
 				03651B1E1BEF3B400019CDBA /* MessageModel.m in Sources */,
 				D995065A1BB3817300CA9B2E /* ChatController.swift in Sources */,
+				D99C92131BFDCED200B5F5A6 /* LiaoBa.swift in Sources */,
 				D943B15D1BE476BC0058BA1C /* JobInfoContentCell.swift in Sources */,
 				03651B151BEF3B400019CDBA /* EMChatAudioBubbleView.m in Sources */,
 				D977BD911BEB8350002CB613 /* AgeJieXiao.swift in Sources */,

@@ -174,21 +174,25 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
         let cell=UITableViewCell()
         //轮播图片
         sv.frame=CGRectMake(0, 0, self.view.frame.width, self.view.frame.width/4*3)
-        pg.frame=CGRectMake((self.view.frame.width-60)/2, self.view.frame.width/4*3-30, 60, 5)
-        let picture=[TenChargeView!.detail.picture1,TenChargeView!.detail.picture2,TenChargeView!.detail.picture3,TenChargeView!.detail.picture4,TenChargeView!.detail.picture5,TenChargeView!.detail.picture6]
-        for i in 0...5{
+        //pg.frame=CGRectMake((self.view.frame.width-60)/2, self.view.frame.width/4*3-30, 60, 5)
+        let picture=TenChargeView!.detail.pictures.componentsSeparatedByString(" ")
+        pg.frame=CGRectMake((self.view.frame.width-CGFloat(10*picture.count))/2, self.view.frame.width/4*3-30, CGFloat(10*picture.count), 5)
+        for i in 0...(picture.count-1){
             let x = CGFloat(i) * self.view.frame.width
             let imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, self.view.frame.width/4*3))
-            imageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: picture[i])!)!)
+            //imageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: picture[i])!)!)
+            if let Ndata=NSData(contentsOfURL: NSURL(string: picture[i])!){
+                imageView.image = UIImage(data: Ndata)
+            }
             sv.pagingEnabled = true
             sv.showsHorizontalScrollIndicator = false
             sv.scrollEnabled = true
             sv.addSubview(imageView)
             sv.delegate = self
         }
-        sv.contentSize = CGSizeMake((self.view.frame.width * 6), self.view.frame.width/4*3)
+        sv.contentSize = CGSizeMake(self.view.frame.width * CGFloat(picture.count), self.view.frame.width/4*3)
         //sv.setContentOffset(CGPointMake(0, 0), animated: true)
-        pg.numberOfPages = 6
+        pg.numberOfPages = picture.count
         pg.currentPageIndicatorTintColor = UIColor.redColor()
         pg.pageIndicatorTintColor = UIColor.whiteColor()
         addTimer()
@@ -389,7 +393,8 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     }
     func nextImage() {
         var pageIndex = pg.currentPage
-        if pageIndex == 5 {
+        let picture=TenChargeView!.detail.pictures.componentsSeparatedByString(" ")
+        if pageIndex == picture.count-1 {
             pageIndex = 0
         } else {
             pageIndex++
