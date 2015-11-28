@@ -4,12 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DKImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSONJoy-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-AllianceIOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>20C3459E6F74AA73AB0ABFCD45ACCD23</key>
+		<key>2DB6C2CD7957113C2BEC554CE594753F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48536075C0C19217FBD361132D0C890A</key>
+		<key>2EFDF0D568263D6A9BF0A4F9CBEB716C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4878C70B21CA37D7CB8A476BF986741B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>671D5AEB5DD6B90DE53CCB399354E82A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A9FAB85C08D869C631ECBE6F1587896</key>
+		<key>8901076E04813CD764BEDC3828A6413C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1F37330055A1DD0135E20245C99063C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B634C30B79EDFD6E722F7731F1F96EA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -16,7 +16,9 @@
   */
 @protocol WETouchableViewDelegate<NSObject>
 
+@optional
 - (void)viewWasTouched:(WETouchableView *)view;
+- (CGRect)fillRectForView:(WETouchableView *)view;
 
 @end
 
@@ -26,7 +28,10 @@
 @interface WETouchableView : UIView
 
 @property (nonatomic, assign) BOOL touchForwardingDisabled;
-@property (nonatomic, assign) id <WETouchableViewDelegate> delegate;
+@property (nonatomic, weak) id <WETouchableViewDelegate> delegate;
 @property (nonatomic, copy) NSArray *passthroughViews;
+@property (nonatomic, strong) UIView *fillView;
+
+- (void)setFillColor:(UIColor *)fillColor;
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034133721C00C83F00963224 /* xialaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133711C00C83F00963224 /* xialaf.png */; settings = {ASSET_TAGS = (); }; };
+		034133741C00C85700963224 /* xiala.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133731C00C85700963224 /* xiala.png */; settings = {ASSET_TAGS = (); }; };
+		034133761C00D07600963224 /* JobsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034133751C00D07600963224 /* JobsearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		03651A2C1BEF3B1A0019CDBA /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519931BEF3B1A0019CDBA /* EMAudioPlayerUtil.m */; };
 		03651A2D1BEF3B1A0019CDBA /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519951BEF3B1A0019CDBA /* EMAudioRecorderUtil.m */; };
 		03651A2E1BEF3B1A0019CDBA /* EMCDDeviceManager+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519971BEF3B1A0019CDBA /* EMCDDeviceManager+Media.m */; };
@@ -350,6 +354,18 @@
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; };
 		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; };
+		037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; settings = {ASSET_TAGS = (); }; };
+		03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		03842DFD1BFDFD2100EFFE81 /* JobZhiyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		03846F841C08B0A200225BDA /* Qiniutoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03846F831C08B0A200225BDA /* Qiniutoken.swift */; settings = {ASSET_TAGS = (); }; };
+		03CAF1D81BFF235E00C7A03F /* LDRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CAF1D11BFF235E00C7A03F /* LDRefreshFooterView.m */; settings = {ASSET_TAGS = (); }; };
+		03CAF1D91BFF235E00C7A03F /* LDRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CAF1D31BFF235E00C7A03F /* LDRefreshHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		03CAF1DA1BFF235E00C7A03F /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CAF1D41BFF235E00C7A03F /* tableview_pull_refresh@2x.png */; settings = {ASSET_TAGS = (); }; };
+		03CAF1DB1BFF235E00C7A03F /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CAF1D51BFF235E00C7A03F /* tableview_pull_refresh@3x.png */; settings = {ASSET_TAGS = (); }; };
+		03CAF1DC1BFF235E00C7A03F /* UIScrollView+LDRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CAF1D71BFF235E00C7A03F /* UIScrollView+LDRefresh.m */; settings = {ASSET_TAGS = (); }; };
+		7A1910C05CEE8E35310F5184 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */; };
 		D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */; };
 		D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544031BE5A8E000A1660F /* JobInfoMyController.swift */; };
 		D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544051BE5AD5F00A1660F /* SpecialityController.swift */; };
@@ -744,6 +760,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034133711C00C83F00963224 /* xialaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xialaf.png; sourceTree = "<group>"; };
+		034133731C00C85700963224 /* xiala.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiala.png; sourceTree = "<group>"; };
+		034133751C00D07600963224 /* JobsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsearchViewController.swift; sourceTree = "<group>"; };
+		0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialityMenuViewController.swift; sourceTree = "<group>"; };
 		0365198E1BEF3B1A0019CDBA /* EMCDDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerDelegate.h; sourceTree = "<group>"; };
 		0365198F1BEF3B1A0019CDBA /* EMCDDeviceManagerProximitySensorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerProximitySensorDelegate.h; sourceTree = "<group>"; };
 		036519911BEF3B1A0019CDBA /* DemoErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoErrorCode.h; sourceTree = "<group>"; };
@@ -1230,7 +1250,20 @@
 		03651D011BEF46150019CDBA /* tabbarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarBackground@2x.png"; sourceTree = "<group>"; };
 		03651D021BEF46150019CDBA /* tabbarSelectBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarSelectBg.png; sourceTree = "<group>"; };
 		03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarSelectBg@2x.png"; sourceTree = "<group>"; };
+		037881101BFCDA3A000F3A87 /* JobproViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobproViewController.swift; path = job/JobproViewController.swift; sourceTree = "<group>"; };
 		037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMenuViewController.swift; sourceTree = "<group>"; };
+		037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialityKindController.swift; sourceTree = "<group>"; };
+		03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobdegViewController.swift; sourceTree = "<group>"; };
+		03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobZhiyViewController.swift; sourceTree = "<group>"; };
+		03846F831C08B0A200225BDA /* Qiniutoken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qiniutoken.swift; sourceTree = "<group>"; };
+		03CAF1D01BFF235E00C7A03F /* LDRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDRefreshFooterView.h; sourceTree = "<group>"; };
+		03CAF1D11BFF235E00C7A03F /* LDRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDRefreshFooterView.m; sourceTree = "<group>"; };
+		03CAF1D21BFF235E00C7A03F /* LDRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDRefreshHeaderView.h; sourceTree = "<group>"; };
+		03CAF1D31BFF235E00C7A03F /* LDRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDRefreshHeaderView.m; sourceTree = "<group>"; };
+		03CAF1D41BFF235E00C7A03F /* tableview_pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@2x.png"; sourceTree = "<group>"; };
+		03CAF1D51BFF235E00C7A03F /* tableview_pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@3x.png"; sourceTree = "<group>"; };
+		03CAF1D61BFF235E00C7A03F /* UIScrollView+LDRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LDRefresh.h"; sourceTree = "<group>"; };
+		03CAF1D71BFF235E00C7A03F /* UIScrollView+LDRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LDRefresh.m"; sourceTree = "<group>"; };
 		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.release.xcconfig"; sourceTree = "<group>"; };
 		D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoReqController.swift; path = Resources/Near/JobInfoReqController.swift; sourceTree = "<group>"; };
@@ -1719,6 +1752,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03651B791BEF406B0019CDBA /* ImageIO.framework in Frameworks */,
 				03651B8D1BEF41500019CDBA /* UIKit.framework in Frameworks */,
 				03651B8B1BEF41420019CDBA /* CoreGraphics.framework in Frameworks */,
 				03651B891BEF41360019CDBA /* Foundation.framework in Frameworks */,
@@ -1731,7 +1765,6 @@
 				03651B7F1BEF40C00019CDBA /* SystemConfiguration.framework in Frameworks */,
 				03651B7D1BEF40860019CDBA /* CoreLocation.framework in Frameworks */,
 				03651B7B1BEF40780019CDBA /* MapKit.framework in Frameworks */,
-				03651B791BEF406B0019CDBA /* ImageIO.framework in Frameworks */,
 				03651B771BEF405F0019CDBA /* CoreText.framework in Frameworks */,
 				03651B751BEF404E0019CDBA /* QuartzCore.framework in Frameworks */,
 				03651B731BEF40400019CDBA /* CoreData.framework in Frameworks */,
@@ -1756,6 +1789,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0357FBE51C034A5D009E9EDB /* job */ = {
+			isa = PBXGroup;
+			children = (
+				D943B15A1BE462250058BA1C /* JobInfoTitleCell.swift */,
+				D943B15C1BE476BC0058BA1C /* JobInfoContentCell.swift */,
+				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
+				037881101BFCDA3A000F3A87 /* JobproViewController.swift */,
+				03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */,
+				03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */,
+				034133751C00D07600963224 /* JobsearchViewController.swift */,
+			);
+			name = job;
+			sourceTree = "<group>";
+		};
+		0357FBE61C034A94009E9EDB /* speciality */ = {
+			isa = PBXGroup;
+			children = (
+				D90544071BE5AE6C00A1660F /* SpecialityTitleCell.swift */,
+				D90544091BE5AE8700A1660F /* SpecialityContentCell.swift */,
+				0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */,
+				037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */,
+			);
+			name = speciality;
+			sourceTree = "<group>";
+		};
 		0365198B1BEF3B1A0019CDBA /* 3rdparty */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,6 +2785,22 @@
 			path = tabbar;
 			sourceTree = "<group>";
 		};
+		03CAF1CF1BFF235E00C7A03F /* LDRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				03CAF1D01BFF235E00C7A03F /* LDRefreshFooterView.h */,
+				03CAF1D11BFF235E00C7A03F /* LDRefreshFooterView.m */,
+				03CAF1D21BFF235E00C7A03F /* LDRefreshHeaderView.h */,
+				03CAF1D31BFF235E00C7A03F /* LDRefreshHeaderView.m */,
+				03CAF1D41BFF235E00C7A03F /* tableview_pull_refresh@2x.png */,
+				03CAF1D51BFF235E00C7A03F /* tableview_pull_refresh@3x.png */,
+				03CAF1D61BFF235E00C7A03F /* UIScrollView+LDRefresh.h */,
+				03CAF1D71BFF235E00C7A03F /* UIScrollView+LDRefresh.m */,
+			);
+			name = LDRefresh;
+			path = "../../../../../Downloads/LDRefresh-master/LDRefresh/LDRefresh";
+			sourceTree = "<group>";
+		};
 		29E33117E52AA18CD79CCE90 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2739,6 +2813,7 @@
 		3E84639E6A9131028A21DEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B4EFCBA5DC33536ACB783C31 /* Pods_AllianceIOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2883,12 +2958,12 @@
 			isa = PBXGroup;
 			children = (
 				D92032301BDCA6D100FAB511 /* JobInfoController.swift */,
-				D943B15E1BE4A5670058BA1C /* JobInfoDetailController.swift */,
 				D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */,
 				D90544031BE5A8E000A1660F /* JobInfoMyController.swift */,
 				D90544051BE5AD5F00A1660F /* SpecialityController.swift */,
-				D905440D1BE5B74100A1660F /* SpecialityDetailController.swift */,
 				D905440F1BE5CC0D00A1660F /* SpecialityReqController.swift */,
+				D905440D1BE5B74100A1660F /* SpecialityDetailController.swift */,
+				D943B15E1BE4A5670058BA1C /* JobInfoDetailController.swift */,
 				D90544111BE5CC2A00A1660F /* SpecialityMyController.swift */,
 				D90544191BE5F14500A1660F /* HobbyController.swift */,
 				D915CA631BE5FC62004EBE26 /* HobbyDetailController.swift */,
@@ -3231,6 +3306,7 @@
 			isa = PBXGroup;
 			children = (
 				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
+				03CAF1CF1BFF235E00C7A03F /* LDRefresh */,
 				D9ECD0041BFB035D00B41F8A /* request */,
 				D99506601BB3817D00CA9B2E /* ChatCell.swift */,
 				D99506611BB3817D00CA9B2E /* FriendCell.swift */,
@@ -3238,12 +3314,11 @@
 				D99506631BB3817D00CA9B2E /* pinyin.c */,
 				D99506641BB3817D00CA9B2E /* pinyin.h */,
 				D99506651BB3817D00CA9B2E /* UserModel.swift */,
-				D943B15A1BE462250058BA1C /* JobInfoTitleCell.swift */,
-				D943B15C1BE476BC0058BA1C /* JobInfoContentCell.swift */,
-				D90544071BE5AE6C00A1660F /* SpecialityTitleCell.swift */,
-				D90544091BE5AE8700A1660F /* SpecialityContentCell.swift */,
+				0357FBE61C034A94009E9EDB /* speciality */,
 				D905441B1BE5F40E00A1660F /* HobbyCell.swift */,
 				D9ECD00B1BFCB24000B41F8A /* Global.swift */,
+				0357FBE51C034A5D009E9EDB /* job */,
+				03846F831C08B0A200225BDA /* Qiniutoken.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -3276,6 +3351,8 @@
 				D93757421BD51CFB0081D32E /* TabAndResource */,
 				D943B1601BE4B37B0058BA1C /* avator.jpg */,
 				D977BD8A1BEB4E19002CB613 /* iphone6s.png */,
+				034133731C00C85700963224 /* xiala.png */,
+				034133711C00C83F00963224 /* xialaf.png */,
 				D9CB8FCF1BEAD6EF00242CC6 /* watch.jpg */,
 				D915CBC51BE6DD65004EBE26 /* newestFood.jpg */,
 				D9864C721BE8276A0001F178 /* 电饭煲.jpg */,
@@ -3667,6 +3744,7 @@
 				D99413911BEC222600FC1B00 /* 安全退出按钮@2x.png in Resources */,
 				03651CAB1BEF45D40019CDBA /* chatBar_more_photo.png in Resources */,
 				D915CB741BE65D17004EBE26 /* 大进度条橙色@2x.png in Resources */,
+				034133741C00C85700963224 /* xiala.png in Resources */,
 				03651C511BEF45D40019CDBA /* VoiceSearchFeedback012.png in Resources */,
 				D915CBB71BE65D17004EBE26 /* 小进度条灰色.png in Resources */,
 				03651C7D1BEF45D40019CDBA /* chat_location_preview.png in Resources */,
@@ -3905,6 +3983,7 @@
 				D915CB771BE65D17004EBE26 /* 倒计时圆角红色框.png in Resources */,
 				03651CD91BEF46010019CDBA /* back@2x.png in Resources */,
 				D915CB6E1BE65D17004EBE26 /* 参与夺宝状态圆角底框@2x.png in Resources */,
+				034133721C00C83F00963224 /* xialaf.png in Resources */,
 				D915CB8E1BE65D17004EBE26 /* 进入方向按钮@2x.png in Resources */,
 				D96E769D1BF9B5870062BAD0 /* 聊吧综合按钮2@2x.png in Resources */,
 				03651B641BEF3B850019CDBA /* InfoPlist.strings in Resources */,
@@ -3956,6 +4035,7 @@
 				03651CDB1BEF46010019CDBA /* group_detail@2x.png in Resources */,
 				D96474051BD67E2E008DA5B8 /* 消息tab默认@2x.png in Resources */,
 				D96E76931BF9B5870062BAD0 /* 热图标@2x.png in Resources */,
+				03CAF1DA1BFF235E00C7A03F /* tableview_pull_refresh@2x.png in Resources */,
 				03651C3F1BEF45D40019CDBA /* VoiceSearchFeedback003.png in Resources */,
 				D96E76991BF9B5870062BAD0 /* 聊吧圆角框@2x.png in Resources */,
 				D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */,
@@ -4096,6 +4176,7 @@
 				03651C7E1BEF45D40019CDBA /* chat_location_preview@2x.png in Resources */,
 				D943B1411BE4618F0058BA1C /* 标签男@2x.png in Resources */,
 				D99413A71BEC222600FC1B00 /* 删除按钮@2x.png in Resources */,
+				03CAF1DB1BFF235E00C7A03F /* tableview_pull_refresh@3x.png in Resources */,
 				D96E769C1BF9B5870062BAD0 /* 聊吧综合按钮2.png in Resources */,
 				D915CB711BE65D17004EBE26 /* 常见问题.png in Resources */,
 				03651C571BEF45D40019CDBA /* VoiceSearchFeedback015.png in Resources */,
@@ -4230,6 +4311,7 @@
 				03651B231BEF3B400019CDBA /* ContactView.m in Sources */,
 				D905440A1BE5AE8700A1660F /* SpecialityContentCell.swift in Sources */,
 				D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */,
+				0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */,
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
 				03651B091BEF3B400019CDBA /* ChatListCell.m in Sources */,
 				03651B121BEF3B400019CDBA /* FacialView.m in Sources */,
@@ -4251,21 +4333,26 @@
 				03651B191BEF3B400019CDBA /* EMChatTextBubbleView.m in Sources */,
 				03651A531BEF3B1A0019CDBA /* PSTCollectionViewCell.m in Sources */,
 				D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */,
+				03846F841C08B0A200225BDA /* Qiniutoken.swift in Sources */,
 				D99506661BB3817D00CA9B2E /* ChatCell.swift in Sources */,
 				D9FCBC5C1BED778D00D50D1D /* Settings.swift in Sources */,
 				03651A371BEF3B1A0019CDBA /* MBProgressHUD.m in Sources */,
 				03651A7E1BEF3B320019CDBA /* NSString+Valid.m in Sources */,
+				03CAF1D81BFF235E00C7A03F /* LDRefreshFooterView.m in Sources */,
 				03651A301BEF3B1A0019CDBA /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				03651A311BEF3B1A0019CDBA /* EMCDDeviceManager+Remind.m in Sources */,
 				03651B2A1BEF3B400019CDBA /* PublicGroupListViewController.m in Sources */,
 				03651B551BEF3B4B0019CDBA /* XHMessageTextView.m in Sources */,
 				03651A631BEF3B1A0019CDBA /* SRRefreshView.m in Sources */,
 				03651B351BEF3B400019CDBA /* LoginViewController.m in Sources */,
+				037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */,
 				03651B1D1BEF3B400019CDBA /* EMChatViewCell.m in Sources */,
 				03651A691BEF3B1A0019CDBA /* wav.mm in Sources */,
 				D9ECD0081BFB387300B41F8A /* GrabcornsList.swift in Sources */,
+				034133761C00D07600963224 /* JobsearchViewController.swift in Sources */,
 				03651B371BEF3B400019CDBA /* UserProfileViewController.m in Sources */,
 				D9ECD00C1BFCB24000B41F8A /* Global.swift in Sources */,
+				03CAF1D91BFF235E00C7A03F /* LDRefreshHeaderView.m in Sources */,
 				03651A471BEF3B1A0019CDBA /* EMSDWebImagePrefetcher.m in Sources */,
 				D9987CEA1BEEEF72005480C7 /* Certification.swift in Sources */,
 				D9987CEE1BEEFB03005480C7 /* ShippingAddressAdd.swift in Sources */,
@@ -4280,6 +4367,7 @@
 				03651A511BEF3B1A0019CDBA /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				03651B1C1BEF3B400019CDBA /* EMChatViewBaseCell.m in Sources */,
 				03651A461BEF3B1A0019CDBA /* EMSDWebImageManager.m in Sources */,
+				03842DFD1BFDFD2100EFFE81 /* JobZhiyViewController.swift in Sources */,
 				03651A4A1BEF3B1A0019CDBA /* UIButton+EMWebCache.m in Sources */,
 				03651B141BEF3B400019CDBA /* DXRecordView.m in Sources */,
 				D90544101BE5CC0D00A1660F /* SpecialityReqController.swift in Sources */,
@@ -4327,6 +4415,7 @@
 				D9D988CD1BD7CCB300F53C74 /* MainController.swift in Sources */,
 				D99506681BB3817D00CA9B2E /* MessageItem.swift in Sources */,
 				D977BD8F1BEB63FE002CB613 /* NewestGoneDetail.swift in Sources */,
+				03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */,
 				03651B4D1BEF3B4B0019CDBA /* BaseTableViewCell.m in Sources */,
 				03651B291BEF3B400019CDBA /* PublicGroupDetailViewController.m in Sources */,
 				03651B0D1BEF3B400019CDBA /* ChatViewController.m in Sources */,
@@ -4363,6 +4452,7 @@
 				D9987CE01BEECE08005480C7 /* AboutMe.swift in Sources */,
 				03651A321BEF3B1A0019CDBA /* EMCDDeviceManagerBase.m in Sources */,
 				03651B061BEF3B400019CDBA /* AppDelegateoc+UMeng.m in Sources */,
+				037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */,
 				D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */,
 				D96E76A51BF9B7E00062BAD0 /* Focus.swift in Sources */,
 				03651A521BEF3B1A0019CDBA /* PSTCollectionView.m in Sources */,
@@ -4377,6 +4467,7 @@
 				03651A401BEF3B1A0019CDBA /* DACircularProgressView.m in Sources */,
 				03651A7D1BEF3B320019CDBA /* NSDateFormatter+Category.m in Sources */,
 				03651A6A1BEF3B1A0019CDBA /* EMVoiceConverter.mm in Sources */,
+				03CAF1DC1BFF235E00C7A03F /* UIScrollView+LDRefresh.m in Sources */,
 				D977BD8D1BEB4F2B002CB613 /* NewestDetailController.swift in Sources */,
 				D937575D1BD53C310081D32E /* NearController.swift in Sources */,
 				03651B671BEF3B8E0019CDBA /* main.swift in Sources */,
@@ -4588,6 +4679,7 @@
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
 					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/AllianceIOS/models/Lib/AVOS",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4627,6 +4719,7 @@
 					"$(PROJECT_DIR)/AllianceIOS/3rdparty/Parse",
 					"$(PROJECT_DIR)/Supporting\\ Files/EaseMobSDK/lib",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/AllianceIOS/models/Lib/AVOS",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

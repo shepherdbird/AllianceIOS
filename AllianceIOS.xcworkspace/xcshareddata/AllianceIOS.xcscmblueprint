@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4082832DFB20FFD63F26431674562DC14F9D3FDC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "452CA1E2302B9743307947210A000F8ABDC5C3E9" : 0,
+    "4082832DFB20FFD63F26431674562DC14F9D3FDC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CDEC66E1-6EDA-4684-AC71-D4FCF29F8606",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "452CA1E2302B9743307947210A000F8ABDC5C3E9" : "DSLolita\/",
+    "4082832DFB20FFD63F26431674562DC14F9D3FDC" : "AllianceIOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AllianceIOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AllianceIOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:shepherdbird\/AllianceIOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4082832DFB20FFD63F26431674562DC14F9D3FDC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sam408130\/DSLolita.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "452CA1E2302B9743307947210A000F8ABDC5C3E9"
+    }
+  ]
+}

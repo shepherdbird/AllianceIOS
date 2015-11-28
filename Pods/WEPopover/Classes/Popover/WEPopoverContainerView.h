@@ -8,37 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "WEPopoverContainerViewProperties.h"
+
+@class WEPopoverContainerView;
+
+@protocol WEPopoverContainerViewDelegate <NSObject>
 
 /**
- * Properties for the container view determining the area where the actual content view can/may be displayed. Also Images can be supplied for the arrow images and background.
+ Implement to override the frame being set in setFrame:
  */
-@interface WEPopoverContainerViewProperties : NSObject
-
-@property(nonatomic, retain) NSString *bgImageName;
-@property(nonatomic, retain) NSString *upArrowImageName;
-@property(nonatomic, retain) NSString *downArrowImageName;
-@property(nonatomic, retain) NSString *leftArrowImageName;
-@property(nonatomic, retain) NSString *rightArrowImageName;
-@property(nonatomic, assign) CGFloat leftBgMargin;
-@property(nonatomic, assign) CGFloat rightBgMargin;
-@property(nonatomic, assign) CGFloat topBgMargin;
-@property(nonatomic, assign) CGFloat bottomBgMargin;
-@property(nonatomic, assign) CGFloat leftContentMargin;
-@property(nonatomic, assign) CGFloat rightContentMargin;
-@property(nonatomic, assign) CGFloat topContentMargin;
-@property(nonatomic, assign) CGFloat bottomContentMargin;
-@property(nonatomic, assign) NSInteger topBgCapSize;
-@property(nonatomic, assign) NSInteger leftBgCapSize;
-@property(nonatomic, assign) CGFloat arrowMargin;
+- (CGRect)popoverContainerView:(WEPopoverContainerView *)view willChangeFrame:(CGRect)newFrame;
 
 @end
 
-@class WEPopoverContainerView;
 
 /**
  * Container/background view for displaying a popover view.
  */
 @interface WEPopoverContainerView : UIView
+
+@property (nonatomic, weak) id <WEPopoverContainerViewDelegate> delegate;
 
 /**
  * The current arrow direction for the popover.
@@ -48,7 +37,12 @@
 /**
  * The content view being displayed.
  */
-@property (nonatomic, retain) UIView *contentView;
+@property (nonatomic, strong) UIView *contentView;
+
+/**
+ Whether or not the arrow is collapsed.
+ */
+@property (nonatomic, assign, getter=isArrowCollapsed) BOOL arrowCollapsed;
 
 /**
  * Initializes the position of the popover with a size, anchor rect, display area and permitted arrow directions and optionally the properties. 
@@ -58,7 +52,7 @@
 		anchorRect:(CGRect)anchorRect 
 	   displayArea:(CGRect)displayArea
 permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
-		properties:(WEPopoverContainerViewProperties *)properties;	
+		properties:(WEPopoverContainerViewProperties *)properties;
 
 /**
  * To update the position of the popover with a new anchor rect, display area and permitted arrow directions
@@ -67,5 +61,22 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
                     anchorRect:(CGRect)anchorRect
                    displayArea:(CGRect)displayArea
       permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections;
+
+/**
+ Calculated from for position.
+ */
+- (CGRect)calculatedFrame;
+
+/**
+ Method to animate the transition to a new content view with the specified animation duration.
+ */
+- (void)setContentView:(UIView *)v withAnimationDuration:(NSTimeInterval)duration;
+
+/**
+ Set frame optionally sending a notification to the delegate.
+ 
+ By default setFrame: does send a notification.
+ */
+- (void)setFrame:(CGRect)frame sendNotification:(BOOL)sendNotification;
 
 @end
