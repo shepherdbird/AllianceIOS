@@ -25,10 +25,20 @@ class GrabcornsList {
         _meta = Meta(decoder["_meta"])
     }
 }
-class Link {
+class Url {
     var href:String?
     init(_ decoder: JSONDecoder) {
         href = decoder["href"].string
+    }
+}
+class Link {
+    var href:Url?
+    var prev:Url?
+    var next:Url?
+    init(_ decoder: JSONDecoder) {
+        href = Url(decoder["href"])
+        prev = Url(decoder["prev"])
+        next = Url(decoder["next"])
     }
 }
 

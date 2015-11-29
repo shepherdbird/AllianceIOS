@@ -25,13 +25,18 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     var white=UIView()
     var titleSelect=UILabel()
     var OK=UIButton()
+    var alert:UIAlertController?
     var TenChargeView:GrabcornsView?
         {
         didSet{
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+                self.tableView.refreshHeader.endRefresh()
+            }
         }
     }
     override func viewDidLoad() {
@@ -54,7 +59,19 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
         }
+        addRefreshView()
         
+    }
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.refreshData()
+        }
+    }
+    
+    func refreshData() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
     }
     func connect(){
         do {
@@ -67,42 +84,6 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
                 }
                 print("opt finished: \(response.description)")
                 self.TenChargeView = GrabcornsView(JSONDecoder(response.data))
-                //print(self.TenCharge!._meta.totalCount)
-            }
-        } catch let error {
-            print("got an error creating the request: \(error)")
-        }
-        
-    }
-    func LiMaCanYu_OK(){
-        do {
-            let params:Dictionary<String,AnyObject>=["grabcornid":GrabcornId,"phone":"2","count":pk.selectedRowInComponent(0),"type":1]
-            let opt=try HTTP.POST(URL+"/grabcorns/buy", parameters: params)
-            opt.start { response in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    return //also notify app of failure as needed
-                }
-                print("opt finished: \(response.description)")
-                //self.TenChargeView = GrabcornsView(JSONDecoder(response.data))
-                //print(self.TenCharge!._meta.totalCount)
-            }
-        } catch let error {
-            print("got an error creating the request: \(error)")
-        }
-        
-    }
-    func BuyAll(){
-        do {
-            let params:Dictionary<String,AnyObject>=["grabcornid":GrabcornId,"phone":"2","type":1]
-            let opt=try HTTP.POST(URL+"/grabcorns/buyall", parameters: params)
-            opt.start { response in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    return //also notify app of failure as needed
-                }
-                print("opt finished: \(response.description)")
-                //self.TenChargeView = GrabcornsView(JSONDecoder(response.data))
                 //print(self.TenCharge!._meta.totalCount)
             }
         } catch let error {
@@ -130,8 +111,14 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
         // #warning Incomplete implementation, return the number of rows
         if(section==2){
             return 1+TenChargeView!.records.count
-        }else{
+        }else if(section==1 || section==3){
             return 1
+        }else{
+            if(TenChargeView!.myrecords.count != 0){
+                return 1+TenChargeView!.myrecords.count
+            }else{
+                return 1
+            }
         }
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -142,7 +129,16 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.section==0){
-            return self.view.frame.width*1.1
+            if(TenChargeView!.myrecords.count==0){
+                return self.view.frame.width*1.1
+            }else{
+                if(indexPath.row==0){
+                    return self.view.frame.width*1.1-40
+                }else{
+                    return 50
+                }
+            }
+            
         }else if(indexPath.section==1){
             return 40
         }else if(indexPath.section==2){
@@ -157,7 +153,11 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section{
         case 0:
-            return FirstCell()
+            if(indexPath.row==0){
+                return FirstCell()
+            }else{
+                return FirstMyRecordCell(indexPath.row-1)
+            }
         case 1:
             return SecondCell()
         case 2:
@@ -176,14 +176,15 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
         sv.frame=CGRectMake(0, 0, self.view.frame.width, self.view.frame.width/4*3)
         //pg.frame=CGRectMake((self.view.frame.width-60)/2, self.view.frame.width/4*3-30, 60, 5)
         let picture=TenChargeView!.detail.pictures.componentsSeparatedByString(" ")
-        pg.frame=CGRectMake((self.view.frame.width-CGFloat(10*picture.count))/2, self.view.frame.width/4*3-30, CGFloat(10*picture.count), 5)
+        pg.frame=CGRectMake((self.view.frame.width-CGFloat(20*picture.count))/2, self.view.frame.width/4*3-30, CGFloat(10*picture.count), 5)
         for i in 0...(picture.count-1){
             let x = CGFloat(i) * self.view.frame.width
             let imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, self.view.frame.width/4*3))
             //imageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: picture[i])!)!)
-            if let Ndata=NSData(contentsOfURL: NSURL(string: picture[i])!){
-                imageView.image = UIImage(data: Ndata)
-            }
+//            if let Ndata=NSData(contentsOfURL: NSURL(string: picture[i])!){
+//                imageView.image = UIImage(data: Ndata)
+//            }
+            imageView.sd_setImageWithURL(NSURL(string: picture[i])!, placeholderImage: UIImage(named: "avator.jpg"))
             sv.pagingEnabled = true
             sv.showsHorizontalScrollIndicator = false
             sv.scrollEnabled = true
@@ -254,6 +255,19 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
         }
         return cell
     }
+    func FirstMyRecordCell(index:Int)->UITableViewCell {
+        let cell=UITableViewCell()
+        let count=UILabel(frame: CGRectMake(15,10,300,15))
+        count.font=UIFont.systemFontOfSize(13)
+        count.text="您参与了"+TenChargeView!.myrecords[index].count+"人次"
+        count.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
+        let numbers=UILabel(frame: CGRectMake(15,30,self.view.frame.width-30,15))
+        numbers.text=TenChargeView!.myrecords[index].numbers
+        numbers.font=UIFont.systemFontOfSize(13)
+        cell.addSubview(count)
+        cell.addSubview(numbers)
+        return cell
+    }
     func SecondCell()->UITableViewCell {
         let cell=UITableViewCell()
         let table=UILabel(frame: CGRectMake(15,10,100,20))
@@ -279,7 +293,8 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     func ThirdContentCell(index:Int)->UITableViewCell {
         let cell=UITableViewCell()
         let avator=UIImageView(frame: CGRectMake(15, 10, 30, 30))
-        avator.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenChargeView!.records[index].thumb)!)!)
+        //avator.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenChargeView!.records[index].thumb)!)!)
+        avator.sd_setImageWithURL(NSURL(string: TenChargeView!.records[index].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         avator.clipsToBounds=true
         avator.layer.cornerRadius=15
         let username=UILabel(frame: CGRectMake(50,10,100,15))
@@ -305,14 +320,14 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     }
     func FourthCell()->UITableViewCell{
         let cell=UITableViewCell()
-        let now=UIButton(frame: CGRectMake(20,5,self.view.frame.width/2-25,30))
+        let now=UIButton(frame: CGRectMake(20,10,self.view.frame.width/2-25,30))
         now.setBackgroundImage(UIImage(named: "立即参与大按钮.png"), forState: UIControlState.Normal)
         now.setTitle("立即参与", forState: UIControlState.Normal)
         now.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         now.titleLabel?.font=UIFont.systemFontOfSize(17)
         now.tag=1
         now.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-        let buy=UIButton(frame: CGRectMake(self.view.frame.width/2+5,5,self.view.frame.width/2-25,30))
+        let buy=UIButton(frame: CGRectMake(self.view.frame.width/2+5,10,self.view.frame.width/2-25,30))
         buy.setBackgroundImage(UIImage(named: "购买全部大按钮.png"), forState: UIControlState.Normal)
         buy.setTitleColor(UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0), forState: UIControlState.Normal)
         buy.setTitle("购买全部", forState: UIControlState.Normal)
@@ -325,49 +340,53 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     }
     func ButtonAction(sender:UIButton){
         if(sender.tag==1){
-            let width=self.view.frame.width
-            //半透明
-            gray=UIView(frame: CGRectMake(0, self.tableView.frame.height-self.view.frame.height, width, self.view.frame.height))
-            gray.backgroundColor=UIColor(red: 180/255, green: 181/255, blue: 181/255, alpha: 0.7)
-            self.view.addSubview(gray)
-            white=UIView(frame: CGRectMake(0, self.tableView.frame.height-self.view.frame.width/2, width, self.view.frame.width/2))
-            white.backgroundColor=UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
-            self.view.addSubview(white)
-            titleSelect=UILabel(frame: CGRectMake(self.view.frame.width/2-60,white.frame.minY+10,200,30))
-            titleSelect.text="参与人次选择"
-            titleSelect.font=UIFont.systemFontOfSize(20)
-            self.view.addSubview(titleSelect)
-            pk=UIPickerView(frame: CGRectMake(self.view.frame.width/2-40,white.frame.minY+30,80,100))
+            pk=UIPickerView(frame: CGRectMake(0,0,self.view.frame.width-20,300))
+            //pk=UIPickerView()
             pk.delegate=self
             pk.dataSource=self
-            self.view.addSubview(pk)
-            OK=UIButton(frame: CGRectMake(self.view.frame.width/2-60,white.frame.minY+150,120,30))
-            OK.setBackgroundImage(UIImage(named: "立即参与按钮.png"), forState: UIControlState.Normal)
-            OK.setTitle("确定", forState: UIControlState.Normal)
-            OK.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            OK.titleLabel?.font=UIFont.systemFontOfSize(18)
-            OK.addTarget(self, action: Selector("OKer"), forControlEvents: UIControlEvents.TouchUpInside)
-            self.view.addSubview(OK)
+            let reqAction=UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                let another=Check()
+                another.Id=self.TenChargeView!.detail.id
+                another.All=0
+                another.Count=Int(self.pk.selectedRowInComponent(0))+1
+                another.SetTitle=self.TenChargeView!.detail.title
+                self.navigationController?.pushViewController(another, animated: true)
+            }
+//            let CancelAction=UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+//                print("cancel")
+//            }
+            alert=UIAlertController(title: "参与人次选择", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            alert!.addAction(reqAction)
+            //alert!.addAction(CancelAction)
+            //alert!.addAction(myreqAction)
+            
+            
+            alert?.view.addSubview(pk)
+            self.presentViewController(alert!, animated: true, completion: nil)
         }else{
-            BuyAll()
+            let another=Check()
+            another.Id=self.TenChargeView!.detail.id
+            another.Count=self.TenChargeView!.detail.needed
+            another.SetTitle=self.TenChargeView!.detail.title
+            another.All=1
+            self.navigationController?.pushViewController(another, animated: true)
         }
-    }
-    func OKer(){
-        gray.removeFromSuperview()
-        white.removeFromSuperview()
-        titleSelect.removeFromSuperview()
-        pk.removeFromSuperview()
-        OK.removeFromSuperview()
-        LiMaCanYu_OK()
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if(indexPath.section==1){
+            let another=AgeJieXiao()
+            another.Kind=TenChargeView!.detail.kind
+            another.Url=URL+"/grabcorns/formeractivities"
+            another.Through="corn"
+            self.navigationController?.pushViewController(another, animated: true)
+        }
     }
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+        return 1000
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(row+1)

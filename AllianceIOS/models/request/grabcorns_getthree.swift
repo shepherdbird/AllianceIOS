@@ -26,6 +26,13 @@ class Grabcorns_getthree_one {
     var kind:String!
     var pictures:String!
     var details:String!
+    var worth:String!
+    var isgot:String!
+    var phone:String!
+    var nickname:String!
+    var thumb:String!
+    var numbers:String!
+    var count:String!
     init(_ decoder:JSONDecoder){
         id=Int(decoder["id"].string!)
         picture=decoder["picture"].string
@@ -44,6 +51,13 @@ class Grabcorns_getthree_one {
         kind=decoder["kind"].string
         pictures=decoder["pictures"].string
         details=decoder["details"].string
+        worth=decoder["worth"].string
+        isgot=decoder["isgot"].string
+        phone=decoder["phone"].string
+        nickname=decoder["nickname"].string
+        thumb=decoder["thumb"].string
+        numbers=decoder["numbers"].string
+        count=decoder["count"].string
     }
     
 }

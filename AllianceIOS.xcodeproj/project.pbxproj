@@ -12,6 +12,10 @@
 		034133741C00C85700963224 /* xiala.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133731C00C85700963224 /* xiala.png */; settings = {ASSET_TAGS = (); }; };
 		034133761C00D07600963224 /* JobsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034133751C00D07600963224 /* JobsearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		034133721C00C83F00963224 /* xialaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133711C00C83F00963224 /* xialaf.png */; };
+		034133741C00C85700963224 /* xiala.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133731C00C85700963224 /* xiala.png */; };
+		034133761C00D07600963224 /* JobsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034133751C00D07600963224 /* JobsearchViewController.swift */; };
+		0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */; };
 		03651A2C1BEF3B1A0019CDBA /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519931BEF3B1A0019CDBA /* EMAudioPlayerUtil.m */; };
 		03651A2D1BEF3B1A0019CDBA /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519951BEF3B1A0019CDBA /* EMAudioRecorderUtil.m */; };
 		03651A2E1BEF3B1A0019CDBA /* EMCDDeviceManager+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 036519971BEF3B1A0019CDBA /* EMCDDeviceManager+Media.m */; };
@@ -354,6 +358,18 @@
 		03651D111BEF46150019CDBA /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D011BEF46150019CDBA /* tabbarBackground@2x.png */; };
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; };
+			037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; };
+		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; };
+		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; };
+		03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */; };
+		03842DFD1BFDFD2100EFFE81 /* JobZhiyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */; };
+		03846F841C08B0A200225BDA /* Qiniutoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03846F831C08B0A200225BDA /* Qiniutoken.swift */; };
+		03A0136D1C093EC400AE99FD /* LDRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013661C093EC400AE99FD /* LDRefreshFooterView.m */; };
+		03A0136E1C093EC400AE99FD /* LDRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013681C093EC400AE99FD /* LDRefreshHeaderView.m */; };
+		03A0136F1C093EC400AE99FD /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A013691C093EC400AE99FD /* tableview_pull_refresh@2x.png */; };
+		03A013701C093EC400AE99FD /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */; };
+		03A013711C093EC400AE99FD /* UIScrollView+LDRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */; };
+		79A5523F316A2EF633316F72 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */; };
 		037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -378,7 +394,15 @@
 		D90544141BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png in Resources */ = {isa = PBXBuildFile; fileRef = D90544131BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png */; };
 		D905441A1BE5F14500A1660F /* HobbyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544191BE5F14500A1660F /* HobbyController.swift */; };
 		D905441C1BE5F40E00A1660F /* HobbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905441B1BE5F40E00A1660F /* HobbyCell.swift */; };
+		D906AA181C09C648000817A0 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AA171C09C648000817A0 /* Check.swift */; };
+		D906AA1A1C09DA41000817A0 /* qidong.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D906AA191C09DA41000817A0 /* qidong.jpg */; };
+		D906AA1C1C09DC20000817A0 /* avator2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D906AA1B1C09DC20000817A0 /* avator2.jpg */; };
+		D906AA1E1C0A9588000817A0 /* ChargeRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AA1D1C0A9588000817A0 /* ChargeRecordModel.swift */; };
 		D90720801C04938500B85EE7 /* PictureAndWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907207F1C04938500B85EE7 /* PictureAndWord.swift */; };
+		D90CDC151C0AA0B800C69603 /* avator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D90CDC141C0AA0B800C69603 /* avator.jpg */; };
+		D90CDC191C0AA63200C69603 /* CRCommodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDC181C0AA63200C69603 /* CRCommodity.swift */; };
+		D90CDC1B1C0AD32500C69603 /* CRGot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDC1A1C0AD32500C69603 /* CRGot.swift */; };
+		D90CDC1D1C0AD35700C69603 /* CRCorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CDC1C1C0AD35700C69603 /* CRCorn.swift */; };
 		D915CA641BE5FC62004EBE26 /* HobbyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA631BE5FC62004EBE26 /* HobbyDetailController.swift */; };
 		D915CA661BE5FC7C004EBE26 /* HobbyReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA651BE5FC7C004EBE26 /* HobbyReqController.swift */; };
 		D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915CA671BE5FC94004EBE26 /* HobbyMyController.swift */; };
@@ -509,7 +533,7 @@
 		D943B15B1BE462250058BA1C /* JobInfoTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943B15A1BE462250058BA1C /* JobInfoTitleCell.swift */; };
 		D943B15D1BE476BC0058BA1C /* JobInfoContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943B15C1BE476BC0058BA1C /* JobInfoContentCell.swift */; };
 		D943B15F1BE4A5670058BA1C /* JobInfoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D943B15E1BE4A5670058BA1C /* JobInfoDetailController.swift */; };
-		D943B1611BE4B37B0058BA1C /* avator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D943B1601BE4B37B0058BA1C /* avator.jpg */; };
+		D943B1611BE4B37B0058BA1C /* avator1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D943B1601BE4B37B0058BA1C /* avator1.jpg */; };
 		D947136F1BD1EC0700108A8E /* liaoba.png in Resources */ = {isa = PBXBuildFile; fileRef = D947136E1BD1EC0700108A8E /* liaoba.png */; };
 		D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94713721BD27BEB00108A8E /* OneChargeController.swift */; };
 		D94713781BD2859400108A8E /* chargerecord.png in Resources */ = {isa = PBXBuildFile; fileRef = D94713741BD2859400108A8E /* chargerecord.png */; };
@@ -602,7 +626,7 @@
 		D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E76AA1BF9FAC50062BAD0 /* TopicDetail.swift */; };
 		D977BD8B1BEB4E19002CB613 /* iphone6s.png in Resources */ = {isa = PBXBuildFile; fileRef = D977BD8A1BEB4E19002CB613 /* iphone6s.png */; };
 		D977BD8D1BEB4F2B002CB613 /* NewestDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */; };
-		D977BD8F1BEB63FE002CB613 /* NewestGoneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */; };
+		D977BD8F1BEB63FE002CB613 /* GoneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD8E1BEB63FE002CB613 /* GoneDetail.swift */; };
 		D977BD911BEB8350002CB613 /* AgeJieXiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = D977BD901BEB8350002CB613 /* AgeJieXiao.swift */; };
 		D97A8C151BAADFA0002645F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A8C141BAADFA0002645F9 /* AppDelegate.swift */; };
 		D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A8C181BAADFA0002645F9 /* Main.storyboard */; };
@@ -1266,6 +1290,7 @@
 		03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@3x.png"; sourceTree = "<group>"; };
 		03A0136B1C093EC400AE99FD /* UIScrollView+LDRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LDRefresh.h"; sourceTree = "<group>"; };
 		03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LDRefresh.m"; sourceTree = "<group>"; };
+		365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllianceIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.release.xcconfig"; sourceTree = "<group>"; };
 		D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoReqController.swift; path = Resources/Near/JobInfoReqController.swift; sourceTree = "<group>"; };
@@ -1280,7 +1305,15 @@
 		D90544131BE5CF4400A1660F /* 屏幕快照 2015-11-01 下午12.39.05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2015-11-01 下午12.39.05.png"; sourceTree = "<group>"; };
 		D90544191BE5F14500A1660F /* HobbyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyController.swift; path = Resources/Near/HobbyController.swift; sourceTree = "<group>"; };
 		D905441B1BE5F40E00A1660F /* HobbyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyCell.swift; sourceTree = "<group>"; };
+		D906AA171C09C648000817A0 /* Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Check.swift; path = Resources/OneCharge/Check.swift; sourceTree = "<group>"; };
+		D906AA191C09DA41000817A0 /* qidong.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = qidong.jpg; path = ../../../../Desktop/qidong.jpg; sourceTree = "<group>"; };
+		D906AA1B1C09DC20000817A0 /* avator2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avator2.jpg; path = ../../../../Desktop/avator2.jpg; sourceTree = "<group>"; };
+		D906AA1D1C0A9588000817A0 /* ChargeRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChargeRecordModel.swift; path = request/ChargeRecordModel.swift; sourceTree = "<group>"; };
 		D907207F1C04938500B85EE7 /* PictureAndWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureAndWord.swift; path = Resources/OneCharge/PictureAndWord.swift; sourceTree = "<group>"; };
+		D90CDC141C0AA0B800C69603 /* avator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avator.jpg; path = ../../../../Downloads/avator.jpg; sourceTree = "<group>"; };
+		D90CDC181C0AA63200C69603 /* CRCommodity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CRCommodity.swift; path = Resources/OneCharge/CRCommodity.swift; sourceTree = "<group>"; };
+		D90CDC1A1C0AD32500C69603 /* CRGot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CRGot.swift; path = Resources/OneCharge/CRGot.swift; sourceTree = "<group>"; };
+		D90CDC1C1C0AD35700C69603 /* CRCorn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CRCorn.swift; path = Resources/OneCharge/CRCorn.swift; sourceTree = "<group>"; };
 		D915CA631BE5FC62004EBE26 /* HobbyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyDetailController.swift; path = Resources/Near/HobbyDetailController.swift; sourceTree = "<group>"; };
 		D915CA651BE5FC7C004EBE26 /* HobbyReqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyReqController.swift; path = Resources/Near/HobbyReqController.swift; sourceTree = "<group>"; };
 		D915CA671BE5FC94004EBE26 /* HobbyMyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HobbyMyController.swift; path = Resources/Near/HobbyMyController.swift; sourceTree = "<group>"; };
@@ -1411,7 +1444,7 @@
 		D943B15A1BE462250058BA1C /* JobInfoTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInfoTitleCell.swift; sourceTree = "<group>"; };
 		D943B15C1BE476BC0058BA1C /* JobInfoContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInfoContentCell.swift; sourceTree = "<group>"; };
 		D943B15E1BE4A5670058BA1C /* JobInfoDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoDetailController.swift; path = Resources/Near/JobInfoDetailController.swift; sourceTree = "<group>"; };
-		D943B1601BE4B37B0058BA1C /* avator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avator.jpg; sourceTree = "<group>"; };
+		D943B1601BE4B37B0058BA1C /* avator1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avator1.jpg; sourceTree = "<group>"; };
 		D947136E1BD1EC0700108A8E /* liaoba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liaoba.png; sourceTree = "<group>"; };
 		D94713721BD27BEB00108A8E /* OneChargeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneChargeController.swift; sourceTree = "<group>"; };
 		D94713741BD2859400108A8E /* chargerecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chargerecord.png; sourceTree = "<group>"; };
@@ -1504,7 +1537,7 @@
 		D96E76AA1BF9FAC50062BAD0 /* TopicDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetail.swift; sourceTree = "<group>"; };
 		D977BD8A1BEB4E19002CB613 /* iphone6s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6s.png; sourceTree = "<group>"; };
 		D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestDetailController.swift; path = Resources/OneCharge/NewestDetailController.swift; sourceTree = "<group>"; };
-		D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestGoneDetail.swift; path = Resources/OneCharge/NewestGoneDetail.swift; sourceTree = "<group>"; };
+		D977BD8E1BEB63FE002CB613 /* GoneDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoneDetail.swift; path = Resources/OneCharge/GoneDetail.swift; sourceTree = "<group>"; };
 		D977BD901BEB8350002CB613 /* AgeJieXiao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AgeJieXiao.swift; path = Resources/OneCharge/AgeJieXiao.swift; sourceTree = "<group>"; };
 		D97A8C111BAADF9F002645F9 /* AllianceIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllianceIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97A8C141BAADFA0002645F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1785,6 +1818,7 @@
 				D9B196301BAE717E0077EA76 /* libsqlite3.tbd in Frameworks */,
 				D9B1962E1BAE71600077EA76 /* CFNetwork.framework in Frameworks */,
 				03651A6C1BEF3B1A0019CDBA /* libopencore-amrwb.a in Frameworks */,
+				79A5523F316A2EF633316F72 /* Pods_AllianceIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2823,6 +2857,7 @@
 		3E84639E6A9131028A21DEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3188,10 +3223,14 @@
 				D98BB58E1BE97917006FDE2F /* TenChargeDetailController.swift */,
 				D9CB8FCD1BEAD27500242CC6 /* OneChargeDetailController.swift */,
 				D977BD8C1BEB4F2B002CB613 /* NewestDetailController.swift */,
-				D977BD8E1BEB63FE002CB613 /* NewestGoneDetail.swift */,
+				D977BD8E1BEB63FE002CB613 /* GoneDetail.swift */,
 				D977BD901BEB8350002CB613 /* AgeJieXiao.swift */,
 				D9987CF11BEF2BBA005480C7 /* ChargeRecord.swift */,
 				D907207F1C04938500B85EE7 /* PictureAndWord.swift */,
+				D906AA171C09C648000817A0 /* Check.swift */,
+				D90CDC181C0AA63200C69603 /* CRCommodity.swift */,
+				D90CDC1A1C0AD32500C69603 /* CRGot.swift */,
+				D90CDC1C1C0AD35700C69603 /* CRCorn.swift */,
 			);
 			name = OneCharge;
 			sourceTree = "<group>";
@@ -3358,8 +3397,11 @@
 				D920321C1BDC775B00FAB511 /* Near */,
 				D9D988B51BD7C87200F53C74 /* GrabEnvelope */,
 				D93757421BD51CFB0081D32E /* TabAndResource */,
-				D943B1601BE4B37B0058BA1C /* avator.jpg */,
+				D943B1601BE4B37B0058BA1C /* avator1.jpg */,
+				D90CDC141C0AA0B800C69603 /* avator.jpg */,
+				D906AA1B1C09DC20000817A0 /* avator2.jpg */,
 				D977BD8A1BEB4E19002CB613 /* iphone6s.png */,
+				D906AA191C09DA41000817A0 /* qidong.jpg */,
 				034133731C00C85700963224 /* xiala.png */,
 				034133711C00C83F00963224 /* xialaf.png */,
 				D9CB8FCF1BEAD6EF00242CC6 /* watch.jpg */,
@@ -3677,6 +3719,7 @@
 				D99C92101BFD7F5700B5F5A6 /* grabcommodity_getthree.swift */,
 				D99C92121BFDCED200B5F5A6 /* LiaoBa.swift */,
 				D99C92141BFEBB3600B5F5A6 /* LiaoBaUser.swift */,
+				D906AA1D1C0A9588000817A0 /* ChargeRecordModel.swift */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -3715,7 +3758,7 @@
 				TargetAttributes = {
 					D97A8C101BAADF9F002645F9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = VVCZ437E8V;
+						DevelopmentTeam = 6L4H97XXC8;
 					};
 				};
 			};
@@ -3781,7 +3824,7 @@
 				D915CBA41BE65D17004EBE26 /* 人次选择按钮小切片右@2x.png in Resources */,
 				03651CCD1BEF45F50019CDBA /* account.png in Resources */,
 				03651C771BEF45D40019CDBA /* chat_location_annotation_someone.png in Resources */,
-				D943B1611BE4B37B0058BA1C /* avator.jpg in Resources */,
+				D943B1611BE4B37B0058BA1C /* avator1.jpg in Resources */,
 				03651C7F1BEF45D40019CDBA /* faceDelete.png in Resources */,
 				03651C651BEF45D40019CDBA /* call_out_h.png in Resources */,
 				D915CBA31BE65D17004EBE26 /* 人次选择按钮小切片右.png in Resources */,
@@ -3953,6 +3996,7 @@
 				D915CBBC1BE65D17004EBE26 /* 一元夺宝按钮@2x.png in Resources */,
 				D915CBA51BE65D17004EBE26 /* 人次选择按钮小切片中.png in Resources */,
 				D943B14E1BE4618F0058BA1C /* 删除按钮2.png in Resources */,
+				D906AA1C1C09DC20000817A0 /* avator2.jpg in Resources */,
 				D915CB751BE65D17004EBE26 /* 大进度条灰色.png in Resources */,
 				03651CA51BEF45D40019CDBA /* chatBar_more_cameraSelected.png in Resources */,
 				D943B1451BE4618F0058BA1C /* 发帖按钮@2x.png in Resources */,
@@ -3994,6 +4038,7 @@
 				D915CB6E1BE65D17004EBE26 /* 参与夺宝状态圆角底框@2x.png in Resources */,
 				034133721C00C83F00963224 /* xialaf.png in Resources */,
 				D915CB8E1BE65D17004EBE26 /* 进入方向按钮@2x.png in Resources */,
+				D906AA1A1C09DA41000817A0 /* qidong.jpg in Resources */,
 				D96E769D1BF9B5870062BAD0 /* 聊吧综合按钮2@2x.png in Resources */,
 				03651B641BEF3B850019CDBA /* InfoPlist.strings in Resources */,
 				D99413BC1BEC222600FC1B00 /* 我的钱包图标.png in Resources */,
@@ -4026,6 +4071,7 @@
 				03651C4D1BEF45D40019CDBA /* VoiceSearchFeedback010.png in Resources */,
 				03651C6F1BEF45D40019CDBA /* chatBar_more_cardSelected.png in Resources */,
 				D97A8C1C1BAADFA0002645F9 /* Assets.xcassets in Resources */,
+				D90CDC151C0AA0B800C69603 /* avator.jpg in Resources */,
 				D94713781BD2859400108A8E /* chargerecord.png in Resources */,
 				03651CBB1BEF45D40019CDBA /* chat_receiver_bg@2x.png in Resources */,
 				D96E76881BF9B5870062BAD0 /* 喜欢3.png in Resources */,
@@ -4383,9 +4429,11 @@
 				D90720801C04938500B85EE7 /* PictureAndWord.swift in Sources */,
 				D915CA681BE5FC94004EBE26 /* HobbyMyController.swift in Sources */,
 				03651A341BEF3B1A0019CDBA /* Emoji.m in Sources */,
+				D90CDC191C0AA63200C69603 /* CRCommodity.swift in Sources */,
 				03651A391BEF3B1A0019CDBA /* MWGridCell.m in Sources */,
 				03651A4E1BEF3B1A0019CDBA /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				D9987CE61BEEDBB0005480C7 /* MyQRcode.swift in Sources */,
+				D906AA181C09C648000817A0 /* Check.swift in Sources */,
 				03651B1F1BEF3B400019CDBA /* MessageModelManager.m in Sources */,
 				03651B511BEF3B4B0019CDBA /* BaseViewController.m in Sources */,
 				D90544121BE5CC2A00A1660F /* SpecialityMyController.swift in Sources */,
@@ -4407,6 +4455,7 @@
 				03651B181BEF3B400019CDBA /* EMChatLocationBubbleView.m in Sources */,
 				D905440E1BE5B74100A1660F /* SpecialityDetailController.swift in Sources */,
 				03651A431BEF3B1A0019CDBA /* EMSDWebImageDecoder.m in Sources */,
+				D90CDC1B1C0AD32500C69603 /* CRGot.swift in Sources */,
 				03651A571BEF3B1A0019CDBA /* PSTCollectionViewItemKey.m in Sources */,
 				0334844E1C0B1B8E00630A76 /* HobbyMenuViewController.swift in Sources */,
 				03651B301BEF3B400019CDBA /* ApplyViewController.m in Sources */,
@@ -4414,6 +4463,7 @@
 				D99506671BB3817D00CA9B2E /* FriendCell.swift in Sources */,
 				03651A3E1BEF3B1A0019CDBA /* MWTapDetectingView.m in Sources */,
 				D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */,
+				D906AA1E1C0A9588000817A0 /* ChargeRecordModel.swift in Sources */,
 				D96E76A91BF9B8320062BAD0 /* MyZan.swift in Sources */,
 				D99C92111BFD7F5700B5F5A6 /* grabcommodity_getthree.swift in Sources */,
 				03651B0A1BEF3B400019CDBA /* ChatListViewController.m in Sources */,
@@ -4425,7 +4475,7 @@
 				03651B101BEF3B400019CDBA /* DXMessageToolBar.m in Sources */,
 				D9D988CD1BD7CCB300F53C74 /* MainController.swift in Sources */,
 				D99506681BB3817D00CA9B2E /* MessageItem.swift in Sources */,
-				D977BD8F1BEB63FE002CB613 /* NewestGoneDetail.swift in Sources */,
+				D977BD8F1BEB63FE002CB613 /* GoneDetail.swift in Sources */,
 				03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */,
 				03651B4D1BEF3B4B0019CDBA /* BaseTableViewCell.m in Sources */,
 				03651B291BEF3B400019CDBA /* PublicGroupDetailViewController.m in Sources */,
@@ -4507,6 +4557,7 @@
 				03651A421BEF3B1A0019CDBA /* EMSDWebImageCompat.m in Sources */,
 				037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */,
 				03651B541BEF3B4B0019CDBA /* EMSearchDisplayController.m in Sources */,
+				D90CDC1D1C0AD35700C69603 /* CRCorn.swift in Sources */,
 				D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */,
 				03651A811BEF3B320019CDBA /* UIViewController+DismissKeyboard.m in Sources */,
 				03651B201BEF3B400019CDBA /* MessageReadManager.m in Sources */,
@@ -4709,7 +4760,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourself;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4749,7 +4800,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourself;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;

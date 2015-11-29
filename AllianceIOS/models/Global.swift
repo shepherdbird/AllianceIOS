@@ -13,8 +13,10 @@ let Phone="2"
 class Flag {
     var flag:Int!
     var msg:String!
+    var c:Int?
     init(_ decoder:JSONDecoder){
         flag=decoder["flag"].integer
         msg=decoder["msg"].string
+        c=decoder["c"].integer
     }
 }

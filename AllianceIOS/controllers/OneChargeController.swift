@@ -15,13 +15,17 @@ class OneChargeController: UITableViewController{
     @IBOutlet var OneChargeController: UITableView!
     var activityIndicatorView: UIActivityIndicatorView!
     var OneCharge:GrabCommodity_getthree?
+    var Newest:GrabCommodityList?
     var TenCharge:Grabcorns_getthree?
         {
         didSet{
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+            }
         }
     }
     override func viewDidLoad() {
@@ -65,6 +69,17 @@ class OneChargeController: UITableViewController{
                 }
                 print("opt finished: \(response.description)")
                 self.TenCharge = Grabcorns_getthree(JSONDecoder(response.data))
+            }
+            let params:Dictionary<String,AnyObject>=["type":1]
+            let opt=try HTTP.POST(URL+"/grabcommodities/search", parameters: params)
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.Newest = GrabCommodityList(JSONDecoder(response.data))
+                //print(self.TenCharge!._meta.totalCount)
             }
             
         } catch let error {
@@ -179,7 +194,7 @@ class OneChargeController: UITableViewController{
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("OneChargeList");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 2:
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("ChargeRecord");
+            let anotherView=ChargeRecord()
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TenChargeList");
@@ -197,7 +212,15 @@ class OneChargeController: UITableViewController{
         more.setTitle("更多>", forState: UIControlState.Normal)
         more.titleLabel?.font=UIFont.systemFontOfSize(12)
         more.setTitleColor(UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.77), forState: UIControlState.Normal)
-        for i in 0...2{
+        var lin=0-1
+        if (TenCharge != nil) {
+            lin=(TenCharge?.items.count)!-1
+            if(lin>=2){
+                lin=2
+            }
+        }
+        print(lin)
+        for var i=0;i<=lin;i++ {
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
             btn.tag=1000+i
             btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -206,9 +229,10 @@ class OneChargeController: UITableViewController{
             //print(TenCharge!.items[i].picture)
             //pic.image=UIImage(named: TenCharge!.items[i].picture)
             //pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!)!)
-            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
-                pic.image=UIImage(data: Ndata)
-            }
+//            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
+//                pic.image=UIImage(data: Ndata)
+//            }
+            pic.sd_setImageWithURL(NSURL(string: TenCharge!.items[i].picture)!, placeholderImage: UIImage(named: "avator.jpg"))
             let money=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/10, self.view.frame.width/9+30, self.view.frame.width/9+30, 20))
             money.text=TenCharge?.items[i].title
             money.font=UIFont.systemFontOfSize(12)
@@ -250,12 +274,22 @@ class OneChargeController: UITableViewController{
         more.titleLabel?.font=UIFont.systemFontOfSize(12)
         more.setTitleColor(UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.77), forState: UIControlState.Normal)
         let cell=UITableViewCell()
-        for i in 0...2{
+        var lin=0-1
+        if (Newest != nil) {
+            lin=(Newest?.items.count)!-1
+            if(lin>=2){
+                lin=2
+            }
+        }
+        print(lin)
+        
+        for var i=0;i<=lin;i++ {
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
             btn.tag=1003+i
             btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24,10, self.view.frame.width/4, self.view.frame.width/4))
-            pic.image=UIImage(named: "newestFood.jpg")
+            //pic.image=UIImage(named: "newestFood.jpg")
+            pic.sd_setImageWithURL(NSURL(string: Newest!.items[i].picture)!, placeholderImage: UIImage(named: "avator.jpg"))
             let come=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/24, 90, self.view.frame.width/8, 30))
             come.text="倒计时"
             come.font=UIFont.systemFontOfSize(12)
@@ -284,16 +318,24 @@ class OneChargeController: UITableViewController{
         more.setTitle("更多>", forState: UIControlState.Normal)
         more.titleLabel?.font=UIFont.systemFontOfSize(12)
         more.setTitleColor(UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.77), forState: UIControlState.Normal)
-        
-        for i in 0...2{
+        var lin=0-1
+        if (OneCharge != nil) {
+            lin=(OneCharge?.items.count)!-1
+            if(lin>=2){
+                lin=2
+            }
+        }
+        print(lin)
+        for var i=0;i<=lin;i++ {
             let btn=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i), 0,self.view.frame.width/3, 120))
             btn.tag=1006+i
             btn.addTarget(self, action: Selector("detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/12,15, self.view.frame.width/6, self.view.frame.width/6))
             //pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!)!)
-            if let Ndata=NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!){
-                pic.image=UIImage(data: Ndata)
-            }
+//            if let Ndata=NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!){
+//                pic.image=UIImage(data: Ndata)
+//            }
+            pic.sd_setImageWithURL(NSURL(string: OneCharge!.items[i].picture)!, placeholderImage: UIImage(named: "avator.jpg"))
             let name=UILabel(frame: CGRectMake(self.view.frame.width/3*CGFloat(i)+self.view.frame.width/10, self.view.frame.width/9+30, self.view.frame.width/9+30, 20))
             name.text=OneCharge?.items[i].title
             name.font=UIFont.systemFontOfSize(12)
@@ -352,7 +394,9 @@ class OneChargeController: UITableViewController{
             anotherView.GrabCommodityId=(OneCharge?.items[sender.tag-1006].id)!
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else{
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestDetail");
+            let anotherView=NewestDetailController()
+            anotherView.NewestId=Newest!.items[sender.tag-1003].id
+            //let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("NewestDetail");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }
     }
