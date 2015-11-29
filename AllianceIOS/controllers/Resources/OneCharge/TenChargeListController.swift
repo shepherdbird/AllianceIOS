@@ -20,7 +20,12 @@ class TenChargeListController: UITableViewController {
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+                self.tableView.refreshFooter.endRefresh()
+                self.tableView.refreshHeader.endRefresh()
+            }
         }
     }
 
@@ -44,11 +49,13 @@ class TenChargeListController: UITableViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
         }
+        addRefreshView()
     }
     func connect(){
         print("获取十夺金列表")
         do {
-            let opt=try HTTP.GET(URL+"/grabcorns/search")
+            let params:Dictionary<String,AnyObject>=["type":0]
+            let opt=try HTTP.POST(URL+"/grabcorns/search", parameters: params)
             opt.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -62,6 +69,51 @@ class TenChargeListController: UITableViewController {
             print("got an error creating the request: \(error)")
         }
         
+    }
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.refreshData()
+        }
+        
+        self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
+            self.loadMoredata()
+        }
+    }
+    func loadMoredata(){
+        if(self.TenCharge!._meta.currentPage==self.TenCharge!._meta.pageCount){
+            self.tableView.refreshFooter.loadMoreEnabled=false
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let opt=try HTTP.GET((self.TenCharge!._links.next?.href)!)
+                opt.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    //print("data is: \(response.data)") access the response of the data with response.data
+                    var lin:GrabcornsList?
+                    lin = GrabcornsList(JSONDecoder(response.data))
+                    for var i=(self.TenCharge!.items.count-1);i>=0;i-- {
+                        lin?.items.insert(self.TenCharge!.items[i], atIndex: 0)
+                    }
+                    self.TenCharge!=lin!
+                    //print("content is: \(self.addinfo!._links)")
+                    
+                }
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
+    }
+    
+    func refreshData() {
+        self.tableView.refreshFooter.loadMoreEnabled=true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,7 +131,7 @@ class TenChargeListController: UITableViewController {
         return 0
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 0.1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,14 +147,18 @@ class TenChargeListController: UITableViewController {
     func TenchargeListCell()->UITableViewCell{
         let cell=UITableViewCell()
         let halfwidth=Float(self.view.frame.width)/2
-        for i in 0...(((TenCharge?._meta.totalCount)!-1)%20){
+        if(TenCharge!.items.count==0){
+            return cell
+        }
+        for i in 0...((TenCharge?.items.count)!-1){
             let btn=UIButton(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth), CGFloat(Float(i/2)*halfwidth), CGFloat(halfwidth), CGFloat(halfwidth)))
             btn.tag=i
             btn.addTarget(self, action: Selector("Detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
-            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
-                pic.image=UIImage(data: Ndata)
-            }
+//            if let Ndata=NSData(contentsOfURL: NSURL(string: TenCharge!.items[i].picture)!){
+//                pic.image=UIImage(data: Ndata)
+//            }
+            pic.sd_setImageWithURL(NSURL(string: TenCharge!.items[i].picture)!, placeholderImage: UIImage(named: "avator.jpg"))
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
             name.text=TenCharge?.items[i].title
             name.font=UIFont.systemFontOfSize(15)
@@ -143,51 +199,5 @@ class TenChargeListController: UITableViewController {
         //anotherView.GrabcornId=TenCharge?.items[sender.tag].id
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

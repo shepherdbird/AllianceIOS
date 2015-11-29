@@ -20,7 +20,12 @@ class OneChargeListController: UITableViewController {
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+                self.tableView.refreshFooter.endRefresh()
+                self.tableView.refreshHeader.endRefresh()
+            }
         }
     }
 
@@ -43,14 +48,16 @@ class OneChargeListController: UITableViewController {
         self.tableView.backgroundView=view1
         activityIndicatorView.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            self.connect()
+            self.connect(URL+"/grabcommodities/search")
         }
+        addRefreshView()
     }
 
-    func connect(){
+    func connect(url:String){
         print("获取一元夺宝列表")
         do {
-            let opt=try HTTP.GET(URL+"/grabcommodities/search")
+            let params:Dictionary<String,AnyObject>=["type":0]
+            let opt=try HTTP.POST(url, parameters: params)
             opt.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -64,6 +71,51 @@ class OneChargeListController: UITableViewController {
             print("got an error creating the request: \(error)")
         }
         
+    }
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.refreshData()
+        }
+        
+        self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
+            self.loadMoredata()
+        }
+    }
+    func loadMoredata(){
+        if(self.OneCharge!._meta.currentPage==self.OneCharge!._meta.pageCount){
+            self.tableView.refreshFooter.loadMoreEnabled=false
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let opt=try HTTP.GET((self.OneCharge!._links.next?.href)!)
+                opt.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    //print("data is: \(response.data)") access the response of the data with response.data
+                    var lin:GrabCommodityList?
+                    lin = GrabCommodityList(JSONDecoder(response.data))
+                    for var i=(self.OneCharge!.items.count-1);i>=0;i-- {
+                        lin?.items.insert(self.OneCharge!.items[i], atIndex: 0)
+                    }
+                    self.OneCharge!=lin!
+                    //print("content is: \(self.addinfo!._links)")
+                    
+                }
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
+    }
+    
+    func refreshData() {
+        self.tableView.refreshFooter.loadMoreEnabled=true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                self.connect(URL+"/grabcommodities/search")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,6 +136,9 @@ class OneChargeListController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return CGFloat(((OneCharge?.items.count)!+1)/2)*self.view.frame.width/2
     }
@@ -98,10 +153,11 @@ class OneChargeListController: UITableViewController {
             btn.tag=i
             btn.addTarget(self, action: Selector("Detail:"), forControlEvents: UIControlEvents.TouchUpInside)
             let pic=UIImageView(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+CGFloat(halfwidth/4),CGFloat(Float(i/2)*halfwidth)+20, CGFloat(halfwidth/2), CGFloat(halfwidth/2)))
-            if let Ndata=NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!){
-                pic.image=UIImage(data: Ndata)
-            }
+//            if let Ndata=NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!){
+//                pic.image=UIImage(data: Ndata)
+//            }
             //pic.image=UIImage(data: NSData(contentsOfURL: NSURL(string: OneCharge!.items[i].picture)!)!)
+            pic.sd_setImageWithURL(NSURL(string: OneCharge!.items[i].picture)!, placeholderImage: UIImage(named: "avator.jpg"))
             let name=UILabel(frame: CGRectMake(CGFloat(Float(i%2)*halfwidth)+15, CGFloat(Float(i/2)*halfwidth)+CGFloat(halfwidth/2)+20, CGFloat(halfwidth)-15, 20))
             name.text=OneCharge!.items[i].title
             name.font=UIFont.systemFontOfSize(15)

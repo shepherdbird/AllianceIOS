@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0A996B66ED890D6E0A0E5922'
-               BlueprintName = 'JSONJoy-Swift'
+               BlueprintIdentifier = 'DEB4CC16DD35ECF1E6EA8A9D'
+               BlueprintName = 'DKImagePickerController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'JSONJoy.framework'>
+               BuildableName = 'DKImagePickerController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

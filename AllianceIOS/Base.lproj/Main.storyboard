@@ -713,41 +713,6 @@
             </objects>
             <point key="canvasLocation" x="136" y="-2536"/>
         </scene>
-        <!--夺宝记录-->
-        <scene sceneID="FOX-rb-76I">
-            <objects>
-                <tableViewController storyboardIdentifier="ChargeRecord" title="夺宝记录" id="hdD-TA-Zbb" customClass="ChargeRecord" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jVo-c2-cx5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o6l-RL-4eK">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6l-RL-4eK" id="egM-4M-0GR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hdD-TA-Zbb" id="fDA-PD-1GJ"/>
-                            <outlet property="delegate" destination="hdD-TA-Zbb" id="qbn-6n-pCN"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="夺宝记录" id="S3N-H2-WqR"/>
-                    <connections>
-                        <outlet property="CR" destination="jVo-c2-cx5" id="3rc-NT-nD4"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gW9-cO-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="758" y="-2536"/>
-        </scene>
         <!--一元夺宝列表-->
         <scene sceneID="9tM-HT-gIm">
             <objects>

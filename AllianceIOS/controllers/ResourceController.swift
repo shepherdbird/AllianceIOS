@@ -35,7 +35,7 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
                 image=UIImage(named: "loadscreen.jpeg")!
             }
             let x = CGFloat(i - 1) * self.view.frame.width
-            let imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, 210))
+            let imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, self.view.frame.width/5*2+60))
             imageView.image = image
             sv.pagingEnabled = true
             sv.showsHorizontalScrollIndicator = false

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="loadscreen.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Upq-Fu-uNt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="qidong.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Upq-Fu-uNt">
                                 <rect key="frame" x="138" y="206" width="240" height="128"/>
                                 <animations/>
                             </imageView>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loadscreen.jpeg" width="600" height="914"/>
+        <image name="qidong.jpg" width="540" height="960"/>
     </resources>
 </document>

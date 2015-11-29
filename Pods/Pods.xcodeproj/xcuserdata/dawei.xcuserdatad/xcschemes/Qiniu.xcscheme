@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0A996B66ED890D6E0A0E5922'
-               BlueprintName = 'JSONJoy-Swift'
+               BlueprintIdentifier = '6099948D5959ECD74BD69754'
+               BlueprintName = 'Qiniu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'JSONJoy.framework'>
+               BuildableName = 'Qiniu.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

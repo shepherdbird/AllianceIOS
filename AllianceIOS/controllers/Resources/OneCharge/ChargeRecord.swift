@@ -7,118 +7,73 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
-class ChargeRecord: UITableViewController {
-
-    @IBOutlet var CR: UITableView!
+class ChargeRecord: UIViewController {
     var index:Int=0
+//    var activityIndicatorView: UIActivityIndicatorView!
+//    var GrabCommodity:GrabCommodityRecord?
+//    var GrabCorns:GrabcornsList?
+//        {
+//        didSet{
+//            activityIndicatorView.stopAnimating()
+//            self.activityIndicatorView.hidden=true
+//            self.tableView.backgroundView=nil
+//            //self.tableView.reloadData()
+//            dispatch_async(dispatch_get_main_queue()){
+//                self.tableView.reloadData()
+//                self.tableView.refreshFooter.endRefresh()
+//                self.tableView.refreshHeader.endRefresh()
+//            }
+//        }
+//    }
+    let commodity=CRCommodity()
+    let corn=CRCorn()
+    let got=CRGot()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.view.backgroundColor=UIColor.whiteColor()
+        let segmented=UISegmentedControl(frame: CGRectMake(0, -3, self.view.frame.width, 53))
+        segmented.insertSegmentWithTitle("夺宝列表", atIndex: 0, animated: true)
+        segmented.insertSegmentWithTitle("夺金列表", atIndex: 1, animated: true)
+        segmented.insertSegmentWithTitle("中奖列表", atIndex: 2, animated: true)
+        //segmented.center=self.view.center
+        segmented.selectedSegmentIndex=0 //默认选中第二项
+        segmented.alpha=1.0
+        segmented.addTarget(self, action: "segmentDidchange:",
+            forControlEvents: UIControlEvents.ValueChanged)  //添加值改变监听
+        self.view.addSubview(segmented)
+        commodity.view.frame=CGRectMake(0, 50, self.view.frame.width, self.view.frame.height)
+        corn.view.frame=CGRectMake(0, 50, self.view.frame.width, self.view.frame.height)
+        got.view.frame=CGRectMake(0, 50, self.view.frame.width, self.view.frame.height)
+        self.addChildViewController(commodity)
+        self.addChildViewController(corn)
+        self.addChildViewController(got)
+        self.view.addSubview(commodity.view)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
-    }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell=UITableViewCell()
-        let title=["夺宝列表","夺金列表","中奖列表"]
-        for i in 0...2 {
-            print(i)
-            let DuoBao=UIButton(frame: CGRectMake(self.view.frame.width/3*CGFloat(i),0,self.view.frame.width/3,50))
-            DuoBao.setTitle(title[i], forState: UIControlState.Normal)
-            DuoBao.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-            DuoBao.layer.borderWidth=CGFloat(1.0)
-            DuoBao.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.73).CGColor
-            DuoBao.tag=i
-            DuoBao.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-            if(i==index){
-                DuoBao.setTitleColor(UIColor(red: 200/255, green: 100/255, blue: 100/255, alpha: 1.0), forState: UIControlState.Normal)
-            }
-            DuoBao.titleLabel?.font=UIFont.systemFontOfSize(17)
-            cell.addSubview(DuoBao)
+    func segmentDidchange(segmented:UISegmentedControl){
+        //获得选项的索引
+        print(segmented.selectedSegmentIndex)
+        if(segmented.selectedSegmentIndex==1){
+            
+            commodity.removeFromParentViewController()
+            got.removeFromParentViewController()
+            self.view.addSubview(corn.view)
+        }else if(segmented.selectedSegmentIndex==0){
+            corn.removeFromParentViewController()
+            got.removeFromParentViewController()
+            self.view.addSubview(commodity.view)
+        }else{
+            corn.removeFromParentViewController()
+            commodity.removeFromParentViewController()
+            self.view.addSubview(got.view)
         }
-        return cell
+        
+        //获得选择的文字
+        print(segmented.titleForSegmentAtIndex(segmented.selectedSegmentIndex))
     }
-    func ButtonAction(sender:UIButton){
-        index=sender.tag
-        CR.reloadData()
-    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
