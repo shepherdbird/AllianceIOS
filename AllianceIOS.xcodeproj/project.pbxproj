@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0334844E1C0B1B8E00630A76 /* HobbyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334844D1C0B1B8E00630A76 /* HobbyMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		034133721C00C83F00963224 /* xialaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133711C00C83F00963224 /* xialaf.png */; settings = {ASSET_TAGS = (); }; };
 		034133741C00C85700963224 /* xiala.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133731C00C85700963224 /* xiala.png */; settings = {ASSET_TAGS = (); }; };
 		034133761C00D07600963224 /* JobsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034133751C00D07600963224 /* JobsearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -759,6 +760,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0334844D1C0B1B8E00630A76 /* HobbyMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyMenuViewController.swift; sourceTree = "<group>"; };
 		034133711C00C83F00963224 /* xialaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xialaf.png; sourceTree = "<group>"; };
 		034133731C00C85700963224 /* xiala.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiala.png; sourceTree = "<group>"; };
 		034133751C00D07600963224 /* JobsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsearchViewController.swift; sourceTree = "<group>"; };
@@ -1789,6 +1791,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0334844F1C0B1B9C00630A76 /* Hobby */ = {
+			isa = PBXGroup;
+			children = (
+				D905441B1BE5F40E00A1660F /* HobbyCell.swift */,
+				0334844D1C0B1B8E00630A76 /* HobbyMenuViewController.swift */,
+			);
+			name = Hobby;
+			sourceTree = "<group>";
+		};
 		0357FBE51C034A5D009E9EDB /* job */ = {
 			isa = PBXGroup;
 			children = (
@@ -3303,6 +3314,7 @@
 		D995065F1BB3817D00CA9B2E /* models */ = {
 			isa = PBXGroup;
 			children = (
+				0334844F1C0B1B9C00630A76 /* Hobby */,
 				03A013641C093EC400AE99FD /* LDRefresh */,
 				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
 				D9ECD0041BFB035D00B41F8A /* request */,
@@ -3313,7 +3325,6 @@
 				D99506641BB3817D00CA9B2E /* pinyin.h */,
 				D99506651BB3817D00CA9B2E /* UserModel.swift */,
 				0357FBE61C034A94009E9EDB /* speciality */,
-				D905441B1BE5F40E00A1660F /* HobbyCell.swift */,
 				D9ECD00B1BFCB24000B41F8A /* Global.swift */,
 				0357FBE51C034A5D009E9EDB /* job */,
 				03846F831C08B0A200225BDA /* Qiniutoken.swift */,
@@ -4397,6 +4408,7 @@
 				D905440E1BE5B74100A1660F /* SpecialityDetailController.swift in Sources */,
 				03651A431BEF3B1A0019CDBA /* EMSDWebImageDecoder.m in Sources */,
 				03651A571BEF3B1A0019CDBA /* PSTCollectionViewItemKey.m in Sources */,
+				0334844E1C0B1B8E00630A76 /* HobbyMenuViewController.swift in Sources */,
 				03651B301BEF3B400019CDBA /* ApplyViewController.m in Sources */,
 				03651B221BEF3B400019CDBA /* ContactSelectionViewController.m in Sources */,
 				D99506671BB3817D00CA9B2E /* FriendCell.swift in Sources */,

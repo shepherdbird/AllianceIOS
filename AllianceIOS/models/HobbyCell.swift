@@ -18,6 +18,7 @@ class HobbyCell: UITableViewCell {
     //var content:UILabel!
     var distance:UILabel!
     var time:UILabel!
+    var genderflag:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,11 +47,11 @@ class HobbyCell: UITableViewCell {
         self.addSubview(self.username)
         //性别图标
         self.gender=UIImageView(frame: CGRectMake(100, 37, 40, 20))
-        if(arc4random()%2==0){
-            self.gender.image=UIImage(named: "标签男.png")
-        }else{
-            self.gender.image=UIImage(named: "标签女.png")
-        }
+//        if(Int(self.genderflag!)!%2==0){
+//            self.gender.image=UIImage(named: "标签男.png")
+//        }else{
+//            self.gender.image=UIImage(named: "标签女.png")
+//        }
         self.addSubview(self.gender)
         //年龄
         self.age=UILabel(frame: CGRectMake(120,40,20,20))
