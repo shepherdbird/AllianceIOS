@@ -19,13 +19,21 @@ class SpecialityDetailController: UITableViewController {
     var nickname:String?
     var thumb:String?
     
+    var reid:String?
+    var myphone:String?
+    var comments: Array<SpecialityController.Comments> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detail.rowHeight=UITableViewAutomaticDimension
         self.detail.allowsSelection=true
         self.detail.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
-        self.detail.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 0.77)
+        self.detail.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        
+        var footrect=CGRect()
+        footrect.size.height=1
+        let footview=UIView.init(frame: footrect)
+        self.tableView.tableFooterView=footview
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -50,7 +58,7 @@ class SpecialityDetailController: UITableViewController {
         if(section==0){
             return 6
         }
-        return 4
+        return self.comments.count+2
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.section==0){
@@ -138,13 +146,14 @@ class SpecialityDetailController: UITableViewController {
             switch indexPath.row{
             case 0:
                 let count=UILabel(frame: CGRectMake(10,8,60,14))
-                count.text="网友点评（2）"
+                let allcount=self.comments.count
+                count.text="网友点评（"+String(allcount)+")"
                 count.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
                 count.font=UIFont.systemFontOfSize(15)
                 count.sizeToFit()
                 cell.addSubview(count)
                 cell.userInteractionEnabled=false
-            case 3:
+            case self.comments.count+1:
                 let CommentIcon=UIImageView(frame: CGRectMake(cell.frame.width/9*4, 45, 20, 20))
                 CommentIcon.image=UIImage(named: "评论按钮大.png")
                 cell.addSubview(CommentIcon)
@@ -156,20 +165,23 @@ class SpecialityDetailController: UITableViewController {
             default:
                 //头像
                 let commentavator=UIImageView(frame: CGRectMake(10, 10, 50, 50))
-                commentavator.image=UIImage(named: "avator.jpg")
+                commentavator.sd_setImageWithURL(NSURL(string: (self.comments[indexPath.row-1].thumb)!), placeholderImage: UIImage(named: "avator.jpg"))
+                //commentavator.image=UIImage(named: "avator.jpg")
                 commentavator.clipsToBounds=true
                 commentavator.layer.cornerRadius=commentavator.bounds.width*0.5
                 cell.addSubview(commentavator)
                 //用户昵称
                 let commentusername=UILabel(frame: CGRectMake(70,15,60,20))
-                commentusername.text="用户昵称"
+                //commentusername.text="用户昵称"
+                commentusername.text=self.comments[indexPath.row-1].nickname
                 commentusername.font=UIFont.systemFontOfSize(15)
                 commentusername.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
                 commentusername.sizeToFit()
                 cell.addSubview(commentusername)
                 //评论内容
                 let content=UILabel(frame: CGRectMake(70,40,detail.frame.width-70,40))
-                content.text="很干净的店，真心不错！！！下次还回来的，必须支持点赞！！！！！！！！！！！！！"
+                //content.text="很干净的店，真心不错！！！下次还回来的，必须支持点赞！！！！！！！！！！！！！"
+                content.text=self.comments[indexPath.row-1].content
                 content.font=UIFont.systemFontOfSize(13)
                 content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
                 content.numberOfLines=0
@@ -177,7 +189,8 @@ class SpecialityDetailController: UITableViewController {
                 cell.addSubview(content)
                 //时间
                 let commenttime=UILabel(frame: CGRectMake(detail.frame.width-100,20,40,20))
-                commenttime.text="2015-10-01"
+                //commenttime.text="2015-10-01"
+                commenttime.text=self.comments[indexPath.row-1].created_at
                 commenttime.font=UIFont.systemFontOfSize(13)
                 commenttime.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
                 commenttime.sizeToFit()
@@ -194,9 +207,20 @@ class SpecialityDetailController: UITableViewController {
         
     }
 
+    override func viewWillAppear(animated: Bool){
+        self.tableView.reloadData()
+        print("appesr")
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.detail.deselectRowAtIndexPath(indexPath, animated: true)
+        if(indexPath.section==1&&indexPath.row==self.comments.count+1){
+            print("我要评论")
+            let anotherView=self.storyboard!.instantiateViewControllerWithIdentifier("SpecialityComment") as! SpecialityCommentController
+            anotherView.reid=self.reid!
+            anotherView.SpecD=self
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }
     }
 
     /*

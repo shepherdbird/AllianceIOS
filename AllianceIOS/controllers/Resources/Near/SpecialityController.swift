@@ -392,7 +392,8 @@ class SpecialityController: UITableViewController {
         anotherView.nickname=self.info?.items[indexPath.section].nickname
         anotherView.thumb=self.info?.items[indexPath.section].thumb
         anotherView.imageurls=self.info?.items[indexPath.section].pictures
-        self.info?.items[indexPath.section].comments
+        anotherView.comments=(self.info?.items[indexPath.section].comments)!
+        anotherView.reid=self.info?.items[indexPath.section].objID
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
     

@@ -7,12 +7,94 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class HobbyController: UITableViewController {
 
     @IBOutlet var HobbyController: UITableView!
     
     @IBOutlet weak var Search: UISearchBar!
+    
+    
+    struct Item : JSONJoy {
+        var objID: String?
+        var userID: String?
+        var picture: String?
+        var sex:String?
+        var age: String?
+        var hobbyid: String?
+        var hobby: String?
+        var content: String?
+        var created_at: String?
+        var phone: String?
+        var nickname: String?
+        var thumb: String?
+        init(_ decoder: JSONDecoder) {
+            objID = decoder["id"].string
+            userID=decoder["userid"].string
+            picture=decoder["picture"].string
+            sex=decoder["sex"].string
+            age=decoder["age"].string
+            hobbyid=decoder["hobbyid"].string
+            hobby=decoder["hobby"].string
+            content=decoder["content"].string
+            created_at=decoder["created_at"].string
+            phone=decoder["phone"].string
+            nickname=decoder["nickname"].string
+            thumb=decoder["thumb"].string
+        }
+    }
+    
+    struct Url : JSONJoy {
+        var href:String?
+        init(_ decoder: JSONDecoder) {
+            href = decoder["href"].string
+        }
+    }
+    
+    struct Link : JSONJoy {
+        var prev:Url?
+        var next:Url?
+        init(_ decoder: JSONDecoder) {
+            prev = Url(decoder["prev"])
+            next = Url(decoder["next"])
+        }
+    }
+    
+    struct Meta : JSONJoy {
+        var totalCount: Int?
+        var pageCount: Int?
+        var currentPage: Int?
+        var perPage: Int?
+        init(_ decoder: JSONDecoder) {
+            totalCount = decoder["totalCount"].integer
+            pageCount = decoder["pageCount"].integer
+            currentPage = decoder["currentPage"].integer
+            perPage = decoder["perPage"].integer
+        }
+        
+    }
+    
+    struct Info: JSONJoy {
+        var items: Array<Item>!
+        var _links : Link!
+        var _meta : Meta!
+        init(_ decoder: JSONDecoder) {
+            //we check if the array is valid then alloc our array and loop through it, creating the new address objects.
+            if let it = decoder["items"].array {
+                items = Array<Item>()
+                for itemDecoder in it {
+                    items.append(Item(itemDecoder))
+                }
+            }
+            
+            _links = Link(decoder["_links"])
+            _meta = Meta(decoder["_meta"])
+        }
+    }
+
+    
     
     var alert:UIAlertController!
     override func viewDidLoad() {

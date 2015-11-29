@@ -353,7 +353,7 @@
 		03651D111BEF46150019CDBA /* tabbarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D011BEF46150019CDBA /* tabbarBackground@2x.png */; };
 		03651D121BEF46150019CDBA /* tabbarSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D021BEF46150019CDBA /* tabbarSelectBg.png */; };
 		03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03651D031BEF46150019CDBA /* tabbarSelectBg@2x.png */; };
-		037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; };
+			037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; };
 		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; };
 		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; };
 		03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */; };
@@ -365,6 +365,18 @@
 		03A013701C093EC400AE99FD /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */; };
 		03A013711C093EC400AE99FD /* UIScrollView+LDRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */; };
 		79A5523F316A2EF633316F72 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */; };
+		037881111BFCDA3A000F3A87 /* JobproViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037881101BFCDA3A000F3A87 /* JobproViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */; settings = {ASSET_TAGS = (); }; };
+		03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		03842DFD1BFDFD2100EFFE81 /* JobZhiyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		03846F841C08B0A200225BDA /* Qiniutoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03846F831C08B0A200225BDA /* Qiniutoken.swift */; settings = {ASSET_TAGS = (); }; };
+		039CA1FC1C0996260001AD0A /* SpecialityCommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039CA1FB1C0996260001AD0A /* SpecialityCommentController.swift */; settings = {ASSET_TAGS = (); }; };
+		03A0136D1C093EC400AE99FD /* LDRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013661C093EC400AE99FD /* LDRefreshFooterView.m */; settings = {ASSET_TAGS = (); }; };
+		03A0136E1C093EC400AE99FD /* LDRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013681C093EC400AE99FD /* LDRefreshHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		03A0136F1C093EC400AE99FD /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A013691C093EC400AE99FD /* tableview_pull_refresh@2x.png */; settings = {ASSET_TAGS = (); }; };
+		03A013701C093EC400AE99FD /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */; settings = {ASSET_TAGS = (); }; };
+		03A013711C093EC400AE99FD /* UIScrollView+LDRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */; settings = {ASSET_TAGS = (); }; };
 		D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */; };
 		D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544031BE5A8E000A1660F /* JobInfoMyController.swift */; };
 		D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544051BE5AD5F00A1660F /* SpecialityController.swift */; };
@@ -1263,6 +1275,7 @@
 		03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobdegViewController.swift; sourceTree = "<group>"; };
 		03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobZhiyViewController.swift; sourceTree = "<group>"; };
 		03846F831C08B0A200225BDA /* Qiniutoken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qiniutoken.swift; sourceTree = "<group>"; };
+		039CA1FB1C0996260001AD0A /* SpecialityCommentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialityCommentController.swift; sourceTree = "<group>"; };
 		03A013651C093EC400AE99FD /* LDRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDRefreshFooterView.h; sourceTree = "<group>"; };
 		03A013661C093EC400AE99FD /* LDRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDRefreshFooterView.m; sourceTree = "<group>"; };
 		03A013671C093EC400AE99FD /* LDRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDRefreshHeaderView.h; sourceTree = "<group>"; };
@@ -1826,6 +1839,7 @@
 				D90544091BE5AE8700A1660F /* SpecialityContentCell.swift */,
 				0357FBE71C034AE6009E9EDB /* SpecialityMenuViewController.swift */,
 				037F32EE1C084D65004A79A3 /* SpecialityKindController.swift */,
+				039CA1FB1C0996260001AD0A /* SpecialityCommentController.swift */,
 			);
 			name = speciality;
 			sourceTree = "<group>";
@@ -4486,6 +4500,7 @@
 				037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */,
 				D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */,
 				D96E76A51BF9B7E00062BAD0 /* Focus.swift in Sources */,
+				039CA1FC1C0996260001AD0A /* SpecialityCommentController.swift in Sources */,
 				03651A521BEF3B1A0019CDBA /* PSTCollectionView.m in Sources */,
 				03651B031BEF3B400019CDBA /* AppDelegate+EaseMobDebug.m in Sources */,
 				03651A801BEF3B320019CDBA /* UIResponder+Router.m in Sources */,
