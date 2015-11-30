@@ -138,9 +138,21 @@ class HobbyController: UITableViewController {
             
         }
     }
+    
+    var hobbykinds:HobbyGlobal.Hobby?
+        {
+        didSet
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                self.connect()
+            }
+            
+        }
+
+    }
+    
     var pulltimes:Int=0
 
-    
     var alert:UIAlertController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,6 +190,14 @@ class HobbyController: UITableViewController {
         addRefreshView()
     }
     
+    override func viewWillAppear(animated: Bool){
+        self.info=nil
+        self.addinfo=nil
+        self.hobbykinds=nil
+        addactivity()
+        print("appesr")
+    }
+    
     func addactivity(){  //第一步缓存
         let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -195,8 +215,8 @@ class HobbyController: UITableViewController {
         activityIndicatorView.startAnimating()
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-                self.connect()
-            }
+            self.gethobby()
+        }
     }
     
     func addRefreshView(){
@@ -243,6 +263,26 @@ class HobbyController: UITableViewController {
         }
     }
     
+    
+    func gethobby(){
+        do {
+            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/hobbies/list")
+            
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                //print("data is: \(response.data)") access the response of the data with response.data
+                self.hobbykinds = HobbyGlobal.Hobby(JSONDecoder(response.data))
+               // print("content is: \(self.info!.items[0].content)")
+                
+            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+    }
     
     func connect(){
         print("ccccc")
@@ -299,14 +339,14 @@ class HobbyController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("HobbyCell", forIndexPath: indexPath) as! HobbyCell
-        cell.avator.sd_setImageWithURL(NSURL(string: (self.info?.items[indexPath.row].thumb)!), placeholderImage: UIImage(named: "avator.jpg"))
+        cell.avator.sd_setImageWithURL(NSURL(string: (self.info?.items[indexPath.row].picture)!), placeholderImage: UIImage(named: "avator.jpg"))
         cell.age.text=self.info?.items[indexPath.row].age
         cell.username.text=self.info?.items[indexPath.row].nickname
         cell.distance.text="0.05km"
         cell.time.text=self.info?.items[indexPath.row].created_at
         cell.interest.text="兴趣分组："+(self.info?.items[indexPath.row].hobby)!+"\n留言："+(self.info?.items[indexPath.row].content)!
         
-        if(Int((self.info?.items[indexPath.row].sex)!)!%2==0){
+        if(Int((self.info?.items[indexPath.row].sex)!)!%2==1){
             cell.gender.image=UIImage(named: "标签男.png")
         }else{
             cell.gender.image=UIImage(named: "标签女.png")
@@ -331,6 +371,7 @@ class HobbyController: UITableViewController {
         self.popover=pop
         my.popover=self.popover
         my.Spec=self
+        my.aihao=self.hobbykinds
         //self.popover.popoverContentSize=CGSizeMake(100,85)
         my.preferredContentSize=CGSizeMake(100,85)
         self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)

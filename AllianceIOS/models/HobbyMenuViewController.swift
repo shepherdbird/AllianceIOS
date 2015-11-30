@@ -13,6 +13,7 @@ class HobbyMenuViewController: UITableViewController {
 
     
     var texts = ["我要交友", "我的交友"]
+    var aihao:HobbyGlobal.Hobby?
     var Spec:HobbyController?
     var popover:WEPopoverController?
     override func viewDidLoad() {
@@ -54,7 +55,8 @@ class HobbyMenuViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if(indexPath.row==0){
             let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("HobbyReq");
+            let anotherView=myStoryBoard.instantiateViewControllerWithIdentifier("HobbyReq") as! HobbyReqController
+            anotherView.aihao=self.aihao
             Spec?.navigationController?.pushViewController(anotherView, animated: true)
         }else{
             let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
