@@ -21,7 +21,9 @@
 }
 
 - (UIImage *)upArrowImage {
-    return IMAGE_FOR_NAME(_upArrowImage, _upArrowImageName);
+    //return IMAGE_FOR_NAME(_upArrowImage, _upArrowImageName);
+    UIImage *image1 =[UIImage imageNamed:_upArrowImageName];
+    return image1;
 }
 
 - (UIImage *)downArrowImage {

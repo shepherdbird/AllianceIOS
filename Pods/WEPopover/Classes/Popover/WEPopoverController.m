@@ -91,12 +91,12 @@ static void animate(NSTimeInterval duration, void (^animationBlock)(void), void 
         
         bgImageName = @"popoverBg-white.png";
         
-        contentMargin = 4.0;
+        contentMargin = 0.0;
         
-        bgMargin = 12;
-        bgCapSize = 31;
+        bgMargin = 0;
+        bgCapSize = 0;
         
-        props.arrowMargin = 4.0;
+        props.arrowMargin = 0.0;
         
         props.upArrowImageName = @"popoverArrowUp-white.png";
         props.downArrowImageName = @"popoverArrowDown-white.png";
@@ -108,7 +108,7 @@ static void animate(NSTimeInterval duration, void (^animationBlock)(void), void 
         
         // These constants are determined by the popoverBg.png image file and are image dependent
         bgMargin = 13; // margin width of 13 pixels on all sides popoverBg.png (62 pixels wide - 36 pixel background) / 2 == 26 / 2 == 13
-        bgCapSize = 31; // ImageSize/2  == 62 / 2 == 31 pixels
+        bgCapSize = 0; // ImageSize/2  == 62 / 2 == 31 pixels
         
         contentMargin = 4.0;
         
@@ -300,7 +300,7 @@ static void animate(NSTimeInterval duration, void (^animationBlock)(void), void 
                 
                 [self.containerView setFrame:initialFrame sendNotification:NO];
                 self.containerView.alpha = 1.0;
-                self.containerView.arrowCollapsed = YES;
+                self.containerView.arrowCollapsed = NO;
                 
                 NSTimeInterval firstAnimationDuration = self.primaryAnimationDuration;
                 NSTimeInterval secondAnimationDuration = self.secundaryAnimationDuration;

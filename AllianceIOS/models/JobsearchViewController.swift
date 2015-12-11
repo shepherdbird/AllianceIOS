@@ -22,8 +22,8 @@ class JobsearchViewController: UITableViewController {
     
     var activityIndicatorView: UIActivityIndicatorView!
     var Jobinfo:JobInfoController?
-    var zhiye:JobZhiyViewController.Info?
-    var Iscreate:JobInfoReqController.res? {
+    var zhiye:JobInfoController.ZhiInfo?
+    var Iscreate:Flag? {
         didSet
         {
             print(self.Iscreate?.msg)
@@ -166,7 +166,7 @@ class JobsearchViewController: UITableViewController {
         }
         if(indexPath.section==1){
             let anotherView=JobZhiyViewController()
-            anotherView.Jobsearch=self
+            //anotherView.Jobsearch=self
             anotherView.selected=self.Zhi.text
             anotherView.flag=1
             self.navigationController?.pushViewController(anotherView, animated: true)
