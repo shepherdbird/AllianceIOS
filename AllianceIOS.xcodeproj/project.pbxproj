@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0311900B1C14008E00D94979 /* popoverArrowUp-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0311900A1C14008E00D94979 /* popoverArrowUp-white@2x.png */; settings = {ASSET_TAGS = (); }; };
 		0334844E1C0B1B8E00630A76 /* HobbyMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334844D1C0B1B8E00630A76 /* HobbyMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		033484511C0B3A8C00630A76 /* avator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 033484501C0B3A8C00630A76 /* avator.jpg */; settings = {ASSET_TAGS = (); }; };
 		034133721C00C83F00963224 /* xialaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 034133711C00C83F00963224 /* xialaf.png */; };
@@ -361,6 +362,9 @@
 		03842DF91BFDA99A00EFFE81 /* JobdegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		03842DFD1BFDFD2100EFFE81 /* JobZhiyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		03846F841C08B0A200225BDA /* Qiniutoken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03846F831C08B0A200225BDA /* Qiniutoken.swift */; settings = {ASSET_TAGS = (); }; };
+		0390A9F31C1349E70092902E /* popoverArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 0390A9EF1C1349E70092902E /* popoverArrowUp.png */; settings = {ASSET_TAGS = (); }; };
+		0390A9F41C1349E70092902E /* popoverArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0390A9F01C1349E70092902E /* popoverArrowUp@2x.png */; settings = {ASSET_TAGS = (); }; };
+		0390A9F51C1349E70092902E /* popoverArrowUpSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = 0390A9F11C1349E70092902E /* popoverArrowUpSimple.png */; settings = {ASSET_TAGS = (); }; };
 		039CA1FC1C0996260001AD0A /* SpecialityCommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039CA1FB1C0996260001AD0A /* SpecialityCommentController.swift */; settings = {ASSET_TAGS = (); }; };
 		03A0136D1C093EC400AE99FD /* LDRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013661C093EC400AE99FD /* LDRefreshFooterView.m */; settings = {ASSET_TAGS = (); }; };
 		03A0136E1C093EC400AE99FD /* LDRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A013681C093EC400AE99FD /* LDRefreshHeaderView.m */; settings = {ASSET_TAGS = (); }; };
@@ -768,6 +772,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0311900A1C14008E00D94979 /* popoverArrowUp-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp-white@2x.png"; sourceTree = "<group>"; };
 		0334844D1C0B1B8E00630A76 /* HobbyMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyMenuViewController.swift; sourceTree = "<group>"; };
 		033484501C0B3A8C00630A76 /* avator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avator.jpg; sourceTree = "<group>"; };
 		034133711C00C83F00963224 /* xialaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xialaf.png; sourceTree = "<group>"; };
@@ -1266,6 +1271,9 @@
 		03842DF81BFDA99A00EFFE81 /* JobdegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobdegViewController.swift; sourceTree = "<group>"; };
 		03842DFC1BFDFD2100EFFE81 /* JobZhiyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobZhiyViewController.swift; sourceTree = "<group>"; };
 		03846F831C08B0A200225BDA /* Qiniutoken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qiniutoken.swift; sourceTree = "<group>"; };
+		0390A9EF1C1349E70092902E /* popoverArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUp.png; sourceTree = "<group>"; };
+		0390A9F01C1349E70092902E /* popoverArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp@2x.png"; sourceTree = "<group>"; };
+		0390A9F11C1349E70092902E /* popoverArrowUpSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUpSimple.png; sourceTree = "<group>"; };
 		039CA1FB1C0996260001AD0A /* SpecialityCommentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialityCommentController.swift; sourceTree = "<group>"; };
 		03A013651C093EC400AE99FD /* LDRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDRefreshFooterView.h; sourceTree = "<group>"; };
 		03A013661C093EC400AE99FD /* LDRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDRefreshFooterView.m; sourceTree = "<group>"; };
@@ -3368,6 +3376,10 @@
 		D9B190181BACE15F0077EA76 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0311900A1C14008E00D94979 /* popoverArrowUp-white@2x.png */,
+				0390A9EF1C1349E70092902E /* popoverArrowUp.png */,
+				0390A9F01C1349E70092902E /* popoverArrowUp@2x.png */,
+				0390A9F11C1349E70092902E /* popoverArrowUpSimple.png */,
 				D96E763B1BF9B5870062BAD0 /* Chat */,
 				03651CF31BEF46150019CDBA /* tabbar */,
 				03651CDE1BEF460C0019CDBA /* other */,
@@ -3914,6 +3926,7 @@
 				D99413D51BEC222600FC1B00 /* tab1@2x.png in Resources */,
 				03651C6A1BEF45D40019CDBA /* call_silence_h@2x.png in Resources */,
 				03651CAE1BEF45D40019CDBA /* chatBar_more_photoSelected@2x.png in Resources */,
+				0390A9F31C1349E70092902E /* popoverArrowUp.png in Resources */,
 				03651D0B1BEF46150019CDBA /* tabbar_contactsHL@2x.png in Resources */,
 				D96473F31BD67E2E008DA5B8 /* 附近图标@2x.png in Resources */,
 				D915CBC01BE65D17004EBE26 /* 已领取按钮@2x.png in Resources */,
@@ -4076,6 +4089,7 @@
 				D97A8C1A1BAADFA0002645F9 /* Main.storyboard in Resources */,
 				03651B9C1BEF45BD0019CDBA /* 57.png in Resources */,
 				D96E768B1BF9B5870062BAD0 /* 我图标@2x.png in Resources */,
+				0390A9F41C1349E70092902E /* popoverArrowUp@2x.png in Resources */,
 				D915CBA21BE65D17004EBE26 /* 人次选择按钮小@2x.png in Resources */,
 				D915CB8F1BE65D17004EBE26 /* 进行中图标.png in Resources */,
 				03651CC01BEF45D40019CDBA /* chat_sender_audio_playing_002.png in Resources */,
@@ -4098,6 +4112,7 @@
 				D915CB8C1BE65D17004EBE26 /* 结算选择框2@2x.png in Resources */,
 				D943B1481BE4618F0058BA1C /* 评论按钮大.png in Resources */,
 				D96E76901BF9B5870062BAD0 /* 更多.png in Resources */,
+				0390A9F51C1349E70092902E /* popoverArrowUpSimple.png in Resources */,
 				D915CB9B1BE65D17004EBE26 /* 人次选择按钮大切片右.png in Resources */,
 				D915CB8B1BE65D17004EBE26 /* 结算选择框2.png in Resources */,
 				D99413BB1BEC222600FC1B00 /* 微信@2x.png in Resources */,
@@ -4130,6 +4145,7 @@
 				03651B5E1BEF3B7A0019CDBA /* Localizable.strings in Resources */,
 				03651C831BEF45D40019CDBA /* chatBar_face.png in Resources */,
 				03651C901BEF45D40019CDBA /* chatBar_record@2x.png in Resources */,
+				0311900B1C14008E00D94979 /* popoverArrowUp-white@2x.png in Resources */,
 				D994139E1BEC222600FC1B00 /* 联盟奖励背景.png in Resources */,
 				D915CB891BE65D17004EBE26 /* 结算选择框.png in Resources */,
 				D99413AF1BEC222600FC1B00 /* 收藏tab@2x.png in Resources */,

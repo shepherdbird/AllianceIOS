@@ -22,16 +22,7 @@ class JobInfoReqController: UITableViewController {
     @IBOutlet weak var Content: UITextView!
     @IBOutlet weak var Zhiye: UILabel!
     
-    
-    struct res : JSONJoy {
-        var flag: Int?
-        var msg: String?
-        init(_ decoder: JSONDecoder) {
-            flag = decoder["flag"].integer
-            msg=decoder["msg"].string
-        }
-    }
-    
+
     
     var pro=["兼职","全职"]
     var deg = ["初中及初中以下", "高中", "大专", "本科", "硕士", "博士"]
@@ -39,8 +30,8 @@ class JobInfoReqController: UITableViewController {
     var Jobinfo:JobInfoController?
     var activityIndicatorView: UIActivityIndicatorView!
     var allzhiye:Array<String>=[]
-    var zhiinfo:JobZhiyViewController.Info?
-    var Iscreate:res? {
+    var zhiinfo:JobInfoController.ZhiInfo?
+    var Iscreate:Flag? {
       didSet
         {
             print(self.Iscreate?.msg)
@@ -115,6 +106,7 @@ class JobInfoReqController: UITableViewController {
             anotherView.Jobreq=self
             anotherView.selected=self.Zhiye.text
             anotherView.flag=0
+            anotherView.info=self.zhiinfo
             self.navigationController?.pushViewController(anotherView, animated: true)
         }
         
@@ -174,7 +166,7 @@ class JobInfoReqController: UITableViewController {
                 
                 print("opt finished: \(response.description)")
                 print("data is: \(response.data)")
-                 self.Iscreate = res(JSONDecoder(response.data))
+                 self.Iscreate = Flag(JSONDecoder(response.data))
             }
         } catch let error {
             print("got an error creating the request: \(error)")

@@ -64,7 +64,7 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
         self.userInteractionEnabled = YES;
         
         self.arrowImageView = [[UIImageView alloc] init];
-        self.arrowImageView.hidden = YES;
+        self.arrowImageView.hidden = NO;
         self.arrowImageView.contentMode = UIViewContentModeCenter;
         [self addSubview:self.arrowImageView];
 

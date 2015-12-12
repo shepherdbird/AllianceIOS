@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-AllianceIOS/AFNetworking.framework"
   install_framework "Pods-AllianceIOS/DKImagePickerController.framework"
+  install_framework "Pods-AllianceIOS/EDColor.framework"
   install_framework "Pods-AllianceIOS/HappyDNS.framework"
   install_framework "Pods-AllianceIOS/JSONJoy.framework"
   install_framework "Pods-AllianceIOS/Qiniu.framework"
@@ -95,6 +96,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-AllianceIOS/AFNetworking.framework"
   install_framework "Pods-AllianceIOS/DKImagePickerController.framework"
+  install_framework "Pods-AllianceIOS/EDColor.framework"
   install_framework "Pods-AllianceIOS/HappyDNS.framework"
   install_framework "Pods-AllianceIOS/JSONJoy.framework"
   install_framework "Pods-AllianceIOS/Qiniu.framework"

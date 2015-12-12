@@ -372,6 +372,7 @@ class HobbyController: UITableViewController {
         my.popover=self.popover
         my.Spec=self
         my.aihao=self.hobbykinds
+        my.tableView.layer.cornerRadius = 4;
         //self.popover.popoverContentSize=CGSizeMake(100,85)
         my.preferredContentSize=CGSizeMake(100,85)
         self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)

@@ -24,6 +24,7 @@
 #import "UserProfileManager.h"
 
 #import "AllianceIOS-Swift.h"
+#import "EDColor.h"
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
 static NSString *kMessageType = @"MessageType";
@@ -83,6 +84,15 @@ static NSString *kGroupName = @"GroupName";
     
     [self setupUnreadMessageCount];
     [self setupUntreatedApplyCount];
+    
+    for (NSInteger i=0; i<self.tabBar.items.count; i++) {
+        [self.tabBar.items[i] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIColor colorWithHexString: @"#525252"], NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica" size:13.0f],NSFontAttributeName,nil]
+                            forState:UIControlStateNormal];
+        
+        [self.tabBar.items[i] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithHexString: @"AB302F"],NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica" size:13.0f],NSFontAttributeName, nil] forState:UIControlStateSelected];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +117,9 @@ static NSString *kGroupName = @"GroupName";
         self.navigationItem.rightBarButtonItem = _addFriendItem;
     }else if (item.tag == 2){
         self.title = NSLocalizedString(@"title.resource", @"Resource");
+        self.navigationItem.rightBarButtonItem = nil;
+    }else if (item.tag == 3){
+        self.title = NSLocalizedString(@"title.me", @"Me");
         self.navigationItem.rightBarButtonItem = nil;
     }
 }
@@ -156,7 +169,11 @@ static NSString *kGroupName = @"GroupName";
     _chatListVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.conversation", @"Conversations")
                                                            image:nil
                                                              tag:0];
-    [_chatListVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"消息tab选中"]
+    
+    [_chatListVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    
+    [_chatListVC.tabBarItem setFinishedSelectedImage:[[UIImage imageNamed:@"消息tab选中"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                          withFinishedUnselectedImage:[UIImage imageNamed:@"消息tab默认"]];
     [self unSelectedTapTabBarItems:_chatListVC.tabBarItem];
     [self selectedTapTabBarItems:_chatListVC.tabBarItem];
@@ -165,7 +182,7 @@ static NSString *kGroupName = @"GroupName";
     _contactsVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.addressbook", @"AddressBook")
                                                            image:nil
                                                              tag:1];
-    [_contactsVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"好友tab选中"]
+    [_contactsVC.tabBarItem setFinishedSelectedImage:[[UIImage imageNamed:@"好友tab选中"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                          withFinishedUnselectedImage:[UIImage imageNamed:@"好友tab默认"]];
     [self unSelectedTapTabBarItems:_contactsVC.tabBarItem];
     [self selectedTapTabBarItems:_contactsVC.tabBarItem];
@@ -174,18 +191,18 @@ static NSString *kGroupName = @"GroupName";
     _resourceVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.resource", @"Resource")
                                                           image:nil
                                                             tag:2];
-    [_resourceVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"资源tba选中"]
+    [_resourceVC.tabBarItem setFinishedSelectedImage:[[UIImage imageNamed:@"资源tba选中"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                          withFinishedUnselectedImage:[UIImage imageNamed:@"资源tba默认"]];
     [self unSelectedTapTabBarItems:_resourceVC.tabBarItem];
     [self selectedTapTabBarItems:_resourceVC.tabBarItem];
     
     
     _meVC = [[Me alloc] initWithNibName:nil bundle:nil];
-    _meVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.resource", @"Resource")
+    _meVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.me", @"Me")
                                                            image:nil
                                                              tag:3];
-    [_meVC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"资源tba选中"]
-                         withFinishedUnselectedImage:[UIImage imageNamed:@"资源tba默认"]];
+    [_meVC.tabBarItem setFinishedSelectedImage:[[UIImage imageNamed:@"我tab选中"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                         withFinishedUnselectedImage:[UIImage imageNamed:@"我tab默认"]];
     [self unSelectedTapTabBarItems:_meVC.tabBarItem];
     [self selectedTapTabBarItems:_meVC.tabBarItem];
     

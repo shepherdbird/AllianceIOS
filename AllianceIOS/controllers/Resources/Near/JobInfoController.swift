@@ -29,7 +29,7 @@ class JobInfoController: UITableViewController {
         }
     }
     
-    var Iscreate:JobInfoReqController.res?{
+    var Iscreate:Flag?{
         didSet
         {
             self.goto()
@@ -141,6 +141,50 @@ class JobInfoController: UITableViewController {
         }
     }
     
+    //职业
+    struct ZhiItem : JSONJoy {
+        var objID: Int?
+        var profession: String?
+        init(_ decoder: JSONDecoder) {
+            objID = decoder["id"].integer
+            profession=decoder["profession"].string
+        }
+    }
+    
+    struct ZhiInfo: JSONJoy {
+        var items: Array<ZhiItem>!
+        
+        init(_ decoder: JSONDecoder) {
+            //we check if the array is valid then alloc our array and loop through it, creating the new address objects.
+            if let it = decoder.array {
+                items = Array<ZhiItem>()
+                for itemDecoder in it {
+                    items.append(ZhiItem(itemDecoder))
+                }
+            }
+        }
+    }
+    
+   // var zhi: Array<String> = []
+    var zhiinfo:ZhiInfo?
+        {
+        didSet
+        {
+           // zhi=Array<String>()
+            if(self.allflag==0){
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                    self.getall()
+                }
+            }else{
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                    self.getbypa()
+                }
+            }
+        }
+    }
+
+    
+    
     var addinfo:Info?
         {
         //我们需要在age属性发生变化后，更新一下nickName这个属性
@@ -159,6 +203,17 @@ class JobInfoController: UITableViewController {
             
         }
     }
+    
+    var my=JobZhiyViewController()
+        {
+        //我们需要在age属性发生变化后，更新一下nickName这个属性
+        didSet
+        {
+            print("ssss")
+        }
+    }
+
+    
     var pulltimes:Int=0
     var allflag:Int=0
     var prop:Int?
@@ -181,20 +236,24 @@ class JobInfoController: UITableViewController {
         self.tableView.separatorStyle=UITableViewCellSeparatorStyle.SingleLine
         self.tableView.backgroundColor=UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.tableView.sectionFooterHeight=1
-        addtitle()
+        addtitle(0)
         //求职信息
-        
+        self.tableView.userInteractionEnabled=true
         self.automaticallyAdjustsScrollViewInsets=false
         addactivity()
        addRefreshView()
     }
     
-    func addtitle(){
+    func addtitle(direct:Int){
         let jobInfo=UIButton(frame: CGRectMake(0, 0, 80, 50))
         jobInfo.tag=1
         jobInfo.addTarget(self, action:Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         let jobInfoIco=UIImageView(frame: CGRectMake(72, 22, 11, 6))
-        jobInfoIco.image=UIImage(named: "xiala.png")
+        if(direct==0){
+            jobInfoIco.image=UIImage(named: "xiala.png")
+        }else{
+            jobInfoIco.image=UIImage(named: "xialaf.png")
+        }
         let jobInfoLabel=UILabel(frame: CGRectMake(0, 0, 70,50))
         jobInfoLabel.text="求职信息"
         jobInfoLabel.textColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -206,6 +265,10 @@ class JobInfoController: UITableViewController {
         jobInfo.addSubview(jobInfoIco)
         self.navigationItem.titleView=jobInfo
 
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("sasacs")
     }
     
     func addactivity(){  //第一步缓存
@@ -224,14 +287,29 @@ class JobInfoController: UITableViewController {
         self.tableView.backgroundView=view1
         activityIndicatorView.startAnimating()
         
-        if(allflag==0){
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-                self.connect()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.getzhiye()
+        }
+
+    }
+    
+    func getzhiye(){
+        do {
+            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/professions/list")
+            
+            opt.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                //print("data is: \(response.data)") access the response of the data with response.data
+                self.zhiinfo = ZhiInfo(JSONDecoder(response.data))
+              //  print("content is: \(self.info!.items[0].content)")
+                
             }
-        }else{
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-                self.connect1()
-            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
         }
 
     }
@@ -277,15 +355,15 @@ class JobInfoController: UITableViewController {
         self.tableView.refreshFooter.loadMoreEnabled=true
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             if(self.allflag==0){
-            self.connect()
+            self.getall()
             }else{
-                self.connect1()
+                self.getbypa()
             }
         }
     }
 
     
-    func connect(){
+    func getall(){
         print("ccccc")
         do {
             let opt=try HTTP.GET("http://183.129.190.82:50001/v1/applyjobs/search")
@@ -307,35 +385,28 @@ class JobInfoController: UITableViewController {
 
     }
     
-    func connect1(){
+    func getbypa(){
         print("返回来了")
         print(allflag)
+        self.pulltimes=0
         do {
-            //let params:Dictionary<String,AnyObject?>=["jobproperty":self.prop,"professionid":self.zhi]
-            var jobproper:String
-            if (self.prop==nil){
-                jobproper=""
-            }else{
-                jobproper=String(self.prop)
+            var professionid:Int!=0
+            var opt:HTTP?
+            if(zhi==0){
+                allflag=0
+                opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search")
             }
-            var profession:String
-            if (self.zhi==nil){
-                profession=""
-            }else{
-                profession=String(self.zhi)
+            else{
+                professionid=self.zhiinfo?.items[zhi!-1].objID
+                opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search",parameters: ["professionid":professionid])
             }
-            print("jobproperty")
-            print(jobproper)
-            print("profession")
-            print(profession)
-            let opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search",parameters: ["jobproperty":jobproper,"professionid":profession])
             
-            opt.start { response in
+            opt!.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
                     return //also notify app of failure as needed
                 }
-                print("opt finished: \(response.description)")
+                print("opt finished: \(response.URL)")
                 //print("data is: \(response.data)") access the response of the data with response.data
                 self.info = Info(JSONDecoder(response.data))
               //  print("content is: \(self.info!.items[0].content)")
@@ -352,7 +423,7 @@ class JobInfoController: UITableViewController {
         self.info=nil
         self.addinfo=nil
         addactivity()
-        print("appesr")
+        print(self.zhi)
     }
 
     override func didReceiveMemoryWarning() {
@@ -450,15 +521,39 @@ class JobInfoController: UITableViewController {
     func ButtonAction(sender:UIButton){
         switch sender.tag {
         case 1:
-            let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let anotherView=myStoryBoard.instantiateViewControllerWithIdentifier("JobInfoSearch") as! JobsearchViewController
+//            let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//            let anotherView=myStoryBoard.instantiateViewControllerWithIdentifier("JobInfoSearch") as! JobsearchViewController
+//            
+//            //anotherView.title="发表求职"
+//           // self.navigationController?.modalPresentationStyle=UIModalPresentationStyle.FormSheet
+//            anotherView.Jobinfo=self
+//            
+//            self.navigationController?.pushViewController(anotherView, animated: true)
+//           
+            //self.navigationController?.presentViewController(anotherView, animated: true, completion: nil)
             
-            //anotherView.title="发表求职"
-           // self.navigationController?.modalPresentationStyle=UIModalPresentationStyle.FormSheet
-            anotherView.Jobinfo=self
-            self.navigationController?.pushViewController(anotherView, animated: true)
             
-               default:
+            let pop=WEPopoverController.init(contentViewController: my)
+            self.popover=pop
+            my.popover=self.popover
+            my.info=self.zhiinfo
+            my.flag=1
+            my.Jobinfo=self
+            my.tableView.scrollEnabled=false
+            //my.Job=self
+            my.tableView.layer.cornerRadius = 4;
+            
+            //self.popover.popoverContentSize=CGSizeMake(100,85)
+            let count=CGFloat((self.zhiinfo?.items.count)!+1)
+            my.preferredContentSize=CGSizeMake(self.tableView.frame.width/2,43*count)
+            
+            var rect=self.navigationItem.titleView?.frame
+            rect=rect?.offsetBy(dx: -((rect?.origin.x)!), dy: 0)
+            self.popover.presentPopoverFromRect(rect!, inView: self.navigationItem.titleView, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true, completion: nil)
+            addtitle(1)
+            
+            //self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
+        default:
             break
         }
     }
@@ -472,6 +567,7 @@ class JobInfoController: UITableViewController {
         self.popover=pop
         my.popover=self.popover
         my.Job=self
+        my.tableView.layer.cornerRadius = 4;
         //self.popover.popoverContentSize=CGSizeMake(100,85)
         my.preferredContentSize=CGSizeMake(100,85)
         self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
@@ -483,6 +579,7 @@ class JobInfoController: UITableViewController {
             let anotherView=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoReq") as! JobInfoReqController
             anotherView.title="发表求职"
             anotherView.Jobinfo=self
+            anotherView.zhiinfo=self.zhiinfo
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else{
             let anotherView=self.storyboard!.instantiateViewControllerWithIdentifier("JobInfoMy")

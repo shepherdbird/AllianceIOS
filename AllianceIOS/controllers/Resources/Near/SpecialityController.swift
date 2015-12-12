@@ -405,8 +405,9 @@ class SpecialityController: UITableViewController {
         self.popover=pop
         my.popover=self.popover
         my.Spec=self
+        my.tableView.layer.cornerRadius = 4;
         //self.popover.popoverContentSize=CGSizeMake(100,85)
-        my.preferredContentSize=CGSizeMake(100,85)
+        my.preferredContentSize=CGSizeMake(100,43*2)
         self.popover.presentPopoverFromBarButtonItem(self.navigationItem.rightBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
     }
 

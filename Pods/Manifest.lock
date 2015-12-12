@@ -23,6 +23,7 @@ PODS:
   - DKImagePickerController (2.4.1):
     - DKImagePickerController/Camera (= 2.4.1)
   - DKImagePickerController/Camera (2.4.1)
+  - EDColor (1.0.0)
   - HappyDNS (0.2.3)
   - JSONJoy-Swift (1.0.0)
   - Qiniu (7.0.16):
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - DKImagePickerController
+  - EDColor
   - JSONJoy-Swift (~> 1.0.0)
   - Qiniu (~> 7.0)
   - SwiftHTTP (~> 1.0.0)
@@ -41,6 +43,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   DKImagePickerController: f14f320fd164ca45ff95aecc943c75bc5323d518
+  EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   JSONJoy-Swift: 3e8129c282470614da69759208e9c923732f6cb4
   Qiniu: 51a8702cddc02b50867e10cef99291b9a8a006b1
