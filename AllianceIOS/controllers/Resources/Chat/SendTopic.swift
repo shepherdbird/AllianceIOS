@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DKImagePickerController
+import Qiniu
 import SwiftHTTP
 import JSONJoy
 
@@ -87,7 +89,7 @@ class SendTopic: UITableViewController ,UIImagePickerControllerDelegate,UINaviga
         }else if(section==1){
             return "话题内容"
         }
-        return ""
+        return "上传图片"
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.section==0){
@@ -106,7 +108,7 @@ class SendTopic: UITableViewController ,UIImagePickerControllerDelegate,UINaviga
             title.font=UIFont.systemFontOfSize(18)
             cell.addSubview(title)
         }else if(indexPath.section==1){
-            let content=UITextField(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width/3))
+            let content=UITextView(frame: CGRectMake(0,0,self.view.frame.width,self.view.frame.width/3))
             content.tag=2
             cell.addSubview(content)
         }else{
