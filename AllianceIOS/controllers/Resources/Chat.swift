@@ -9,10 +9,11 @@
 import UIKit
 import SwiftHTTP
 import JSONJoy
-
+var RefreshStatus=0
 class Chat: UIViewController {
     
     var index=0
+    var timer:NSTimer!
     var alert:UIAlertController!
     let newest=NewestMessage()
     let hotest=HotestMessage()
@@ -70,6 +71,7 @@ class Chat: UIViewController {
         self.addChildViewController(pop)
         self.addChildViewController(myconcerns)
         self.view.addSubview(newest.view)
+        addTimer()
         
     }
     func send(){
@@ -81,11 +83,12 @@ class Chat: UIViewController {
         //self.presentViewController(alert, animated: true, completion: nil)
     }
     func mine(){
-        let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("MyTopicCenter");
+//        let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("MyTopicCenter");
+//        self.navigationController?.pushViewController(anotherView, animated: true)
+        let anotherView=MyTopicCenter()
+        anotherView.HerPhone=Int(Phone)!
         self.navigationController?.pushViewController(anotherView, animated: true)
-        //let anotherView=MyTopicCenter()
-        //self.navigationController?.pushViewController(anotherView, animated: true)
         //self.presentViewController(alert, animated: true, completion: nil)
     }
     func segmentDidchange(segmented:UISegmentedControl){
@@ -124,6 +127,16 @@ class Chat: UIViewController {
         
         //获得选择的文字
         print(segmented.titleForSegmentAtIndex(segmented.selectedSegmentIndex))
+    }
+    func addTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "nextImage", userInfo: nil, repeats: true)
+    }
+    func nextImage() {
+        if(RefreshStatus==1){
+            newest.RefreshData()
+            RefreshStatus=0
+        }
+        
     }
 
 }

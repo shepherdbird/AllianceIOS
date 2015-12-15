@@ -92,7 +92,7 @@ class NewestMessage: UITableViewController {
         }
     }
     func loadMoredata(){
-        if(self.ChatMessageListInstance!._meta.currentPage==self.ChatMessageListInstance!._meta.pageCount){
+        if(self.ChatMessageListInstance!._meta.currentPage>=self.ChatMessageListInstance!._meta.pageCount){
             self.tableView.refreshFooter.loadMoreEnabled=false
             return
         }
@@ -202,6 +202,10 @@ class NewestMessage: UITableViewController {
         avator.layer.cornerRadius=20
         avator.sd_setImageWithURL(NSURL(string: ChatMessageListInstance!.items[row].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         cell.addSubview(avator)
+        let avatorBtn=UIButton(frame: CGRectMake(10, 10, 40, 40))
+        avatorBtn.addTarget(self, action: Selector("Avator:"), forControlEvents: UIControlEvents.TouchUpInside)
+        avatorBtn.tag=100000+row
+        cell.addSubview(avatorBtn)
         let name=UILabel(frame: CGRectMake(60,20,60,17))
         name.text=ChatMessageListInstance!.items[row].nickname
         name.font=UIFont.systemFontOfSize(17)
@@ -215,7 +219,7 @@ class NewestMessage: UITableViewController {
         time.text=TimeAgo(Int64(lin)!)
         time.font=UIFont.systemFontOfSize(15)
         time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
-        boundingRect=GetBounds(100, height: 100, font: name.font, str: time.text!)
+        boundingRect=GetBounds(300, height: 100, font: name.font, str: time.text!)
         time.frame=CGRectMake(65+name.frame.width,20,boundingRect.width,boundingRect.height)
         cell.addSubview(time)
         
@@ -366,6 +370,19 @@ class NewestMessage: UITableViewController {
         anotherView.TbMessageId=Int(self.ChatMessageListInstance!.items[indexPath.section].id)!
         print("messageid: "+self.ChatMessageListInstance!.items[indexPath.section].id)
         self.navigationController?.pushViewController(anotherView, animated: true)
+        
+    }
+    func Avator(sender:UIButton){
+        if(ChatMessageListInstance!.items[sender.tag-100000].phone==Phone){
+            let anotherView=MyTopicCenter()
+            anotherView.HerPhone=Int(Phone)!
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }else{
+            let anotherView=OtherCenter()
+            anotherView.HerPhone=Int(ChatMessageListInstance!.items[sender.tag-100000].phone)!
+            anotherView.Name=self.ChatMessageListInstance!.items[sender.tag-100000].nickname
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }
         
     }
 

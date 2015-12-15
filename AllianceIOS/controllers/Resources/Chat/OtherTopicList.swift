@@ -1,8 +1,8 @@
 //
-//  MyConcerns.swift
+//  OtherTopicList.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/12/12.
+//  Created by dawei on 15/12/15.
 //
 //
 
@@ -10,9 +10,10 @@ import UIKit
 import SwiftHTTP
 import JSONJoy
 
-class MyConcerns: UITableViewController {
-
+class OtherTopicList: UITableViewController {
+    
     var Index:Int=0
+    var HerPhone=0
     var activityIndicatorView: UIActivityIndicatorView!
     var ChatMessageListInstance:ChatMessageList?
         {
@@ -65,10 +66,10 @@ class MyConcerns: UITableViewController {
         addRefreshView()
     }
     func connect(){
-        print("聊吧我的关注")
+        print("聊吧最新")
         do {
-            let params:Dictionary<String,AnyObject>=["phone":Phone]
-            let new=try HTTP.POST(URL+"/tbmessages/myconcerns", parameters: params)
+            let params:Dictionary<String,AnyObject>=["phone":HerPhone]
+            let new=try HTTP.POST(URL+"/tbmessages/me", parameters: params)
             new.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -154,9 +155,9 @@ class MyConcerns: UITableViewController {
             if(section==self.ChatMessageListInstance!.items.count-1){
                 return 200
             }
-            return 15
+            return 0.01
         }
-        return 15
+        return 0.01
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
@@ -202,10 +203,6 @@ class MyConcerns: UITableViewController {
         avator.layer.cornerRadius=20
         avator.sd_setImageWithURL(NSURL(string: ChatMessageListInstance!.items[row].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         cell.addSubview(avator)
-        let avatorBtn=UIButton(frame: CGRectMake(10, 10, 40, 40))
-        avatorBtn.addTarget(self, action: Selector("Avator:"), forControlEvents: UIControlEvents.TouchUpInside)
-        avatorBtn.tag=120000+row
-        cell.addSubview(avatorBtn)
         let name=UILabel(frame: CGRectMake(60,20,60,17))
         name.text=ChatMessageListInstance!.items[row].nickname
         name.font=UIFont.systemFontOfSize(17)
@@ -219,7 +216,7 @@ class MyConcerns: UITableViewController {
         time.text=TimeAgo(Int64(lin)!)
         time.font=UIFont.systemFontOfSize(15)
         time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
-        boundingRect=GetBounds(100, height: 100, font: name.font, str: time.text!)
+        boundingRect=GetBounds(300, height: 100, font: name.font, str: time.text!)
         time.frame=CGRectMake(65+name.frame.width,20,boundingRect.width,boundingRect.height)
         cell.addSubview(time)
         
@@ -228,7 +225,7 @@ class MyConcerns: UITableViewController {
         title.font=UIFont.systemFontOfSize(18)
         title.numberOfLines=0
         boundingRect=GetBounds(self.view.frame.width-80, height: 300, font: title.font, str: title.text!)
-        title.frame=CGRectMake(60,50,boundingRect.width,boundingRect.height)
+        title.frame=CGRectMake(60,name.frame.maxY,boundingRect.width,boundingRect.height)
         cell.addSubview(title)
         let content=UILabel(frame: CGRectMake(60,70,self.view.frame.width-80,30))
         content.text=ChatMessageListInstance!.items[row].content
@@ -236,7 +233,7 @@ class MyConcerns: UITableViewController {
         content.numberOfLines=0
         content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
         boundingRect=GetBounds(self.view.frame.width-80, height: 1000, font: content.font, str: content.text!)
-        content.frame=CGRectMake(60,50+title.frame.height,boundingRect.width,boundingRect.height)
+        content.frame=CGRectMake(60,title.frame.maxY,boundingRect.width,boundingRect.height)
         cell.addSubview(content)
         if(ChatMessageListInstance!.items[row].pictures != ""){
             let picture=ChatMessageListInstance!.items[row].pictures.componentsSeparatedByString(" ")
@@ -333,9 +330,11 @@ class MyConcerns: UITableViewController {
             } catch let error {
                 print("got an error creating the request: \(error)")
             }
-//            like.setBackgroundImage(UIImage(named: "喜欢3.png"), forState: UIControlState.Normal)
-//            like.tag=sender.tag+1
-            //self.RefreshData()
+            //            like.setBackgroundImage(UIImage(named: "喜欢3.png"), forState: UIControlState.Normal)
+            //            like.tag=sender.tag+1
+            //            var lin=Array<NSIndexPath>()
+            //            lin.append(NSIndexPath(forRow: 1, inSection: (sender.tag-5)/2))
+            //            self.tableView.reloadRowsAtIndexPaths(lin, withRowAnimation: UITableViewRowAnimation.None)
         }else{
             do {
                 let params:Dictionary<String,AnyObject>=["phone":Phone,"tbmessageid":ChatMessageListInstance!.items[(sender.tag-5)/2].id]
@@ -352,31 +351,23 @@ class MyConcerns: UITableViewController {
             } catch let error {
                 print("got an error creating the request: \(error)")
             }
-//            like.setBackgroundImage(UIImage(named: "喜欢1.png"), forState: UIControlState.Normal)
-//            like.tag=sender.tag-1
+            //            like.setBackgroundImage(UIImage(named: "喜欢1.png"), forState: UIControlState.Normal)
+            //            like.tag=sender.tag-1
+            //            var lin=Array<NSIndexPath>()
+            //            lin.append(NSIndexPath(forRow: 1, inSection: (sender.tag-4)/2))
+            //            self.tableView.reloadRowsAtIndexPaths(lin, withRowAnimation: UITableViewRowAnimation.None)
+            //self.RefreshData()
         }
-        //self.RefreshData()
+        
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //let lin=Int(self.ChatMessageListInstance!.items[indexPath.row].id)!
         let anotherView=MessageView()
         anotherView.TbMessageId=Int(self.ChatMessageListInstance!.items[indexPath.section].id)!
         print("messageid: "+self.ChatMessageListInstance!.items[indexPath.section].id)
         self.navigationController?.pushViewController(anotherView, animated: true)
         
     }
-    func Avator(sender:UIButton){
-        if(ChatMessageListInstance!.items[sender.tag-120000].phone==Phone){
-            let anotherView=MyTopicCenter()
-            anotherView.HerPhone=Int(Phone)!
-            self.navigationController?.pushViewController(anotherView, animated: true)
-        }else{
-            let anotherView=OtherCenter()
-            anotherView.HerPhone=Int(ChatMessageListInstance!.items[sender.tag-120000].phone)!
-            anotherView.Name=self.ChatMessageListInstance!.items[sender.tag-120000].nickname
-            self.navigationController?.pushViewController(anotherView, animated: true)
-        }
-        
-    }
-
+    
 }

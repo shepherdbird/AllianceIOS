@@ -492,6 +492,10 @@
 		D920322C1BDC77AC00FAB511 /* 特色推荐@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D92032241BDC77AC00FAB511 /* 特色推荐@2x.png */; };
 		D92032311BDCA6D100FAB511 /* JobInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92032301BDCA6D100FAB511 /* JobInfoController.swift */; };
 		D937575D1BD53C310081D32E /* NearController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D937575C1BD53C310081D32E /* NearController.swift */; };
+		D94324B41C1FE56300A833B9 /* MyFans.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94324B31C1FE56300A833B9 /* MyFans.swift */; };
+		D94324B61C1FE82E00A833B9 /* OtherCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94324B51C1FE82E00A833B9 /* OtherCenter.swift */; };
+		D94324B81C1FEE1800A833B9 /* OtherTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94324B71C1FEE1800A833B9 /* OtherTopicList.swift */; };
+		D94324BA1C20307900A833B9 /* OtherTopicAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94324B91C20307900A833B9 /* OtherTopicAbout.swift */; };
 		D943B1401BE4618F0058BA1C /* 标签男.png in Resources */ = {isa = PBXBuildFile; fileRef = D943B1261BE4618F0058BA1C /* 标签男.png */; };
 		D943B1411BE4618F0058BA1C /* 标签男@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D943B1271BE4618F0058BA1C /* 标签男@2x.png */; };
 		D943B1421BE4618F0058BA1C /* 标签女.png in Resources */ = {isa = PBXBuildFile; fileRef = D943B1281BE4618F0058BA1C /* 标签女.png */; };
@@ -1412,6 +1416,10 @@
 		D92032241BDC77AC00FAB511 /* 特色推荐@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "特色推荐@2x.png"; sourceTree = "<group>"; };
 		D92032301BDCA6D100FAB511 /* JobInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobInfoController.swift; path = Resources/Near/JobInfoController.swift; sourceTree = "<group>"; };
 		D937575C1BD53C310081D32E /* NearController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearController.swift; path = Resources/NearController.swift; sourceTree = "<group>"; };
+		D94324B31C1FE56300A833B9 /* MyFans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFans.swift; sourceTree = "<group>"; };
+		D94324B51C1FE82E00A833B9 /* OtherCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherCenter.swift; sourceTree = "<group>"; };
+		D94324B71C1FEE1800A833B9 /* OtherTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTopicList.swift; sourceTree = "<group>"; };
+		D94324B91C20307900A833B9 /* OtherTopicAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTopicAbout.swift; sourceTree = "<group>"; };
 		D943B1261BE4618F0058BA1C /* 标签男.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签男.png"; sourceTree = "<group>"; };
 		D943B1271BE4618F0058BA1C /* 标签男@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签男@2x.png"; sourceTree = "<group>"; };
 		D943B1281BE4618F0058BA1C /* 标签女.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签女.png"; sourceTree = "<group>"; };
@@ -3082,6 +3090,10 @@
 				D9D367021C1BAB38007BB2B1 /* MyConcerns.swift */,
 				D963A4AE1C1D896D00801C7A /* MessageDetail.swift */,
 				D963A4B01C1D8CB600801C7A /* MessageView.swift */,
+				D94324B31C1FE56300A833B9 /* MyFans.swift */,
+				D94324B51C1FE82E00A833B9 /* OtherCenter.swift */,
+				D94324B71C1FEE1800A833B9 /* OtherTopicList.swift */,
+				D94324B91C20307900A833B9 /* OtherTopicAbout.swift */,
 			);
 			name = Chat;
 			path = Resources/Chat;
@@ -4380,6 +4392,7 @@
 				03651A3B1BEF3B1A0019CDBA /* MWPhoto.m in Sources */,
 				03651B231BEF3B400019CDBA /* ContactView.m in Sources */,
 				D905440A1BE5AE8700A1660F /* SpecialityContentCell.swift in Sources */,
+				D94324B41C1FE56300A833B9 /* MyFans.swift in Sources */,
 				D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */,
 				0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */,
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
@@ -4479,6 +4492,7 @@
 				D99506671BB3817D00CA9B2E /* FriendCell.swift in Sources */,
 				03651A3E1BEF3B1A0019CDBA /* MWTapDetectingView.m in Sources */,
 				D90544041BE5A8E000A1660F /* JobInfoMyController.swift in Sources */,
+				D94324BA1C20307900A833B9 /* OtherTopicAbout.swift in Sources */,
 				D906AA1E1C0A9588000817A0 /* ChargeRecordModel.swift in Sources */,
 				D96E76A91BF9B8320062BAD0 /* MyZan.swift in Sources */,
 				D99C92111BFD7F5700B5F5A6 /* grabcommodity_getthree.swift in Sources */,
@@ -4574,12 +4588,14 @@
 				03651B171BEF3B400019CDBA /* EMChatImageBubbleView.m in Sources */,
 				D96E76391BF9B5160062BAD0 /* MyTopicCenter.swift in Sources */,
 				03651A421BEF3B1A0019CDBA /* EMSDWebImageCompat.m in Sources */,
+				D94324B61C1FE82E00A833B9 /* OtherCenter.swift in Sources */,
 				03BABD931C0C705800FBA47D /* Hobbyglobal.swift in Sources */,
 				037BB46F1BFC1B3C00A76832 /* JobMenuViewController.swift in Sources */,
 				D963A4B11C1D8CB600801C7A /* MessageView.swift in Sources */,
 				03651B541BEF3B4B0019CDBA /* EMSearchDisplayController.m in Sources */,
 				D90CDC1D1C0AD35700C69603 /* CRCorn.swift in Sources */,
 				D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */,
+				D94324B81C1FEE1800A833B9 /* OtherTopicList.swift in Sources */,
 				03651A811BEF3B320019CDBA /* UIViewController+DismissKeyboard.m in Sources */,
 				03651B201BEF3B400019CDBA /* MessageReadManager.m in Sources */,
 				03651A441BEF3B1A0019CDBA /* EMSDWebImageDownloader.m in Sources */,

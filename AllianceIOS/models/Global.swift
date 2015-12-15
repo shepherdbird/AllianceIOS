@@ -36,7 +36,7 @@ func TimeAgo(time:Int64)->String{
         ans=String(cha/60/60/24/7)+"周前"
     }else{
         let format = NSDateFormatter()
-        format.dateFormat="yyyy年MM月dd日"
+        format.dateFormat="yy/MM/dd"
         let begin = NSDate(timeIntervalSince1970: Double(time))
         ans=format.stringFromDate(begin)
     }

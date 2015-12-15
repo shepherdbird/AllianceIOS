@@ -1,17 +1,16 @@
 //
-//  PopularityPeople.swift
+//  MyFans.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/12/12.
+//  Created by dawei on 15/12/15.
 //
 //
-
 import UIKit
 import SwiftHTTP
 import JSONJoy
 
-class PopularityPeople: UITableViewController {
-
+class MyFans: UITableViewController {
+    
     var Index:Int=0
     var activityIndicatorView: UIActivityIndicatorView!
     var ChatPoPularityListInstance:ChatPopularityList?
@@ -44,6 +43,11 @@ class PopularityPeople: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let center=UILabel(frame: CGRectMake(0,0,50,50))
+        center.text="我的粉丝"
+        center.font=UIFont.systemFontOfSize(20)
+        center.textColor=UIColor.whiteColor()
+        self.navigationItem.titleView=center
         self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
         let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -69,7 +73,7 @@ class PopularityPeople: UITableViewController {
         print("聊吧人气")
         do {
             let params:Dictionary<String,AnyObject>=["phone":Phone]
-            let new=try HTTP.POST(URL+"/tbusers/hot", parameters: params)
+            let new=try HTTP.POST(URL+"/tbusers/myfans", parameters: params)
             new.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -169,21 +173,7 @@ class PopularityPeople: UITableViewController {
     func popularity(rake:Int)->UITableViewCell{
         let cell=UITableViewCell()
         var boundingRect:CGRect
-        var image=["1.png","2.png","3.png"]
-        if(rake<3){
-            let rakeImage=UIImageView(frame: CGRectMake(20, 25, 30, 30))
-            rakeImage.image=UIImage(named: image[rake])
-            cell.addSubview(rakeImage)
-        }else{
-            let rakeImage=UIImageView(frame: CGRectMake(20, 25, 30, 30))
-            rakeImage.image=UIImage(named: "组-7.png")
-            cell.addSubview(rakeImage)
-            let rakenum=UILabel(frame: CGRectMake(30,35,10,10))
-            rakenum.text=String(rake+1)
-            rakenum.font=UIFont.systemFontOfSize(15)
-            cell.addSubview(rakenum)
-        }
-        let avator=UIImageView(frame: CGRectMake(60, 20, 40, 40))
+        let avator=UIImageView(frame: CGRectMake(10, 20, 40, 40))
         avator.sd_setImageWithURL(NSURL(string: ChatPoPularityListInstance!.items[rake].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         avator.clipsToBounds=true
         avator.layer.cornerRadius=20
@@ -192,14 +182,14 @@ class PopularityPeople: UITableViewController {
         name.text=ChatPoPularityListInstance!.items[rake].nickname
         name.font=UIFont.systemFontOfSize(18)
         boundingRect=GetBounds(self.view.frame.width-190, height: 20, font: name.font, str: name.text!)
-        name.frame=CGRectMake(110,20,boundingRect.width,boundingRect.height)
+        name.frame=CGRectMake(60,20,boundingRect.width,boundingRect.height)
         cell.addSubview(name)
         let fans=UILabel(frame: CGRectMake(110,40,250,15))
         fans.text="聊吧粉丝："+ChatPoPularityListInstance!.items[rake].concerncount
         fans.font=UIFont.systemFontOfSize(15)
         fans.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
         boundingRect=GetBounds(self.view.frame.width-190, height: 20, font: fans.font, str: fans.text!)
-        fans.frame=CGRectMake(110,40,boundingRect.width,boundingRect.height)
+        fans.frame=CGRectMake(60,40,boundingRect.width,boundingRect.height)
         cell.addSubview(fans)
         
         if(ChatPoPularityListInstance!.items[rake].isconcerned=="1"){
@@ -207,8 +197,8 @@ class PopularityPeople: UITableViewController {
             focus.tag=rake
             focus.setTitle("取消关注", forState: UIControlState.Normal)
             focus.addTarget(self, action: Selector("Cancel:"), forControlEvents: UIControlEvents.TouchUpInside)
-            focus.layer.borderColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77).CGColor
-            focus.setTitleColor(UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77), forState: UIControlState.Normal)
+            focus.layer.borderColor=UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0).CGColor
+            focus.setTitleColor(UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0), forState: UIControlState.Normal)
             focus.layer.borderWidth=1
             focus.clipsToBounds=true
             focus.layer.cornerRadius=3
@@ -271,3 +261,4 @@ class PopularityPeople: UITableViewController {
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
 }
+

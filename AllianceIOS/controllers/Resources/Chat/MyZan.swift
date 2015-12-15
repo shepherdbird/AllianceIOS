@@ -12,7 +12,6 @@ import JSONJoy
 
 class MyZan: UITableViewController {
 
-    @IBOutlet var MZ: UITableView!
     var activityIndicatorView: UIActivityIndicatorView!
     var view1=UIView()
     var MyZanList:ChatMessageList?
@@ -21,11 +20,33 @@ class MyZan: UITableViewController {
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+                self.tableView.refreshFooter.endRefresh()
+                self.tableView.refreshHeader.endRefresh()
+            }
+        }
+    }
+    var alert:UIAlertController?
+    var Fg:Flag?
+        {
+        didSet{
+            let reqAction=UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                //self.navigationController?.popViewControllerAnimated(true)
+                self.RefreshData()
+            }
+            alert=UIAlertController(title: "", message: Fg?.msg, preferredStyle: UIAlertControllerStyle.Alert)
+            alert!.addAction(reqAction)
+            self.presentViewController(alert!, animated: true, completion: nil)
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let center=UILabel(frame: CGRectMake(0,0,50,50))
+        center.text="我的点赞"
+        center.font=UIFont.systemFontOfSize(20)
+        center.textColor=UIColor.whiteColor()
+        self.navigationItem.titleView=center
         self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
         view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -42,11 +63,12 @@ class MyZan: UITableViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
         }
+        addRefreshView()
     }
     func connect(){
         print("聊吧-我的点赞")
         do {
-            let params:Dictionary<String,AnyObject>=["phone":"1"]
+            let params:Dictionary<String,AnyObject>=["phone":Phone]
             let new=try HTTP.POST(URL+"/tbmessages/mylikes", parameters: params)
             new.start { response in
                 if let err = response.error {
@@ -61,6 +83,52 @@ class MyZan: UITableViewController {
             print("got an error creating the request: \(error)")
         }
         
+    }
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.RefreshData()
+        }
+        
+        self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
+            self.loadMoredata()
+        }
+    }
+    func loadMoredata(){
+        if(self.MyZanList!._meta.currentPage>=self.MyZanList!._meta.pageCount){
+            self.tableView.refreshFooter.loadMoreEnabled=false
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let params:Dictionary<String,AnyObject>=["phone":Phone]
+                let opt=try HTTP.POST((self.MyZanList!._links.next?.href)!, parameters: params)
+                opt.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    //print("data is: \(response.data)") access the response of the data with response.data
+                    var lin:ChatMessageList?
+                    lin = ChatMessageList(JSONDecoder(response.data))
+                    for var i=(self.MyZanList!.items.count-1);i>=0;i-- {
+                        lin?.items.insert(self.MyZanList!.items[i], atIndex: 0)
+                    }
+                    self.MyZanList!=lin!
+                    //print("content is: \(self.addinfo!._links)")
+                    
+                }
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
+    }
+    
+    func RefreshData() {
+        self.tableView.refreshFooter.loadMoreEnabled=true
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,152 +150,162 @@ class MyZan: UITableViewController {
         return 1
     }
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
+        if((MyZanList) != nil){
+            if(section==self.MyZanList!.items.count-1){
+                return 200
+            }
+            return 0.01
+        }
+        return 0.01
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 0.01
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120
+        if((MyZanList) != nil){
+            if(indexPath.row==0){
+                let boundingRect:CGRect
+                let title=UILabel(frame: CGRectMake(60,50,self.view.frame.width-120,20))
+                title.text=MyZanList!.items[indexPath.section].title
+                title.font=UIFont.systemFontOfSize(18)
+                title.numberOfLines=0
+                boundingRect=GetBounds(self.view.frame.width-80, height: 300, font: title.font, str: title.text!)
+                
+                let content=UILabel(frame: CGRectMake(60,70,self.view.frame.width-80,30))
+                content.text=MyZanList!.items[indexPath.section].content
+                content.font=UIFont.systemFontOfSize(16)
+                content.numberOfLines=0
+                let boundingRect2=GetBounds(self.view.frame.width-80, height: 1000, font: content.font, str: content.text!)
+                if(self.MyZanList!.items[indexPath.section].pictures==""){
+                    return 50+boundingRect.height+boundingRect2.height+30
+                }else{
+                    let width=(self.view.frame.width-140)/3
+                    let picture=self.MyZanList!.items[indexPath.section].pictures.componentsSeparatedByString(" ")
+                    return CGFloat((picture.count-1)/3+1)*width+50+boundingRect.height+boundingRect2.height+30
+                }
+            }
+            return 40
+        }
+        return 0
     }
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if(section==0){
-//            return "2015-11-01"
-//        }
-//        return "2015-11-02"
-//    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=UITableViewCell()
-        let avator=UIImageView(frame: CGRectMake(5, 5, 30, 30))
+        var boundingRect:CGRect
+        let avator=UIImageView(frame: CGRectMake(10, 10, 40, 40))
         avator.clipsToBounds=true
-        avator.layer.cornerRadius=15
-        if let Ndata=NSData(contentsOfURL: NSURL(string: MyZanList!.items[indexPath.row].thumb)!){
-            avator.image=UIImage(data: Ndata)
-        }
+        avator.layer.cornerRadius=20
+        avator.sd_setImageWithURL(NSURL(string: MyZanList!.items[indexPath.row].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         cell.addSubview(avator)
-        let name=UILabel(frame: CGRectMake(40,10,60,15))
-        name.text=MyZanList!.items[indexPath.row].nickname
-        name.font=UIFont.systemFontOfSize(15)
-        name.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+        let avatorBtn=UIButton(frame: CGRectMake(10, 10, 40, 40))
+        avatorBtn.addTarget(self, action: Selector("Avator:"), forControlEvents: UIControlEvents.TouchUpInside)
+        avatorBtn.tag=100000+indexPath.row
+        cell.addSubview(avatorBtn)
+        let name=UILabel(frame: CGRectMake(60,20,60,17))
+        name.text=MyZanList!.items[indexPath.section].nickname
+        name.font=UIFont.systemFontOfSize(17)
+        name.textColor=UIColor(red: 45/255, green: 100/255, blue: 180/255, alpha: 1.0)
+        boundingRect=GetBounds(300, height: 100, font: name.font, str: name.text!)
+        name.frame=CGRectMake(60,20,boundingRect.width,boundingRect.height)
         cell.addSubview(name)
         let time=UILabel(frame: CGRectMake(90,10,200,15))
-        time.text=String(NSDate(timeIntervalSince1970: Double(MyZanList!.items[indexPath.row].created_at)!))
-        time.font=UIFont.systemFontOfSize(13)
-        time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+        //time.text=String(NSDate(timeIntervalSince1970: Double(MyTopicList!.items[indexPath.section].created_at)!))
+        let lin=MyZanList!.items[indexPath.section].created_at
+        //time.text=String(NSDate(timeIntervalSince1970: Double(lin)!))
+        time.text=TimeAgo(Int64(lin)!)
+        time.font=UIFont.systemFontOfSize(15)
+        time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
+        boundingRect=GetBounds(300, height: 100, font: name.font, str: time.text!)
+        time.frame=CGRectMake(65+name.frame.width,20,boundingRect.width,boundingRect.height)
         cell.addSubview(time)
-        
-//        let type=UIImageView(frame: CGRectMake(10, 40, 20, 20))
-//        type.clipsToBounds=true
-//        type.layer.cornerRadius=2
-//        type.image=UIImage(named: "组-1.png")
-//        cell.addSubview(type)
-        let title=UILabel(frame: CGRectMake(35,40,self.view.frame.width-40,25))
-        title.text=MyZanList!.items[indexPath.row].title
-        title.font=UIFont.systemFontOfSize(17)
-        //title.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
+        let title=UILabel(frame: CGRectMake(5,40,self.view.frame.width-40,25))
+        title.text=MyZanList!.items[indexPath.section].title
+        title.font=UIFont.systemFontOfSize(18)
+        title.numberOfLines=0
+        boundingRect=GetBounds(self.view.frame.width-80, height: 300, font: title.font, str: title.text!)
+        title.frame=CGRectMake(60,name.frame.maxY,boundingRect.width,boundingRect.height)
         cell.addSubview(title)
         let content=UILabel(frame: CGRectMake(5,65,self.view.frame.width-10,30))
-        content.text=MyZanList!.items[indexPath.row].content
-        content.font=UIFont.systemFontOfSize(15)
+        content.text=MyZanList!.items[indexPath.section].content
+        content.font=UIFont.systemFontOfSize(16)
         content.numberOfLines=0
         content.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        boundingRect=GetBounds(self.view.frame.width-80, height: 1000, font: content.font, str: content.text!)
+        content.frame=CGRectMake(60,title.frame.maxY,boundingRect.width,boundingRect.height)
         cell.addSubview(content)
-        if MyZanList!.items[indexPath.row].isconcerned=="1" {
-            let focus=UILabel(frame: CGRectMake(10,100,60,15))
-            focus.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
-            focus.text="已关注"
-            focus.font=UIFont.systemFontOfSize(13)
-            cell.addSubview(focus)
-        }else{
-            let focusIcon=UIImageView(frame: CGRectMake(10, 100, 15, 15))
-            focusIcon.image=UIImage(named: "关注图标.png")
-            cell.addSubview(focusIcon)
-            let focusBtn=UIButton(frame: CGRectMake(30,100,50,15))
-            focusBtn.setTitle("关注TA", forState: UIControlState.Normal)
-            focusBtn.titleLabel?.font=UIFont.systemFontOfSize(13)
-            focusBtn.setTitleColor(UIColor(red: 230/255, green: 120/255, blue: 40/255, alpha: 1.0), forState: UIControlState.Normal)
-            cell.addSubview(focusBtn)
+        var Y=content.frame.maxY
+        if(MyZanList!.items[indexPath.section].pictures != ""){
+            let picture=MyZanList!.items[indexPath.section].pictures.componentsSeparatedByString(" ")
+            let width=(self.view.frame.width-140)/3+10
+            for i in 0...(picture.count-1){
+                let img=UIImageView(frame: CGRectMake(60+width*CGFloat(i%3), content.frame.maxY+width*CGFloat(i/3), width-10, width-10))
+                img.sd_setImageWithURL(NSURL(string: picture[i]),placeholderImage: UIImage(named: "avator.jpg"))
+                cell.addSubview(img)
+                if(i==picture.count-1){
+                    Y=img.frame.maxY
+                }
+            }
         }
-        
-        let like=UIImageView(frame: CGRectMake(self.view.frame.width/3*2, 100, 15, 15))
+        let focus=UIButton(frame: CGRectMake(10,Y+10,65,20))
+        focus.setTitleColor(UIColor(red: 45/255, green: 100/255, blue: 180/255, alpha: 1.0), forState: UIControlState.Normal)
+        focus.setTitle("取消点赞", forState: UIControlState.Normal)
+        focus.titleLabel?.font=UIFont.systemFontOfSize(15)
+        focus.tag=1000+indexPath.section
+        focus.addTarget(self, action: Selector("Delete:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.addSubview(focus)
+        let like=UIImageView(frame: CGRectMake(self.view.frame.width/3*2, Y+10, 20, 20))
         like.image=UIImage(named: "喜欢1.png")
         cell.addSubview(like)
-        let likeCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+15,100,50,15))
+        let likeCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+22,Y+10,60,20))
         likeCount.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
-        likeCount.text=MyZanList!.items[indexPath.row].likecount
-        likeCount.font=UIFont.systemFontOfSize(12)
+        likeCount.text=MyZanList!.items[indexPath.section].likecount
+        likeCount.font=UIFont.systemFontOfSize(14)
         cell.addSubview(likeCount)
-        
-        let comment=UIImageView(frame: CGRectMake(self.view.frame.width/3*2+60, 100, 15, 15))
+        let comment=UIImageView(frame: CGRectMake(self.view.frame.width/3*2+60, Y+10, 20, 20))
         comment.image=UIImage(named: "评论3.png")
         cell.addSubview(comment)
-        let commentCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+80,100,50,15))
+        let commentCount=UILabel(frame: CGRectMake(self.view.frame.width/3*2+82,Y+10,60,20))
         commentCount.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
-        commentCount.text=MyZanList!.items[indexPath.row].replycount
-        commentCount.font=UIFont.systemFontOfSize(12)
+        commentCount.text=MyZanList!.items[indexPath.section].replycount
+        commentCount.font=UIFont.systemFontOfSize(14)
         cell.addSubview(commentCount)
         return cell
 
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        MZ.deselectRowAtIndexPath(indexPath, animated: true)
-            let anotherView:UIViewController=self.storyboard!.instantiateViewControllerWithIdentifier("TopicDetail");
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let anotherView=MessageView()
+        anotherView.TbMessageId=Int(self.MyZanList!.items[indexPath.section].id)!
+        self.navigationController?.pushViewController(anotherView, animated: true)
+    }
+    func Delete(sender:UIButton){
+        do {
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"tbmessageid":MyZanList!.items[sender.tag-1000].id]
+            let new=try HTTP.POST(URL+"/tbmessages/cancellike", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.Fg = Flag(JSONDecoder(response.data))
+            }
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    func Avator(sender:UIButton){
+        if(MyZanList!.items[sender.tag-100000].phone==Phone){
+            let anotherView=MyTopicCenter()
+            anotherView.HerPhone=Int(Phone)!
             self.navigationController?.pushViewController(anotherView, animated: true)
+        }else{
+            let anotherView=OtherCenter()
+            anotherView.HerPhone=Int(MyZanList!.items[sender.tag-100000].phone)!
+            anotherView.Name=self.MyZanList!.items[sender.tag-100000].nickname
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }
+        
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

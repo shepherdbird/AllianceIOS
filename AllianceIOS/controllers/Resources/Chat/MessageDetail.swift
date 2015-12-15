@@ -338,6 +338,10 @@ class MessageDetail: UITableViewController ,UITextFieldDelegate{
         avator.layer.cornerRadius=20
         avator.sd_setImageWithURL(NSURL(string: ChatMessageInstance!.thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         cell.addSubview(avator)
+        let avatorBtn=UIButton(frame: CGRectMake(10, 10, 40, 40))
+        avatorBtn.addTarget(self, action: Selector("Avator:"), forControlEvents: UIControlEvents.TouchUpInside)
+        avatorBtn.tag=100000
+        cell.addSubview(avatorBtn)
         let name=UILabel(frame: CGRectMake(60,22,60,15))
         name.text=ChatMessageInstance!.nickname
         name.font=UIFont.systemFontOfSize(17)
@@ -548,6 +552,19 @@ class MessageDetail: UITableViewController ,UITextFieldDelegate{
                 keyBaordView.removeFromSuperview()
                 pivot=0
             }
+        }
+        
+    }
+    func Avator(sender:UIButton){
+        if(self.ChatMessageInstance!.phone==Phone){
+            let anotherView=MyTopicCenter()
+            anotherView.HerPhone=Int(Phone)!
+            self.navigationController?.pushViewController(anotherView, animated: true)
+        }else{
+            let anotherView=OtherCenter()
+            anotherView.HerPhone=Int(self.ChatMessageInstance!.phone)!
+            anotherView.Name=self.ChatMessageInstance!.nickname
+            self.navigationController?.pushViewController(anotherView, animated: true)
         }
         
     }
