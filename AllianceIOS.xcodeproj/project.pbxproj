@@ -3752,7 +3752,7 @@
 				TargetAttributes = {
 					D97A8C101BAADF9F002645F9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 6L4H97XXC8;
+						DevelopmentTeam = 862RTQJG5C;
 					};
 				};
 			};
@@ -4757,7 +4757,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4797,7 +4797,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
