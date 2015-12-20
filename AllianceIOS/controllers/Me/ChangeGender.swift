@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class ChangeGender: UITableViewController {
 
     @IBOutlet var CG: UITableView!
     var SelectBoy:UIImageView!
     var SelectGirl:UIImageView!
+    var IsBoy:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("Save"))
         self.navigationItem.rightBarButtonItem?.tintColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
         
@@ -49,15 +53,22 @@ class ChangeGender: UITableViewController {
         let gender=UILabel(frame: CGRectMake(15,15,20,20))
         if(indexPath.row==0){
             gender.text="男"
-            SelectBoy=UIImageView(frame: CGRectMake(self.view.frame.width-40, 15, 25, 17))
+            SelectBoy=UIImageView(frame: CGRectMake(self.view.frame.width-40, 15, 17, 17))
             SelectBoy.image=UIImage(named: "勾选按钮.png")
             cell.addSubview(SelectBoy)
-            SelectBoy.hidden=true
+            if(self.IsBoy==0){
+                SelectBoy.hidden=true
+                
+            }
         }else{
             gender.text="女"
-            SelectGirl=UIImageView(frame: CGRectMake(self.view.frame.width-40, 15, 25, 17))
+            SelectGirl=UIImageView(frame: CGRectMake(self.view.frame.width-40, 15, 17, 17))
             SelectGirl.image=UIImage(named: "勾选按钮.png")
             cell.addSubview(SelectGirl)
+            if(self.IsBoy==1){
+                
+                SelectGirl.hidden=true
+            }
             
         }
         gender.font=UIFont.systemFontOfSize(15)
@@ -66,7 +77,7 @@ class ChangeGender: UITableViewController {
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        CG.deselectRowAtIndexPath(indexPath, animated: true)
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if(indexPath.row==0){
             SelectBoy.hidden=false
             SelectGirl.hidden=true

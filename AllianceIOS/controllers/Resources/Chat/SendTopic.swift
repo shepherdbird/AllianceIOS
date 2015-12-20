@@ -76,7 +76,7 @@ class SendTopic: UITableViewController{
             pickerController.showCancelButton = true
             pickerController.allowMultipleTypes = allowMultipleType
             pickerController.sourceType = sourceType
-            pickerController.maxSelectableCount=9
+            pickerController.maxSelectableCount=1
             pickerController.defaultSelectedAssets=self.assets
             
             pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
