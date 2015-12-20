@@ -145,7 +145,7 @@ class ResourceController: UIViewController ,UIScrollViewDelegate{
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Near");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 4:
-            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Chat");
+            let anotherView=Chat()
             self.navigationController?.pushViewController(anotherView, animated: true)
         default:
             break

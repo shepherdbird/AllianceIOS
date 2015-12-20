@@ -7,19 +7,78 @@
 //
 
 import UIKit
-
+import SwiftHTTP
+import JSONJoy
+var RefreshPerson=0
 class Me: UITableViewController {
     
     @IBOutlet var I: UITableView!
+    var timer:NSTimer!
     let myStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+    var activityIndicatorView: UIActivityIndicatorView!
+    var view1=UIView()
+    var PersonInfoInstance:PersonInfo?
+        {
+        didSet{
+            activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.hidden=true
+            self.tableView.backgroundView=nil
+            dispatch_async(dispatch_get_main_queue()){
+                self.tableView.reloadData()
+                self.tableView.refreshHeader.endRefresh()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
+        view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
+        view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+        
+        activityIndicatorView.frame = CGRectMake(self.tableView.frame.size.width/2-100, -30, 200, 200)
+        
+        activityIndicatorView.hidesWhenStopped = true
+        
+        activityIndicatorView.color = UIColor.blackColor()
+        view1.addSubview(activityIndicatorView)
+        self.tableView.backgroundView=view1
+        activityIndicatorView.startAnimating()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
+        addRefreshView()
+        addTimer()
+    }
+    func connect(){
+        print("个人中心主界面")
+        do {
+            let params:Dictionary<String,AnyObject>=["phone":Phone]
+            let new=try HTTP.POST(URL+"/users/view", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.PersonInfoInstance = PersonInfo(JSONDecoder(response.data))
+            }
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
+        
+    }
+    func addRefreshView(){
+        self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
+            self.RefreshData()
+        }
+    }
+    func RefreshData() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            self.connect()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,8 +89,10 @@ class Me: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 4
+        if((self.PersonInfoInstance) != nil){
+            return 4
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,14 +107,20 @@ class Me: UITableViewController {
         }
     }
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if(section==3){
+            return 200
+        }
         return 15
+    }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
             return self.view.frame.width
         default:
-            return 40
+            return 50
         }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,25 +129,25 @@ class Me: UITableViewController {
         case 0:
             return FirstCell()
         case 1:
-            let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
+            let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
             icon.image=UIImage(named: "邀请好友图标.png")
             icon.clipsToBounds=true
-            icon.layer.cornerRadius=10
-            let name=UILabel(frame: CGRectMake(40,15,150,15))
+            icon.layer.cornerRadius=15
+            let name=UILabel(frame: CGRectMake(50,15,150,18))
             name.text="邀请好友"
-            name.font=UIFont.systemFontOfSize(15)
+            name.font=UIFont.systemFontOfSize(18)
             cell.addSubview(icon)
             cell.addSubview(name)
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         case 3:
-            let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
+            let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
             icon.image=UIImage(named: "设置图标.png")
             icon.clipsToBounds=true
-            icon.layer.cornerRadius=10
-            let name=UILabel(frame: CGRectMake(40,15,150,15))
+            icon.layer.cornerRadius=15
+            let name=UILabel(frame: CGRectMake(50,15,150,18))
             name.text="设置"
-            name.font=UIFont.systemFontOfSize(15)
+            name.font=UIFont.systemFontOfSize(18)
             cell.addSubview(icon)
             cell.addSubview(name)
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
@@ -88,37 +155,37 @@ class Me: UITableViewController {
         default:
             switch indexPath.row{
             case 0:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
                 icon.image=UIImage(named: "我的钱包图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=10
-                let name=UILabel(frame: CGRectMake(40,15,150,15))
+                icon.layer.cornerRadius=15
+                let name=UILabel(frame: CGRectMake(50,15,150,18))
                 name.text="我的钱包"
-                name.font=UIFont.systemFontOfSize(15)
+                name.font=UIFont.systemFontOfSize(18)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
             case 1:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
                 icon.image=UIImage(named: "我的收藏图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=10
-                let name=UILabel(frame: CGRectMake(40,15,150,15))
+                icon.layer.cornerRadius=15
+                let name=UILabel(frame: CGRectMake(50,15,150,18))
                 name.text="我的收藏"
-                name.font=UIFont.systemFontOfSize(15)
+                name.font=UIFont.systemFontOfSize(18)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
             default:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
                 icon.image=UIImage(named: "我的相册图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=10
-                let name=UILabel(frame: CGRectMake(40,15,150,15))
+                icon.layer.cornerRadius=15
+                let name=UILabel(frame: CGRectMake(50,15,150,18))
                 name.text="我的相册"
-                name.font=UIFont.systemFontOfSize(15)
+                name.font=UIFont.systemFontOfSize(18)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
@@ -128,60 +195,71 @@ class Me: UITableViewController {
     }
     func FirstCell()->UITableViewCell{
         let cell=UITableViewCell()
+        var boundingRect:CGRect
         let backgroud=UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.width/4*3))
         //backgroud.backgroundColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
         backgroud.backgroundColor=UIColor(red: 200/255, green: 0, blue: 0, alpha: 1.0)
         cell.addSubview(backgroud)
         let avator=UIImageView(frame: CGRectMake(self.view.frame.width/2-50, 80, 100, 100))
-        avator.image=UIImage(named: "avator.jpg")
+        print(self.PersonInfoInstance?.thumb)
+        avator.sd_setImageWithURL(NSURL(string: self.PersonInfoInstance!.thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         avator.clipsToBounds=true
         avator.layer.cornerRadius=50
         cell.addSubview(avator)
-        let avator_edit=UIButton(frame: CGRectMake(self.view.frame.width/2+10, 160, 20, 20))
-        avator_edit.setBackgroundImage(UIImage(named: "修改资料图标.png"), forState: UIControlState.Normal)
+        let avator_edit=UIButton(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.width/4*3))
+        //avator_edit.setBackgroundImage(UIImage(named: "修改资料图标.png"), forState: UIControlState.Normal)
         avator_edit.tag=1
         avator_edit.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-        avator_edit.clipsToBounds=true
-        avator_edit.layer.cornerRadius=10
-        cell.addSubview(avator_edit)
+        //avator_edit.clipsToBounds=true
+        //avator_edit.layer.cornerRadius=10
+        
         let username=UILabel(frame: CGRectMake(self.view.frame.width/2-40,self.view.frame.width/2-10,80,30))
-        username.text="飞翔DE鸟"
+        username.text=self.PersonInfoInstance!.nickname
         username.textColor=UIColor.whiteColor()
-        username.font=UIFont.systemFontOfSize(18)
+        username.font=UIFont.systemFontOfSize(20)
+        boundingRect=GetBounds(300, height: 100, font: username.font, str: username.text!)
+        username.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,avator.frame.maxY+20,boundingRect.width,boundingRect.height)
         cell.addSubview(username)
         let id=UILabel(frame: CGRectMake(self.view.frame.width/2-40,self.view.frame.width/2+15,110,20))
-        id.text="帐号：22335698"
+        id.text="帐号："+String(self.PersonInfoInstance!.id)
         id.textColor=UIColor.whiteColor()
-        id.font=UIFont.systemFontOfSize(12)
+        id.font=UIFont.systemFontOfSize(17)
+        boundingRect=GetBounds(300, height: 100, font: id.font, str: id.text!)
+        id.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,username.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(id)
+        cell.addSubview(avator_edit)
         //直接联盟
         let DirectAlliance=UIButton(frame: CGRectMake(0,self.view.frame.width/4*3,self.view.frame.width/3,self.view.frame.width/4))
         DirectAlliance.tag=100
         DirectAlliance.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-        let DA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12, self.view.frame.width/4*3+20, 15, 15))
+        let DA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12, self.view.frame.width/4*3+20, 20, 20))
         DA_icon.image=UIImage(named: "直接联盟图标.png")
-        let DA_name=UILabel(frame: CGRectMake(self.view.frame.width/12+15,self.view.frame.width/4*3+20,120,15))
+        let DA_name=UILabel(frame: CGRectMake(self.view.frame.width/12+22,self.view.frame.width/4*3+20,120,17))
         DA_name.text="直接联盟"
-        DA_name.font=UIFont.systemFontOfSize(13)
+        DA_name.font=UIFont.systemFontOfSize(17)
         let DA_count=UILabel(frame: CGRectMake(self.view.frame.width/6-10,self.view.frame.width/8*7,50,30))
-        DA_count.text="10人"
+        DA_count.text=String(self.PersonInfoInstance!.directalliancecount)+"人"
         DA_count.font=UIFont.systemFontOfSize(20)
         DA_count.textColor=UIColor.blueColor()
+        boundingRect=GetBounds(300, height: 100, font: DA_count.font, str: DA_count.text!)
+        DA_count.frame=CGRectMake(self.view.frame.width/6-boundingRect.width/2,DA_name.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(DirectAlliance)
         cell.addSubview(DA_icon)
         cell.addSubview(DA_name)
         cell.addSubview(DA_count)
         //五层总数
         let FiveAll=UIButton(frame: CGRectMake(self.view.frame.width/3,self.view.frame.width/4*3,self.view.frame.width/3,self.view.frame.width/4))
-        let FA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*5, self.view.frame.width/4*3+20, 15, 15))
+        let FA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*5, self.view.frame.width/4*3+20, 20, 20))
         FA_icon.image=UIImage(named: "五层人数图标.png")
-        let FA_name=UILabel(frame: CGRectMake(self.view.frame.width/12*5+15,self.view.frame.width/4*3+20,120,15))
-        FA_name.text="五层总数"
-        FA_name.font=UIFont.systemFontOfSize(13)
+        let FA_name=UILabel(frame: CGRectMake(self.view.frame.width/12*5+22,self.view.frame.width/4*3+20,120,17))
+        FA_name.text="两层总数"
+        FA_name.font=UIFont.systemFontOfSize(17)
         let FA_count=UILabel(frame: CGRectMake(self.view.frame.width/2-10,self.view.frame.width/8*7,50,30))
-        FA_count.text="30人"
+        FA_count.text=String(self.PersonInfoInstance!.allalliancecount)+"人"
         FA_count.font=UIFont.systemFontOfSize(20)
         FA_count.textColor=UIColor.redColor()
+        boundingRect=GetBounds(300, height: 100, font: FA_count.font, str: FA_count.text!)
+        FA_count.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,FA_name.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(FiveAll)
         cell.addSubview(FA_icon)
         cell.addSubview(FA_name)
@@ -191,15 +269,17 @@ class Me: UITableViewController {
         AllianceGive.tag=102
         AllianceGive.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         
-        let AG_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*9, self.view.frame.width/4*3+20, 15, 15))
+        let AG_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*9, self.view.frame.width/4*3+20, 20, 20))
         AG_icon.image=UIImage(named: "联盟奖励图标.png")
-        let AG_name=UILabel(frame: CGRectMake(self.view.frame.width/12*9+15,self.view.frame.width/4*3+20,120,15))
+        let AG_name=UILabel(frame: CGRectMake(self.view.frame.width/12*9+22,self.view.frame.width/4*3+20,120,17))
         AG_name.text="联盟奖励"
-        AG_name.font=UIFont.systemFontOfSize(13)
+        AG_name.font=UIFont.systemFontOfSize(17)
         let AG_count=UILabel(frame: CGRectMake(self.view.frame.width/6*5-10,self.view.frame.width/8*7,80,30))
-        AG_count.text="150元"
+        AG_count.text=String(self.PersonInfoInstance!.alliancerewards)+"元"
         AG_count.font=UIFont.systemFontOfSize(20)
         AG_count.textColor=UIColor.greenColor()
+        boundingRect=GetBounds(300, height: 100, font: AG_count.font, str: AG_count.text!)
+        AG_count.frame=CGRectMake(self.view.frame.width/6*5-boundingRect.width/2,AG_name.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(AllianceGive)
         cell.addSubview(AG_icon)
         cell.addSubview(AG_name)
@@ -220,7 +300,9 @@ class Me: UITableViewController {
     func ButtonAction(sender:UIButton){
         switch sender.tag{
         case 1:
-            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AboutMe");
+            let anotherView=AboutMe()
+            //anotherView.Personinfo=self.PersonInfoInstance
+            //let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AboutMe");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 100:
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("DirectAlliance");
@@ -232,50 +314,16 @@ class Me: UITableViewController {
             break
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func addTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "nextImage", userInfo: nil, repeats: true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func nextImage() {
+        if(RefreshPerson==1){
+            self.RefreshData()
+            RefreshPerson=0
+        }
+        
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

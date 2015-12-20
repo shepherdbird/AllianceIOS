@@ -8,51 +8,82 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>DKImagePickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>EDColor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>HappyDNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>JSONJoy-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-AllianceIOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>SwiftHTTP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>WEPopover.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>082F284913D2E5728038EBB381E68A8C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2DB6C2CD7957113C2BEC554CE594753F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2EFDF0D568263D6A9BF0A4F9CBEB716C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E08260B89C8C0CF568E6FB9E99BF0DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +98,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6A75FA161FE5E89CAC0C16FC5983A280</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>74D746023527F3EEA56BFD71F01F77C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8161794748F9E36C790CB71C7013DAD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8901076E04813CD764BEDC3828A6413C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90A9EDDD7C80CC3C01FCF8CA28C58174</key>
 		<dict>
 			<key>primary</key>
 			<true/>

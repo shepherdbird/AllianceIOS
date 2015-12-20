@@ -1,26 +1,25 @@
 //
-//  Focus.swift
+//  MyFans.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/11/16.
+//  Created by dawei on 15/12/15.
 //
 //
-
 import UIKit
 import SwiftHTTP
 import JSONJoy
 
-class Focus: UITableViewController {
-
+class MyFans: UITableViewController {
+    
+    var Index:Int=0
     var activityIndicatorView: UIActivityIndicatorView!
-    var view1=UIView()
-    var HerPhone=0
-    var LiaoBaMyConcerns:LiaobaFans?
+    var ChatPoPularityListInstance:ChatPopularityList?
         {
         didSet{
             activityIndicatorView.stopAnimating()
             self.activityIndicatorView.hidden=true
             self.tableView.backgroundView=nil
+            //self.tableView.reloadData()
             dispatch_async(dispatch_get_main_queue()){
                 self.tableView.reloadData()
                 self.tableView.refreshFooter.endRefresh()
@@ -41,15 +40,16 @@ class Focus: UITableViewController {
             self.presentViewController(alert!, animated: true, completion: nil)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let center=UILabel(frame: CGRectMake(0,0,50,50))
-        center.text="我的关注"
+        center.text="我的粉丝"
         center.font=UIFont.systemFontOfSize(20)
         center.textColor=UIColor.whiteColor()
         self.navigationItem.titleView=center
         self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
-        view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
+        let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
         
@@ -65,23 +65,24 @@ class Focus: UITableViewController {
         activityIndicatorView.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
+            
         }
         addRefreshView()
     }
     func connect(){
-        print("聊吧-我的关注")
+        print("聊吧人气")
         do {
-            let param:Dictionary<String,AnyObject>=["phone":HerPhone]
-            let concerns=try HTTP.POST(URL+"/tbusers/myconcerns", parameters: param)
-            concerns.start { response in
+            let params:Dictionary<String,AnyObject>=["phone":Phone]
+            let new=try HTTP.POST(URL+"/tbusers/myfans", parameters: params)
+            new.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
                     return //also notify app of failure as needed
                 }
                 print("opt finished: \(response.description)")
-                self.LiaoBaMyConcerns = LiaobaFans(JSONDecoder(response.data))
+                self.ChatPoPularityListInstance=ChatPopularityList(JSONDecoder(response.data))
+                
             }
-            
         } catch let error {
             print("got an error creating the request: \(error)")
         }
@@ -91,19 +92,20 @@ class Focus: UITableViewController {
         self.tableView.refreshHeader=self.tableView.addRefreshHeaderWithHandler{
             self.RefreshData()
         }
+        
         self.tableView.refreshFooter=self.tableView.addRefreshFooterWithHandler{
             self.loadMoredata()
         }
     }
     func loadMoredata(){
-        if(self.LiaoBaMyConcerns!._meta.currentPage>=self.LiaoBaMyConcerns!._meta.pageCount){
+        if(self.ChatPoPularityListInstance!._meta.currentPage>=self.ChatPoPularityListInstance!._meta.pageCount){
             self.tableView.refreshFooter.loadMoreEnabled=false
             return
         }
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             do {
-                let params:Dictionary<String,AnyObject>=["phone":self.HerPhone]
-                let opt=try HTTP.POST((self.LiaoBaMyConcerns!._links.next?.href)!, parameters: params)
+                let params:Dictionary<String,AnyObject>=["phone":Phone]
+                let opt=try HTTP.POST((self.ChatPoPularityListInstance!._links.next?.href)!, parameters: params)
                 opt.start { response in
                     if let err = response.error {
                         print("error: \(err.localizedDescription)")
@@ -111,12 +113,12 @@ class Focus: UITableViewController {
                     }
                     print("opt finished: \(response.description)")
                     //print("data is: \(response.data)") access the response of the data with response.data
-                    var lin:LiaobaFans?
-                    lin = LiaobaFans(JSONDecoder(response.data))
-                    for var i=(self.LiaoBaMyConcerns!.items.count-1);i>=0;i-- {
-                        lin?.items.insert(self.LiaoBaMyConcerns!.items[i], atIndex: 0)
+                    var lin:ChatPopularityList?
+                    lin = ChatPopularityList(JSONDecoder(response.data))
+                    for var i=(self.ChatPoPularityListInstance!.items.count-1);i>=0;i-- {
+                        lin?.items.insert(self.ChatPoPularityListInstance!.items[i], atIndex: 0)
                     }
-                    self.LiaoBaMyConcerns!=lin!
+                    self.ChatPoPularityListInstance!=lin!
                     //print("content is: \(self.addinfo!._links)")
                     
                 }
@@ -125,75 +127,118 @@ class Focus: UITableViewController {
             }
         }
     }
+    
     func RefreshData() {
         self.tableView.refreshFooter.loadMoreEnabled=true
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
             self.connect()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if((LiaoBaMyConcerns) != nil){
-            return 1
+        // #warning Incomplete implementation, return the number of sections
+        if((ChatPoPularityListInstance) != nil){
+            return ChatPoPularityListInstance!.items.count
         }
         return 0
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return LiaoBaMyConcerns!.items.count
+        return 1
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
     }
-
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if((self.ChatPoPularityListInstance) != nil){
+            return 80
+        }
+        return 0
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        return popularity(indexPath.section)
+    }
+    func popularity(rake:Int)->UITableViewCell{
+        let cell=UITableViewCell()
         var boundingRect:CGRect
-        let avator=UIImageView(frame: CGRectMake(10, 10, 40, 40))
-        avator.sd_setImageWithURL(NSURL(string: LiaoBaMyConcerns!.items[indexPath.row].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
+        let avator=UIImageView(frame: CGRectMake(10, 20, 40, 40))
+        avator.sd_setImageWithURL(NSURL(string: ChatPoPularityListInstance!.items[rake].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
         avator.clipsToBounds=true
         avator.layer.cornerRadius=20
         cell.addSubview(avator)
-        let name=UILabel(frame: CGRectMake(50,15,150,15))
-        name.text=LiaoBaMyConcerns!.items[indexPath.row].nickname
+        let name=UILabel(frame: CGRectMake(110,20,200,15))
+        name.text=ChatPoPularityListInstance!.items[rake].nickname
         name.font=UIFont.systemFontOfSize(18)
-        boundingRect=GetBounds(self.view.frame.width-140, height: 20, font: name.font, str: name.text!)
-        name.frame=CGRectMake(50,15,boundingRect.width,boundingRect.height)
+        boundingRect=GetBounds(self.view.frame.width-190, height: 20, font: name.font, str: name.text!)
+        name.frame=CGRectMake(60,20,boundingRect.width,boundingRect.height)
         cell.addSubview(name)
-        let fans=UILabel(frame: CGRectMake(50,35,200,10))
-        fans.text="聊吧粉丝："+LiaoBaMyConcerns!.items[indexPath.row].concerncount
+        let fans=UILabel(frame: CGRectMake(110,40,250,15))
+        fans.text="聊吧粉丝："+ChatPoPularityListInstance!.items[rake].concerncount
         fans.font=UIFont.systemFontOfSize(15)
         fans.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 0.77)
-        boundingRect=GetBounds(250, height: 20, font: fans.font, str: fans.text!)
-        fans.frame=CGRectMake(50,35,boundingRect.width,boundingRect.height)
+        boundingRect=GetBounds(self.view.frame.width-190, height: 20, font: fans.font, str: fans.text!)
+        fans.frame=CGRectMake(60,40,boundingRect.width,boundingRect.height)
         cell.addSubview(fans)
-        let focus=UIButton(frame: CGRectMake(self.view.frame.width-80,15,70,30))
-        focus.setTitle("取消关注", forState: UIControlState.Normal)
-        focus.layer.borderWidth=1
-        focus.clipsToBounds=true
-        focus.layer.cornerRadius=3
-        focus.tag=indexPath.row
-        focus.addTarget(self, action: Selector("Cancel:"), forControlEvents: UIControlEvents.TouchUpInside)
-        focus.layer.borderColor=UIColor(red: 244/255, green: 154/255, blue: 85/255, alpha: 1.0).CGColor
-        focus.titleLabel?.font=UIFont.systemFontOfSize(15)
-        focus.setTitleColor(UIColor(red: 244/255, green: 154/255, blue: 85/255, alpha: 1.0), forState: UIControlState.Normal)
-        cell.addSubview(focus)
+        
+        if(ChatPoPularityListInstance!.items[rake].isconcerned=="1"){
+            let focus=UIButton(frame: CGRectMake(self.view.frame.width-90,25,80,30))
+            focus.tag=rake
+            focus.setTitle("取消关注", forState: UIControlState.Normal)
+            focus.addTarget(self, action: Selector("Cancel:"), forControlEvents: UIControlEvents.TouchUpInside)
+            focus.layer.borderColor=UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0).CGColor
+            focus.setTitleColor(UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0), forState: UIControlState.Normal)
+            focus.layer.borderWidth=1
+            focus.clipsToBounds=true
+            focus.layer.cornerRadius=3
+            focus.titleLabel?.font=UIFont.systemFontOfSize(15)
+            cell.addSubview(focus)
+        }else{
+            let focus=UIButton(frame: CGRectMake(self.view.frame.width-90,25,80,30))
+            focus.tag=rake
+            focus.setTitle("关注TA", forState: UIControlState.Normal)
+            focus.addTarget(self, action: Selector("Concern:"), forControlEvents: UIControlEvents.TouchUpInside)
+            focus.layer.borderColor=UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0).CGColor
+            focus.setTitleColor(UIColor(red: 246/255, green: 140/255, blue: 50/255, alpha: 1.0), forState: UIControlState.Normal)
+            focus.layer.borderWidth=1
+            focus.clipsToBounds=true
+            focus.layer.cornerRadius=3
+            focus.titleLabel?.font=UIFont.systemFontOfSize(15)
+            cell.addSubview(focus)
+        }
         return cell
+    }
+    func Concern(sender:UIButton){
+        do {
+            let params:Dictionary<String,AnyObject>=["myphone":Phone,"concernphone":ChatPoPularityListInstance!.items[sender.tag].phone]
+            let new=try HTTP.POST(URL+"/concerns/add", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                print("opt finished: \(response.description)")
+                self.Fg = Flag(JSONDecoder(response.data))
+            }
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
     }
     func Cancel(sender:UIButton){
         do {
-            let params:Dictionary<String,AnyObject>=["myphone":Phone,"concernphone":(LiaoBaMyConcerns?.items[sender.tag].phone)!]
+            let params:Dictionary<String,AnyObject>=["myphone":Phone,"concernphone":ChatPoPularityListInstance!.items[sender.tag].phone]
             let new=try HTTP.POST(URL+"/concerns/delete", parameters: params)
             new.start { response in
                 if let err = response.error {
@@ -211,19 +256,9 @@ class Focus: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let anotherView=OtherCenter()
-        anotherView.HerPhone=Int(self.LiaoBaMyConcerns!.items[indexPath.row].phone)!
-        anotherView.Name=self.LiaoBaMyConcerns!.items[indexPath.row].nickname
+        anotherView.HerPhone=Int(self.ChatPoPularityListInstance!.items[indexPath.section].phone)!
+        anotherView.Name=self.ChatPoPularityListInstance!.items[indexPath.section].nickname
         self.navigationController?.pushViewController(anotherView, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

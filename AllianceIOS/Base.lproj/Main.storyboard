@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5jw-sq-cTW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5jw-sq-cTW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -62,76 +62,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xI-yI-o1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2377" y="2716"/>
-        </scene>
-        <!--个人资料-->
-        <scene sceneID="AIr-VA-ane">
-            <objects>
-                <tableViewController storyboardIdentifier="AboutMe" title="个人资料" id="4bT-0v-Kob" customClass="AboutMe" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fn4-9N-w5H">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gp5-gA-Obc">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gp5-gA-Obc" id="JQq-tT-juV">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="4bT-0v-Kob" id="yvc-PR-YZC"/>
-                            <outlet property="delegate" destination="4bT-0v-Kob" id="ruV-Z0-bYL"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="个人资料" id="F5l-Cf-AE4"/>
-                    <connections>
-                        <outlet property="AM" destination="fn4-9N-w5H" id="zeC-T1-T9t"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a3y-QE-yAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2377" y="3366"/>
-        </scene>
-        <!--修改昵称-->
-        <scene sceneID="VW7-db-wXe">
-            <objects>
-                <tableViewController storyboardIdentifier="ChangeName" title="修改昵称" id="R67-Rl-kd2" customClass="ChangeName" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="umQ-Dk-7m4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JTM-bk-Fce">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JTM-bk-Fce" id="Q0S-de-Yll">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="R67-Rl-kd2" id="Qgd-rg-J1e"/>
-                            <outlet property="delegate" destination="R67-Rl-kd2" id="R5B-FW-AXN"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="修改昵称" id="ey4-Qd-U1g"/>
-                    <connections>
-                        <outlet property="CN" destination="umQ-Dk-7m4" id="ce0-La-Yw7"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-on-7l4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1734" y="3366"/>
         </scene>
         <!--我的二维码-->
         <scene sceneID="RDU-sC-nAQ">
@@ -1045,7 +975,7 @@
         <!--聊吧-->
         <scene sceneID="7eA-z0-uIf">
             <objects>
-                <tableViewController storyboardIdentifier="Chat" title="聊吧" id="7PJ-jF-5uf" customClass="Chat" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Chat" title="聊吧" id="7PJ-jF-5uf" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Duf-Eu-FYT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1069,9 +999,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="聊吧" id="iz1-xc-dCh"/>
-                    <connections>
-                        <outlet property="C" destination="Duf-Eu-FYT" id="b9j-pf-9pH"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfm-ul-ZBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1138,7 +1065,7 @@
                             <outlet property="delegate" destination="ajS-h7-E64" id="xsX-VG-2FR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SendTopic" id="KjB-Fc-QWi"/>
+                    <navigationItem key="navigationItem" title="发表话题" id="KjB-Fc-QWi"/>
                     <connections>
                         <outlet property="ST" destination="p75-jc-Yx1" id="J89-cv-0pN"/>
                     </connections>
@@ -1742,7 +1669,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUi-Xf-KHF">
@@ -1774,7 +1701,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u7O-Uc-x2q">
@@ -1806,7 +1733,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wdc-Nh-t8q">
@@ -1864,146 +1791,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUR-wZ-1z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="163" y="80"/>
-        </scene>
-        <!--我的聊吧-->
-        <scene sceneID="5hu-hg-vgv">
-            <objects>
-                <tableViewController storyboardIdentifier="MyTopicCenter" title="我的聊吧" id="Tm2-o8-HBC" customClass="MyTopicCenter" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="rDd-9e-t35">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="q8M-JP-Jin">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q8M-JP-Jin" id="SzT-4s-6EL">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Tm2-o8-HBC" id="KbA-1j-XfR"/>
-                            <outlet property="delegate" destination="Tm2-o8-HBC" id="hm0-bw-fJp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="我的聊吧" id="iLN-P8-mKy"/>
-                    <connections>
-                        <outlet property="MTC" destination="rDd-9e-t35" id="Cwl-qg-S6h"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kmO-IB-hz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="163" y="748"/>
-        </scene>
-        <!--聊吧_我的关注-->
-        <scene sceneID="mAp-vP-qx2">
-            <objects>
-                <tableViewController storyboardIdentifier="Focus" title="聊吧_我的关注" id="isF-jG-Nb1" customClass="Focus" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZaG-tb-MfV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qTn-Jb-och">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qTn-Jb-och" id="HoC-64-9tc">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="isF-jG-Nb1" id="fJI-9D-Dqv"/>
-                            <outlet property="delegate" destination="isF-jG-Nb1" id="l3A-Kv-6wH"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="我的关注" id="NsR-ke-WJp"/>
-                    <connections>
-                        <outlet property="F" destination="ZaG-tb-MfV" id="Agx-AG-Qb9"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xKh-GG-BE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="784" y="748"/>
-        </scene>
-        <!--聊吧_我的话题-->
-        <scene sceneID="5Mc-gQ-ySY">
-            <objects>
-                <tableViewController storyboardIdentifier="MyTopicList" title="聊吧_我的话题" id="3PQ-c8-tyD" customClass="MyTopicList" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="uOC-pv-Usr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SXe-fE-Del">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SXe-fE-Del" id="saz-fu-lhr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3PQ-c8-tyD" id="aec-ca-rKg"/>
-                            <outlet property="delegate" destination="3PQ-c8-tyD" id="1Yl-g6-w2H"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="我的话题" id="A0E-wZ-w3C"/>
-                    <connections>
-                        <outlet property="MTL" destination="uOC-pv-Usr" id="KPE-JA-NVk"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C6z-MV-579" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1406" y="748"/>
-        </scene>
-        <!--聊吧_我的点赞-->
-        <scene sceneID="CMk-bz-itm">
-            <objects>
-                <tableViewController storyboardIdentifier="MyZan" title="聊吧_我的点赞" id="jCp-FM-IaV" customClass="MyZan" customModule="AllianceIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fOD-eT-oOk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zHC-Uh-cNg">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHC-Uh-cNg" id="zIp-Yh-MHF">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jCp-FM-IaV" id="iKU-wm-Lvn"/>
-                            <outlet property="delegate" destination="jCp-FM-IaV" id="Ol6-bB-2xU"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="我的点赞" id="Dhc-Rw-Agh"/>
-                    <connections>
-                        <outlet property="MZ" destination="fOD-eT-oOk" id="MWc-La-afv"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5hY-fQ-7h4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2026" y="748"/>
         </scene>
         <!--我的帖子-->
         <scene sceneID="ECn-gY-QPB">

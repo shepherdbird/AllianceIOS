@@ -96,6 +96,23 @@ class ChatMessageReply {
         tophone=decoder["tophone"].string
     }
 }
+class ReplyMore{
+    var items:Array<ChatMessageReply>!
+    var _links : Link!
+    var _meta : Meta!
+    init(_ decoder: JSONDecoder) {
+        //we check if the array is valid then alloc our array and loop through it, creating the new address objects.
+        if let it = decoder["items"].array {
+            items = Array<ChatMessageReply>()
+            for itemDecoder in it {
+                items.append(ChatMessageReply(itemDecoder))
+            }
+        }
+        
+        _links = Link(decoder["_links"])
+        _meta = Meta(decoder["_meta"])
+    }
+}
 class ChatMessageLike {
     var phone:String!
     var nickname:String!
@@ -112,11 +129,14 @@ class ChatPopularityOne {
     var signature:String!
     var concerncount:String!
     var isconcerned:String!
+    var thumb:String!
     init(_ decoder:JSONDecoder){
         phone=decoder["phone"].string
         nickname=decoder["nickname"].string
         concerncount=decoder["concerncount"].string
         isconcerned=decoder["isconcerned"].string
+        signature=decoder["signature"].string
+        thumb=decoder["thumb"].string
     }
 }
 class ChatPopularityList {
