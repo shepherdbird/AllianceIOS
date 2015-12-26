@@ -263,7 +263,7 @@ class AboutMe: UITableViewController {
                 title.text="性别"
                 title.font=UIFont.systemFontOfSize(15)
                 let detail=UILabel(frame: CGRectMake(self.view.frame.width-50, 15, 20, 20))
-                if(self.Personinfo!.gender==0){
+                if(self.Personinfo!.gender=="0"){
                     detail.text="女"
                 }else{
                     detail.text="男"
@@ -343,7 +343,7 @@ class AboutMe: UITableViewController {
         case 1:
             if(indexPath.row==0){
                 let anotherView=ChangeGender()
-                if(self.Personinfo!.gender==1){
+                if(self.Personinfo!.gender=="1"){
                     anotherView.IsBoy=1
                 }else{
                     anotherView.IsBoy=0
@@ -357,7 +357,7 @@ class AboutMe: UITableViewController {
         case 2:
             if(indexPath.row==0){
                 let anotherView=Certification()
-                anotherView.Status=self.Personinfo!.status
+                anotherView.Status=Int(self.Personinfo!.status)
                 self.navigationController?.pushViewController(anotherView, animated: true)
             }else{
                 let anotherView=ShippingAddress()
