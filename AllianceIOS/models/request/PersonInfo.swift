@@ -9,63 +9,69 @@
 import Foundation
 import JSONJoy
 class PersonInfo {
-    var id:Int!
+    var id:String!
     var phone:String!
     var pwd:String!
     var authkey:String!
     var fatherid:String!
-    var directalliancecount:Int!
-    var allalliancecount:Int!
-    var corns:Int!
-    var money:Int!
-    var envelope:Int!
-    var cornsforgrab:Int!
-    var alliancerewards:Int!
+    var directalliancecount:String!
+    var allalliancecount:String!
+    var corns:String!
+    var money:String!
+    var envelope:String!
+    var cornsforgrab:String!
+    var alliancerewards:String!
     var nickname:String!
     var thumb:String!
-    var gender:Int!
+    var gender:String!
     var area:String!
     var job:String!
     var hobby:String!
     var signature:String!
-    var created_at:Int!
-    var updated_at:Int!
+    var created_at:String!
+    var updated_at:String!
     var channel:String?
     var platform:String?
-    var friendcount:Int!
-    var concerncount:Int!
-    var isdraw:Int!
-    var status:Int!
+    var friendcount:String!
+    var concerncount:String!
+    var isdraw:String!
+    var status:String!
+    var background:String!
+    var invitecode:String!
+    var huanxinid:String!
     
     
     init(_ decoder:JSONDecoder){
-        id=decoder["id"].integer
+        id=decoder["id"].string
         phone=decoder["phone"].string
         pwd=decoder["pwd"].string
         authkey=decoder["authKey"].string
         fatherid=decoder["fatherid"].string
-        directalliancecount=decoder["directalliancecount"].integer
-        allalliancecount=decoder["allalliancecount"].integer
-        corns=decoder["corns"].integer
-        money=decoder["money"].integer
-        envelope=decoder["envelope"].integer
-        cornsforgrab=decoder["cornsforgrab"].integer
-        alliancerewards=decoder["alliancerewards"].integer
+        directalliancecount=decoder["directalliancecount"].string
+        allalliancecount=decoder["allalliancecount"].string
+        corns=decoder["corns"].string
+        money=decoder["money"].string
+        envelope=decoder["envelope"].string
+        cornsforgrab=decoder["cornsforgrab"].string
+        alliancerewards=decoder["alliancerewards"].string
         nickname=decoder["nickname"].string
         thumb=decoder["thumb"].string
-        gender=decoder["gender"].integer
+        gender=decoder["gender"].string
         area=decoder["area"].string
         job=decoder["job"].string
         hobby=decoder["hobby"].string
         signature=decoder["signature"].string
-        created_at=decoder["created_at"].integer
-        updated_at=decoder["updated_at"].integer
+        created_at=decoder["created_at"].string
+        updated_at=decoder["updated_at"].string
         channel=decoder["channel"].string
         platform=decoder["platform"].string
-        concerncount=decoder["concerncount"].integer
-        friendcount=decoder["friendcount"].integer
-        isdraw=decoder["isdraw"].integer
-        status=decoder["status"].integer
+        concerncount=decoder["concerncount"].string
+        friendcount=decoder["friendcount"].string
+        isdraw=decoder["isdraw"].string
+        status=decoder["status"].string
+        background=decoder["background"].string
+        invitecode=decoder["invitecode"].string
+        huanxinid=decoder["huanxinid"].string
         
     }
 }
