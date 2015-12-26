@@ -31,24 +31,24 @@ class GrabcornsView {
     }
 }
 class Record {
-    var count:String!
-    var type:String!
-    var nickname:String!
-    var thumb:String!
-    var created_at:String!
-    var phone:String!
+    var count:String?
+    var type:String?
+    var nickname:String?
+    var thumb:String?
+    var created_at:String?
+    var phone:String?
     //一元夺宝专有
-    var id:String!
-    var userid:String!
-    var grabcommodityid:String!
-    var numbers:String!
+    var id:String?
+    var userid:String?
+    var grabcommodityid:String?
+    var numbers:String?
     init(_ decoder:JSONDecoder){
-        count=decoder["count"].string!
-        type=decoder["type"].string!
-        nickname=decoder["nickname"].string!
-        thumb=decoder["thumb"].string!
-        created_at=decoder["created_at"].string!
-        phone=decoder["phone"].string!
+        count=decoder["count"].string
+        type=decoder["type"].string
+        nickname=decoder["nickname"].string
+        thumb=decoder["thumb"].string
+        created_at=decoder["created_at"].string
+        phone=decoder["phone"].string
         //一元夺宝
         id=decoder["id"].string
         userid=decoder["userid"].string

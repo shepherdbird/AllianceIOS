@@ -22,7 +22,7 @@
 #import "ApplyViewController.h"
 #import "GroupListViewController.h"
 #import "ChatViewController.h"
-
+#import "AllianceIOS-Swift.h"
 #import "UserProfileManager.h"
 
 @implementation EMBuddy (search)
@@ -264,6 +264,9 @@
         if (indexPath.section == 0 && indexPath.row == 1) {
             cell.imageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
             cell.username = NSLocalizedString(@"title.group", @"Group");
+        }else if(indexPath.section == 0 && indexPath.row == 2){
+            cell.imageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
+            cell.username = NSLocalizedString(@"title.friend", @"Group");
         }
         else{
             EMBuddy *buddy = [[self.dataSource objectAtIndex:(indexPath.section - 1)] objectAtIndex:indexPath.row];
@@ -386,6 +389,10 @@
                 [_groupController reloadDataSource];
             }
             [self.navigationController pushViewController:_groupController animated:YES];
+        }else{
+            SNS *_sns;
+            _sns = [[SNS alloc] initWithStyle:UITableViewStylePlain];
+            [self.navigationController pushViewController:_sns animated:YES];
         }
        }
     else{

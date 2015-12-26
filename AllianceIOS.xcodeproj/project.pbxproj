@@ -533,6 +533,8 @@
 		D94713791BD2859400108A8E /* onecharge.png in Resources */ = {isa = PBXBuildFile; fileRef = D94713751BD2859400108A8E /* onecharge.png */; };
 		D947137A1BD2859400108A8E /* problem.png in Resources */ = {isa = PBXBuildFile; fileRef = D94713761BD2859400108A8E /* problem.png */; };
 		D947137B1BD2859400108A8E /* tencharge.png in Resources */ = {isa = PBXBuildFile; fileRef = D94713771BD2859400108A8E /* tencharge.png */; };
+		D94BE3881C2E2D5100F38008 /* SNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE3871C2E2D5100F38008 /* SNS.swift */; };
+		D94BE38A1C2E420300F38008 /* SNSbefore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE3891C2E420300F38008 /* SNSbefore.swift */; };
 		D963A4AF1C1D896D00801C7A /* MessageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963A4AE1C1D896D00801C7A /* MessageDetail.swift */; };
 		D963A4B11C1D8CB600801C7A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963A4B01C1D8CB600801C7A /* MessageView.swift */; };
 		D96473D91BD67D86008DA5B8 /* 资源.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D96473D81BD67D86008DA5B8 /* 资源.jpg */; };
@@ -691,7 +693,7 @@
 		D99413C71BEC222600FC1B00 /* 喜欢2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D994137F1BEC222600FC1B00 /* 喜欢2@2x.png */; };
 		D99413C81BEC222600FC1B00 /* 修改资料图标.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413801BEC222600FC1B00 /* 修改资料图标.png */; };
 		D99413C91BEC222600FC1B00 /* 修改资料图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413811BEC222600FC1B00 /* 修改资料图标@2x.png */; };
-		D99413CA1BEC222600FC1B00 /* 选择按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413821BEC222600FC1B00 /* 选择按钮.png */; };
+		D99413CA1BEC222600FC1B00 /* 选择按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413821BEC222600FC1B00 /* 选择按钮2.png */; };
 		D99413CB1BEC222600FC1B00 /* 选择按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413831BEC222600FC1B00 /* 选择按钮@2x.png */; };
 		D99413CC1BEC222600FC1B00 /* 邀请好友按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413841BEC222600FC1B00 /* 邀请好友按钮.png */; };
 		D99413CD1BEC222600FC1B00 /* 邀请好友按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99413851BEC222600FC1B00 /* 邀请好友按钮@2x.png */; };
@@ -765,11 +767,40 @@
 		D9D988CD1BD7CCB300F53C74 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D988CC1BD7CCB300F53C74 /* MainController.swift */; };
 		D9DBDFC31BECF77B0098FFAA /* DirectAlliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DBDFC21BECF77B0098FFAA /* DirectAlliance.swift */; };
 		D9DBDFC51BED00450098FFAA /* AllianceGive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DBDFC41BED00450098FFAA /* AllianceGive.swift */; };
+		D9DDCF5E1C26E11B0022E5F2 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DDCF5D1C26E11B0022E5F2 /* Signature.swift */; };
+		D9DDCF621C26F99A0022E5F2 /* AddressOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DDCF611C26F99A0022E5F2 /* AddressOne.swift */; };
 		D9EAD8D11BE90F8F0062B202 /* NewestListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */; };
 		D9ECD0061BFB03BA00B41F8A /* grabcorns_getthree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */; };
 		D9ECD0081BFB387300B41F8A /* GrabcornsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */; };
 		D9ECD00A1BFB8B1200B41F8A /* GrabcornsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */; };
 		D9ECD00C1BFCB24000B41F8A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECD00B1BFCB24000B41F8A /* Global.swift */; };
+		D9F5ADFF1C284707009E12D3 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5ADFE1C284707009E12D3 /* Wallet.swift */; };
+		D9F5AE011C2847F3009E12D3 /* AllMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5AE001C2847F3009E12D3 /* AllMoney.swift */; };
+		D9F5AE1A1C2853DA009E12D3 /* 按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE021C2853DA009E12D3 /* 按钮.png */; };
+		D9F5AE1B1C2853DA009E12D3 /* 按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE031C2853DA009E12D3 /* 按钮@2x.png */; };
+		D9F5AE1C1C2853DA009E12D3 /* 充值.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE041C2853DA009E12D3 /* 充值.png */; };
+		D9F5AE1D1C2853DA009E12D3 /* 充值@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE051C2853DA009E12D3 /* 充值@2x.png */; };
+		D9F5AE1E1C2853DA009E12D3 /* 好友一起抢.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE061C2853DA009E12D3 /* 好友一起抢.png */; };
+		D9F5AE1F1C2853DA009E12D3 /* 好友一起抢@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE071C2853DA009E12D3 /* 好友一起抢@2x.png */; };
+		D9F5AE201C2853DA009E12D3 /* 获取验证码按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE081C2853DA009E12D3 /* 获取验证码按钮.png */; };
+		D9F5AE211C2853DA009E12D3 /* 获取验证码按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE091C2853DA009E12D3 /* 获取验证码按钮@2x.png */; };
+		D9F5AE221C2853DA009E12D3 /* 交易记录.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0A1C2853DA009E12D3 /* 交易记录.png */; };
+		D9F5AE231C2853DA009E12D3 /* 交易记录@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0B1C2853DA009E12D3 /* 交易记录@2x.png */; };
+		D9F5AE241C2853DA009E12D3 /* 交易密码.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0C1C2853DA009E12D3 /* 交易密码.png */; };
+		D9F5AE251C2853DA009E12D3 /* 交易密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0D1C2853DA009E12D3 /* 交易密码@2x.png */; };
+		D9F5AE261C2853DA009E12D3 /* 密码输入框.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0E1C2853DA009E12D3 /* 密码输入框.png */; };
+		D9F5AE271C2853DA009E12D3 /* 密码输入框@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE0F1C2853DA009E12D3 /* 密码输入框@2x.png */; };
+		D9F5AE281C2853DA009E12D3 /* 提取到余额.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE101C2853DA009E12D3 /* 提取到余额.png */; };
+		D9F5AE291C2853DA009E12D3 /* 提取到余额@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE111C2853DA009E12D3 /* 提取到余额@2x.png */; };
+		D9F5AE2A1C2853DA009E12D3 /* 提现.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE121C2853DA009E12D3 /* 提现.png */; };
+		D9F5AE2B1C2853DA009E12D3 /* 提现@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE131C2853DA009E12D3 /* 提现@2x.png */; };
+		D9F5AE2C1C2853DA009E12D3 /* 添加银行卡图标.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE141C2853DA009E12D3 /* 添加银行卡图标.png */; };
+		D9F5AE2D1C2853DA009E12D3 /* 添加银行卡图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE151C2853DA009E12D3 /* 添加银行卡图标@2x.png */; };
+		D9F5AE2E1C2853DA009E12D3 /* 图层-25.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE161C2853DA009E12D3 /* 图层-25.png */; };
+		D9F5AE2F1C2853DA009E12D3 /* 图层-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE171C2853DA009E12D3 /* 图层-25@2x.png */; };
+		D9F5AE301C2853DA009E12D3 /* 银行卡图标.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE181C2853DA009E12D3 /* 银行卡图标.png */; };
+		D9F5AE311C2853DA009E12D3 /* 银行卡图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F5AE191C2853DA009E12D3 /* 银行卡图标@2x.png */; };
+		D9F5AE331C285CE3009E12D3 /* MyCorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F5AE321C285CE3009E12D3 /* MyCorn.swift */; };
 		D9FCBC5C1BED778D00D50D1D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCBC5B1BED778D00D50D1D /* Settings.swift */; };
 		D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E71BB16D1700FFA187 /* near.png */; };
 		D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9FFE6E91BB16D1700FFA187 /* yiyuan.png */; };
@@ -1458,6 +1489,8 @@
 		D94713751BD2859400108A8E /* onecharge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onecharge.png; sourceTree = "<group>"; };
 		D94713761BD2859400108A8E /* problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = problem.png; sourceTree = "<group>"; };
 		D94713771BD2859400108A8E /* tencharge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tencharge.png; sourceTree = "<group>"; };
+		D94BE3871C2E2D5100F38008 /* SNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SNS.swift; path = SNS/SNS.swift; sourceTree = "<group>"; };
+		D94BE3891C2E420300F38008 /* SNSbefore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SNSbefore.swift; path = SNS/SNSbefore.swift; sourceTree = "<group>"; };
 		D963A4AE1C1D896D00801C7A /* MessageDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetail.swift; sourceTree = "<group>"; };
 		D963A4B01C1D8CB600801C7A /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D96473D81BD67D86008DA5B8 /* 资源.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "资源.jpg"; sourceTree = "<group>"; };
@@ -1619,7 +1652,7 @@
 		D994137F1BEC222600FC1B00 /* 喜欢2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "喜欢2@2x.png"; path = "Me/喜欢2@2x.png"; sourceTree = "<group>"; };
 		D99413801BEC222600FC1B00 /* 修改资料图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "修改资料图标.png"; path = "Me/修改资料图标.png"; sourceTree = "<group>"; };
 		D99413811BEC222600FC1B00 /* 修改资料图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "修改资料图标@2x.png"; path = "Me/修改资料图标@2x.png"; sourceTree = "<group>"; };
-		D99413821BEC222600FC1B00 /* 选择按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "选择按钮.png"; path = "Me/选择按钮.png"; sourceTree = "<group>"; };
+		D99413821BEC222600FC1B00 /* 选择按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "选择按钮2.png"; path = "Me/选择按钮2.png"; sourceTree = "<group>"; };
 		D99413831BEC222600FC1B00 /* 选择按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "选择按钮@2x.png"; path = "Me/选择按钮@2x.png"; sourceTree = "<group>"; };
 		D99413841BEC222600FC1B00 /* 邀请好友按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "邀请好友按钮.png"; path = "Me/邀请好友按钮.png"; sourceTree = "<group>"; };
 		D99413851BEC222600FC1B00 /* 邀请好友按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "邀请好友按钮@2x.png"; path = "Me/邀请好友按钮@2x.png"; sourceTree = "<group>"; };
@@ -1778,11 +1811,40 @@
 		D9D988CC1BD7CCB300F53C74 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		D9DBDFC21BECF77B0098FFAA /* DirectAlliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectAlliance.swift; path = Me/DirectAlliance.swift; sourceTree = "<group>"; };
 		D9DBDFC41BED00450098FFAA /* AllianceGive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllianceGive.swift; path = Me/AllianceGive.swift; sourceTree = "<group>"; };
+		D9DDCF5D1C26E11B0022E5F2 /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signature.swift; path = Me/Signature.swift; sourceTree = "<group>"; };
+		D9DDCF611C26F99A0022E5F2 /* AddressOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressOne.swift; path = request/AddressOne.swift; sourceTree = "<group>"; };
 		D9EAD8D01BE90F8F0062B202 /* NewestListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewestListController.swift; path = Resources/OneCharge/NewestListController.swift; sourceTree = "<group>"; };
 		D9ECD0051BFB03BA00B41F8A /* grabcorns_getthree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = grabcorns_getthree.swift; path = request/grabcorns_getthree.swift; sourceTree = "<group>"; };
 		D9ECD0071BFB387300B41F8A /* GrabcornsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrabcornsList.swift; path = request/GrabcornsList.swift; sourceTree = "<group>"; };
 		D9ECD0091BFB8B1200B41F8A /* GrabcornsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrabcornsView.swift; path = request/GrabcornsView.swift; sourceTree = "<group>"; };
 		D9ECD00B1BFCB24000B41F8A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		D9F5ADFE1C284707009E12D3 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = Me/Wallet.swift; sourceTree = "<group>"; };
+		D9F5AE001C2847F3009E12D3 /* AllMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllMoney.swift; path = request/AllMoney.swift; sourceTree = "<group>"; };
+		D9F5AE021C2853DA009E12D3 /* 按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "按钮.png"; path = "../../../../Downloads/11-1/钱包/ios/按钮.png"; sourceTree = "<group>"; };
+		D9F5AE031C2853DA009E12D3 /* 按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "按钮@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/按钮@2x.png"; sourceTree = "<group>"; };
+		D9F5AE041C2853DA009E12D3 /* 充值.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "充值.png"; path = "../../../../Downloads/11-1/钱包/ios/充值.png"; sourceTree = "<group>"; };
+		D9F5AE051C2853DA009E12D3 /* 充值@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "充值@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/充值@2x.png"; sourceTree = "<group>"; };
+		D9F5AE061C2853DA009E12D3 /* 好友一起抢.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "好友一起抢.png"; path = "../../../../Downloads/11-1/钱包/ios/好友一起抢.png"; sourceTree = "<group>"; };
+		D9F5AE071C2853DA009E12D3 /* 好友一起抢@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "好友一起抢@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/好友一起抢@2x.png"; sourceTree = "<group>"; };
+		D9F5AE081C2853DA009E12D3 /* 获取验证码按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "获取验证码按钮.png"; path = "../../../../Downloads/11-1/钱包/ios/获取验证码按钮.png"; sourceTree = "<group>"; };
+		D9F5AE091C2853DA009E12D3 /* 获取验证码按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "获取验证码按钮@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/获取验证码按钮@2x.png"; sourceTree = "<group>"; };
+		D9F5AE0A1C2853DA009E12D3 /* 交易记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "交易记录.png"; path = "../../../../Downloads/11-1/钱包/ios/交易记录.png"; sourceTree = "<group>"; };
+		D9F5AE0B1C2853DA009E12D3 /* 交易记录@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "交易记录@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/交易记录@2x.png"; sourceTree = "<group>"; };
+		D9F5AE0C1C2853DA009E12D3 /* 交易密码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "交易密码.png"; path = "../../../../Downloads/11-1/钱包/ios/交易密码.png"; sourceTree = "<group>"; };
+		D9F5AE0D1C2853DA009E12D3 /* 交易密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "交易密码@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/交易密码@2x.png"; sourceTree = "<group>"; };
+		D9F5AE0E1C2853DA009E12D3 /* 密码输入框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "密码输入框.png"; path = "../../../../Downloads/11-1/钱包/ios/密码输入框.png"; sourceTree = "<group>"; };
+		D9F5AE0F1C2853DA009E12D3 /* 密码输入框@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "密码输入框@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/密码输入框@2x.png"; sourceTree = "<group>"; };
+		D9F5AE101C2853DA009E12D3 /* 提取到余额.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "提取到余额.png"; path = "../../../../Downloads/11-1/钱包/ios/提取到余额.png"; sourceTree = "<group>"; };
+		D9F5AE111C2853DA009E12D3 /* 提取到余额@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "提取到余额@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/提取到余额@2x.png"; sourceTree = "<group>"; };
+		D9F5AE121C2853DA009E12D3 /* 提现.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "提现.png"; path = "../../../../Downloads/11-1/钱包/ios/提现.png"; sourceTree = "<group>"; };
+		D9F5AE131C2853DA009E12D3 /* 提现@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "提现@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/提现@2x.png"; sourceTree = "<group>"; };
+		D9F5AE141C2853DA009E12D3 /* 添加银行卡图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "添加银行卡图标.png"; path = "../../../../Downloads/11-1/钱包/ios/添加银行卡图标.png"; sourceTree = "<group>"; };
+		D9F5AE151C2853DA009E12D3 /* 添加银行卡图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "添加银行卡图标@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/添加银行卡图标@2x.png"; sourceTree = "<group>"; };
+		D9F5AE161C2853DA009E12D3 /* 图层-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "图层-25.png"; path = "../../../../Downloads/11-1/钱包/ios/图层-25.png"; sourceTree = "<group>"; };
+		D9F5AE171C2853DA009E12D3 /* 图层-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "图层-25@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/图层-25@2x.png"; sourceTree = "<group>"; };
+		D9F5AE181C2853DA009E12D3 /* 银行卡图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "银行卡图标.png"; path = "../../../../Downloads/11-1/钱包/ios/银行卡图标.png"; sourceTree = "<group>"; };
+		D9F5AE191C2853DA009E12D3 /* 银行卡图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "银行卡图标@2x.png"; path = "../../../../Downloads/11-1/钱包/ios/银行卡图标@2x.png"; sourceTree = "<group>"; };
+		D9F5AE321C285CE3009E12D3 /* MyCorn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCorn.swift; path = Me/MyCorn.swift; sourceTree = "<group>"; };
 		D9FCBC5B1BED778D00D50D1D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Me/Settings.swift; sourceTree = "<group>"; };
 		D9FFE6E71BB16D1700FFA187 /* near.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = near.png; sourceTree = "<group>"; };
 		D9FFE6E91BB16D1700FFA187 /* yiyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiyuan.png; sourceTree = "<group>"; };
@@ -3077,6 +3139,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		D94BE3861C2E2C2D00F38008 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				D94BE3871C2E2D5100F38008 /* SNS.swift */,
+				D94BE3891C2E420300F38008 /* SNSbefore.swift */,
+			);
+			name = SNS;
+			sourceTree = "<group>";
+		};
 		D96E76361BF9B5160062BAD0 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -3275,6 +3346,9 @@
 				D9987CEB1BEEF6E9005480C7 /* ShippingAddress.swift */,
 				D9987CED1BEEFB03005480C7 /* ShippingAddressAdd.swift */,
 				D9987CEF1BEEFCC7005480C7 /* ShippingAddressDetail.swift */,
+				D9DDCF5D1C26E11B0022E5F2 /* Signature.swift */,
+				D9F5ADFE1C284707009E12D3 /* Wallet.swift */,
+				D9F5AE321C285CE3009E12D3 /* MyCorn.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -3282,6 +3356,30 @@
 		D99413471BEC20CA00FC1B00 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				D9F5AE021C2853DA009E12D3 /* 按钮.png */,
+				D9F5AE031C2853DA009E12D3 /* 按钮@2x.png */,
+				D9F5AE041C2853DA009E12D3 /* 充值.png */,
+				D9F5AE051C2853DA009E12D3 /* 充值@2x.png */,
+				D9F5AE061C2853DA009E12D3 /* 好友一起抢.png */,
+				D9F5AE071C2853DA009E12D3 /* 好友一起抢@2x.png */,
+				D9F5AE081C2853DA009E12D3 /* 获取验证码按钮.png */,
+				D9F5AE091C2853DA009E12D3 /* 获取验证码按钮@2x.png */,
+				D9F5AE0A1C2853DA009E12D3 /* 交易记录.png */,
+				D9F5AE0B1C2853DA009E12D3 /* 交易记录@2x.png */,
+				D9F5AE0C1C2853DA009E12D3 /* 交易密码.png */,
+				D9F5AE0D1C2853DA009E12D3 /* 交易密码@2x.png */,
+				D9F5AE0E1C2853DA009E12D3 /* 密码输入框.png */,
+				D9F5AE0F1C2853DA009E12D3 /* 密码输入框@2x.png */,
+				D9F5AE101C2853DA009E12D3 /* 提取到余额.png */,
+				D9F5AE111C2853DA009E12D3 /* 提取到余额@2x.png */,
+				D9F5AE121C2853DA009E12D3 /* 提现.png */,
+				D9F5AE131C2853DA009E12D3 /* 提现@2x.png */,
+				D9F5AE141C2853DA009E12D3 /* 添加银行卡图标.png */,
+				D9F5AE151C2853DA009E12D3 /* 添加银行卡图标@2x.png */,
+				D9F5AE161C2853DA009E12D3 /* 图层-25.png */,
+				D9F5AE171C2853DA009E12D3 /* 图层-25@2x.png */,
+				D9F5AE181C2853DA009E12D3 /* 银行卡图标.png */,
+				D9F5AE191C2853DA009E12D3 /* 银行卡图标@2x.png */,
 				D9987CE31BEED7ED005480C7 /* delete.png */,
 				D996A38E1BED74A300B84E22 /* QRCode.jpg */,
 				D99413481BEC222600FC1B00 /* 安全退出按钮.png */,
@@ -3342,7 +3440,7 @@
 				D994137F1BEC222600FC1B00 /* 喜欢2@2x.png */,
 				D99413801BEC222600FC1B00 /* 修改资料图标.png */,
 				D99413811BEC222600FC1B00 /* 修改资料图标@2x.png */,
-				D99413821BEC222600FC1B00 /* 选择按钮.png */,
+				D99413821BEC222600FC1B00 /* 选择按钮2.png */,
 				D99413831BEC222600FC1B00 /* 选择按钮@2x.png */,
 				D99413841BEC222600FC1B00 /* 邀请好友按钮.png */,
 				D99413851BEC222600FC1B00 /* 邀请好友按钮@2x.png */,
@@ -3363,6 +3461,7 @@
 		D99506541BB3817300CA9B2E /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D94BE3861C2E2C2D00F38008 /* SNS */,
 				D99413441BEC1D6500FC1B00 /* Me */,
 				D937575B1BD53BA10081D32E /* Resources */,
 				D99506551BB3817300CA9B2E /* ChatController.swift */,
@@ -3747,6 +3846,8 @@
 				D99C92141BFEBB3600B5F5A6 /* LiaoBaUser.swift */,
 				D906AA1D1C0A9588000817A0 /* ChargeRecordModel.swift */,
 				D90A6B1A1C2069D9009D96E9 /* PersonInfo.swift */,
+				D9DDCF611C26F99A0022E5F2 /* AddressOne.swift */,
+				D9F5AE001C2847F3009E12D3 /* AllMoney.swift */,
 			);
 			name = request;
 			sourceTree = "<group>";
@@ -3785,7 +3886,7 @@
 				TargetAttributes = {
 					D97A8C101BAADF9F002645F9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3D5889TM4Y;
+						DevelopmentTeam = 862RTQJG5C;
 					};
 				};
 			};
@@ -3818,7 +3919,7 @@
 				03651C6C1BEF45D40019CDBA /* chat_video_play.png in Resources */,
 				D99413CD1BEC222600FC1B00 /* 邀请好友按钮@2x.png in Resources */,
 				D9D988C91BD7C8C200F53C74 /* 形状-55@2x.png in Resources */,
-				D99413CA1BEC222600FC1B00 /* 选择按钮.png in Resources */,
+				D99413CA1BEC222600FC1B00 /* 选择按钮2.png in Resources */,
 				D915CB871BE65D17004EBE26 /* 揭晓图标白色.png in Resources */,
 				D99413911BEC222600FC1B00 /* 安全退出按钮@2x.png in Resources */,
 				03651CAB1BEF45D40019CDBA /* chatBar_more_photo.png in Resources */,
@@ -3845,6 +3946,7 @@
 				D943B1531BE4618F0058BA1C /* 上传照片2@2x.png in Resources */,
 				D99413C51BEC222600FC1B00 /* 喜欢1@2x.png in Resources */,
 				D96474091BD67E2E008DA5B8 /* 一元夺宝图标@2x.png in Resources */,
+				D9F5AE2E1C2853DA009E12D3 /* 图层-25.png in Resources */,
 				D943B1501BE4618F0058BA1C /* 删除按钮3.png in Resources */,
 				03651C4B1BEF45D40019CDBA /* VoiceSearchFeedback009.png in Resources */,
 				D915CB931BE65D17004EBE26 /* 立即参与大按钮.png in Resources */,
@@ -3870,18 +3972,22 @@
 				D943B1441BE4618F0058BA1C /* 发帖按钮.png in Resources */,
 				D915CBAD1BE65D17004EBE26 /* 申请提取按钮.png in Resources */,
 				D915CBB91BE65D17004EBE26 /* 一元夺宝.png in Resources */,
+				D9F5AE291C2853DA009E12D3 /* 提取到余额@2x.png in Resources */,
 				03651CAF1BEF45D40019CDBA /* messageToolbarBg@2x.png in Resources */,
 				D996A38F1BED74A300B84E22 /* QRCode.jpg in Resources */,
 				D994139D1BEC222600FC1B00 /* 进入方向按钮@2x.png in Resources */,
 				D99413951BEC222600FC1B00 /* 二维码@2x.png in Resources */,
 				03651C681BEF45D40019CDBA /* call_silence@2x.png in Resources */,
 				D915CBAA1BE65D17004EBE26 /* 商品获奖展示@2x.png in Resources */,
+				D9F5AE281C2853DA009E12D3 /* 提取到余额.png in Resources */,
 				03651CC21BEF45D40019CDBA /* chat_sender_audio_playing_003.png in Resources */,
 				D943B14D1BE4618F0058BA1C /* 删除按钮1@2x.png in Resources */,
 				03651CC51BEF45D40019CDBA /* chat_sender_audio_playing_full@2x.png in Resources */,
 				D99413901BEC222600FC1B00 /* 安全退出按钮.png in Resources */,
 				D9B1901A1BACE2050077EA76 /* login_bg.jpg in Resources */,
 				03651CD01BEF45F50019CDBA /* password@2x.png in Resources */,
+				D9F5AE221C2853DA009E12D3 /* 交易记录.png in Resources */,
+				D9F5AE311C2853DA009E12D3 /* 银行卡图标@2x.png in Resources */,
 				03651C821BEF45D40019CDBA /* messageSendFail@2x.png in Resources */,
 				D96E769F1BF9B5870062BAD0 /* 评论1@2x.png in Resources */,
 				03651CF11BEF460C0019CDBA /* nav_createGroup@2x.png in Resources */,
@@ -3893,6 +3999,7 @@
 				D915CB941BE65D17004EBE26 /* 立即参与大按钮@2x.png in Resources */,
 				03651C961BEF45D40019CDBA /* chatBar_recordSelectedBg@2x.png in Resources */,
 				03651C3C1BEF45D40019CDBA /* VoiceSearchFeedback001@2x.png in Resources */,
+				D9F5AE301C2853DA009E12D3 /* 银行卡图标.png in Resources */,
 				D915CBBB1BE65D17004EBE26 /* 一元夺宝按钮.png in Resources */,
 				D99413D71BEC222600FC1B00 /* tab2@2x.png in Resources */,
 				D915CB981BE65D17004EBE26 /* 确认支付按钮@2x.png in Resources */,
@@ -3900,6 +4007,7 @@
 				03651CDA1BEF46010019CDBA /* delete@2x.png in Resources */,
 				03651C931BEF45D40019CDBA /* chatBar_recordSelected.png in Resources */,
 				D96473F21BD67E2E008DA5B8 /* 附近图标.png in Resources */,
+				D9F5AE1C1C2853DA009E12D3 /* 充值.png in Resources */,
 				D9864C731BE8276A0001F178 /* 电饭煲.jpg in Resources */,
 				03651CA91BEF45D40019CDBA /* chatBar_more_locationSelected.png in Resources */,
 				03651C8E1BEF45D40019CDBA /* chatBar_moreSelected@2x.png in Resources */,
@@ -3914,8 +4022,10 @@
 				03651C5A1BEF45D40019CDBA /* VoiceSearchFeedback016@2x.png in Resources */,
 				D915CB971BE65D17004EBE26 /* 确认支付按钮.png in Resources */,
 				D99413CB1BEC222600FC1B00 /* 选择按钮@2x.png in Resources */,
+				D9F5AE1B1C2853DA009E12D3 /* 按钮@2x.png in Resources */,
 				D99413C21BEC222600FC1B00 /* 五层人数图标.png in Resources */,
 				03651CC41BEF45D40019CDBA /* chat_sender_audio_playing_full.png in Resources */,
+				D9F5AE271C2853DA009E12D3 /* 密码输入框@2x.png in Resources */,
 				D96E768D1BF9B5870062BAD0 /* 我的背景@2x.png in Resources */,
 				D9D988C41BD7C8C200F53C74 /* 开始抢红包按钮.png in Resources */,
 				D96473F61BD67E2E008DA5B8 /* 好友tab选中.png in Resources */,
@@ -3928,6 +4038,7 @@
 				03651C441BEF45D40019CDBA /* VoiceSearchFeedback005@2x.png in Resources */,
 				03651C4E1BEF45D40019CDBA /* VoiceSearchFeedback010@2x.png in Resources */,
 				D915CB9F1BE65D17004EBE26 /* 人次选择按钮大切片左.png in Resources */,
+				D9F5AE251C2853DA009E12D3 /* 交易密码@2x.png in Resources */,
 				D96474031BD67E2E008DA5B8 /* 我tab选中@2x.png in Resources */,
 				03651A5E1BEF3B1A0019CDBA /* MWPhotoBrowser.bundle in Resources */,
 				D9D988C81BD7C8C200F53C74 /* 形状-55.png in Resources */,
@@ -3936,6 +4047,7 @@
 				D96473F91BD67E2E008DA5B8 /* 资源tba选中@2x.png in Resources */,
 				D96E76811BF9B5870062BAD0 /* 删除按钮@2x.png in Resources */,
 				03651CC31BEF45D40019CDBA /* chat_sender_audio_playing_003@2x.png in Resources */,
+				D9F5AE2A1C2853DA009E12D3 /* 提现.png in Resources */,
 				D943B1511BE4618F0058BA1C /* 删除按钮3@2x.png in Resources */,
 				D943B14A1BE4618F0058BA1C /* 评论图标.png in Resources */,
 				D99413D31BEC222600FC1B00 /* qq@2x.png in Resources */,
@@ -3977,9 +4089,11 @@
 				D96E769E1BF9B5870062BAD0 /* 评论1.png in Resources */,
 				03651C3D1BEF45D40019CDBA /* VoiceSearchFeedback002.png in Resources */,
 				D99413A61BEC222600FC1B00 /* 删除按钮.png in Resources */,
+				D9F5AE2B1C2853DA009E12D3 /* 提现@2x.png in Resources */,
 				D943B1431BE4618F0058BA1C /* 标签女@2x.png in Resources */,
 				D99413C91BEC222600FC1B00 /* 修改资料图标@2x.png in Resources */,
 				D915CBA91BE65D17004EBE26 /* 商品获奖展示.png in Resources */,
+				D9F5AE2F1C2853DA009E12D3 /* 图层-25@2x.png in Resources */,
 				03651C991BEF45D40019CDBA /* chatBar_colorMore_camera@2x.png in Resources */,
 				D9CB8FD01BEAD6EF00242CC6 /* watch.jpg in Resources */,
 				D915CBAB1BE65D17004EBE26 /* 商品列表圆角底框.png in Resources */,
@@ -4018,6 +4132,7 @@
 				D96473FB1BD67E2E008DA5B8 /* 资源tba默认@2x.png in Resources */,
 				D915CBB41BE65D17004EBE26 /* 提交订单按钮@2x.png in Resources */,
 				D9B196421BAED6D10077EA76 /* liugang.png in Resources */,
+				D9F5AE1D1C2853DA009E12D3 /* 充值@2x.png in Resources */,
 				D915CB731BE65D17004EBE26 /* 大进度条橙色.png in Resources */,
 				03651D041BEF46150019CDBA /* tabbar_chats.png in Resources */,
 				D915CB9D1BE65D17004EBE26 /* 人次选择按钮大切片中.png in Resources */,
@@ -4059,6 +4174,7 @@
 				D99413B51BEC222600FC1B00 /* 提取按钮@2x.png in Resources */,
 				D9B1962A1BAE711C0077EA76 /* EaseMob.bundle in Resources */,
 				03651CB21BEF45D40019CDBA /* chat_receiver_audio_playing001.png in Resources */,
+				D9F5AE211C2853DA009E12D3 /* 获取验证码按钮@2x.png in Resources */,
 				D915CB961BE65D17004EBE26 /* 清单删除按钮@2x.png in Resources */,
 				D915CB771BE65D17004EBE26 /* 倒计时圆角红色框.png in Resources */,
 				03651CD91BEF46010019CDBA /* back@2x.png in Resources */,
@@ -4069,6 +4185,7 @@
 				03651B641BEF3B850019CDBA /* InfoPlist.strings in Resources */,
 				D99413BC1BEC222600FC1B00 /* 我的钱包图标.png in Resources */,
 				03651B9D1BEF45BD0019CDBA /* 58.png in Resources */,
+				D9F5AE1A1C2853DA009E12D3 /* 按钮.png in Resources */,
 				03651C871BEF45D40019CDBA /* chatBar_keyboard.png in Resources */,
 				D915CBAF1BE65D17004EBE26 /* 十元夺金.png in Resources */,
 				03651D091BEF46150019CDBA /* tabbar_contacts@2x.png in Resources */,
@@ -4076,12 +4193,14 @@
 				03A0136F1C093EC400AE99FD /* tableview_pull_refresh@2x.png in Resources */,
 				D96E76971BF9B5870062BAD0 /* 组-7@2x.png in Resources */,
 				D99413AE1BEC222600FC1B00 /* 收藏tab.png in Resources */,
+				D9F5AE1E1C2853DA009E12D3 /* 好友一起抢.png in Resources */,
 				033484511C0B3A8C00630A76 /* avator.jpg in Resources */,
 				D915CB991BE65D17004EBE26 /* 人次选择按钮大.png in Resources */,
 				D9FFE6EA1BB16D1700FFA187 /* near.png in Resources */,
 				03651CA01BEF45D40019CDBA /* chatBar_colorMore_videoCall@2x.png in Resources */,
 				D99413AD1BEC222600FC1B00 /* 收藏2@2x.png in Resources */,
 				03651D0F1BEF46150019CDBA /* tabbar_settingHL@2x.png in Resources */,
+				D9F5AE241C2853DA009E12D3 /* 交易密码.png in Resources */,
 				03651D131BEF46150019CDBA /* tabbarSelectBg@2x.png in Resources */,
 				03651CCE1BEF45F50019CDBA /* account@2x.png in Resources */,
 				03651CBF1BEF45D40019CDBA /* chat_sender_audio_playing_001@2x.png in Resources */,
@@ -4143,6 +4262,7 @@
 				03651C471BEF45D40019CDBA /* VoiceSearchFeedback007.png in Resources */,
 				D994139F1BEC222600FC1B00 /* 联盟奖励背景@2x.png in Resources */,
 				D915CB8C1BE65D17004EBE26 /* 结算选择框2@2x.png in Resources */,
+				D9F5AE201C2853DA009E12D3 /* 获取验证码按钮.png in Resources */,
 				D943B1481BE4618F0058BA1C /* 评论按钮大.png in Resources */,
 				D96E76901BF9B5870062BAD0 /* 更多.png in Resources */,
 				0390A9F51C1349E70092902E /* popoverArrowUpSimple.png in Resources */,
@@ -4188,6 +4308,7 @@
 				D943B1401BE4618F0058BA1C /* 标签男.png in Resources */,
 				03651C891BEF45D40019CDBA /* chatBar_keyboardSelected.png in Resources */,
 				D96473F41BD67E2E008DA5B8 /* 好友tab默认.png in Resources */,
+				D9F5AE2D1C2853DA009E12D3 /* 添加银行卡图标@2x.png in Resources */,
 				03651C591BEF45D40019CDBA /* VoiceSearchFeedback016.png in Resources */,
 				03651C421BEF45D40019CDBA /* VoiceSearchFeedback004@2x.png in Resources */,
 				03651C721BEF45D40019CDBA /* chatBar_more_face@2x.png in Resources */,
@@ -4248,6 +4369,7 @@
 				D920322B1BDC77AC00FAB511 /* 特色推荐.png in Resources */,
 				03651CC11BEF45D40019CDBA /* chat_sender_audio_playing_002@2x.png in Resources */,
 				D9B191041BACE8B60077EA76 /* loadscreen.jpeg in Resources */,
+				D9F5AE1F1C2853DA009E12D3 /* 好友一起抢@2x.png in Resources */,
 				D96473FE1BD67E2E008DA5B8 /* 抢红包图标.png in Resources */,
 				D96E768A1BF9B5870062BAD0 /* 我图标.png in Resources */,
 				D915CB8D1BE65D17004EBE26 /* 进入方向按钮.png in Resources */,
@@ -4261,6 +4383,7 @@
 				D943B1411BE4618F0058BA1C /* 标签男@2x.png in Resources */,
 				D99413A71BEC222600FC1B00 /* 删除按钮@2x.png in Resources */,
 				D96E769C1BF9B5870062BAD0 /* 聊吧综合按钮2.png in Resources */,
+				D9F5AE2C1C2853DA009E12D3 /* 添加银行卡图标.png in Resources */,
 				D915CB711BE65D17004EBE26 /* 常见问题.png in Resources */,
 				03651C571BEF45D40019CDBA /* VoiceSearchFeedback015.png in Resources */,
 				03651CAA1BEF45D40019CDBA /* chatBar_more_locationSelected@2x.png in Resources */,
@@ -4280,6 +4403,7 @@
 				D99413BE1BEC222600FC1B00 /* 我的收藏图标.png in Resources */,
 				D99413C11BEC222600FC1B00 /* 我的相册图标@2x.png in Resources */,
 				D943B1461BE4618F0058BA1C /* 加好友按钮.png in Resources */,
+				D9F5AE261C2853DA009E12D3 /* 密码输入框.png in Resources */,
 				D99413CF1BEC222600FC1B00 /* 邀请好友图标@2x.png in Resources */,
 				03651A611BEF3B1A0019CDBA /* sr_refresh.png in Resources */,
 				03651C781BEF45D40019CDBA /* chat_location_annotation_someone@2x.png in Resources */,
@@ -4298,6 +4422,7 @@
 				D92032251BDC77AC00FAB511 /* 爱好交友.png in Resources */,
 				03651C3B1BEF45D40019CDBA /* VoiceSearchFeedback001.png in Resources */,
 				D99413BF1BEC222600FC1B00 /* 我的收藏图标@2x.png in Resources */,
+				D9F5AE231C2853DA009E12D3 /* 交易记录@2x.png in Resources */,
 				03651C501BEF45D40019CDBA /* VoiceSearchFeedback011@2x.png in Resources */,
 				D9FFE6EE1BB16FFD00FFA187 /* qiang.png in Resources */,
 				03651C3E1BEF45D40019CDBA /* VoiceSearchFeedback002@2x.png in Resources */,
@@ -4387,6 +4512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94BE3881C2E2D5100F38008 /* SNS.swift in Sources */,
 				03651A581BEF3B1A0019CDBA /* PSTCollectionViewLayout.m in Sources */,
 				03A0136D1C093EC400AE99FD /* LDRefreshFooterView.m in Sources */,
 				03651B4E1BEF3B4B0019CDBA /* EMSearchBar.m in Sources */,
@@ -4396,6 +4522,7 @@
 				03651B231BEF3B400019CDBA /* ContactView.m in Sources */,
 				D905440A1BE5AE8700A1660F /* SpecialityContentCell.swift in Sources */,
 				D94324B41C1FE56300A833B9 /* MyFans.swift in Sources */,
+				D9F5AE331C285CE3009E12D3 /* MyCorn.swift in Sources */,
 				D96E76AB1BF9FAC50062BAD0 /* TopicDetail.swift in Sources */,
 				0357FBE81C034AE6009E9EDB /* SpecialityMenuViewController.swift in Sources */,
 				D94713731BD27BEB00108A8E /* OneChargeController.swift in Sources */,
@@ -4416,6 +4543,7 @@
 				D98BB58F1BE97917006FDE2F /* TenChargeDetailController.swift in Sources */,
 				D99413461BEC1D9D00FC1B00 /* Me.swift in Sources */,
 				03651B531BEF3B4B0019CDBA /* EMNavigationController.m in Sources */,
+				D9F5AE011C2847F3009E12D3 /* AllMoney.swift in Sources */,
 				03651B191BEF3B400019CDBA /* EMChatTextBubbleView.m in Sources */,
 				03651A531BEF3B1A0019CDBA /* PSTCollectionViewCell.m in Sources */,
 				D90544061BE5AD5F00A1660F /* SpecialityController.swift in Sources */,
@@ -4507,6 +4635,7 @@
 				D963A4AF1C1D896D00801C7A /* MessageDetail.swift in Sources */,
 				03651A381BEF3B1A0019CDBA /* MWCaptionView.m in Sources */,
 				03651B101BEF3B400019CDBA /* DXMessageToolBar.m in Sources */,
+				D9F5ADFF1C284707009E12D3 /* Wallet.swift in Sources */,
 				D9D988CD1BD7CCB300F53C74 /* MainController.swift in Sources */,
 				D99506681BB3817D00CA9B2E /* MessageItem.swift in Sources */,
 				D977BD8F1BEB63FE002CB613 /* GoneDetail.swift in Sources */,
@@ -4518,6 +4647,7 @@
 				03651B1B1BEF3B400019CDBA /* EMChatTimeCell.m in Sources */,
 				D9987CE81BEEE05C005480C7 /* ChangeGender.swift in Sources */,
 				03651A541BEF3B1A0019CDBA /* PSTCollectionViewController.m in Sources */,
+				D9DDCF621C26F99A0022E5F2 /* AddressOne.swift in Sources */,
 				03651B521BEF3B4B0019CDBA /* EMChooseViewController.m in Sources */,
 				D90544081BE5AE6C00A1660F /* SpecialityTitleCell.swift in Sources */,
 				03651A821BEF3B320019CDBA /* UIViewController+HUD.m in Sources */,
@@ -4545,11 +4675,13 @@
 				03651A4F1BEF3B1A0019CDBA /* UIImageView+EMWebCache.m in Sources */,
 				03651A2E1BEF3B1A0019CDBA /* EMCDDeviceManager+Media.m in Sources */,
 				D905441A1BE5F14500A1660F /* HobbyController.swift in Sources */,
+				D9DDCF5E1C26E11B0022E5F2 /* Signature.swift in Sources */,
 				03651A4D1BEF3B1A0019CDBA /* UIImage+EMWebP.m in Sources */,
 				03651B331BEF3B400019CDBA /* UserProfileManager.m in Sources */,
 				D9987CE01BEECE08005480C7 /* AboutMe.swift in Sources */,
 				03651A321BEF3B1A0019CDBA /* EMCDDeviceManagerBase.m in Sources */,
 				03651B061BEF3B400019CDBA /* AppDelegateoc+UMeng.m in Sources */,
+				D94BE38A1C2E420300F38008 /* SNSbefore.swift in Sources */,
 				037F32EF1C084D65004A79A3 /* SpecialityKindController.swift in Sources */,
 				D995065C1BB3817300CA9B2E /* LoginViewController.swift in Sources */,
 				D96E76A51BF9B7E00062BAD0 /* Focus.swift in Sources */,
@@ -4802,7 +4934,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alliance.ourself;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
@@ -4828,6 +4960,7 @@
 					"$(PROJECT_DIR)/AllianceIOS/models/Lib/AVOS",
 				);
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AllianceIOS/ChatDemo-UI2.0-Prefix.pch";
 				INFOPLIST_FILE = AllianceIOS/Info.plist;
@@ -4844,7 +4977,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alliance.ourself;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";

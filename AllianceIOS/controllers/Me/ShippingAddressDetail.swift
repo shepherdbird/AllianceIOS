@@ -7,21 +7,32 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class ShippingAddressDetail: UITableViewController {
 
-    @IBOutlet var SAD: UITableView!
-    var TitleName=["收货人","身份证","手机号","邮政编码","省份","城市","地区","详细地址"]
+    var TitleName=["姓名","电话号码","邮政编码","省份","城市","地区","详细地址"]
+    var address:AddressOne?
+    var alert:UIAlertController?
+    var Fg:Flag?
+        {
+        didSet{
+            let reqAction=UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                self.navigationController?.popViewControllerAnimated(true)
+                //self.RefreshData()
+            }
+            alert=UIAlertController(title: "", message: Fg?.msg, preferredStyle: UIAlertControllerStyle.Alert)
+            alert!.addAction(reqAction)
+            self.presentViewController(alert!, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("Save"))
+        //self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("Save"))
         self.navigationItem.rightBarButtonItem?.tintColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,104 +50,125 @@ class ShippingAddressDetail: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(section==0){
-            return 8
+            return 7
         }
         return 1
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath.row==7){
+        if(indexPath.row==6){
             return 120
         }
         return 50
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 10
     }
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
+        if(section==2){
+            return 150
+        }
+        return 0.01
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell=UITableViewCell()
         if(indexPath.section==0){
+        let dizhi=self.address!.address.componentsSeparatedByString(" ")
         let title=UILabel(frame: CGRectMake(15,15,100,20))
         title.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
         title.text=TitleName[indexPath.row]
         title.font=UIFont.systemFontOfSize(15)
         cell.addSubview(title)
-        let content=UITextField(frame: CGRectMake(150,0,self.view.frame.width-150,50))
+        let content=UITextField(frame: CGRectMake(130,0,self.view.frame.width-150,50))
+            switch indexPath.row {
+            case 0:
+                content.text=self.address!.name
+            case 1:
+                content.text=self.address!.aphone
+            case 2:
+                content.text=self.address!.postcode
+            case 3:
+                if(dizhi.count>=1){
+                    content.text=dizhi[0]
+                }
+            case 4:
+                if(dizhi.count>=2){
+                    content.text=dizhi[1]
+                }
+            case 5:
+                if(dizhi.count>=3){
+                    content.text=dizhi[2]
+                }
+            default:
+                if(dizhi.count>=4){
+                    content.text=dizhi[3]
+                }
+            }
         cell.addSubview(content)
         }else if(indexPath.section==1){
-            let title=UILabel(frame: CGRectMake(20,15,self.view.frame.width,20))
-            title.text="删除该收货地址"
-            title.textColor=UIColor(red: 200/255, green: 100/255, blue: 100/255, alpha: 1.0)
-            title.font=UIFont.systemFontOfSize(15)
-            cell.addSubview(title)
+            let delete=UIButton(frame: CGRectMake(20,5,self.view.frame.width-40,40))
+            delete.setTitle("删除该收货地址", forState: UIControlState.Normal)
+            delete.addTarget(self, action: Selector("Action:"), forControlEvents: UIControlEvents.TouchUpInside)
+            delete.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            delete.tag=1
+            delete.setBackgroundImage(UIImage(named: "安全退出按钮.png"), forState: UIControlState.Normal)
+            cell.addSubview(delete)
         }else{
-            let title=UILabel(frame: CGRectMake(20,15,self.view.frame.width,20))
-            title.text="设为默认收货地址"
-            title.textColor=UIColor(red: 200/255, green: 100/255, blue: 100/255, alpha: 1.0)
-            title.font=UIFont.systemFontOfSize(15)
-            cell.addSubview(title)
+            let delete=UIButton(frame: CGRectMake(20,5,self.view.frame.width-40,40))
+            delete.setTitle("设为默认收货地址", forState: UIControlState.Normal)
+            delete.tag=2
+            delete.addTarget(self, action: Selector("Action:"), forControlEvents: UIControlEvents.TouchUpInside)
+            delete.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            delete.setBackgroundImage(UIImage(named: "安全退出按钮.png"), forState: UIControlState.Normal)
+            cell.addSubview(delete)
         }
         return cell
+    }
+    func Action(sender:UIButton){
+        if(sender.tag==1){
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                do {
+                    let params:Dictionary<String,AnyObject>=["phone":Phone,"addressid":self.address!.id]
+                    let new=try HTTP.POST(URL+"/users/deleteaddress", parameters: params)
+                    new.start { response in
+                        if let err = response.error {
+                            print("error: \(err.localizedDescription)")
+                            return //also notify app of failure as needed
+                        }
+                        print("opt finished: \(response.description)")
+                        self.Fg = Flag(JSONDecoder(response.data))
+                        RefreshAddress=1
+                    }
+                    
+                } catch let error {
+                    print("got an error creating the request: \(error)")
+                }
+            }
+        }else if(sender.tag==2){
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                do {
+                    let params:Dictionary<String,AnyObject>=["phone":Phone,"addressid":self.address!.id]
+                    let new=try HTTP.POST(URL+"/users/setdefaultaddress", parameters: params)
+                    new.start { response in
+                        if let err = response.error {
+                            print("error: \(err.localizedDescription)")
+                            return //also notify app of failure as needed
+                        }
+                        print("opt finished: \(response.description)")
+                        self.Fg = Flag(JSONDecoder(response.data))
+                        RefreshAddress=1
+                    }
+                    
+                } catch let error {
+                    print("got an error creating the request: \(error)")
+                }
+            }
+        }
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     func Save(){
         self.navigationController?.popViewControllerAnimated(true)
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

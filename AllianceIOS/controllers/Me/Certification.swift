@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class Certification: UITableViewController {
 
-    @IBOutlet var C: UITableView!
+    var Status:Int?
+    var alert:UIAlertController?
+    var Fg:Flag?
+        {
+        didSet{
+            let reqAction=UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                self.navigationController?.popViewControllerAnimated(true)
+                //self.RefreshData()
+            }
+            alert=UIAlertController(title: "", message: Fg?.msg, preferredStyle: UIAlertControllerStyle.Alert)
+            alert!.addAction(reqAction)
+            self.presentViewController(alert!, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +53,7 @@ class Certification: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 2
     }
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -47,20 +63,16 @@ class Certification: UITableViewController {
         let cell=UITableViewCell()
         if(indexPath.section==0){
             if(indexPath.row==0){
-                let name=UILabel(frame: CGRectMake(10,15,50,20))
-                name.text="姓名"
-                name.font=UIFont.systemFontOfSize(15)
-                name.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
-                cell.addSubview(name)
-                let nameInput=UITextField(frame: CGRectMake(150,0,self.view.frame.width-150,50))
+                let nameInput=UITextField(frame: CGRectMake(10,0,self.view.frame.width-20,50))
+                nameInput.font=UIFont.systemFontOfSize(15)
+                nameInput.placeholder="姓名"
+                nameInput.tag=1
                 cell.addSubview(nameInput)
             }else{
-                let id=UILabel(frame: CGRectMake(10,15,150,20))
-                id.text="身份证号码"
-                id.font=UIFont.systemFontOfSize(15)
-                id.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
-                cell.addSubview(id)
-                let nameInput=UITextField(frame: CGRectMake(150,0,self.view.frame.width-150,50))
+                let nameInput=UITextField(frame: CGRectMake(10,0,self.view.frame.width-20,50))
+                nameInput.font=UIFont.systemFontOfSize(15)
+                nameInput.placeholder="身份证号码"
+                nameInput.tag=2
                 cell.addSubview(nameInput)
             }
         }else{
@@ -74,67 +86,44 @@ class Certification: UITableViewController {
                 let BangDing=UIButton(frame: CGRectMake(20,5,self.view.frame.width-40,40))
                 BangDing.setBackgroundImage(UIImage(named: "安全退出按钮.png"), forState: UIControlState.Normal)
                 BangDing.setTitle("绑定", forState: UIControlState.Normal)
+                BangDing.addTarget(self, action: Selector("Bang"), forControlEvents: UIControlEvents.TouchUpInside)
                 BangDing.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 BangDing.titleLabel?.font=UIFont.systemFontOfSize(18)
+                if(self.Status==1){
+                    BangDing.setTitle("正在认证中...", forState: UIControlState.Normal)
+                    BangDing.enabled=false
+                }
                 cell.addSubview(BangDing)
             }
         }
         return cell
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func Bang(){
+        print("实名认证")
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let name=self.view.viewWithTag(1) as! UITextField
+                let number=self.view.viewWithTag(2) as! UITextField
+                let params:Dictionary<String,AnyObject>=["phone":Phone,"realname":name.text!,"idcard":number.text!]
+                let new=try HTTP.POST(URL+"/users/realauth", parameters: params)
+                new.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    self.Fg = Flag(JSONDecoder(response.data))
+                    
+                }
+                
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
