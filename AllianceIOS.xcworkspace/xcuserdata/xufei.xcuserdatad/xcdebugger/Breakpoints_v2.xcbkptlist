@@ -1912,6 +1912,38 @@
             endingLineNumber = "271"
             landmarkName = "touchesBegan(_:withEvent:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AllianceIOS.JobInfoController.touchesBegan (AllianceIOS.JobInfoController)(Swift.Set&lt;__ObjC.UITouch&gt;, withEvent : Swift.Optional&lt;__ObjC.UIEvent&gt;) -&gt; ()"
+                  moduleName = "AllianceIOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/workspace/AllianceIOS/AllianceIOS/controllers/Resources/Near/JobInfoController.swift"
+                  timestampString = "472307956.104901"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "271"
+                  endingLineNumber = "271"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc AllianceIOS.JobInfoController.touchesBegan (AllianceIOS.JobInfoController)(Swift.Set&lt;__ObjC.UITouch&gt;, withEvent : Swift.Optional&lt;__ObjC.UIEvent&gt;) -&gt; ()"
+                  moduleName = "AllianceIOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/workspace/AllianceIOS/AllianceIOS/controllers/Resources/Near/JobInfoController.swift"
+                  timestampString = "472307956.105175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "271"
+                  endingLineNumber = "271"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
