@@ -310,7 +310,7 @@ class GoneDetail: UITableViewController {
         let cell=UITableViewCell()
         let count=UILabel(frame: CGRectMake(15,10,300,15))
         count.font=UIFont.systemFontOfSize(13)
-        count.text="您参与了"+OneChargeView!.myrecords[index].count+"人次"
+        count.text="您参与了"+OneChargeView!.myrecords[index].count!+"人次"
         count.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
         let numbers=UILabel(frame: CGRectMake(15,30,self.view.frame.width-30,15))
         numbers.text=OneChargeView!.myrecords[index].numbers
@@ -354,7 +354,7 @@ class GoneDetail: UITableViewController {
         let cell=UITableViewCell()
         let avator=UIImageView(frame: CGRectMake(15, 10, 30, 30))
         //avator.image=UIImage(data: NSData(contentsOfURL: NSURL(string: OneChargeView!.records[index].thumb)!)!)
-        avator.sd_setImageWithURL(NSURL(string: OneChargeView!.records[index].thumb)!, placeholderImage: UIImage(named: "avator.jpg"))
+        avator.sd_setImageWithURL(NSURL(string: OneChargeView!.records[index].thumb!)!, placeholderImage: UIImage(named: "avator.jpg"))
         avator.clipsToBounds=true
         avator.layer.cornerRadius=15
         let username=UILabel(frame: CGRectMake(50,10,50,15))
@@ -362,10 +362,10 @@ class GoneDetail: UITableViewController {
         username.font=UIFont.systemFontOfSize(12)
         let time=UILabel(frame: CGRectMake(100,10,300,15))
         time.font=UIFont.systemFontOfSize(12)
-        time.text=String(NSDate(timeIntervalSince1970: Double(OneChargeView!.records[index].created_at)!))
+        time.text=String(NSDate(timeIntervalSince1970: Double(OneChargeView!.records[index].created_at!)!))
         time.textColor=UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
         let count=UILabel(frame: CGRectMake(50,30,100,15))
-        count.text="参与了"+OneChargeView!.records[index].count+"人次"
+        count.text="参与了"+OneChargeView!.records[index].count!+"人次"
         count.font=UIFont.systemFontOfSize(11)
         let phone=UILabel(frame: CGRectMake(150,30,150,15))
         phone.font=UIFont.systemFontOfSize(11)

@@ -16,6 +16,19 @@ class ChangeGender: UITableViewController {
     var SelectBoy:UIImageView!
     var SelectGirl:UIImageView!
     var IsBoy:Int?
+    var alert:UIAlertController?
+    var Fg:Flag?
+        {
+        didSet{
+                        let reqAction=UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                            self.navigationController?.popViewControllerAnimated(true)
+                            //self.RefreshData()
+                        }
+                        alert=UIAlertController(title: "", message: Fg?.msg, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert!.addAction(reqAction)
+                        self.presentViewController(alert!, animated: true, completion: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
@@ -81,68 +94,33 @@ class ChangeGender: UITableViewController {
         if(indexPath.row==0){
             SelectBoy.hidden=false
             SelectGirl.hidden=true
+            self.IsBoy=1
         }else{
             SelectBoy.hidden=true
             SelectGirl.hidden=false
+            self.IsBoy=0
         }
     }
     func Save(){
-        self.navigationController?.popViewControllerAnimated(true)
+        //self.navigationController?.popViewControllerAnimated(true)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            do {
+                let params:Dictionary<String,AnyObject>=["phone":Phone,"gender":self.IsBoy!]
+                let new=try HTTP.POST(URL+"/users/modify", parameters: params)
+                new.start { response in
+                    if let err = response.error {
+                        print("error: \(err.localizedDescription)")
+                        return //also notify app of failure as needed
+                    }
+                    print("opt finished: \(response.description)")
+                    self.Fg = Flag(JSONDecoder(response.data))
+                    RefreshAboutMe=1
+                    
+                }
+                
+            } catch let error {
+                print("got an error creating the request: \(error)")
+            }
+        }
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -42,7 +42,7 @@
 #endif
 
     if (![self isSpecifyServer]) {
-        [[EaseMob sharedInstance] registerSDKWithAppKey:@"allpeople#league"];
+        [[EaseMob sharedInstance] registerSDKWithAppKey:@"13022660999#allpeopleleague"];
     }
     
     // 登录成功后，自动去取好友列表

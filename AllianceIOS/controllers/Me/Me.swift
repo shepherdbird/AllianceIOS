@@ -295,6 +295,9 @@ class Me: UITableViewController {
         }else if(indexPath.section==3){
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Settings");
             self.navigationController?.pushViewController(anotherView, animated: true)
+        }else if(indexPath.section==2){
+            let another=Wallet()
+            self.navigationController?.pushViewController(another, animated: true)
         }
     }
     func ButtonAction(sender:UIButton){

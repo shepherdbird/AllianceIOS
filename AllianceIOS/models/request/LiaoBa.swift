@@ -31,11 +31,14 @@ class ChatMessage {
     var userid:String!
     var content:String!
     var pictures:String!
-    var likecount:String!
-    var replycount:String!
+    var likecount:String?
+    var replycount:String?
     var created_at:String!
     var phone:String!
-    var title:String!
+    var title:String?
+    var iszaned:String?
+    var iscollected:String?
+    var ismy:Int?
     var nickname:String!
     var thumb:String!
     var isconcerned:String!
@@ -51,6 +54,9 @@ class ChatMessage {
         replycount=decoder["replycount"].string
         created_at=decoder["created_at"].string
         title=decoder["title"].string
+        iszaned=decoder["iszaned"].string
+        iscollected=decoder["iscollected"].string
+        ismy=decoder["ismy"].integer
         phone=decoder["phone"].string
         nickname=decoder["nickname"].string
         thumb=decoder["thumb"].string
@@ -72,7 +78,8 @@ class ChatMessage {
 }
 class ChatMessageReply {
     var id:String!
-    var tbmessageid:String!
+    var tbmessageid:String?
+    var messageid:String?
     var content:String!
     var fromid:String!
     var toid:String!
@@ -80,11 +87,14 @@ class ChatMessageReply {
     var created_at:String!
     var fromnickname:String!
     var fromphone:String!
+    var fromthumb:String?
+    var tothumb:String?
     var tonickname:String!
     var tophone:String!
     init(_ decoder: JSONDecoder){
         id=decoder["id"].string
         tbmessageid=decoder["tbmessageid"].string
+        messageid=decoder["messageid"].string
         content=decoder["content"].string
         fromid=decoder["fromid"].string
         toid=decoder["toid"].string
@@ -92,6 +102,8 @@ class ChatMessageReply {
         created_at=decoder["created_at"].string
         fromnickname=decoder["fromnickname"].string
         fromphone=decoder["fromphone"].string
+        fromthumb=decoder["fromthumb"].string
+        tothumb=decoder["tothumb"].string
         tonickname=decoder["tonickname"].string
         tophone=decoder["tophone"].string
     }
@@ -116,7 +128,7 @@ class ReplyMore{
 class ChatMessageLike {
     var phone:String!
     var nickname:String!
-    var thumb:String!
+    var thumb:String?
     init(_ decoder: JSONDecoder){
         phone=decoder["phone"].string
         nickname=decoder["nickname"].string

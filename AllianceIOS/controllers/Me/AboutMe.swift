@@ -285,15 +285,21 @@ class AboutMe: UITableViewController {
                 cell.addSubview(title)
                 cell.addSubview(detail)
             default:
-                let title=UILabel(frame: CGRectMake(15,15,150,20))
+                let title=UILabel(frame: CGRectMake(15,15,70,20))
                 title.text="个性签名"
                 title.font=UIFont.systemFontOfSize(15)
                 let detail=UILabel(frame: CGRectMake(self.view.frame.width/2, 15, self.view.frame.width/2-20, 20))
                 detail.text=self.Personinfo!.signature
                 detail.font=UIFont.systemFontOfSize(17)
+                //print(detail.text)
                 detail.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 0.44)
-                boundingRect=GetBounds(self.view.frame.width/2, height: 20, font: detail.font, str: detail.text!)
-                detail.frame=CGRectMake(self.view.frame.width-boundingRect.width-30,15,boundingRect.width,boundingRect.height)
+                boundingRect=GetBounds(4000, height: 20, font: detail.font, str: detail.text!)
+                var width=self.view.frame.width/2-30
+                if(boundingRect.width+30<self.view.frame.width/2){
+                    width=boundingRect.width
+                }
+                detail.frame=CGRectMake(self.view.frame.width-width-30,15,width,boundingRect.height)
+                print(self.view.frame.width-width-30,15,width,boundingRect.height)
                 cell.addSubview(title)
                 cell.addSubview(detail)
             }
@@ -343,10 +349,15 @@ class AboutMe: UITableViewController {
                     anotherView.IsBoy=0
                 }
                 self.navigationController?.pushViewController(anotherView, animated: true)
+            }else if(indexPath.row==2){
+                let anotherView=Signature()
+                anotherView.Content=self.Personinfo!.signature
+                self.navigationController?.pushViewController(anotherView, animated: true)
             }
         case 2:
             if(indexPath.row==0){
                 let anotherView=Certification()
+                anotherView.Status=self.Personinfo!.status
                 self.navigationController?.pushViewController(anotherView, animated: true)
             }else{
                 let anotherView=ShippingAddress()
