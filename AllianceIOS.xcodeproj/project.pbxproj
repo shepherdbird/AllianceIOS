@@ -544,6 +544,7 @@
 		D947137B1BD2859400108A8E /* tencharge.png in Resources */ = {isa = PBXBuildFile; fileRef = D94713771BD2859400108A8E /* tencharge.png */; };
 		D94BE3881C2E2D5100F38008 /* SNS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE3871C2E2D5100F38008 /* SNS.swift */; };
 		D94BE38A1C2E420300F38008 /* SNSbefore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE3891C2E420300F38008 /* SNSbefore.swift */; };
+		D94BE38C1C2FFD9C00F38008 /* SendFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE38B1C2FFD9C00F38008 /* SendFriend.swift */; };
 		D963A4AF1C1D896D00801C7A /* MessageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963A4AE1C1D896D00801C7A /* MessageDetail.swift */; };
 		D963A4B11C1D8CB600801C7A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963A4B01C1D8CB600801C7A /* MessageView.swift */; };
 		D96473D91BD67D86008DA5B8 /* 资源.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D96473D81BD67D86008DA5B8 /* 资源.jpg */; };
@@ -1511,6 +1512,7 @@
 		D94713771BD2859400108A8E /* tencharge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tencharge.png; sourceTree = "<group>"; };
 		D94BE3871C2E2D5100F38008 /* SNS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SNS.swift; path = SNS/SNS.swift; sourceTree = "<group>"; };
 		D94BE3891C2E420300F38008 /* SNSbefore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SNSbefore.swift; path = SNS/SNSbefore.swift; sourceTree = "<group>"; };
+		D94BE38B1C2FFD9C00F38008 /* SendFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SendFriend.swift; path = SNS/SendFriend.swift; sourceTree = "<group>"; };
 		D963A4AE1C1D896D00801C7A /* MessageDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetail.swift; sourceTree = "<group>"; };
 		D963A4B01C1D8CB600801C7A /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D96473D81BD67D86008DA5B8 /* 资源.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "资源.jpg"; sourceTree = "<group>"; };
@@ -3189,6 +3191,7 @@
 			children = (
 				D94BE3871C2E2D5100F38008 /* SNS.swift */,
 				D94BE3891C2E420300F38008 /* SNSbefore.swift */,
+				D94BE38B1C2FFD9C00F38008 /* SendFriend.swift */,
 			);
 			name = SNS;
 			sourceTree = "<group>";
@@ -3933,7 +3936,7 @@
 				TargetAttributes = {
 					D97A8C101BAADF9F002645F9 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 862RTQJG5C;
+						DevelopmentTeam = 3D5889TM4Y;
 					};
 				};
 			};
@@ -4667,6 +4670,7 @@
 				03A013711C093EC400AE99FD /* UIScrollView+LDRefresh.m in Sources */,
 				D995065D1BB3817300CA9B2E /* MessageController.swift in Sources */,
 				03651B1A1BEF3B400019CDBA /* EMChatVideoBubbleView.m in Sources */,
+				D94BE38C1C2FFD9C00F38008 /* SendFriend.swift in Sources */,
 				03651B181BEF3B400019CDBA /* EMChatLocationBubbleView.m in Sources */,
 				D905440E1BE5B74100A1660F /* SpecialityDetailController.swift in Sources */,
 				03651A431BEF3B1A0019CDBA /* EMSDWebImageDecoder.m in Sources */,

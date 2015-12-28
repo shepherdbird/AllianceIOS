@@ -41,10 +41,11 @@ class ChatMessage {
     var ismy:Int?
     var nickname:String!
     var thumb:String!
-    var isconcerned:String!
-    var isliked:String!
+    var isconcerned:String?
+    var isliked:String?
     var replys:Array<ChatMessageReply>!
     var likes:Array<ChatMessageLike>!
+    var zans:Array<ChatMessageLike>!
     init(_ decoder:JSONDecoder){
         id=decoder["id"].string
         userid=decoder["userid"].string
@@ -72,6 +73,12 @@ class ChatMessage {
             likes = Array<ChatMessageLike>()
             for itemDecoder in it {
                 likes.append(ChatMessageLike(itemDecoder))
+            }
+        }
+        if let it = decoder["zans"].array {
+            zans = Array<ChatMessageLike>()
+            for itemDecoder in it {
+                zans.append(ChatMessageLike(itemDecoder))
             }
         }
     }
