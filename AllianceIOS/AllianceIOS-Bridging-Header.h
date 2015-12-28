@@ -34,5 +34,7 @@
 #import "AFNetworking/AFNetworking.h"
 #import "Qiniu/QiniuSDK.h"
 #import "HappyDNS/HappyDNS.h"
+#import "ImgScrollView.h"
+#import "TapImageView.h"
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpecialityDetailController: UITableViewController {
+class SpecialityDetailController: UITableViewController,TapImageViewDelegate,ImgScrollViewDelegate{
 
     @IBOutlet var detail: UITableView!
     
@@ -22,6 +22,18 @@ class SpecialityDetailController: UITableViewController {
     var reid:String?
     var myphone:String?
     var comments: Array<SpecialityController.Comments> = []
+    var imagewidth:Int?
+    
+    var myTable:UITableView?
+    var myScrollView:UIScrollView?
+    var currentIndex:Int?
+    
+    var markView:UIView?
+    var scrollPanel:UIView!
+    var tapCell:UITableViewCell?
+    var currentWindow:UIWindow?
+    var pg=UIPageControl()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +46,41 @@ class SpecialityDetailController: UITableViewController {
         footrect.size.height=1
         let footview=UIView.init(frame: footrect)
         self.tableView.tableFooterView=footview
+        
+        let images:Array<String>=(self.imageurls?.componentsSeparatedByString(" "))!
+        self.imagecount=images.count
+        
+        
+         currentWindow=UIApplication.sharedApplication().keyWindow!
+         pg.frame=CGRectMake((self.view.frame.width-40)/2, self.view.frame.height-40, 40, 5)
+        pg.numberOfPages = self.imagecount!
+        pg.currentPageIndicatorTintColor = UIColor.whiteColor()
+        pg.pageIndicatorTintColor = UIColor.grayColor()
+        pg.alpha=0
+        
+        scrollPanel=UIView.init(frame: currentWindow!.bounds)
+        scrollPanel.backgroundColor = UIColor.clearColor();
+        scrollPanel.alpha = 0;
+        //self.view.addSubview(scrollPanel)
+        
+       
+        currentWindow!.addSubview(scrollPanel)
+        
+        
+        markView=UIView.init(frame: scrollPanel.bounds)
+        markView!.backgroundColor = UIColor.blackColor()
+        markView!.alpha = 0.0;
+        scrollPanel.addSubview(markView!)
+        scrollPanel.addSubview(pg)
+        
+        myScrollView=UIScrollView.init(frame: currentWindow!.bounds)
+        scrollPanel.addSubview(myScrollView!)
+        myScrollView!.pagingEnabled = true
+        myScrollView!.delegate = self
+        var contentSize:CGSize = myScrollView!.contentSize
+        contentSize.height = currentWindow!.bounds.size.height
+        contentSize.width = currentWindow!.bounds.size.width * CGFloat(self.imagecount!)
+        myScrollView!.contentSize = contentSize
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -44,6 +91,81 @@ class SpecialityDetailController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addSubImgView(){
+        self.myScrollView!.subviews.map({ $0.removeFromSuperview() })
+        for (var j = 0;j<self.imagecount;j++){
+            if (j == self.currentIndex)
+            {
+                continue;
+            }
+            let tmpView:TapImageView=tapCell?.viewWithTag(10 + j) as! TapImageView
+            let convertRect:CGRect=(tmpView.superview?.convertRect(tmpView.frame, toView: currentWindow!))!
+            let tmpImgScrollView:ImgScrollView=ImgScrollView.init(frame:CGRect(origin:CGPoint(x: CGFloat(j)*myScrollView!.bounds.size.width,y: CGFloat(0)),size: myScrollView!.bounds.size))
+           
+            
+            tmpImgScrollView.setContentWithFrame(convertRect)
+            tmpImgScrollView.setImage(tmpView.image)
+            self.myScrollView?.addSubview(tmpImgScrollView)
+            tmpImgScrollView.i_delegate=self
+            tmpImgScrollView.setAnimationRect()
+        }
+        
+
+    }
+    
+    func setOriginFrame(sender:ImgScrollView){
+         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        UIView.animateWithDuration(0.4, animations:{
+            sender.setAnimationRect()
+            self.markView!.alpha = 1.0
+            self.pg.alpha=1.0
+            })
+    }
+    
+    
+    override func scrollViewDidEndDecelerating(scrollView:UIScrollView){
+        let pageWidth:CGFloat=scrollView.frame.size.width
+        self.currentIndex = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + CGFloat(1))
+        pg.currentPage=self.currentIndex!
+    }
+    
+    func tappedWithObject(sender:AnyObject){
+        currentWindow!.bringSubviewToFront(self.scrollPanel)
+        self.scrollPanel.bringSubviewToFront(self.pg)
+        self.scrollPanel.alpha=1.0
+        let tmpView:TapImageView=sender as! TapImageView
+        self.currentIndex = tmpView.tag - 10
+        pg.currentPage=self.currentIndex!
+        
+        self.tapCell = tmpView.identifier as? UITableViewCell
+        let convertRect:CGRect=(tmpView.superview?.convertRect(tmpView.frame, toView: currentWindow!))!
+        var contentOffset:CGPoint=self.myScrollView!.contentOffset
+        contentOffset.x = CGFloat(self.currentIndex!*Int(currentWindow!.bounds.size.width))
+        self.myScrollView!.contentOffset = contentOffset
+        self.addSubImgView()
+        
+        let tmpImgScrollView:ImgScrollView=ImgScrollView.init(frame:CGRect(origin:contentOffset,size:myScrollView!.bounds.size))
+        tmpImgScrollView.setContentWithFrame(convertRect)
+        tmpImgScrollView.setImage(tmpView.image)
+        self.myScrollView?.addSubview(tmpImgScrollView)
+        tmpImgScrollView.i_delegate = self
+        self.performSelector(Selector("setOriginFrame:"), withObject: tmpImgScrollView, afterDelay: 0.1)
+        
+    }
+    
+    func tapImageViewTappedWithObject(sender:AnyObject){
+        self.pg.alpha=0.0
+        let tmpImgView:ImgScrollView=sender as! ImgScrollView
+        UIView.animateWithDuration(0.5, animations:{
+            self.markView!.alpha = 0
+            tmpImgView.rechangeInitRdct()
+            }, completion:{finished in
+                self.scrollPanel.alpha = 0
+        })
+        
+        
     }
     
     // MARK: - Table view data source
@@ -65,7 +187,15 @@ class SpecialityDetailController: UITableViewController {
             if(indexPath.row==0){
                 return 80
             }else if(indexPath.row==5){
-                return 100
+                imagewidth=Int((self.view.bounds.size.width-35))/4
+                if(self.imagecount<=4){
+                    return CGFloat(20+self.imagewidth!)
+                }else if(self.imagecount>4&&self.imagecount<=8){
+                    return CGFloat(25+self.imagewidth!*2)
+                }else{
+                    return CGFloat(30+self.imagewidth!*3)
+                }
+                return 0
             }
             return 50
         }else{
@@ -105,25 +235,35 @@ class SpecialityDetailController: UITableViewController {
         case 5:
             
             let images:Array<String>=(self.imageurls?.componentsSeparatedByString(" "))!
-            self.imagecount=images.count
             
-            for i in 0...self.imagecount!-1{
-                if (i<4){
-                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*i), 10, 80, 80))
-                    
-                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
-                    cell.addSubview(detail)
+            for (var i=0;i<self.imagecount;i++)
+            {
+                if(i<4){
+                    let tmpView:TapImageView = TapImageView.init(frame: CGRectMake(CGFloat(10+(imagewidth!+5)*i), 10, CGFloat(imagewidth!), CGFloat(imagewidth!)))
+                    tmpView.t_delegate = self;
+                    tmpView.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    tmpView.tag = 10 + i;
+                    cell.contentView.addSubview(tmpView)
                 }else if(i>=4&&i<8){
-                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%4)), 10+84, 80, 80))
-                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
-                    cell.addSubview(detail)
+                    let tmpView:TapImageView = TapImageView.init(frame: CGRectMake(CGFloat(10+(imagewidth!+5)*(i%4)), CGFloat(imagewidth!+15), CGFloat(imagewidth!), CGFloat(imagewidth!)))
+                    tmpView.t_delegate = self;
+                    tmpView.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    tmpView.tag = 10 + i;
+                    cell.contentView.addSubview(tmpView)
                 }else{
-                    let detail=UIImageView(frame: CGRectMake(CGFloat(10+84*(i%8)), 10+84*2, 80, 80))
-                    detail.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
-                    cell.addSubview(detail)
+                    let tmpView:TapImageView = TapImageView.init(frame: CGRectMake(CGFloat(10+(imagewidth!+5)*(i%8)), CGFloat(imagewidth!*2+20), CGFloat(imagewidth!), CGFloat(imagewidth!)))
+                    tmpView.t_delegate = self;
+                    tmpView.sd_setImageWithURL(NSURL(string: (images[i])), placeholderImage: UIImage(named: "avator.jpg"))
+                    tmpView.tag = 10 + i;
+                    cell.contentView.addSubview(tmpView)
                 }
             }
-
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+           
+           for(var j=0;j<self.imagecount;j++){
+               let tmpView1:TapImageView = cell.contentView.viewWithTag(10+j) as! TapImageView
+                tmpView1.identifier = cell;
+           }
             
         default:
             key=UILabel(frame: CGRectMake(15,15,80,20))

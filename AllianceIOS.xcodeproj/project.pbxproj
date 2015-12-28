@@ -371,6 +371,15 @@
 		03A0136F1C093EC400AE99FD /* tableview_pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A013691C093EC400AE99FD /* tableview_pull_refresh@2x.png */; };
 		03A013701C093EC400AE99FD /* tableview_pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */; };
 		03A013711C093EC400AE99FD /* UIScrollView+LDRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */; };
+		03A47EC21C3128750066133E /* 108.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EBB1C3128750066133E /* 108.png */; };
+		03A47EC31C3128750066133E /* 128.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EBC1C3128750066133E /* 128.png */; };
+		03A47EC41C3128750066133E /* 28.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EBD1C3128750066133E /* 28.png */; };
+		03A47EC51C3128750066133E /* 48.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EBE1C3128750066133E /* 48.png */; };
+		03A47EC61C3128750066133E /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EBF1C3128750066133E /* 72.png */; };
+		03A47EC71C3128750066133E /* 96.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EC01C3128750066133E /* 96.png */; };
+		03A47EC81C3128750066133E /* 未标题-1.psd in Resources */ = {isa = PBXBuildFile; fileRef = 03A47EC11C3128750066133E /* 未标题-1.psd */; };
+		03B443591C2FC8E700EC5317 /* ImgScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B443561C2FC8E700EC5317 /* ImgScrollView.m */; };
+		03B4435A1C2FC8E700EC5317 /* TapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B443581C2FC8E700EC5317 /* TapImageView.m */; };
 		03BABD931C0C705800FBA47D /* Hobbyglobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BABD921C0C705800FBA47D /* Hobbyglobal.swift */; };
 		79A5523F316A2EF633316F72 /* Pods_AllianceIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */; };
 		D90544021BE5A8BC00A1660F /* JobInfoReqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90544011BE5A8BC00A1660F /* JobInfoReqController.swift */; };
@@ -1325,6 +1334,17 @@
 		03A0136A1C093EC400AE99FD /* tableview_pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_pull_refresh@3x.png"; sourceTree = "<group>"; };
 		03A0136B1C093EC400AE99FD /* UIScrollView+LDRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LDRefresh.h"; sourceTree = "<group>"; };
 		03A0136C1C093EC400AE99FD /* UIScrollView+LDRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LDRefresh.m"; sourceTree = "<group>"; };
+		03A47EBB1C3128750066133E /* 108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 108.png; sourceTree = "<group>"; };
+		03A47EBC1C3128750066133E /* 128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 128.png; sourceTree = "<group>"; };
+		03A47EBD1C3128750066133E /* 28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 28.png; sourceTree = "<group>"; };
+		03A47EBE1C3128750066133E /* 48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 48.png; sourceTree = "<group>"; };
+		03A47EBF1C3128750066133E /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
+		03A47EC01C3128750066133E /* 96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96.png; sourceTree = "<group>"; };
+		03A47EC11C3128750066133E /* 未标题-1.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "未标题-1.psd"; sourceTree = "<group>"; };
+		03B443551C2FC8E700EC5317 /* ImgScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgScrollView.h; sourceTree = "<group>"; };
+		03B443561C2FC8E700EC5317 /* ImgScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgScrollView.m; sourceTree = "<group>"; };
+		03B443571C2FC8E700EC5317 /* TapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapImageView.h; sourceTree = "<group>"; };
+		03B443581C2FC8E700EC5317 /* TapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapImageView.m; sourceTree = "<group>"; };
 		03BABD921C0C705800FBA47D /* Hobbyglobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hobbyglobal.swift; sourceTree = "<group>"; };
 		365E250EAF180AE4DA354C98 /* Pods_AllianceIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AllianceIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AllianceIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AllianceIOS/Pods-AllianceIOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2921,6 +2941,31 @@
 			path = LDRefresh;
 			sourceTree = "<group>";
 		};
+		03A47EBA1C3128750066133E /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				03A47EBB1C3128750066133E /* 108.png */,
+				03A47EBC1C3128750066133E /* 128.png */,
+				03A47EBD1C3128750066133E /* 28.png */,
+				03A47EBE1C3128750066133E /* 48.png */,
+				03A47EBF1C3128750066133E /* 72.png */,
+				03A47EC01C3128750066133E /* 96.png */,
+				03A47EC11C3128750066133E /* 未标题-1.psd */,
+			);
+			path = icon;
+			sourceTree = "<group>";
+		};
+		03B443541C2FC7D500EC5317 /* TapImage */ = {
+			isa = PBXGroup;
+			children = (
+				03B443551C2FC8E700EC5317 /* ImgScrollView.h */,
+				03B443561C2FC8E700EC5317 /* ImgScrollView.m */,
+				03B443571C2FC8E700EC5317 /* TapImageView.h */,
+				03B443581C2FC8E700EC5317 /* TapImageView.m */,
+			);
+			name = TapImage;
+			sourceTree = "<group>";
+		};
 		29E33117E52AA18CD79CCE90 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3476,6 +3521,7 @@
 		D995065F1BB3817D00CA9B2E /* models */ = {
 			isa = PBXGroup;
 			children = (
+				03B443541C2FC7D500EC5317 /* TapImage */,
 				0334844F1C0B1B9C00630A76 /* Hobby */,
 				03A013641C093EC400AE99FD /* LDRefresh */,
 				037BB46E1BFC1B3C00A76832 /* JobMenuViewController.swift */,
@@ -3507,6 +3553,7 @@
 		D9B190181BACE15F0077EA76 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				03A47EBA1C3128750066133E /* icon */,
 				0311900A1C14008E00D94979 /* popoverArrowUp-white@2x.png */,
 				0390A9EF1C1349E70092902E /* popoverArrowUp.png */,
 				0390A9F01C1349E70092902E /* popoverArrowUp@2x.png */,
@@ -3966,6 +4013,7 @@
 				D915CBA01BE65D17004EBE26 /* 人次选择按钮大切片左@2x.png in Resources */,
 				D96E76911BF9B5870062BAD0 /* 更多@2x.png in Resources */,
 				03651B341BEF3B400019CDBA /* LoginViewController.strings in Resources */,
+				03A47EC71C3128750066133E /* 96.png in Resources */,
 				03651C761BEF45D40019CDBA /* chatBar_textBg@2x.png in Resources */,
 				D96E76871BF9B5870062BAD0 /* 喜欢1@2x.png in Resources */,
 				D96473FA1BD67E2E008DA5B8 /* 资源tba默认.png in Resources */,
@@ -4013,6 +4061,7 @@
 				03651C8E1BEF45D40019CDBA /* chatBar_moreSelected@2x.png in Resources */,
 				D99413A41BEC222600FC1B00 /* 评论条目.png in Resources */,
 				03651C661BEF45D40019CDBA /* call_out_h@2x.png in Resources */,
+				03A47EC21C3128750066133E /* 108.png in Resources */,
 				D915CB9A1BE65D17004EBE26 /* 人次选择按钮大@2x.png in Resources */,
 				D96473FC1BD67E2E008DA5B8 /* 聊吧图标.png in Resources */,
 				D99413C01BEC222600FC1B00 /* 我的相册图标.png in Resources */,
@@ -4078,6 +4127,7 @@
 				03651C5F1BEF45D40019CDBA /* VoiceSearchFeedback019.png in Resources */,
 				D99413A11BEC222600FC1B00 /* 联盟奖励图标@2x.png in Resources */,
 				D9D988C01BD7C8C200F53C74 /* 红包弹出窗.png in Resources */,
+				03A47EC51C3128750066133E /* 48.png in Resources */,
 				D915CB781BE65D17004EBE26 /* 倒计时圆角红色框@2x.png in Resources */,
 				D905440C1BE5B61D00A1660F /* food.jpg in Resources */,
 				03651B651BEF3B850019CDBA /* Localizable.strings in Resources */,
@@ -4170,6 +4220,7 @@
 				03651CDD1BEF46010019CDBA /* titleBar@2x.png in Resources */,
 				D99413A21BEC222600FC1B00 /* 评论1.png in Resources */,
 				D99413BA1BEC222600FC1B00 /* 微信.png in Resources */,
+				03A47EC31C3128750066133E /* 128.png in Resources */,
 				03651C9B1BEF45D40019CDBA /* chatBar_colorMore_location@2x.png in Resources */,
 				D99413B51BEC222600FC1B00 /* 提取按钮@2x.png in Resources */,
 				D9B1962A1BAE711C0077EA76 /* EaseMob.bundle in Resources */,
@@ -4273,6 +4324,7 @@
 				D99413AB1BEC222600FC1B00 /* 收藏1@2x.png in Resources */,
 				D96E76961BF9B5870062BAD0 /* 组-7.png in Resources */,
 				D943B1591BE4618F0058BA1C /* 选择按钮@2x.png in Resources */,
+				03A47EC41C3128750066133E /* 28.png in Resources */,
 				D915CB851BE65D17004EBE26 /* 计算详情1.png in Resources */,
 				D96474001BD67E2E008DA5B8 /* 我tab默认.png in Resources */,
 				03651C8A1BEF45D40019CDBA /* chatBar_keyboardSelected@2x.png in Resources */,
@@ -4304,6 +4356,7 @@
 				D99413AF1BEC222600FC1B00 /* 收藏tab@2x.png in Resources */,
 				03651CD81BEF46010019CDBA /* add@2x.png in Resources */,
 				D947137A1BD2859400108A8E /* problem.png in Resources */,
+				03A47EC81C3128750066133E /* 未标题-1.psd in Resources */,
 				D96E769A1BF9B5870062BAD0 /* 聊吧综合按钮1.png in Resources */,
 				D943B1401BE4618F0058BA1C /* 标签男.png in Resources */,
 				03651C891BEF45D40019CDBA /* chatBar_keyboardSelected.png in Resources */,
@@ -4430,6 +4483,7 @@
 				D96E769B1BF9B5870062BAD0 /* 聊吧综合按钮1@2x.png in Resources */,
 				03651CA61BEF45D40019CDBA /* chatBar_more_cameraSelected@2x.png in Resources */,
 				03651C731BEF45D40019CDBA /* chatBar_more_faceSelected.png in Resources */,
+				03A47EC61C3128750066133E /* 72.png in Resources */,
 				03651CF21BEF460C0019CDBA /* newFriends@2x.png in Resources */,
 				D9FFE6EC1BB16D1700FFA187 /* yiyuan.png in Resources */,
 				03651CB71BEF45D40019CDBA /* chat_receiver_audio_playing003@2x.png in Resources */,
@@ -4600,6 +4654,7 @@
 				03651A411BEF3B1A0019CDBA /* EMSDImageCache.m in Sources */,
 				03651A3D1BEF3B1A0019CDBA /* MWTapDetectingImageView.m in Sources */,
 				D9864C761BE82C4E0001F178 /* OneChargeListController.swift in Sources */,
+				03B4435A1C2FC8E700EC5317 /* TapImageView.m in Sources */,
 				D99C92151BFEBB3600B5F5A6 /* LiaoBaUser.swift in Sources */,
 				03651A331BEF3B1A0019CDBA /* EMAlertView.m in Sources */,
 				03651B051BEF3B400019CDBA /* AppDelegateoc+Parse.m in Sources */,
@@ -4719,6 +4774,7 @@
 				03651B251BEF3B400019CDBA /* GroupBansViewController.m in Sources */,
 				03651A361BEF3B1A0019CDBA /* MBProgressHUD+Add.m in Sources */,
 				03651B2B1BEF3B400019CDBA /* ChineseToPinyin.m in Sources */,
+				03B443591C2FC8E700EC5317 /* ImgScrollView.m in Sources */,
 				03651A591BEF3B1A0019CDBA /* PSTCollectionViewUpdateItem.m in Sources */,
 				D9ECD00A1BFB8B1200B41F8A /* GrabcornsView.swift in Sources */,
 				03651B171BEF3B400019CDBA /* EMChatImageBubbleView.m in Sources */,
@@ -4906,6 +4962,7 @@
 			baseConfigurationReference = 3DA8DDBBDA66E95B716F6769 /* Pods-AllianceIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4934,7 +4991,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance2;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
@@ -4948,6 +5005,7 @@
 			baseConfigurationReference = 757FA600E8A1D86EFFAF40B4 /* Pods-AllianceIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4977,7 +5035,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance2;
+				PRODUCT_BUNDLE_IDENTIFIER = ourselfAlliance123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AllianceIOS/AllianceIOS-Bridging-Header.h";
