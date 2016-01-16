@@ -20,6 +20,8 @@
 #import "EMSearchDisplayController.h"
 #import "ConvertToCommonEmoticonsHelper.h"
 #import "UserProfileManager.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+EMWebCache.h"
 
 
 @implementation EMConversation (search)
@@ -27,6 +29,7 @@
 //根据用户昵称,环信机器人名称,群名称进行搜索
 - (NSString*)showName
 {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     if (self.conversationType == eConversationTypeChat) {
         
         return [[UserProfileManager sharedInstance] getNickNameWithUsername:self.chatter];
@@ -49,6 +52,8 @@
 @property (nonatomic, strong) SRRefreshView         *slimeView;
 @property (nonatomic, strong) UIView                *networkStateView;
 
+@property (strong, nonatomic) NSDictionary *response;
+
 @property (strong, nonatomic) EMSearchDisplayController *searchController;
 
 @end
@@ -60,13 +65,53 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _dataSource = [NSMutableArray array];
+        [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     }
     return self;
 }
 
+
+- (void)connect
+{
+    NSMutableDictionary *dict =[[NSMutableDictionary alloc] init];
+    
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    
+//    NSArray *buddyList = [[EaseMob sharedInstance].chatManager buddyList];
+//    NSArray *blockList = [[EaseMob sharedInstance].chatManager blockedList];
+    NSInteger i=0;
+    for (EMConversation *obj1 in conversations) {
+            NSString * key = [[NSString alloc]initWithFormat:@"huanxinids[%ld]",(long)i++];
+            [dict setObject:obj1.chatter forKey:key];
+    }
+    
+//    NSDictionary *loginInfo = [[[EaseMob sharedInstance] chatManager] loginInfo];
+//    NSString *loginUsername = [loginInfo objectForKey:kSDKUsername];
+//    if (loginUsername && loginUsername.length > 0) {
+//        EMBuddy *loginBuddy = [EMBuddy buddyWithUsername:loginUsername];
+//        
+//        NSString * key = [[NSString alloc]initWithFormat:@"huanxinids[%ld]",(long)i++];
+//        [dict setObject:loginBuddy.username forKey:key];
+//    }
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"http://183.129.190.82:50001/v1/friends/getinfobyarray" parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         _response = responseObject;
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
     [self removeEmptyConversationsFromDB];
 
@@ -76,6 +121,7 @@
     [self networkStateView];
 
     [self searchController];
+    [self connect];
 }
 
 - (void)didReceiveMemoryWarning
@@ -367,10 +413,19 @@
         cell = [[ChatListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identify];
     }
     EMConversation *conversation = [self.dataSource objectAtIndex:indexPath.row];
-    cell.name = conversation.chatter;
+    
+    
     if (conversation.conversationType == eConversationTypeChat) {
-       
-        cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
+        id key;
+        NSEnumerator *enumerator = [_response objectEnumerator];
+        while ((key = [enumerator nextObject])) {
+            if ([key[@"huanxinid"] isEqualToString:conversation.chatter]) {
+                cell.name = key[@"nickname"];
+                cell.imageURL=key[@"thumb"];
+                cell.placeholderImage=[UIImage imageNamed:@"avator.jpg"];
+                break;
+            }
+        }
     }
     else{
         NSString *imageName = @"groupPublicHeader";
@@ -445,9 +500,17 @@
     NSString *chatter = conversation.chatter;
            chatController = [[ChatViewController alloc] initWithChatter:chatter
                                                     conversationType:conversation.conversationType];
-        chatController.title = title;
-   
-    
+    id key;
+    NSEnumerator *enumerator = [_response objectEnumerator];
+    while ((key = [enumerator nextObject])) {
+        NSLog (@"Key: %@", key[@"phone"]);
+        if ([key[@"huanxinid"] isEqualToString:title]) {
+            
+            chatController.response=self.response;
+            chatController.title=key[@"nickname"];
+            break;
+        }
+    }
     chatController.delelgate = self;
     [self.navigationController pushViewController:chatController animated:YES];
 }

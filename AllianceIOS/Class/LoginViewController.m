@@ -52,6 +52,8 @@
     _usernameTextField.delegate = self;
     _passwordTextField.delegate = self;
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     NSString *username = [self lastLoginUsername];
     if (username && username.length > 0) {
         _usernameTextField.text = username;
