@@ -509,12 +509,23 @@
         }
         else{
             MessageModel *model = (MessageModel *)obj;
+            
+            id key;
+            NSEnumerator *enumerator = [_response objectEnumerator];
+            while ((key = [enumerator nextObject])) {
+                if ([key[@"huanxinid"] isEqualToString:model.username]) {
+                    model.headImageURL=key[@"thumb"];
+                    break;
+                }
+            }
+            
             NSString *cellIdentifier = [EMChatViewCell cellIdentifierForMessageModel:model];
             EMChatViewCell *cell = (EMChatViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (cell == nil) {
                 cell = [[EMChatViewCell alloc] initWithMessageModel:model reuseIdentifier:cellIdentifier];
                 cell.backgroundColor = [UIColor clearColor];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                //[cell.imageView s
             }
             cell.messageModel = model;
             

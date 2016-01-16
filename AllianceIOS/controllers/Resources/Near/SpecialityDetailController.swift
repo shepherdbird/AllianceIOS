@@ -116,10 +116,10 @@ class SpecialityDetailController: UITableViewController,TapImageViewDelegate,Img
     }
     
     func setOriginFrame(sender:ImgScrollView){
-         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-        UIView.animateWithDuration(0.4, animations:{
+            UIView.animateWithDuration(0.4, animations:{
             sender.setAnimationRect()
             self.markView!.alpha = 1.0
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
             self.pg.alpha=1.0
             })
     }
@@ -151,14 +151,15 @@ class SpecialityDetailController: UITableViewController,TapImageViewDelegate,Img
         tmpImgScrollView.setImage(tmpView.image)
         self.myScrollView?.addSubview(tmpImgScrollView)
         tmpImgScrollView.i_delegate = self
-        self.performSelector(Selector("setOriginFrame:"), withObject: tmpImgScrollView, afterDelay: 0.1)
+        self.performSelector(Selector("setOriginFrame:"), withObject: tmpImgScrollView, afterDelay: 0.0)
         
     }
     
     func tapImageViewTappedWithObject(sender:AnyObject){
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         self.pg.alpha=0.0
         let tmpImgView:ImgScrollView=sender as! ImgScrollView
-        UIView.animateWithDuration(0.5, animations:{
+        UIView.animateWithDuration(0.4, animations:{
             self.markView!.alpha = 0
             tmpImgView.rechangeInitRdct()
             }, completion:{finished in
