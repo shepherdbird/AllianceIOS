@@ -117,7 +117,7 @@ class SpecialityReqController: UITableViewController,UICollectionViewDataSource,
     func gettoken(){
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/users/token")
+            let opt=try HTTP.GET(URL+"/v1/users/token")
             
             opt.start { response in
                 if let err = response.error {
@@ -212,9 +212,9 @@ class SpecialityReqController: UITableViewController,UICollectionViewDataSource,
     
     func connect(){
         do {
-            let params:Dictionary<String,AnyObject>=["phone":"1","kindid":"1","title":self.Sptitle.text!,"sellerphone":self.phone.text!,"reason":self.Reason.text!,"location":self.Location.text!,"pictures":self.allurl,"longitude":"1","latitude":"1"]
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"kindid":"1","title":self.Sptitle.text!,"sellerphone":self.phone.text!,"reason":self.Reason.text!,"location":self.Location.text!,"pictures":self.allurl,"longitude":"1","latitude":"1"]
             
-            let opt=try HTTP.POST("http://183.129.190.82:50001/v1/recommendations/create",parameters:params)
+            let opt=try HTTP.POST(URL+"/recommendations/create",parameters:params)
             opt.start { response in
                 if let err = response.error {
                     print(err.localizedFailureReason)

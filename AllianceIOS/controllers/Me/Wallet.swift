@@ -155,8 +155,7 @@ class Wallet: UITableViewController {
                 cell.addSubview(Mymoney)
             }else{
                 let backgroud=UIButton(frame: CGRectMake(0,0,self.view.frame.width/3,100))
-                backgroud.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-                backgroud.tag=1
+                
                 let cornlabel=UILabel()
                 cornlabel.text="金币"
                 cornlabel.font=UIFont.systemFontOfSize(20)
@@ -190,7 +189,7 @@ class Wallet: UITableViewController {
                 
                 let backgroud3=UIButton(frame: CGRectMake(self.view.frame.width/3*2,0,self.view.frame.width/3,100))
                 backgroud3.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-                backgroud3.tag=2
+                backgroud3.tag=1
                 let cardlabel=UILabel()
                 cardlabel.text="银行卡"
                 cardlabel.font=UIFont.systemFontOfSize(20)
@@ -287,10 +286,10 @@ class Wallet: UITableViewController {
     func ButtonAction(sender:UIButton){
         switch sender.tag {
         case 1:
-            let another=MyCorn()
+            let another=MyCard()
             self.navigationController?.pushViewController(another, animated: true)
         default:
-            let another=MyCorn()
+            let another=MyCard()
             self.navigationController?.pushViewController(another, animated: true)
         }
     }

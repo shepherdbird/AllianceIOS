@@ -127,7 +127,7 @@ class JobInfoMyController: UITableViewController {
             }
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
                 do {
-                    let opt=try HTTP.GET((self.addinfo?._links.next?.href)!,parameters: ["phone":"1"])
+                    let opt=try HTTP.GET((self.addinfo?._links.next?.href)!,parameters: ["phone":Phone])
                     
                     opt.start { response in
                         if let err = response.error {
@@ -158,7 +158,7 @@ class JobInfoMyController: UITableViewController {
         
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/applyjobs/search",parameters: ["phone":"1"])
+            let opt=try HTTP.GET(URL+"/applyjobs/search",parameters: ["phone":Phone])
             
             opt.start { response in
                 if let err = response.error {

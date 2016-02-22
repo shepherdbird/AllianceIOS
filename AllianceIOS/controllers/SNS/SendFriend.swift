@@ -138,6 +138,12 @@ class SendFriend: UITableViewController{
                 }
                 }, option: nil)
         }
+        if(self.assets.count==0){
+            dispatch_async(dispatch_get_main_queue()){
+                self.connect()
+            }
+        
+        }
         let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0)
         

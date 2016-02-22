@@ -219,7 +219,7 @@ class HobbyMyController: UITableViewController {
     func connect(){
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/daters/search",parameters: ["phone":"1"])
+            let opt=try HTTP.GET(URL+"/daters/search",parameters: ["phone":Phone])
             
             opt.start { response in
                 if let err = response.error {

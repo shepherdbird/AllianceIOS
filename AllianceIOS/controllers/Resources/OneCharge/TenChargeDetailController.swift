@@ -14,7 +14,6 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     
     @IBOutlet var TenChargeDetail: UITableView!
     var GrabcornId:Int=0
-    var Phone:String=""
     var activityIndicatorView: UIActivityIndicatorView!
     var sv=UIScrollView()
     var pg=UIPageControl()
@@ -75,7 +74,7 @@ class TenChargeDetailController: UITableViewController,UIPickerViewDelegate, UIP
     }
     func connect(){
         do {
-            let params:Dictionary<String,AnyObject>=["grabcornid":GrabcornId,"phone":"2"]
+            let params:Dictionary<String,AnyObject>=["grabcornid":GrabcornId,"phone":Phone]
             let opt=try HTTP.POST(URL+"/grabcorns/view", parameters: params)
             opt.start { response in
                 if let err = response.error {

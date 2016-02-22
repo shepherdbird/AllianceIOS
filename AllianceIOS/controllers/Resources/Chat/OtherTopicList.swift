@@ -313,7 +313,7 @@ class OtherTopicList: UITableViewController {
         }
     }
     func Like(sender:UIButton){
-        let like=self.view.viewWithTag(sender.tag) as! UIButton
+        _=self.view.viewWithTag(sender.tag) as! UIButton
         if(sender.tag%2==0){
             do {
                 let params:Dictionary<String,AnyObject>=["phone":Phone,"tbmessageid":ChatMessageListInstance!.items[sender.tag/2-2].id]

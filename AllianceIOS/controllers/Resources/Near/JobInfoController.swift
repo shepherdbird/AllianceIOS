@@ -295,7 +295,7 @@ class JobInfoController: UITableViewController {
     
     func getzhiye(){
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/professions/list")
+            let opt=try HTTP.GET(URL+"/professions/list")
             
             opt.start { response in
                 if let err = response.error {
@@ -366,7 +366,7 @@ class JobInfoController: UITableViewController {
     func getall(){
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/applyjobs/search")
+            let opt=try HTTP.GET(URL+"/applyjobs/search")
             
             opt.start { response in
                 if let err = response.error {
@@ -394,11 +394,11 @@ class JobInfoController: UITableViewController {
             var opt:HTTP?
             if(zhi==0){
                 allflag=0
-                opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search")
+                opt=try HTTP.POST(URL+"/applyjobs/search")
             }
             else{
                 professionid=self.zhiinfo?.items[zhi!-1].objID
-                opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/search",parameters: ["professionid":professionid])
+                opt=try HTTP.POST(URL+"/applyjobs/search",parameters: ["professionid":professionid])
             }
             
             opt!.start { response in

@@ -154,9 +154,9 @@ class JobInfoReqController: UITableViewController {
         
         
         do {
-           let params:Dictionary<String,AnyObject>=["phone":"1","jobproperty":pa_pro,"title":self.Jobtitle.text!,"degree":pa_deg,"work_at":self.Workat.text!,"status":self.Status.text!,"hidephone":1,"content":self.Content.text!,"professionid":pa_zhi]
+           let params:Dictionary<String,AnyObject>=["phone":Phone,"jobproperty":pa_pro,"title":self.Jobtitle.text!,"degree":pa_deg,"work_at":self.Workat.text!,"status":self.Status.text!,"hidephone":1,"content":self.Content.text!,"professionid":pa_zhi]
           
-            let opt=try HTTP.POST("http://183.129.190.82:50001/v1/applyjobs/create",parameters:params)
+            let opt=try HTTP.POST(URL+"/applyjobs/create",parameters:params)
             opt.start { response in
                 if let err = response.error {
                     print(err.localizedFailureReason)

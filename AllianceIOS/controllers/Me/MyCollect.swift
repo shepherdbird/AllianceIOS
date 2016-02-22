@@ -1,16 +1,14 @@
 //
-//  SNS.swift
+//  MyCollect.swift
 //  AllianceIOS
 //
-//  Created by dawei on 15/12/26.
+//  Created by dawei on 16/1/16.
 //
 //
-
 import UIKit
 import SwiftHTTP
 import JSONJoy
-var RefreshFriendStatus=0
-class SNS: UITableViewController ,UITextFieldDelegate{
+class MyCollect: UITableViewController ,UITextFieldDelegate{
     var timer:NSTimer!
     let textFeild=UITextField()
     let keyBaordView=UIView()
@@ -18,7 +16,7 @@ class SNS: UITableViewController ,UITextFieldDelegate{
     var pivot=0
     var Index:Int=0
     var RRow:String=""
-
+    
     var activityIndicatorView: UIActivityIndicatorView!
     var PersonInfoInstance:PersonInfo?
     var MessageList:ChatMessageList?
@@ -58,7 +56,6 @@ class SNS: UITableViewController ,UITextFieldDelegate{
         center.textColor=UIColor.whiteColor()
         self.navigationItem.titleView=center
         self.navigationItem.backBarButtonItem=UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(image: UIImage(named: "发表朋友圈图标.png"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("send"))
         let view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
@@ -101,10 +98,6 @@ class SNS: UITableViewController ,UITextFieldDelegate{
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
     }
-    func send(){
-        let another=SendFriend()
-        self.navigationController?.pushViewController(another, animated: true)
-    }
     func connect(){
         print("聊吧最新")
         do {
@@ -127,7 +120,7 @@ class SNS: UITableViewController ,UITextFieldDelegate{
         print("聊吧最新")
         do {
             let params:Dictionary<String,AnyObject>=["phone":Phone]
-            let new=try HTTP.POST(URL+"/messages/get", parameters: params)
+            let new=try HTTP.POST(URL+"/messages/getmycollect", parameters: params)
             new.start { response in
                 if let err = response.error {
                     print("error: \(err.localizedDescription)")
@@ -251,7 +244,7 @@ class SNS: UITableViewController ,UITextFieldDelegate{
                     let boundingRect2=GetBounds(self.view.frame.width-80, height: 1000, font: zanlabel.font, str: zanlabel.text!)
                     return boundingRect2.height+10
                 }
-            
+                
             }
             if(indexPath.row==F+self.MessageList!.items[indexPath.section-1].replys.count){
                 return 25
@@ -578,21 +571,21 @@ class SNS: UITableViewController ,UITextFieldDelegate{
         
     }
     func Delete(sender:UIButton){
-            do {
-                let params:Dictionary<String,AnyObject>=["phone":Phone,"messageid":MessageList!.items[sender.tag-20000].id]
-                let new=try HTTP.POST(URL+"/messages/delete", parameters: params)
-                new.start { response in
-                    if let err = response.error {
-                        print("error: \(err.localizedDescription)")
-                        return //also notify app of failure as needed
-                    }
-                    print("opt finished: \(response.description)")
-                    self.Fg = Flag(JSONDecoder(response.data))
+        do {
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"messageid":MessageList!.items[sender.tag-20000].id]
+            let new=try HTTP.POST(URL+"/messages/delete", parameters: params)
+            new.start { response in
+                if let err = response.error {
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
                 }
-                
-            } catch let error {
-                print("got an error creating the request: \(error)")
+                print("opt finished: \(response.description)")
+                self.Fg = Flag(JSONDecoder(response.data))
             }
+            
+        } catch let error {
+            print("got an error creating the request: \(error)")
+        }
     }
     func Collect(sender:UIButton){
         if(sender.tag%2==0){

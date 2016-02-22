@@ -296,8 +296,17 @@ class Me: UITableViewController {
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Settings");
             self.navigationController?.pushViewController(anotherView, animated: true)
         }else if(indexPath.section==2){
-            let another=Wallet()
-            self.navigationController?.pushViewController(another, animated: true)
+            if(indexPath.row==0){
+                let another=Wallet()
+                self.navigationController?.pushViewController(another, animated: true)
+            }else if(indexPath.row==1){
+                let another=MyCollectbefore()
+                self.navigationController?.pushViewController(another, animated: true)
+            }else{
+                let another=SNSbefore()
+                self.navigationController?.pushViewController(another, animated: true)
+            }
+            
         }
     }
     func ButtonAction(sender:UIButton){

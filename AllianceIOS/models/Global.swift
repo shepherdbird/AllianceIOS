@@ -8,8 +8,8 @@
 
 import Foundation
 import JSONJoy
-let URL="http://183.129.190.82:50001/v1"
-let Phone="2"
+let URL="http://120.27.196.128/v1"
+let Phone="10"
 class Flag {
     var flag:Int!
     var msg:String!

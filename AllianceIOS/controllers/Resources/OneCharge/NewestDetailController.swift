@@ -71,7 +71,7 @@ class NewestDetailController: UITableViewController ,UIPickerViewDelegate, UIPic
     }
     func connect(){
         do {
-            let params:Dictionary<String,AnyObject>=["grabcommodityid":NewestId,"phone":"2"]
+            let params:Dictionary<String,AnyObject>=["grabcommodityid":NewestId,"phone":Phone]
             let opt=try HTTP.POST(URL+"/grabcommodities/view", parameters: params)
             opt.start { response in
                 if let err = response.error {

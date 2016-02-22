@@ -135,7 +135,7 @@ class HobbyReqController: UITableViewController,UIPickerViewDelegate, UIPickerVi
     func gettoken(){
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/users/token")
+            let opt=try HTTP.GET(URL+"/users/token")
             
             opt.start { response in
                 if let err = response.error {
@@ -167,9 +167,9 @@ class HobbyReqController: UITableViewController,UIPickerViewDelegate, UIPickerVi
                 }
             }
             let sex=xingbie.indexOf(self.gender.text!)
-            let params:Dictionary<String,AnyObject>=["phone":"1","sex":sex!,"age":self.age.text!,"hobbyid":hobbyid,"content":self.content.text!,"picture":self.picurl!]
+            let params:Dictionary<String,AnyObject>=["phone":Phone,"sex":sex!,"age":self.age.text!,"hobbyid":hobbyid,"content":self.content.text!,"picture":self.picurl!]
             
-            let opt=try HTTP.POST("http://183.129.190.82:50001/v1/daters/create",parameters:params)
+            let opt=try HTTP.POST(URL+"/daters/create",parameters:params)
             opt.start { response in
                 if let err = response.error {
                     print(err.localizedFailureReason)

@@ -196,7 +196,7 @@ class SpecialityDetailController: UITableViewController,TapImageViewDelegate,Img
                 }else{
                     return CGFloat(30+self.imagewidth!*3)
                 }
-                return 0
+                
             }
             return 50
         }else{

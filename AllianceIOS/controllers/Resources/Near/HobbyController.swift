@@ -266,7 +266,7 @@ class HobbyController: UITableViewController {
     
     func gethobby(){
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/hobbies/list")
+            let opt=try HTTP.GET(URL+"/hobbies/list")
             
             opt.start { response in
                 if let err = response.error {
@@ -287,7 +287,7 @@ class HobbyController: UITableViewController {
     func connect(){
         print("ccccc")
         do {
-            let opt=try HTTP.GET("http://183.129.190.82:50001/v1/daters/search")
+            let opt=try HTTP.GET(URL+"/daters/search")
             
             opt.start { response in
                 if let err = response.error {

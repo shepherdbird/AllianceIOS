@@ -80,10 +80,10 @@ class Check: UITableViewController {
     func OK(){
         do {
             if(Through=="corn"){
-                var params:Dictionary<String,AnyObject>=["grabcornid":Id,"phone":"2","count":Count,"type":Select-1]
+                var params:Dictionary<String,AnyObject>=["grabcornid":Id,"phone":Phone,"count":Count,"type":Select-1]
                 var opt=try HTTP.POST(URL+"/grabcorns/buy", parameters: params)
                 if(All==1){
-                    params=["grabcornid":Id,"phone":"2","type":Select-1]
+                    params=["grabcornid":Id,"phone":Phone,"type":Select-1]
                     opt=try HTTP.POST(URL+"/grabcorns/buyall", parameters: params)
                 }
                 opt.start { response in
@@ -96,10 +96,10 @@ class Check: UITableViewController {
                     //print(self.TenCharge!._meta.totalCount)
                 }
             }else{
-                var params:Dictionary<String,AnyObject>=["grabcommodityid":Id,"phone":"2","count":Count,"type":Select-1]
+                var params:Dictionary<String,AnyObject>=["grabcommodityid":Id,"phone":Phone,"count":Count,"type":Select-1]
                 var opt=try HTTP.POST(URL+"/grabcommodities/buy", parameters: params)
                 if(All==1){
-                    params=["grabcommodityid":Id,"phone":"2","type":Select-1]
+                    params=["grabcommodityid":Id,"phone":Phone,"type":Select-1]
                     opt=try HTTP.POST(URL+"/grabcommodities/buyall", parameters: params)
                 }
                 opt.start { response in
