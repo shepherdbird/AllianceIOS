@@ -22,6 +22,7 @@
 #import "UserProfileManager.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIImageView+EMWebCache.h"
+#import "AllianceIOS-Swift.h"
 
 
 @implementation EMConversation (search)
@@ -96,9 +97,10 @@
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:@"http://183.129.190.82:50001/v1/friends/getinfobyarray" parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [manager POST:@"http://120.27.196.128/v1/friends/getinfobyarray" parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          _response = responseObject;
+         
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
      }];

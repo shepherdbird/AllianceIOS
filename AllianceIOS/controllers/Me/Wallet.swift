@@ -29,6 +29,11 @@ class Wallet: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
+        let center=UILabel(frame: CGRectMake(0,0,50,50))
+        center.text="我的钱包"
+        center.font=UIFont.systemFontOfSize(20)
+        center.textColor=UIColor.whiteColor()
+        self.navigationItem.titleView=center
         view1=UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height))
         view1.backgroundColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         

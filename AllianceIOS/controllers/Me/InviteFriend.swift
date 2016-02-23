@@ -12,8 +12,15 @@ class InviteFriend: UITableViewController {
     
     @IBOutlet var IF: UITableView!
 
+    var Qcode=""
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView=UITableView(frame: self.view.frame, style: UITableViewStyle.Grouped)
+        let center=UILabel(frame: CGRectMake(0,0,50,50))
+        center.text="邀请好友"
+        center.font=UIFont.systemFontOfSize(20)
+        center.textColor=UIColor.whiteColor()
+        self.navigationItem.titleView=center
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,40 +50,52 @@ class InviteFriend: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.section==0 && indexPath.row==0){
-            return self.view.frame.width/4*3
+            return 50
         }else if(indexPath.section==0 && indexPath.row==1){
-            return self.view.frame.width/4
+            return self.view.frame.width/4*3
         }
-        return 50
+        return self.view.frame.width/4*2
     }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(section==0){
+            return 0.01
+        }
+        return 20
+    }
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(section==1){
+            return "邀请好友规则"
+        }
+        return ""
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(indexPath.section==0){
             if(indexPath.row==0){
                 let cell=UITableViewCell()
+                var boundingRect:CGRect
                 let us=UILabel(frame: CGRectMake(self.view.frame.width/2-65,25,250,20))
-                us.text="邀请好友加入我们"
-                us.font=UIFont.systemFontOfSize(15)
-                let QRCode=UIImageView(frame: CGRectMake(self.view.frame.width/7*2, 60, self.view.frame.width/7*3, self.view.frame.width/7*3))
-                QRCode.image=UIImage(named: "QRCode.jpg")
+                us.text="您的邀请码是："+Qcode
+                us.font=UIFont.systemFontOfSize(17)
+                boundingRect=GetBounds(300, height: 100, font: us.font, str: us.text!)
+                us.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,25-boundingRect.height/2,boundingRect.width,boundingRect.height)
                 cell.addSubview(us)
+
+                return cell
+            }else{
+                let cell=UITableViewCell()
+                let QRCode=UIImageView(frame: CGRectMake(self.view.frame.width/7*2-20, 40, self.view.frame.width/7*3+40, self.view.frame.width/7*3+40))
+                QRCode.image=UIImage(named: "QRCode.jpg")
                 cell.addSubview(QRCode)
                 return cell
             }
-            return FirstCell()
-        }else{
-            let cell=UITableViewCell()
-            let rule=UILabel(frame: CGRectMake(10,10,200,30))
-            rule.text="邀请奖励规则"
-            rule.font=UIFont.systemFontOfSize(15)
-            cell.addSubview(rule)
-            cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
-            return cell
+            
         }
-        
+        return FirstCell()
         
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.IF.deselectRowAtIndexPath(indexPath, animated: true)
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     func FirstCell()->UITableViewCell{
         let cell=UITableViewCell()
@@ -93,6 +112,19 @@ class InviteFriend: UITableViewController {
         cell.addSubview(QQbtn)
         cell.addSubview(QQicon)
         cell.addSubview(QQname)
+        //QQ空间
+        let QQ2btn=UIButton(frame: CGRectMake(0,self.view.frame.width/4,self.view.frame.width/4,self.view.frame.width/4))
+        let QQ2icon=UIImageView(frame: CGRectMake(self.view.frame.width/16,self.view.frame.width/4+10,self.view.frame.width/8,self.view.frame.width/8))
+        QQ2icon.image=UIImage(named: "qq.png")
+        QQ2icon.clipsToBounds=true
+        QQ2icon.layer.cornerRadius=self.view.frame.width/16
+        let QQ2name=UILabel(frame: CGRectMake(self.view.frame.width/8-20,self.view.frame.width/8*3+15,50,15))
+        QQ2name.text="QQ空间"
+        QQ2name.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        QQ2name.font=UIFont.systemFontOfSize(12)
+        cell.addSubview(QQ2btn)
+        cell.addSubview(QQ2icon)
+        cell.addSubview(QQ2name)
         //微信
         let WebChatbtn=UIButton(frame: CGRectMake(self.view.frame.width/4,0,self.view.frame.width/4,self.view.frame.width/4))
         let WebChaticon=UIImageView(frame: CGRectMake(self.view.frame.width/16*5,10,self.view.frame.width/8,self.view.frame.width/8))
@@ -106,6 +138,19 @@ class InviteFriend: UITableViewController {
         cell.addSubview(WebChatbtn)
         cell.addSubview(WebChaticon)
         cell.addSubview(WebChatname)
+        //朋友圈
+        let WebChat2btn=UIButton(frame: CGRectMake(self.view.frame.width/4,self.view.frame.width/4,self.view.frame.width/4,self.view.frame.width/4))
+        let WebChat2icon=UIImageView(frame: CGRectMake(self.view.frame.width/16*5,self.view.frame.width/4+10,self.view.frame.width/8,self.view.frame.width/8))
+        WebChat2icon.image=UIImage(named: "微信.png")
+        WebChat2icon.clipsToBounds=true
+        WebChat2icon.layer.cornerRadius=self.view.frame.width/16
+        let WebChat2name=UILabel(frame: CGRectMake(self.view.frame.width/8*3-15,self.view.frame.width/8*3+15,40,15))
+        WebChat2name.text="朋友圈"
+        WebChat2name.textColor=UIColor(red: 111/255, green: 111/255, blue: 111/255, alpha: 1.0)
+        WebChat2name.font=UIFont.systemFontOfSize(12)
+        cell.addSubview(WebChat2btn)
+        cell.addSubview(WebChat2icon)
+        cell.addSubview(WebChat2name)
         //微博
         let WBbtn=UIButton(frame: CGRectMake(self.view.frame.width/2,0,self.view.frame.width/4,self.view.frame.width/4))
         let WBicon=UIImageView(frame: CGRectMake(self.view.frame.width/16*9,10,self.view.frame.width/8,self.view.frame.width/8))

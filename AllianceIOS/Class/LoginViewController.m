@@ -12,6 +12,7 @@
 
 #import "LoginViewController.h"
 #import "EMError.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface LoginViewController ()<IChatManagerDelegate,UITextFieldDelegate>
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UISwitch *useIpSwitch;
+@property (strong, nonatomic) NSDictionary *response;
 
 
 - (IBAction)doRegister:(id)sender;
@@ -129,7 +131,18 @@
 //点击登陆后的操作
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
 {
+    
     [self showHudInView:self.view hint:NSLocalizedString(@"login.ongoing", @"Is Login...")];
+//    NSMutableDictionary *dict =[[NSMutableDictionary alloc] init];
+//    [dict setObject:username forKey:@"phone"];
+//    [dict setObject:password forKey:@"pwd"];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager POST:@"http://120.27.196.128/v1/users/login" parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject)
+//     {
+//         _response = responseObject;
+//     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//         NSLog(@"Error: %@", error);
+//     }];
     //异步登陆账号
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:username
                                                         password:password

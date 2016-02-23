@@ -10,6 +10,9 @@ import Foundation
 import JSONJoy
 let URL="http://120.27.196.128/v1"
 let Phone="10"
+class Global {
+    var Phone:String?
+}
 class Flag {
     var flag:Int!
     var msg:String!

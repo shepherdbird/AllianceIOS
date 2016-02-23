@@ -108,7 +108,7 @@ class Me: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if(section==3){
-            return 200
+            return 100
         }
         return 15
     }
@@ -120,7 +120,7 @@ class Me: UITableViewController {
         case 0:
             return self.view.frame.width
         default:
-            return 50
+            return 40
         }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -129,25 +129,25 @@ class Me: UITableViewController {
         case 0:
             return FirstCell()
         case 1:
-            let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
+            let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
             icon.image=UIImage(named: "邀请好友图标.png")
             icon.clipsToBounds=true
-            icon.layer.cornerRadius=15
-            let name=UILabel(frame: CGRectMake(50,15,150,18))
+            icon.layer.cornerRadius=10
+            let name=UILabel(frame: CGRectMake(40,12,150,16))
             name.text="邀请好友"
-            name.font=UIFont.systemFontOfSize(18)
+            name.font=UIFont.systemFontOfSize(16)
             cell.addSubview(icon)
             cell.addSubview(name)
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         case 3:
-            let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
+            let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
             icon.image=UIImage(named: "设置图标.png")
             icon.clipsToBounds=true
-            icon.layer.cornerRadius=15
-            let name=UILabel(frame: CGRectMake(50,15,150,18))
+            icon.layer.cornerRadius=10
+            let name=UILabel(frame: CGRectMake(40,12,150,16))
             name.text="设置"
-            name.font=UIFont.systemFontOfSize(18)
+            name.font=UIFont.systemFontOfSize(16)
             cell.addSubview(icon)
             cell.addSubview(name)
             cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
@@ -155,37 +155,37 @@ class Me: UITableViewController {
         default:
             switch indexPath.row{
             case 0:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
                 icon.image=UIImage(named: "我的钱包图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=15
-                let name=UILabel(frame: CGRectMake(50,15,150,18))
+                icon.layer.cornerRadius=10
+                let name=UILabel(frame: CGRectMake(40,12,150,16))
                 name.text="我的钱包"
-                name.font=UIFont.systemFontOfSize(18)
+                name.font=UIFont.systemFontOfSize(16)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
             case 1:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
                 icon.image=UIImage(named: "我的收藏图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=15
-                let name=UILabel(frame: CGRectMake(50,15,150,18))
+                icon.layer.cornerRadius=10
+                let name=UILabel(frame: CGRectMake(40,12,150,16))
                 name.text="我的收藏"
-                name.font=UIFont.systemFontOfSize(18)
+                name.font=UIFont.systemFontOfSize(16)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
                 return cell
             default:
-                let icon=UIImageView(frame: CGRectMake(10, 10, 30, 30))
+                let icon=UIImageView(frame: CGRectMake(10, 10, 20, 20))
                 icon.image=UIImage(named: "我的相册图标.png")
                 icon.clipsToBounds=true
-                icon.layer.cornerRadius=15
-                let name=UILabel(frame: CGRectMake(50,15,150,18))
+                icon.layer.cornerRadius=10
+                let name=UILabel(frame: CGRectMake(40,12,150,16))
                 name.text="我的相册"
-                name.font=UIFont.systemFontOfSize(18)
+                name.font=UIFont.systemFontOfSize(16)
                 cell.addSubview(icon)
                 cell.addSubview(name)
                 cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
@@ -198,7 +198,8 @@ class Me: UITableViewController {
         var boundingRect:CGRect
         let backgroud=UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.width/4*3))
         //backgroud.backgroundColor=UIColor(red: 220/255, green: 100/255, blue: 100/255, alpha: 1.0)
-        backgroud.backgroundColor=UIColor(red: 200/255, green: 0, blue: 0, alpha: 1.0)
+        //backgroud.backgroundColor=UIColor(red: 200/255, green: 0, blue: 0, alpha: 1.0)
+        backgroud.image=UIImage(named: "我的背景.png")
         cell.addSubview(backgroud)
         let avator=UIImageView(frame: CGRectMake(self.view.frame.width/2-50, 80, 100, 100))
         print(self.PersonInfoInstance?.thumb)
@@ -220,78 +221,74 @@ class Me: UITableViewController {
         boundingRect=GetBounds(300, height: 100, font: username.font, str: username.text!)
         username.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,avator.frame.maxY+20,boundingRect.width,boundingRect.height)
         cell.addSubview(username)
-        let id=UILabel(frame: CGRectMake(self.view.frame.width/2-40,self.view.frame.width/2+15,110,20))
-        id.text="帐号："+String(self.PersonInfoInstance!.id)
-        id.textColor=UIColor.whiteColor()
-        id.font=UIFont.systemFontOfSize(17)
-        boundingRect=GetBounds(300, height: 100, font: id.font, str: id.text!)
-        id.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,username.frame.maxY+10,boundingRect.width,boundingRect.height)
-        cell.addSubview(id)
+        let friend=UILabel(frame: CGRectMake(self.view.frame.width/2-40,self.view.frame.width/2+15,110,20))
+        friend.text="好友 "+String(self.PersonInfoInstance!.friendcount)
+        friend.textColor=UIColor.whiteColor()
+        friend.font=UIFont.systemFontOfSize(17)
+        boundingRect=GetBounds(300, height: 100, font: friend.font, str: friend.text!)
+        friend.frame=CGRectMake(self.view.frame.width/2-boundingRect.width-10,username.frame.maxY+10,boundingRect.width,boundingRect.height)
+        cell.addSubview(friend)
+        
+        let fans=UILabel(frame: CGRectMake(self.view.frame.width/2-40,self.view.frame.width/2+15,110,20))
+        fans.text="粉丝 "+String(self.PersonInfoInstance!.concerncount)
+        fans.textColor=UIColor.whiteColor()
+        fans.font=UIFont.systemFontOfSize(17)
+        boundingRect=GetBounds(300, height: 100, font: fans.font, str: fans.text!)
+        fans.frame=CGRectMake(self.view.frame.width/2+10,username.frame.maxY+10,boundingRect.width,boundingRect.height)
+        cell.addSubview(fans)
         cell.addSubview(avator_edit)
-        //直接联盟
-        let DirectAlliance=UIButton(frame: CGRectMake(0,self.view.frame.width/4*3,self.view.frame.width/3,self.view.frame.width/4))
-        DirectAlliance.tag=100
-        DirectAlliance.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-        let DA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12, self.view.frame.width/4*3+20, 20, 20))
-        DA_icon.image=UIImage(named: "直接联盟图标.png")
-        let DA_name=UILabel(frame: CGRectMake(self.view.frame.width/12+22,self.view.frame.width/4*3+20,120,17))
-        DA_name.text="直接联盟"
-        DA_name.font=UIFont.systemFontOfSize(17)
-        let DA_count=UILabel(frame: CGRectMake(self.view.frame.width/6-10,self.view.frame.width/8*7,50,30))
-        DA_count.text=String(self.PersonInfoInstance!.directalliancecount)+"人"
-        DA_count.font=UIFont.systemFontOfSize(20)
-        DA_count.textColor=UIColor.blueColor()
-        boundingRect=GetBounds(300, height: 100, font: DA_count.font, str: DA_count.text!)
-        DA_count.frame=CGRectMake(self.view.frame.width/6-boundingRect.width/2,DA_name.frame.maxY+10,boundingRect.width,boundingRect.height)
-        cell.addSubview(DirectAlliance)
-        cell.addSubview(DA_icon)
-        cell.addSubview(DA_name)
-        cell.addSubview(DA_count)
+    
         //五层总数
-        let FiveAll=UIButton(frame: CGRectMake(self.view.frame.width/3,self.view.frame.width/4*3,self.view.frame.width/3,self.view.frame.width/4))
-        let FA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*5, self.view.frame.width/4*3+20, 20, 20))
+        let FiveAll=UIButton(frame: CGRectMake(0,self.view.frame.width/4*3,self.view.frame.width/2,self.view.frame.width/3))
+        let FA_icon=UIImageView(frame: CGRectMake(self.view.frame.width/8, self.view.frame.width/4*3+20, 20, 20))
         FA_icon.image=UIImage(named: "五层人数图标.png")
-        let FA_name=UILabel(frame: CGRectMake(self.view.frame.width/12*5+22,self.view.frame.width/4*3+20,120,17))
-        FA_name.text="两层总数"
+        let FA_name=UILabel(frame: CGRectMake(self.view.frame.width/8+22,self.view.frame.width/4*3+20,120,17))
+        FA_name.text="联盟总数"
         FA_name.font=UIFont.systemFontOfSize(17)
-        let FA_count=UILabel(frame: CGRectMake(self.view.frame.width/2-10,self.view.frame.width/8*7,50,30))
-        FA_count.text=String(self.PersonInfoInstance!.allalliancecount)+"人"
+        let FA_count=UILabel(frame: CGRectMake(self.view.frame.width/4-10,self.view.frame.width/8*7,50,30))
+        FA_count.text=String(self.PersonInfoInstance!.allalliancecount)
         FA_count.font=UIFont.systemFontOfSize(20)
         FA_count.textColor=UIColor.redColor()
         boundingRect=GetBounds(300, height: 100, font: FA_count.font, str: FA_count.text!)
-        FA_count.frame=CGRectMake(self.view.frame.width/2-boundingRect.width/2,FA_name.frame.maxY+10,boundingRect.width,boundingRect.height)
+        FA_count.frame=CGRectMake(self.view.frame.width/4-boundingRect.width/2,FA_name.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(FiveAll)
         cell.addSubview(FA_icon)
         cell.addSubview(FA_name)
         cell.addSubview(FA_count)
         //联盟奖励
-        let AllianceGive=UIButton(frame: CGRectMake(self.view.frame.width/3*2,self.view.frame.width/4*3,self.view.frame.width/3,self.view.frame.width/4))
+        let AllianceGive=UIButton(frame: CGRectMake(self.view.frame.width/2,self.view.frame.width/4*3,self.view.frame.width/2,self.view.frame.width/3))
         AllianceGive.tag=102
         AllianceGive.addTarget(self, action: Selector("ButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         
-        let AG_icon=UIImageView(frame: CGRectMake(self.view.frame.width/12*9, self.view.frame.width/4*3+20, 20, 20))
+        let AG_icon=UIImageView(frame: CGRectMake(self.view.frame.width/8*5, self.view.frame.width/4*3+20, 20, 20))
         AG_icon.image=UIImage(named: "联盟奖励图标.png")
-        let AG_name=UILabel(frame: CGRectMake(self.view.frame.width/12*9+22,self.view.frame.width/4*3+20,120,17))
+        let AG_name=UILabel(frame: CGRectMake(self.view.frame.width/8*5+22,self.view.frame.width/4*3+20,120,17))
         AG_name.text="联盟奖励"
         AG_name.font=UIFont.systemFontOfSize(17)
         let AG_count=UILabel(frame: CGRectMake(self.view.frame.width/6*5-10,self.view.frame.width/8*7,80,30))
-        AG_count.text=String(self.PersonInfoInstance!.alliancerewards)+"元"
+        AG_count.text=String(self.PersonInfoInstance!.alliancerewards)
         AG_count.font=UIFont.systemFontOfSize(20)
         AG_count.textColor=UIColor.greenColor()
         boundingRect=GetBounds(300, height: 100, font: AG_count.font, str: AG_count.text!)
-        AG_count.frame=CGRectMake(self.view.frame.width/6*5-boundingRect.width/2,AG_name.frame.maxY+10,boundingRect.width,boundingRect.height)
+        AG_count.frame=CGRectMake(self.view.frame.width/4*3-boundingRect.width/2,AG_name.frame.maxY+10,boundingRect.width,boundingRect.height)
         cell.addSubview(AllianceGive)
         cell.addSubview(AG_icon)
         cell.addSubview(AG_name)
         cell.addSubview(AG_count)
+        
+        let line=UIImageView(frame: CGRectMake(self.view.frame.width/2-1, self.view.frame.width/4*3, 2, self.view.frame.width/4))
+        line.backgroundColor=UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.44)
+        cell.addSubview(line)
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //self.I.deselectRowAtIndexPath(indexPath, animated: true)
         
         if(indexPath.section==1){
-            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("InviteFriend");
-            self.navigationController?.pushViewController(anotherView, animated: true)
+            //let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("InviteFriend");
+            let another=InviteFriend()
+            another.Qcode=self.PersonInfoInstance!.invitecode
+            self.navigationController?.pushViewController(another, animated: true)
         }else if(indexPath.section==3){
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("Settings");
             self.navigationController?.pushViewController(anotherView, animated: true)
@@ -320,8 +317,10 @@ class Me: UITableViewController {
             let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("DirectAlliance");
             self.navigationController?.pushViewController(anotherView, animated: true)
         case 102:
-            let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AllianceGive");
-            self.navigationController?.pushViewController(anotherView, animated: true)
+            //let anotherView:UIViewController=myStoryBoard.instantiateViewControllerWithIdentifier("AllianceGive");
+            let another=AllianceGive()
+            another.Money=self.PersonInfoInstance!.alliancerewards
+            self.navigationController?.pushViewController(another, animated: true)
         default:
             break
         }
